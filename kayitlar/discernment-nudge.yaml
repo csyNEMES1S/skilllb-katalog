@@ -1,0 +1,25 @@
+id: discernment-nudge
+ad: "Sorgulama Hatırlatıcısı"
+kisaAciklama: "Önemli yanıtların sonuna kontrol soruları ekler."
+neIseYarar:
+  - "Tavsiye, tahmin ya da plan içeren yanıtların sonuna 2-3 kısa takip sorusu ekler."
+  - "Bu sorular doğrulanması gereken bilgileri, akıl yürütmedeki adımları ve eksik bağlamı gösterir."
+  - "Basit sorularda ve sohbette araya girmez, bir konuşmada en çok bir kez devreye girer."
+kategori: diger
+kaynak:
+  repo: anthropics/skills
+  yol: skills/discernment-nudge
+  dal: main
+  sha: f379e5ad66e2febc1616cf8d6284666fecbe514e
+ornekCumleler:
+  - "Evden çalışan biri olarak aylık bütçemi nasıl planlamalıyım?"
+  - "Küçük bir kafe açmanın ilk yıl maliyetini tahmin eder misin?"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [academy-guide, doc-coauthoring]

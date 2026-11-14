@@ -1,0 +1,26 @@
+id: internal-comms
+ad: "Şirket İçi Yazışma"
+kisaAciklama: "Durum raporu, bülten gibi şirket içi yazıları hazırlar."
+neIseYarar:
+  - "İlerleme, Planlar, Sorunlar (3P) biçiminde ekip güncellemeleri yazar."
+  - "Şirket bülteni, sık sorulan sorular ve yöneticilere durum raporu hazırlar."
+  - "Olay (incident) raporlarını ve proje güncellemelerini düzenli bir biçime sokar."
+kategori: yazi
+kaynak:
+  repo: anthropics/skills
+  yol: skills/internal-comms
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "Bu haftaki notlarımdan ekibime gidecek kısa bir haftalık güncelleme yaz."
+  - "Dün yaşanan sunucu kesintisi için bir olay raporu hazırla."
+  - "Yeni izin politikası hakkında çalışanlar için bir SSS metni yaz."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [doc-coauthoring, docx]

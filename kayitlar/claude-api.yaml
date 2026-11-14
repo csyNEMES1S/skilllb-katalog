@@ -1,0 +1,26 @@
+id: claude-api
+ad: "Claude API Rehberi"
+kisaAciklama: "Claude API ile uygulama yazarken güncel başvuru kaynağı."
+neIseYarar:
+  - "Model adları, fiyatlar ve sınırlar gibi bilgileri ezberden değil, güncel kaynaktan verir."
+  - "Akışlı yanıt, araç kullanımı, önbellekleme gibi özellikler için doğru kod örnekleri sunar."
+  - "Eski bir modelden yenisine geçerken yapılacak değişiklikleri gösterir."
+kategori: kod-test
+kaynak:
+  repo: anthropics/skills
+  yol: skills/claude-api
+  dal: main
+  sha: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+ornekCumleler:
+  - "Python ile Claude API'ye soru gönderip yanıtı ekrana yazan kısa bir program yaz."
+  - "Uygulamamda istem önbelleklemeyi (prompt caching) nasıl açarım, örnek kodla göster."
+  - "Kodumdaki eski Claude modelini en yeni modele geçirmem için ne değiştirmeliyim?"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [mcp-builder, skill-creator]

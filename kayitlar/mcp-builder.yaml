@@ -1,0 +1,25 @@
+id: mcp-builder
+ad: "MCP Sunucusu Kurucu"
+kisaAciklama: "Yapay zekâyı dış servislere bağlayan MCP sunucuları yazar."
+neIseYarar:
+  - "Bir servisin API'sini inceleyip yapay zekânın kullanacağı araçları planlar."
+  - "Python (FastMCP) ya da TypeScript ile MCP sunucusunun kodunu yazar ve test eder."
+  - "Sunucunun işe yarayıp yaramadığını ölçmek için değerlendirme soruları hazırlar."
+kategori: kod-test
+kaynak:
+  repo: anthropics/skills
+  yol: skills/mcp-builder
+  dal: main
+  sha: ca45fc496a3436251f191354091d557da31c15b5
+ornekCumleler:
+  - "Trello panolarımı okuyup kart ekleyebilen bir MCP sunucusu yaz."
+  - "Şirketimizin hava durumu API'si için TypeScript ile bir MCP sunucusu oluştur."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [claude-api, skill-creator]

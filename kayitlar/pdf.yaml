@@ -1,0 +1,28 @@
+id: pdf
+ad: "PDF Ustası"
+kisaAciklama: "PDF okur, birleştirir, böler ve yeni PDF hazırlar."
+neIseYarar:
+  - "PDF içindeki metni ve tabloları çıkarır, taranmış sayfaları okunur hâle getirir."
+  - "Birden çok PDF'i birleştirir, sayfaları ayırır, döndürür ya da filigran ekler."
+  - "Sıfırdan yeni PDF oluşturur, PDF formlarını doldurur ve dosyaya şifre koyar."
+kategori: belge-ofis
+kaynak:
+  repo: anthropics/skills
+  yol: skills/pdf
+  dal: main
+  sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+ornekCumleler:
+  - "Bu üç PDF'i tek dosyada birleştir, sıra fatura, sözleşme, ek olsun."
+  - "Ekteki PDF'teki tabloları çıkar ve bana Excel dosyası olarak ver."
+  - "Bu taranmış PDF'teki yazıları oku ve metin olarak yaz."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+oneCikan: true
+haftaninSkilli: true
+benzerler: [docx, xlsx, pptx]

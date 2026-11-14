@@ -1,0 +1,27 @@
+id: pptx
+ad: "Sunum Hazırlayıcı"
+kisaAciklama: "PowerPoint sunumları hazırlar ve düzenler."
+neIseYarar:
+  - "Konusunu söylediğin bir sunumu renk ve yazı tipi uyumuna dikkat ederek sıfırdan hazırlar."
+  - "Var olan bir .pptx dosyasında ya da şablonda slayt ekler, siler, metinleri günceller."
+  - "Slaytları görüntüye çevirip taşan yazı, üst üste binen öğe gibi hataları kontrol eder."
+kategori: belge-ofis
+kaynak:
+  repo: anthropics/skills
+  yol: skills/pptx
+  dal: main
+  sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+ornekCumleler:
+  - "Okulumuzun geri dönüşüm projesi için 8 slaytlık bir sunum hazırla."
+  - "Bu sunumdaki tüm slaytlara konuşmacı notu ekle."
+  - "Ekteki rapordan yöneticilere sunacağım 5 slaytlık bir özet sunum çıkar."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+oneCikan: true
+benzerler: [theme-factory, docx, canvas-design]

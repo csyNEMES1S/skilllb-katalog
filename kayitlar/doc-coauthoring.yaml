@@ -1,0 +1,26 @@
+id: doc-coauthoring
+ad: "Belge Yazım Ortağı"
+kisaAciklama: "Teklif, şartname gibi belgeleri adım adım birlikte yazar."
+neIseYarar:
+  - "Önce sorular sorarak belgenin amacını, okurunu ve gerekli bilgileri toplar."
+  - "Belgeyi bölüm bölüm taslaklar, her bölümü senin geri bildiriminle iyileştirir."
+  - "Son hâlini, belgeyi hiç görmemiş bir okurun gözüyle sınayıp eksikleri bulur."
+kategori: yazi
+kaynak:
+  repo: anthropics/skills
+  yol: skills/doc-coauthoring
+  dal: main
+  sha: 00756142ab04c82a447693cf373c4e0c554d1005
+ornekCumleler:
+  - "Belediyeye sunacağım park projesi teklifini birlikte yazalım."
+  - "Yeni mobil uygulamamız için teknik şartname hazırlamama yardım et."
+  - "Ekip için bir karar belgesi yazmak istiyorum, bana sorular sorarak başla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [internal-comms, docx]

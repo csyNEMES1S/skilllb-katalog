@@ -1,0 +1,26 @@
+id: web-artifacts-builder
+ad: "Gelişmiş Artifact Kurucu"
+kisaAciklama: "claude.ai için çok parçalı React artifact'leri hazırlar."
+neIseYarar:
+  - "React, Tailwind CSS ve shadcn/ui ile çok bileşenli, etkileşimli sayfalar kurar."
+  - "Tüm kodu claude.ai'de gösterilebilen tek bir HTML dosyasında paketler."
+  - "Sekmeler, formlar, durum yönetimi gibi basit bir sayfaya sığmayan arayüzler için uygundur."
+kategori: kod-test
+kaynak:
+  repo: anthropics/skills
+  yol: skills/web-artifacts-builder
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "Görevlerimi sürükleyip bırakarak düzenleyebileceğim bir yapılacaklar panosu yap."
+  - "Aylık bütçemi kategorilere göre gösteren, filtrelenebilen bir pano artifact'i oluştur."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: calismaz
+    neden: "Çıktısı claude.ai artifact'i olarak gösterilmek üzere hazırlanıyor."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [frontend-design, theme-factory]

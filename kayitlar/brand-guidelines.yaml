@@ -1,0 +1,25 @@
+id: brand-guidelines
+ad: "Anthropic Marka Stili"
+kisaAciklama: "Anthropic'in marka renklerini ve yazı tiplerini uygular."
+neIseYarar:
+  - "Belge, sunum ya da sayfalara Anthropic'in resmî renk paletini uygular."
+  - "Başlık ve metinlerde markanın yazı tipi kurallarını kullanır."
+  - "Kendi markanın kuralları için bir skill yazmak istersen iyi bir örnek olur."
+kategori: tasarim
+kaynak:
+  repo: anthropics/skills
+  yol: skills/brand-guidelines
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "Bu sunumu Anthropic'in marka renkleri ve yazı tipleriyle yeniden biçimlendir."
+  - "Anthropic tarzında, marka renklerine uygun bir tanıtım sayfası hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [theme-factory, frontend-design]

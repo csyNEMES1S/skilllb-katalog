@@ -1,0 +1,27 @@
+id: canvas-design
+ad: "Afiş ve Görsel Tasarımcı"
+kisaAciklama: "Afiş ve sanatsal görselleri PNG ya da PDF olarak hazırlar."
+neIseYarar:
+  - "Önce tasarım için bir görsel fikir (tasarım felsefesi) yazar, sonra bunu görsele döker."
+  - "Afiş, poster ve tek sayfalık sanatsal tasarımları .png ya da .pdf olarak üretir."
+  - "Az yazı, güçlü görsellik ilkesiyle çalışır ve başka sanatçıların eserlerini kopyalamaz."
+kategori: tasarim
+kaynak:
+  repo: anthropics/skills
+  yol: skills/canvas-design
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "Mahalle kitap kulübümüzün buluşması için bir afiş tasarla, PDF olarak ver."
+  - "Sonbahar temalı, sade ve modern bir poster hazırla."
+  - "Caz konseri için yazısı az, görseli güçlü bir afiş yap."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+oneCikan: true
+benzerler: [algorithmic-art, frontend-design, theme-factory]

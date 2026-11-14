@@ -1,0 +1,26 @@
+id: systematic-debugging
+ad: "Sistemli Hata Ayıklama"
+kisaAciklama: "Hatanın kök nedenini bulmadan düzeltmeye girişmez."
+neIseYarar:
+  - "Hata mesajını okuyarak, hatayı yeniden üreterek ve son değişikliklere bakarak işe başlar."
+  - "Çalışan benzer kodla karşılaştırıp bir varsayım kurar ve bunu küçük bir denemeyle sınar."
+  - "Kök neden bulununca önce hatayı gösteren bir test yazar, sonra tek bir düzeltme yapar."
+kategori: kod-test
+kaynak:
+  repo: obra/superpowers
+  yol: skills/systematic-debugging
+  dal: main
+  sha: 22f0b463e7a5e579904dd6211a520321035526f7
+ornekCumleler:
+  - "Uygulamam giriş yaparken bazen donuyor, nedenini adım adım bul."
+  - "Bu test dün geçiyordu, bugün kırılıyor. Rastgele düzeltme deneme, önce nedenini bul."
+  - "Şu hatayı alıyorum, kök nedenini araştır: TypeError: Cannot read properties of undefined"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [test-driven-development, webapp-testing]

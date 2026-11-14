@@ -1,0 +1,26 @@
+id: academy-guide
+ad: "Claude Academy Rehberi"
+kisaAciklama: "Claude'u öğrenirken uygun Academy derslerini önerir."
+neIseYarar:
+  - "Claude'un bir özelliğini nasıl kullanacağını sorduğunda önce sorunu doğrudan yanıtlar."
+  - "Ardından Claude Academy'deki uygun bir kursu ya da kısa öğreticiyi önerir."
+  - "Yalnızca gerçekten uyan içerikleri önerir, olmayan ders adı uydurmaz."
+kategori: diger
+kaynak:
+  repo: anthropics/skills
+  yol: skills/academy-guide
+  dal: main
+  sha: 0a64e398ec6bb34a494f0c347e8ccae53a862f8e
+ornekCumleler:
+  - "Claude'da projeler nasıl çalışıyor, öğrenmeye nereden başlamalıyım?"
+  - "Ekibime Claude'u tanıtmak istiyorum, hangi eğitimleri önerirsin?"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: calismaz
+    neden: "Yalnızca Claude ürünleriyle ilgili sorularda Claude Academy içeriği önermek için yazılmış."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [discernment-nudge, skill-creator]

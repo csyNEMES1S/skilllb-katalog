@@ -1,0 +1,27 @@
+id: skill-creator
+ad: "Skill Oluşturucu"
+kisaAciklama: "Yeni skill yazar, var olanları sınayıp iyileştirir."
+neIseYarar:
+  - "Anlattığın bir iş için sıfırdan yeni bir skill (SKILL.md ve yardımcı dosyalar) yazar."
+  - "Skill'i örnek görevlerle dener, skill'li ve skill'siz sonuçları karşılaştırır."
+  - "Skill'in açıklamasını, doğru zamanda devreye girecek şekilde iyileştirir."
+kategori: kod-test
+kaynak:
+  repo: anthropics/skills
+  yol: skills/skill-creator
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "Haftalık toplantı notlarımı hep aynı biçimde özetleyen bir skill oluştur."
+  - "Bu skill bazen hiç devreye girmiyor, açıklamasını iyileştir."
+  - "Yazdığım skill'i birkaç örnek görevle dene ve sonuçları göster."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: calismaz
+    neden: "Deneme ve açıklama iyileştirme adımları Claude Code'daki claude -p komutuna ve alt ajanlara dayanıyor."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [mcp-builder, doc-coauthoring]

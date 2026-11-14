@@ -1,0 +1,26 @@
+id: webapp-testing
+ad: "Web Uygulaması Test Edici"
+kisaAciklama: "Bilgisayarındaki web uygulamalarını tarayıcıda test eder."
+neIseYarar:
+  - "Bilgisayarında çalışan bir web uygulamasını tarayıcıda açıp tıklama ve yazma adımlarını dener."
+  - "Sayfanın ekran görüntüsünü alır ve tarayıcı konsolundaki hata kayıtlarını okur."
+  - "Gerekirse uygulamanın sunucusunu kendisi başlatır, test bitince kapatır."
+kategori: kod-test
+kaynak:
+  repo: anthropics/skills
+  yol: skills/webapp-testing
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "localhost:3000'deki kayıt formunu doldurup gönder ve çalışıp çalışmadığını kontrol et."
+  - "Uygulamamın ana sayfasının ekran görüntüsünü al ve konsolda hata var mı bak."
+  - "Sepete ürün ekleme akışını baştan sona test et."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [systematic-debugging, test-driven-development, frontend-design]

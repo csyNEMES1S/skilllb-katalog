@@ -1,0 +1,26 @@
+id: frontend-design
+ad: "Arayüz Tasarımcısı"
+kisaAciklama: "Web arayüzlerine özgün ve özenli bir görünüm kazandırır."
+neIseYarar:
+  - "Yeni bir web sayfası ya da uygulama ekranı için net bir görsel yön belirler."
+  - "Yazı tipi, renk ve yerleşim seçimlerinde sıradan, şablon gibi duran sonuçlardan kaçınır."
+  - "Var olan bir arayüzü daha tutarlı ve kendine özgü olacak şekilde yeniden düzenler."
+kategori: tasarim
+kaynak:
+  repo: anthropics/skills
+  yol: skills/frontend-design
+  dal: main
+  sha: 41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f
+ornekCumleler:
+  - "El yapımı sabun satan küçük dükkânım için tek sayfalık bir tanıtım sitesi tasarla."
+  - "Bu giriş sayfası çok sıradan duruyor, daha özgün bir görünüm ver."
+  - "Kişisel blogum için sade ama akılda kalan bir ana sayfa tasarımı yap."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [web-artifacts-builder, theme-factory, canvas-design]

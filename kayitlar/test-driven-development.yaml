@@ -1,0 +1,26 @@
+id: test-driven-development
+ad: "Önce Test (TDD)"
+kisaAciklama: "Kod yazmadan önce testini yazar."
+neIseYarar:
+  - "Her yeni özellik ya da hata düzeltmesi için önce başarısız olan bir test yazar."
+  - "Testi geçirecek en az kodu yazar, sonra kodu bozmadan toparlar (kırmızı, yeşil, düzenle)."
+  - "Testin gerçekten başarısız olduğunu görmeden asıl kodun yazılmasına izin vermez."
+kategori: kod-test
+kaynak:
+  repo: obra/superpowers
+  yol: skills/test-driven-development
+  dal: main
+  sha: 5bf4e78011075bcfc0dc295f0724994cd123ee71
+ornekCumleler:
+  - "Sepet toplamını hesaplayan fonksiyonu test güdümlü geliştirme (TDD) ile yaz."
+  - "Tarih biçimlendirme hatasını düzeltmeden önce hatayı gösteren bir test yaz."
+  - "Kullanıcı kaydına e-posta doğrulaması ekle, önce testlerini yaz."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [systematic-debugging, webapp-testing]

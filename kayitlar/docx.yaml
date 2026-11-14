@@ -1,0 +1,26 @@
+id: docx
+ad: "Word Belgesi Hazırlayıcı"
+kisaAciklama: "Word belgeleri oluşturur, okur ve düzenler."
+neIseYarar:
+  - "Başlıklı, tablolu, içindekiler ve sayfa numaralı düzgün Word belgeleri hazırlar."
+  - "Var olan bir .docx dosyasında metin bulup değiştirir, resim ekler ya da bölümleri yeniden düzenler."
+  - "Değişiklik izleme (track changes) ve yorumlarla belge üzerinde düzeltme önerir."
+kategori: belge-ofis
+kaynak:
+  repo: anthropics/skills
+  yol: skills/docx
+  dal: main
+  sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+ornekCumleler:
+  - "Kafe açılışı için iki sayfalık bir iş planını Word dosyası olarak hazırla."
+  - "Bu sözleşmede 'Kiracı' geçen her yeri 'Müşteri' yap, değişiklikler izlenebilir olsun."
+  - "Ekteki Word dosyasının her bölümüne kısa birer yorum ekle."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [pdf, doc-coauthoring, pptx]

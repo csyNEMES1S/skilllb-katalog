@@ -1,0 +1,26 @@
+id: theme-factory
+ad: "Tema Fabrikası"
+kisaAciklama: "Sunum ve belgelere hazır renk ve yazı tipi temaları uygular."
+neIseYarar:
+  - "Okyanus, gün batımı, orman gibi 10 hazır temayı örnek dosyasıyla gösterip seçtirir."
+  - "Seçilen temanın renklerini ve yazı tiplerini sunuma, belgeye ya da sayfaya uygular."
+  - "Hazır temalar uymazsa verdiğin tarife göre yeni bir tema oluşturur."
+kategori: tasarim
+kaynak:
+  repo: anthropics/skills
+  yol: skills/theme-factory
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "Bu sunuma uygulayabileceğin hazır temaları göster."
+  - "Raporuma sakin ve profesyonel duran bir tema uygula."
+  - "Çocuk kitabı tanıtımı için neşeli renklerle yeni bir tema oluştur."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [brand-guidelines, pptx, frontend-design]

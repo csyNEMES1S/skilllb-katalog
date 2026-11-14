@@ -1,0 +1,25 @@
+id: slack-gif-creator
+ad: "Slack GIF Üretici"
+kisaAciklama: "Slack için boyutu uygun hareketli GIF'ler hazırlar."
+neIseYarar:
+  - "Slack emojisi (128x128) ya da mesaj (480x480) boyutunda hareketli GIF oluşturur."
+  - "Kare hızı ve renk sayısını ayarlayarak dosya boyutunu Slack sınırlarına uydurur."
+  - "Zıplama, dönme, sallanma gibi basit animasyon fikirlerini GIF'e dönüştürür."
+kategori: tasarim
+kaynak:
+  repo: anthropics/skills
+  yol: skills/slack-gif-creator
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "Slack için zıplayan bir kahve fincanı emojisi GIF'i yap."
+  - "Ekibimiz için 'Tebrikler!' yazısı parlayan hareketli bir GIF hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [algorithmic-art, canvas-design]

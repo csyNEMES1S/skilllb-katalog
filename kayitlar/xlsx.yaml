@@ -1,0 +1,27 @@
+id: xlsx
+ad: "Excel Tablo Ustası"
+kisaAciklama: "Excel ve CSV tablolarını oluşturur, düzenler, temizler."
+neIseYarar:
+  - "Formüllü, biçimlendirilmiş ve grafikli yeni Excel tabloları oluşturur."
+  - "Var olan .xlsx ya da .csv dosyasına sütun ekler, dağınık verileri temizleyip düzenler."
+  - "Formülleri yeniden hesaplatıp hatalı hücre kalmadığını kontrol eder."
+kategori: veri-grafik
+kaynak:
+  repo: anthropics/skills
+  yol: skills/xlsx
+  dal: main
+  sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+ornekCumleler:
+  - "Aylık gelir ve giderlerimi takip edeceğim, toplamları kendisi hesaplayan bir Excel tablosu hazırla."
+  - "Bu CSV dosyasındaki tekrar eden satırları sil ve sonucu Excel olarak ver."
+  - "Ekteki satış tablosuna her ürün için kâr oranı sütunu ekle."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+oneCikan: true
+benzerler: [pdf, docx]

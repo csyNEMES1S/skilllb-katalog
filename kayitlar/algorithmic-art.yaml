@@ -1,0 +1,26 @@
+id: algorithmic-art
+ad: "Kodla Sanat Üretici"
+kisaAciklama: "p5.js ile kodla üretilen etkileşimli sanat eserleri yapar."
+neIseYarar:
+  - "Akış alanları, parçacık sistemleri gibi tekniklerle kodla üretilen (üretken) sanat oluşturur."
+  - "Her eser bir tohum (seed) sayısıyla üretilir, aynı tohumla aynı sonuç yeniden elde edilir."
+  - "Ayarları kaydırıcılarla değiştirilebilen, tarayıcıda açılan tek bir HTML dosyası verir."
+kategori: tasarim
+kaynak:
+  repo: anthropics/skills
+  yol: skills/algorithmic-art
+  dal: main
+  sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+ornekCumleler:
+  - "Okyanus dalgalarını andıran, renkleri değiştirilebilen üretken bir sanat eseri yap."
+  - "Rüzgârda savrulan parçacıklardan oluşan etkileşimli bir görsel oluştur."
+  - "Masaüstü arka planı olarak kullanabileceğim, kodla üretilmiş soyut bir desen hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [canvas-design, slack-gif-creator]
