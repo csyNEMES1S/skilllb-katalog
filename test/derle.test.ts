@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { ciktiYaz, derle } from "../scripts/derle.js";
+import { ciktiYaz, derle, icindeMi } from "../scripts/derle.js";
 import { ErisimEngelliHatasi, KesikAgacHatasi, type Getirici } from "../scripts/getirici.js";
 import { KatalogSemasi, type Kayit } from "../scripts/sema.js";
 import { sahteGetirici, type SahteVeri } from "./sahteGetirici.js";
@@ -271,6 +271,31 @@ describe("ciktiYaz", () => {
     await expect(ciktiYaz(k, join(kok, "catalog.json"), join(kok, "gorseller"))).rejects.toThrow(/gorseller/);
     await expect(ciktiYaz(k, join(kok, "gorseller", "pdf", "catalog.json"), join(kok, "gorseller"))).rejects.toThrow(/gorseller/);
     expect(await readFile(join(kok, "gorseller", "pdf", "ikon.png"), "utf8")).toBe("png");
+  });
+
+  it("cikti_kaynak_hedefin_icindeyse_silmez", async () => {
+    // --gorseller dist/gorseller/x: hedef (dist/gorseller) silinirken kaynak da giderdi.
+    const { mkdtemp, mkdir, writeFile, readFile } = await import("node:fs/promises");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const kok = await mkdtemp(join(tmpdir(), "derle çakışma "));
+    const kaynak = join(kok, "dist", "gorseller", "x");
+    await mkdir(kaynak, { recursive: true });
+    await writeFile(join(kaynak, "ikon.png"), "png");
+    const k = await derle([kayit()], sahteGetirici(veri()), TABAN, sessiz);
+    await expect(ciktiYaz(k, join(kok, "dist", "catalog.json"), kaynak)).rejects.toThrow(/çakışıyor/);
+    expect(await readFile(join(kaynak, "ikon.png"), "utf8")).toBe("png");
+  });
+
+  it("icindeMi_nokta_ile_baslayan_kardes", async () => {
+    const { join } = await import("node:path");
+    const kok = join("C:", "kök klasör");
+    expect(icindeMi(kok, join(kok, "..resimler"))).toBe(true); // ".." ile başlayan ad bir üst klasör değildir
+    expect(icindeMi(join(kok, "gorseller"), join(kok, "..resimler"))).toBe(false);
+    expect(icindeMi(kok, kok)).toBe(true);
+    expect(icindeMi(join(kok, "a"), join(kok, "ab"))).toBe(false);
+    expect(icindeMi(join(kok, "a"), kok)).toBe(false);
+    expect(icindeMi(kok, join(kok, "a", "b"))).toBe(true);
   });
 
   it("cikti_gorsellerde_sembolik_baglanti_reddedilir", async () => {

@@ -1,5 +1,5 @@
 import { cp, lstat, mkdir, readdir, rename, rm, stat, writeFile } from "node:fs/promises";
-import { dirname, join, relative, resolve, isAbsolute } from "node:path";
+import { dirname, join, relative, resolve, isAbsolute, sep } from "node:path";
 import { BulunamadiHatasi, ErisimEngelliHatasi, KesikAgacHatasi, dosyaListesi, lisansBelirle, lisansDosyasiMi, type Getirici } from "./getirici.js";
 import { KATEGORILER, KatalogSemasi, type Katalog, type Kayit, type Skill } from "./sema.js";
 import { skillMdAyristir } from "./skillMd.js";
@@ -147,6 +147,15 @@ export async function derle(
 }
 
 /**
+ * `alt` yolu `ust` ile aynı ya da onun içinde mi? ".." ile başlayan ama üst klasör olmayan adları
+ * (ör. "..resimler") içeride sayar; farklı sürücüdeki yol (isAbsolute) dışarıdadır.
+ */
+export function icindeMi(ust: string, alt: string): boolean {
+  const f = relative(resolve(ust), resolve(alt));
+  return f === "" || (f !== ".." && !f.startsWith(".." + sep) && !isAbsolute(f));
+}
+
+/**
  * Kataloğu `ciktiYolu`na yazar, `gorselKlasoru` varsa yanına `gorseller/` olarak kopyalar
  * (eski kopya silinir) ve GitHub Pages için boş bir `.nojekyll` bırakır.
  */
@@ -155,9 +164,9 @@ export async function ciktiYaz(katalog: Katalog, ciktiYolu: string, gorselKlasor
   await mkdir(hedef, { recursive: true });
 
   const gorselHedef = join(hedef, "gorseller");
-  // Hedef kaynağın kendisi ya da onun içindeyse (ör. --cikti catalog.json) rm kaynağı silerdi.
-  const fark = relative(resolve(gorselKlasoru), resolve(gorselHedef));
-  if (fark === "" || (!fark.startsWith("..") && !isAbsolute(fark))) {
+  // Hedef kaynağın kendisi/içindeyse (ör. --cikti catalog.json) ya da kaynak hedefin içindeyse
+  // (ör. --gorseller dist/gorseller/x) rm kaynağı silerdi: hiçbir şey silmeden dur.
+  if (icindeMi(gorselKlasoru, gorselHedef) || icindeMi(gorselHedef, gorselKlasoru)) {
     throw new Error(`çıktı klasörü görsel kaynağıyla çakışıyor: ${gorselHedef} (gorseller ${gorselKlasoru})`);
   }
   const kaynakVar = await stat(gorselKlasoru).then((s) => s.isDirectory(), () => false);
