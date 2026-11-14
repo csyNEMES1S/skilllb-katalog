@@ -42,14 +42,13 @@ ogeyi_isle() {
   rc=0
   git ls-remote --exit-code --heads origin "refs/heads/$DAL" > /dev/null || rc=$?
   if [[ "$rc" == "0" ]]; then
-    # PR'sız dal: önceki çalışmada PR açılamamış ve dal silinememiş. Sessizce atlanırsa güncelleme kaybolur.
-    echo "::warning::$DAL: dal var ama PR yok, PR yeniden deneniyor"
-    if gh pr create --title "$BASLIK" --body-file "$GOVDE" --base main --head "$DAL"; then
-      echo "$DAL: PR açıldı"
-      return 0
+    # PR'sız dal: önceki çalışmada PR açılamamış ve dal silinememiş. İçeriği doğrulanmamış bir dalla
+    # PR açılmaz; dal silinir ve aşağıda origin/main'den temiz biçimde yeniden oluşturulur.
+    echo "::warning::$DAL: dal var ama PR yok, dal silinip yeniden oluşturuluyor"
+    if ! git push --quiet origin --delete "$DAL"; then
+      echo "::error::$DAL: eski dal silinemedi; elle silin"
+      return 1
     fi
-    echo "::error::$DAL: PR yine açılamadı; dalı inceleyip silin"
-    return 1
   elif [[ "$rc" != "2" ]]; then
     echo "::error::$DAL: uzak dal denetlenemedi (git ls-remote çıkış kodu $rc), atlandı"
     return 1
