@@ -30,7 +30,8 @@ export class KesikAgacHatasi extends Error {
 /**
  * Kaynağa yalnız bu repo için kalıcı olarak erişilemiyor: 451 (DMCA / yasal engel), 410, ya da kota
  * ve ikincil hız sınırı belirtisi taşımayan 403 ("Repository access blocked"). Çağıran bu kaydı atlayabilir.
- * Kota/limit 403'ü, 429, 401 ve 5xx ise genel `Error` olarak kalır: bunlar bütün derlemeyi ilgilendirir.
+ * Kota/limit 403'ü, 429, 401 ve (yeniden denemelerden sonra da süren) 5xx ise genel `Error` olarak kalır:
+ * bunlar bütün derlemeyi ilgilendirir.
  */
 export class ErisimEngelliHatasi extends Error {
   constructor(mesaj: string) {
@@ -67,8 +68,37 @@ export const githubAdresleri = {
 type CommitYaniti = { sha: string; commit: { committer: { date: string } } };
 const commitDonustur = (c: CommitYaniti) => ({ sha: c.sha, tarih: c.commit.committer.date });
 
+/** Geçici sayılan sunucu hataları (raw.githubusercontent.com ara sıra "501 Transfer-Encoding not supported" döndürür). */
+const GECICI_DURUMLAR = new Set([500, 501, 502, 503, 504]);
+/** Denemeler arası bekleme (ms); deneme sayısı = uzunluk + 1. */
+const BEKLEMELER = [1000, 3000];
+
+export type GetiriciSecenekleri = {
+  /** Yeniden denemeden önce bekler; testler anında dönen bir işlev verir. */
+  bekle?: (ms: number) => Promise<void>;
+};
+
+const varsayilanBekle = (ms: number) => new Promise<void>((coz) => setTimeout(coz, ms));
+
 /** GitHub REST API ve raw.githubusercontent.com üzerinden çalışan getirici. */
-export function githubGetirici(token?: string): Getirici {
+export function githubGetirici(token?: string, secenekler: GetiriciSecenekleri = {}): Getirici {
+  const bekle = secenekler.bekle ?? varsayilanBekle;
+
+  /** Ağ hatası ve geçici 5xx yanıtında BEKLEMELER kadar yeniden dener; diğer yanıtları olduğu gibi döndürür. */
+  async function denemeliFetch(url: string, init: RequestInit): Promise<Response> {
+    for (let deneme = 0; ; deneme++) {
+      const sonDeneme = deneme >= BEKLEMELER.length;
+      try {
+        const yanit = await fetch(url, init);
+        if (sonDeneme || !GECICI_DURUMLAR.has(yanit.status)) return yanit;
+        await yanit.body?.cancel().catch(() => {});
+      } catch (e) {
+        if (sonDeneme) throw e;
+      }
+      await bekle(BEKLEMELER[deneme]);
+    }
+  }
+
   async function iste(url: string, json: boolean): Promise<Response> {
     const basliklar: Record<string, string> = { "User-Agent": "skilllb-katalog" };
     if (json) {
@@ -76,7 +106,7 @@ export function githubGetirici(token?: string): Getirici {
       basliklar["X-GitHub-Api-Version"] = "2022-11-28";
     }
     if (token) basliklar.Authorization = `Bearer ${token}`;
-    const yanit = await fetch(url, { headers: basliklar });
+    const yanit = await denemeliFetch(url, { headers: basliklar });
     if (yanit.status === 404) throw new BulunamadiHatasi(`bulunamadı (404): ${url}`);
     if (yanit.status === 451 || yanit.status === 410) {
       throw new ErisimEngelliHatasi(`erişim engelli (${yanit.status} ${yanit.statusText}): ${url}`);

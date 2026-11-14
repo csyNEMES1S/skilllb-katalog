@@ -160,6 +160,7 @@ describe("githubAdresleri", () => {
 
 describe("githubGetirici (fetch taklit edilir, ağa çıkılmaz)", () => {
   afterEach(() => vi.unstubAllGlobals());
+  const aninda = async (_ms: number) => {};
 
   function fetchTaklidi(yanitlar: Record<string, { durum?: number; govde: unknown; basliklar?: Record<string, string> }>) {
     const sahte = vi.fn(async (url: string, _init?: RequestInit) => {
@@ -222,7 +223,7 @@ describe("githubGetirici (fetch taklit edilir, ağa çıkılmaz)", () => {
 
   it("getirici_diger_hatalar_genel_hata", async () => {
     fetchTaklidi({ [githubAdresleri.repo("a/b")]: { durum: 500, govde: "patladı" } });
-    const hata = await githubGetirici().repoBilgi("a/b").catch((e) => e);
+    const hata = await githubGetirici(undefined, { bekle: aninda }).repoBilgi("a/b").catch((e) => e);
     expect(hata).toBeInstanceOf(Error);
     expect(hata).not.toBeInstanceOf(BulunamadiHatasi);
     expect(hata.message).toMatch(/500/);
@@ -257,7 +258,7 @@ describe("githubGetirici (fetch taklit edilir, ağa çıkılmaz)", () => {
     ];
     for (const y of durumlar) {
       fetchTaklidi({ [url]: y });
-      const hata = await githubGetirici().repoBilgi("a/b").catch((e) => e);
+      const hata = await githubGetirici(undefined, { bekle: aninda }).repoBilgi("a/b").catch((e) => e);
       expect(hata, String(y.durum)).toBeInstanceOf(Error);
       expect(hata, String(y.durum)).not.toBeInstanceOf(ErisimEngelliHatasi);
       expect(hata, String(y.durum)).not.toBeInstanceOf(BulunamadiHatasi);
@@ -274,6 +275,49 @@ describe("githubGetirici (fetch taklit edilir, ağa çıkılmaz)", () => {
     await expect(githubGetirici().agac("a/b", SHA)).rejects.toThrow(/eksik/);
     fetchTaklidi({ [githubAdresleri.agac("a/b", SHA)]: { govde: { truncated: true, tree: [] } } });
     await expect(githubGetirici().agac("a/b", SHA)).rejects.toBeInstanceOf(KesikAgacHatasi);
+  });
+
+  it("getirici_gecici_5xx_yeniden_dener", async () => {
+    const url = githubAdresleri.dosya("a/b", SHA, "x.md");
+    const yanitlar = [
+      () => new Response("Transfer-Encoding not supported", { status: 501 }),
+      () => Promise.reject(new TypeError("fetch failed")),
+      () => new Response("# tamam", { status: 200 }),
+    ];
+    const sahte = vi.fn(async (_url: string, _init?: RequestInit) => yanitlar[sahte.mock.calls.length - 1]());
+    vi.stubGlobal("fetch", sahte);
+    const beklemeler: number[] = [];
+    const g = githubGetirici(undefined, { bekle: async (ms) => void beklemeler.push(ms) });
+    expect(await g.dosya("a/b", SHA, "x.md")).toBe("# tamam");
+    expect(sahte).toHaveBeenCalledTimes(3);
+    expect(sahte.mock.calls.every((c) => c[0] === url)).toBe(true);
+    expect(beklemeler).toEqual([1000, 3000]);
+  });
+
+  it("getirici_404_yeniden_denemez", async () => {
+    for (const durum of [404, 403, 451, 410, 429]) {
+      const sahte = fetchTaklidi({ [githubAdresleri.repo("a/b")]: { durum, govde: { message: "x" } } });
+      const bekle = vi.fn(aninda);
+      await githubGetirici(undefined, { bekle }).repoBilgi("a/b").catch(() => {});
+      expect(sahte, String(durum)).toHaveBeenCalledTimes(1);
+      expect(bekle, String(durum)).not.toHaveBeenCalled();
+    }
+  });
+
+  it("getirici_uc_denemeden_sonra_hata", async () => {
+    const sahte = fetchTaklidi({ [githubAdresleri.repo("a/b")]: { durum: 503, govde: "Service Unavailable" } });
+    const hata = await githubGetirici(undefined, { bekle: aninda }).repoBilgi("a/b").catch((e) => e);
+    expect(sahte).toHaveBeenCalledTimes(3);
+    expect(hata).toBeInstanceOf(Error);
+    expect(hata).not.toBeInstanceOf(BulunamadiHatasi);
+    expect(hata.message).toMatch(/503/);
+
+    const agHatasi = vi.fn(async () => {
+      throw new TypeError("fetch failed");
+    });
+    vi.stubGlobal("fetch", agHatasi);
+    await expect(githubGetirici(undefined, { bekle: aninda }).repoBilgi("a/b")).rejects.toThrow(/fetch failed/);
+    expect(agHatasi).toHaveBeenCalledTimes(3);
   });
 });
 
