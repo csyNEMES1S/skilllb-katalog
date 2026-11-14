@@ -1,0 +1,48 @@
+name: Skill önerisi
+description: SkillLB kataloğuna eklenmesini istediğin bir skill'i öner.
+title: "Skill önerisi: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Önerin için teşekkürler! Formu doldurman yeterli; kaydı bakımcı yazar.
+        Kabul kriterleri için README'deki "Kabul kriterleri" bölümüne bakabilirsin.
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub repo adresi
+      description: Skill'in durduğu reponun adresi.
+      placeholder: https://github.com/anthropics/skills
+    validations:
+      required: true
+  - type: input
+    id: yol
+    attributes:
+      label: Skill klasörünün yolu
+      description: Repo içinde `SKILL.md` dosyasını içeren klasörün yolu. Skill reponun kökündeyse boş bırak.
+      placeholder: skills/pdf
+    validations:
+      required: false
+  - type: textarea
+    id: aciklama
+    attributes:
+      label: Ne işe yarıyor?
+      description: Skill'in ne yaptığını birkaç cümleyle anlat. Hangi araçta denedin (Claude, Antigravity)?
+      placeholder: PDF dosyalarını birleştirir, böler ve içindeki tabloları çıkarır.
+    validations:
+      required: true
+  - type: input
+    id: lisans
+    attributes:
+      label: Lisans
+      description: Biliyorsan skill'in lisansını yaz (ör. MIT, Apache-2.0). Bilmiyorsan "bilmiyorum" yazabilirsin.
+      placeholder: MIT
+    validations:
+      required: false
+  - type: checkboxes
+    id: onay
+    attributes:
+      label: Onay
+      options:
+        - label: SKILL.md'yi okudum, zararlı içerik yok.
+          required: true
