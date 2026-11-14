@@ -18,9 +18,14 @@ concurrency:
   group: gunluk
   cancel-in-progress: false
 
+# Üçüncü taraf action'lar commit sha'sına sabitlidir (etiket taşınabilir); yorum o sha'nın sürümüdür.
+# Üçüncü taraf repo verisini işleyen adımlar "::stop-commands::" ile sarılır: çıktıdaki hiçbir satır
+# iş akışı komutu olarak işlenmez (rastgele belirteç tahmin edilemez, yalnız adımın kendisi geri açar).
+
 jobs:
   yayinla:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
       pages: write
@@ -29,43 +34,54 @@ jobs:
       name: github-pages
       url: ${{ steps.dagit.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
           cache: npm
       - run: npm ci
       - run: npm test
       - name: Kataloğu derle
-        run: npm run derle -- --cikti dist/catalog.json
+        shell: bash
+        run: |
+          DUR="$(openssl rand -hex 16)"
+          echo "::stop-commands::$DUR"
+          npm run derle -- --cikti dist/catalog.json
+          echo "::$DUR::"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: dist
       - id: dagit
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
 
   guncellemeler:
     # Yalnız zamanlanmış ve elle başlatılan çalışmalarda; kayıt push'u yalnız yayınlar.
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
           cache: npm
       - run: npm ci
       - name: Güncellemeleri bul
-        run: npm run guncelle -- --cikti dist/guncellemeler.json
+        shell: bash
+        run: |
+          DUR="$(openssl rand -hex 16)"
+          echo "::stop-commands::$DUR"
+          npm run guncelle -- --cikti dist/guncellemeler.json
+          echo "::$DUR::"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Git kimliği
@@ -76,57 +92,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
-        # Başlık, gövde ve dosya adları güvenilmez metindir: hiçbiri ${{ }} ile buraya gömülmez,
-        # jq -r ile tırnaklı değişkenlere okunur, gövde dosyadan verilir. Güvenilmez metin
-        # "::komut::" biçimli günlük satırlarına da yazılmaz (yalnız doğrulanmış ID/DAL yazılır).
+        # Güvenilmez metnin nasıl ele alındığı ve hata yolları betiğin başında anlatılır.
         shell: bash
-        run: |
-          set -euo pipefail
-          DOSYA="dist/guncellemeler.json"
-          GOVDE="$RUNNER_TEMP/govde.md"
-          ADET="$(jq 'length' "$DOSYA")"
-          HATA=0
-          echo "$ADET güncelleme bulundu"
-
-          for ((i = 0; i < ADET; i++)); do
-            ID="$(jq -r --argjson i "$i" '.[$i].id' "$DOSYA")"
-            SHA="$(jq -r --argjson i "$i" '.[$i].yeniSha' "$DOSYA")"
-            DAL="$(jq -r --argjson i "$i" '.[$i].dal' "$DOSYA")"
-            BASLIK="$(jq -r --argjson i "$i" '.[$i].baslik' "$DOSYA")"
-            jq -r --argjson i "$i" '.[$i].govde' "$DOSYA" > "$GOVDE"
-
-            if ! [[ "$ID" =~ ^[a-z0-9][a-z0-9-]{0,63}$ && "$SHA" =~ ^[0-9a-f]{40}$ \
-                    && "$DAL" =~ ^guncelleme/[a-z0-9-]+-[0-9a-f]{7}$ && "$DAL" == "guncelleme/$ID-${SHA:0:7}" ]]; then
-              echo "::error::$i. öğe geçersiz (id, sha ya da dal deseni tutmuyor), atlandı"
-              HATA=1
-              continue
-            fi
-
-            if git ls-remote --exit-code --heads origin "refs/heads/$DAL" > /dev/null; then
-              echo "$DAL: dal zaten var, atlandı"
-              continue
-            fi
-            PR_SAYISI="$(gh pr list --head "$DAL" --state all --json number -q length)"
-            if [[ "$PR_SAYISI" != "0" ]]; then
-              echo "$DAL: bu dal için PR zaten var ($PR_SAYISI), atlandı"
-              continue
-            fi
-
-            git switch --quiet --force-create "$DAL" origin/main
-            npm run --silent guncelle -- --uygula "$ID" "$SHA"
-            git add -- "kayitlar/$ID.yaml"
-            git commit --quiet --message "$BASLIK"
-            git push --quiet origin "refs/heads/$DAL:refs/heads/$DAL"
-
-            if gh pr create --title "$BASLIK" --body-file "$GOVDE" --base main --head "$DAL"; then
-              echo "$DAL: PR açıldı"
-            else
-              # Dal kalırsa ertesi gün "dal var" diye atlanır ve güncelleme kaybolur.
-              echo "::error::$DAL: PR açılamadı, dal siliniyor"
-              git push --quiet origin --delete "$DAL" || echo "::error::$DAL: dal silinemedi, elle silin"
-              HATA=1
-            fi
-            git switch --quiet --detach origin/main
-          done
-
-          exit "$HATA"
+        run: bash .github/scripts/guncelleme-pr.sh dist/guncellemeler.json
