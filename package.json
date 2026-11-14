@@ -1,0 +1,26 @@
+{
+  "name": "skilllb-katalog",
+  "version": "1.0.0",
+  "description": "SkillLB katalog derleyicisi",
+  "scripts": {
+    "test": "vitest run",
+    "derle": "tsx scripts/derle-cli.ts",
+    "guncelle": "tsx scripts/guncelle-cli.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "yaml": "^2.9.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.9"
+  },
+  "private": true,
+  "type": "module"
+}
