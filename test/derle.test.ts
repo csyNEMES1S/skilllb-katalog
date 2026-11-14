@@ -91,6 +91,16 @@ describe("derle", () => {
     expect(yollar.sort()).toEqual(["skills/pdf/SKILL.md", "skills/pdf/scripts/birlestir.py"]);
   });
 
+  it("derle_aciklama_orijinal", async () => {
+    const k = await derle([kayit({ en: { ad: "PDF Master", ornekCumleler: ["Merge these PDFs"] } })], sahteGetirici(veri()), TABAN, sessiz);
+    expect(k.skills[0].aciklamaOrijinal).toBe("PDF işleri");
+    expect(k.skills[0].en).toEqual({ ad: "PDF Master", ornekCumleler: ["Merge these PDFs"] });
+    expect(KatalogSemasi.parse(k).skills[0].aciklamaOrijinal).toBe("PDF işleri");
+    const bos = await derle([kayit()], sahteGetirici(veri("---\nname: pdf\n---\nGövde\n")), TABAN, sessiz);
+    expect("aciklamaOrijinal" in bos.skills[0]).toBe(false);
+    expect("en" in bos.skills[0]).toBe(false);
+  });
+
   it("derle_surum_yoksa_tarih", async () => {
     const k = await derle([kayit()], sahteGetirici(veri("---\nname: pdf\n---\nGövde\n")), TABAN, sessiz);
     expect(k.skills[0].surum).toBe("2026-11-10");
@@ -321,5 +331,36 @@ describe("ciktiYaz", () => {
     const k = await derle([kayit()], sahteGetirici(veri()), TABAN, sessiz);
     await ciktiYaz(k, join(kok, "dist", "catalog.json"), join(kok, "gorseller"));
     expect(JSON.parse(await readFile(join(kok, "dist", "catalog.json"), "utf8")).surum).toBe(1);
+  });
+
+  it("cikti_site_kopyalanir", async () => {
+    const { mkdtemp, mkdir, writeFile, readFile } = await import("node:fs/promises");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const kok = await mkdtemp(join(tmpdir(), "derle site "));
+    await mkdir(join(kok, "site"), { recursive: true });
+    await writeFile(join(kok, "site", "liste.html"), "<!doctype html>");
+    await mkdir(join(kok, "dist"), { recursive: true });
+    await writeFile(join(kok, "dist", "liste.html"), "eski");
+    const k = await derle([kayit()], sahteGetirici(veri()), TABAN, sessiz);
+    await ciktiYaz(k, join(kok, "dist", "catalog.json"), join(kok, "gorseller"), join(kok, "site"));
+    expect(await readFile(join(kok, "dist", "liste.html"), "utf8")).toBe("<!doctype html>");
+    expect(JSON.parse(await readFile(join(kok, "dist", "catalog.json"), "utf8")).surum).toBe(1);
+  });
+
+  it("cikti_site_sembolik_ve_cakisma_reddedilir", async () => {
+    const { mkdtemp, mkdir, writeFile, symlink, rm } = await import("node:fs/promises");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const kok = await mkdtemp(join(tmpdir(), "derle site "));
+    await mkdir(join(kok, "gizli"), { recursive: true });
+    await writeFile(join(kok, "gizli", "anahtar.txt"), "sir");
+    await mkdir(join(kok, "site"), { recursive: true });
+    await symlink(join(kok, "gizli"), join(kok, "site", "baglanti"), "junction");
+    const k = await derle([kayit()], sahteGetirici(veri()), TABAN, sessiz);
+    await expect(ciktiYaz(k, join(kok, "dist", "catalog.json"), join(kok, "gorseller"), join(kok, "site"))).rejects.toThrow(/sembolik/);
+    await rm(join(kok, "site", "baglanti"));
+    await writeFile(join(kok, "site", "catalog.json"), "{}");
+    await expect(ciktiYaz(k, join(kok, "dist", "catalog.json"), join(kok, "gorseller"), join(kok, "site"))).rejects.toThrow(/çakışıyor/);
   });
 });

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; img-src 'self' https: data:">
+<meta name="referrer" content="no-referrer">
+<title>SkillLB listesi</title>
+<style>
+:root {
+  --bg: #f3f2f7; --win: #ffffff; --fg: #1d1b26; --muted: #6b6880; --line: #dcdae6; --soft: #ecebf3;
+  --accent: #e2672f; --accent-fg: #ffffff; --hero1: #f6d2bf; --hero2: #d9d3f7;
+  --golge: 0 10px 30px -18px #0005;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121119; --win: #1b1a24; --fg: #eceaf5; --muted: #9c99b2; --line: #302e3e; --soft: #24232f;
+    --accent: #f0804a; --accent-fg: #1a0f08; --hero1: #4a2a1c; --hero2: #2c2752;
+    --golge: 0 14px 34px -16px #000a;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 720px; margin: 0 auto; padding: 32px 16px 48px; }
+.marka { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px;
+  font-family: "Space Grotesk", system-ui, sans-serif; }
+.marka i { width: 28px; height: 28px; border-radius: 8px; background: var(--accent); display: inline-block; }
+.kahraman { margin-top: 20px; padding: 28px 24px; border-radius: 18px;
+  background: linear-gradient(120deg, var(--hero1), var(--hero2)); box-shadow: var(--golge); }
+h1 { margin: 0 0 6px; font: 700 28px/1.2 "Space Grotesk", system-ui, sans-serif; overflow-wrap: anywhere; }
+.alt { margin: 0; color: var(--fg); opacity: .8; }
+.dugmeler { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.dugme { display: inline-flex; align-items: center; padding: 10px 18px; border-radius: 10px; font-weight: 600;
+  text-decoration: none; border: 1px solid var(--line); background: var(--win); color: var(--fg); }
+.dugme.ana { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+.dugme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+ul { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 10px; }
+li { display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 12px;
+  background: var(--win); border: 1px solid var(--line); }
+li img, li .yer { width: 40px; height: 40px; border-radius: 10px; flex: none; background: var(--soft); object-fit: cover; }
+li b { display: block; }
+li span { color: var(--muted); font-size: 13px; }
+li.yok b { color: var(--muted); }
+.not { margin-top: 20px; color: var(--muted); font-size: 13px; }
+.hata { margin-top: 24px; padding: 16px; border-radius: 12px; background: var(--win); border: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<main>
+  <div class="marka"><i aria-hidden="true"></i>SkillLB</div>
+  <section class="kahraman">
+    <h1 id="baslik"></h1>
+    <p class="alt" id="altyazi"></p>
+    <div class="dugmeler">
+      <a class="dugme ana" id="ac" href="#"></a>
+      <a class="dugme" id="indir" href="https://github.com/csyNEMES1S/skilllb/releases/latest" rel="noopener noreferrer"></a>
+    </div>
+  </section>
+  <ul id="liste"></ul>
+  <p class="not" id="not"></p>
+</main>
+<script>
+(function () {
+  "use strict";
+  var ID = /^[a-z0-9][a-z0-9-]{0,63}$/;
+  var EN_FAZLA = 100;
+  var en = !/^tr/i.test(navigator.language || "");
+  var M = en ? {
+    varsayilan: "Shared skill list", alt: function (n) { return n + " skills"; },
+    ac: "Open in SkillLB", indir: "Download SkillLB", yok: "This skill is not in the catalog",
+    gecersiz: "This link has no valid skill list.", katalogYok: "The catalog could not be loaded; names are shown as ids.",
+    not: "“Open in SkillLB” only works if SkillLB is installed. Otherwise download it first, then click again."
+  } : {
+    varsayilan: "Paylaşılan skill listesi", alt: function (n) { return n + " skill"; },
+    ac: "SkillLB'de aç", indir: "SkillLB'yi indir", yok: "Bu skill katalogda yok",
+    gecersiz: "Bu bağlantıda geçerli bir skill listesi yok.", katalogYok: "Katalog yüklenemedi; adlar yerine kimlikler gösteriliyor.",
+    not: "“SkillLB'de aç” yalnızca SkillLB kuruluysa çalışır. Değilse önce indirin, sonra tekrar tıklayın."
+  };
+  if (en) document.documentElement.lang = "en";
+
+  function adTemizle(ham) {
+    var t = String(ham || "").replace(/[\u0000-\u001f\u007f-\u009f]/g, "").trim();
+    return Array.from(t).slice(0, 60).join("");
+  }
+
+  var p = new URLSearchParams(location.hash.replace(/^#/, ""));
+  var gorulen = {};
+  var idler = (p.get("s") || "").split(",").filter(function (i) {
+    if (!ID.test(i) || gorulen[i]) return false;
+    gorulen[i] = true;
+    return true;
+  }).slice(0, EN_FAZLA);
+  var ad = adTemizle(p.get("ad"));
+
+  var $ = function (id) { return document.getElementById(id); };
+  $("indir").textContent = M.indir;
+  $("ac").textContent = M.ac;
+  $("not").textContent = M.not;
+
+  if (p.get("v") !== "1" || idler.length === 0) {
+    $("baslik").textContent = M.varsayilan;
+    $("altyazi").textContent = M.gecersiz;
+    $("ac").remove();
+    return;
+  }
+
+  document.title = (ad || M.varsayilan) + " · SkillLB";
+  $("baslik").textContent = ad || M.varsayilan;
+  $("altyazi").textContent = M.alt(idler.length);
+  var derin = "skilllb://liste?v=1&s=" + idler.join(",") + (ad ? "&ad=" + encodeURIComponent(ad) : "");
+  $("ac").setAttribute("href", derin);
+
+  function ciz(skiller) {
+    var liste = $("liste");
+    liste.textContent = "";
+    idler.forEach(function (id) {
+      var s = skiller ? skiller[id] : null;
+      var li = document.createElement("li");
+      var resim;
+      var ikon = s && s.gorseller && typeof s.gorseller.ikon === "string" ? s.gorseller.ikon : "";
+      if (/^https:\/\//.test(ikon)) {
+        resim = document.createElement("img");
+        resim.alt = "";
+        resim.loading = "lazy";
+        resim.referrerPolicy = "no-referrer";
+        resim.src = ikon;
+      } else {
+        resim = document.createElement("div");
+        resim.className = "yer";
+      }
+      var metin = document.createElement("div");
+      var b = document.createElement("b");
+      var span = document.createElement("span");
+      if (s) {
+        var ceviri = en && s.en ? s.en : {};
+        b.textContent = String(ceviri.ad || s.ad || id);
+        span.textContent = String(ceviri.kisaAciklama || (en && s.aciklamaOrijinal) || s.kisaAciklama || "");
+      } else {
+        li.className = "yok";
+        b.textContent = id;
+        span.textContent = skiller ? M.yok : "";
+      }
+      metin.appendChild(b);
+      metin.appendChild(span);
+      li.appendChild(resim);
+      li.appendChild(metin);
+      liste.appendChild(li);
+    });
+  }
+
+  ciz(null);
+  fetch("catalog.json", { cache: "no-cache" })
+    .then(function (y) { if (!y.ok) throw new Error(String(y.status)); return y.json(); })
+    .then(function (k) {
+      var harita = {};
+      (Array.isArray(k && k.skills) ? k.skills : []).forEach(function (s) {
+        if (s && typeof s.id === "string") harita[s.id] = s;
+      });
+      ciz(harita);
+    })
+    .catch(function () { $("not").textContent = M.katalogYok + " " + M.not; });
+})();
+</script>
+</body>
+</html>

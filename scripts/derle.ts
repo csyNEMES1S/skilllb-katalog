@@ -142,6 +142,8 @@ export async function derle(
       dosyalar,
       boyut: dosyalar.reduce((t, d) => t + d.boyut, 0),
       guvenlik: guvenlikTara(icerikli),
+      ...(md.aciklama ? { aciklamaOrijinal: md.aciklama } : {}),
+      ...(kayit.en ? { en: kayit.en } : {}),
     };
   }
 }
@@ -157,9 +159,10 @@ export function icindeMi(ust: string, alt: string): boolean {
 
 /**
  * Kataloğu `ciktiYolu`na yazar, `gorselKlasoru` varsa yanına `gorseller/` olarak kopyalar
- * (eski kopya silinir) ve GitHub Pages için boş bir `.nojekyll` bırakır.
+ * (eski kopya silinir), `siteKlasoru` varsa içeriğini (ör. liste.html) çıktı klasörünün köküne
+ * kopyalar ve GitHub Pages için boş bir `.nojekyll` bırakır.
  */
-export async function ciktiYaz(katalog: Katalog, ciktiYolu: string, gorselKlasoru: string): Promise<void> {
+export async function ciktiYaz(katalog: Katalog, ciktiYolu: string, gorselKlasoru: string, siteKlasoru?: string): Promise<void> {
   const hedef = dirname(ciktiYolu);
   await mkdir(hedef, { recursive: true });
 
@@ -174,12 +177,38 @@ export async function ciktiYaz(katalog: Katalog, ciktiYolu: string, gorselKlasor
   await rm(gorselHedef, { recursive: true, force: true });
   if (kaynakVar) await cp(gorselKlasoru, gorselHedef, { recursive: true });
 
+  if (siteKlasoru) await siteKopyala(siteKlasoru, hedef, ciktiYolu);
+
   await writeFile(join(hedef, ".nojekyll"), "");
   // Önce geçici dosyaya yaz, sonra taşı: yarım yazılmış bir catalog.json kalmasın.
   const gecici = `${ciktiYolu}.tmp`;
   await writeFile(gecici, `${JSON.stringify(katalog, null, 2)}
 `, "utf8");
   await rename(gecici, ciktiYolu);
+}
+
+/** Kökte bu adlar derlemenin kendi çıktısıdır; site klasörü bunları ezemez. */
+const SITE_YASAK_ADLAR = new Set(["catalog.json", "gorseller", ".nojekyll"]);
+
+/**
+ * `site/` içindeki her öğeyi çıktı klasörünün köküne kopyalar (aynı adlı eski kopya silinir).
+ * Görsellerdeki gibi sembolik bağlantı ve çakışma denetimi yapılır.
+ */
+async function siteKopyala(siteKlasoru: string, hedef: string, ciktiYolu: string): Promise<void> {
+  const var_ = await stat(siteKlasoru).then((s) => s.isDirectory(), () => false);
+  if (!var_) return;
+  if (icindeMi(siteKlasoru, hedef) || icindeMi(hedef, siteKlasoru)) {
+    throw new Error(`çıktı klasörü site kaynağıyla çakışıyor: ${hedef} (site ${siteKlasoru})`);
+  }
+  await sembolikBaglantiYok(siteKlasoru);
+  for (const g of await readdir(siteKlasoru, { withFileTypes: true })) {
+    if (SITE_YASAK_ADLAR.has(g.name.toLowerCase()) || join(hedef, g.name) === resolve(ciktiYolu)) {
+      throw new Error(`site klasöründeki "${g.name}" derleme çıktısıyla çakışıyor`);
+    }
+    const yer = join(hedef, g.name);
+    await rm(yer, { recursive: true, force: true });
+    await cp(join(siteKlasoru, g.name), yer, { recursive: true });
+  }
 }
 
 /**

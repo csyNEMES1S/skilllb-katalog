@@ -21,10 +21,12 @@ export type Kayit = {
   uyumluluk: Record<AracId, Uyum>;
   dogrulandi?: boolean; oneCikan?: boolean; haftaninSkilli?: boolean;
   ornekler?: Ornek[]; benzerler?: string[]; otomatikGuncelle?: boolean;
+  en?: Ceviri;                      // sahibinin elle yazdığı İngilizce metinler
 };
+export type Ceviri = { ad?: string; kisaAciklama?: string; neIseYarar?: string[]; ornekCumleler?: string[] };
 
 // Yayınlanan skill (catalog.json içinde)
-export type Skill = Required<Omit<Kayit, "kaynak" | "gorseller" | "nasilKullanilir">> & {
+export type Skill = Required<Omit<Kayit, "kaynak" | "gorseller" | "nasilKullanilir" | "en">> & {
   kaynak: Kayit["kaynak"] & { url: string };     // https://github.com/<repo>/tree/<sha>/<yol>
   gorseller: { ikon?: string; kapak?: string; onceSonra: string[] };   // hepsi mutlak https URL
   nasilKullanilir: { claude?: string[]; antigravity?: string[] };
@@ -36,6 +38,8 @@ export type Skill = Required<Omit<Kayit, "kaynak" | "gorseller" | "nasilKullanil
   dosyalar: { yol: string; boyut: number }[];   // skill klasörüne göre göreli, özyinelemeli
   boyut: number;                    // dosyalar toplamı, bayt
   guvenlik: { betikler: string[]; agIpucu: boolean };
+  aciklamaOrijinal?: string;        // SKILL.md frontmatter "description" (çoğunlukla İngilizce)
+  en?: Ceviri;
 };
 export type Katalog = { surum: 1; olusturulma: string; kategoriler: typeof KATEGORILER; skills: Skill[] };
 
@@ -118,6 +122,13 @@ const ornekAlanlari = {
   kapak: httpsUrl.optional(),
 };
 
+const ceviriAlanlari = {
+  ad: metin.optional(),
+  kisaAciklama: metin.optional(),
+  neIseYarar: metinListesi.optional(),
+  ornekCumleler: metinListesi.optional(),
+};
+
 const nasilKullanilirAlanlari = { claude: metinListesi.optional(), antigravity: metinListesi.optional() };
 
 // ---- Kayıt (sıkı: bilinmeyen alan yazım hatasıdır) ----
@@ -145,6 +156,7 @@ export const KayitSemasi: z.ZodType<Kayit> = z
     ornekler: z.array(z.object(ornekAlanlari).strict()).optional(),
     benzerler: z.array(z.string()).optional(),
     otomatikGuncelle: z.boolean().default(false),
+    en: z.object(ceviriAlanlari).strict().optional(),
   })
   .strict();
 
@@ -220,6 +232,8 @@ const SkillSemasi: z.ZodType<Skill> = z.object({
   dosyalar: z.array(z.object({ yol: guvenliYol, boyut: z.number().int().nonnegative() })),
   boyut: z.number().int().nonnegative(),
   guvenlik: z.object({ betikler: z.array(z.string()), agIpucu: z.boolean() }),
+  aciklamaOrijinal: metin.optional(),
+  en: z.object(ceviriAlanlari).optional(),
 });
 
 export const KatalogSemasi: z.ZodType<Katalog> = z.object({

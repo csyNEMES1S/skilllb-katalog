@@ -57,6 +57,9 @@ Kayıt sıkı denetlenir: listede olmayan bir alan yazım hatası sayılır ve d
 | `oneCikan` | hayır | `true` ise skill öne çıkanlar rafında görünür. |
 | `haftaninSkilli` | hayır | `true` ise haftanın skill'i olarak gösterilir. Aynı anda yalnız bir kayıtta olmalı. |
 | `otomatikGuncelle` | hayır | Varsayılanı `false`. Şimdilik hiçbir şey bu alana göre davranmaz. |
+| `en` | hayır | İngilizce arayüz için elle yazılan metinler: `ad`, `kisaAciklama`, `neIseYarar`, `ornekCumleler` (hepsi isteğe bağlı). Yazılmazsa uygulama SKILL.md'deki özgün `description` alanını (`aciklamaOrijinal`) gösterir. |
+
+`site/` klasöründeki dosyalar (ör. paylaşılan listeleri gösteren `liste.html`) derlemede `dist/` köküne kopyalanır.
 
 Lisans, yıldız sayısı, yazar, dosya listesi, boyut, sürüm ve güvenlik bilgisi (betikler, ağ ipucu) kayda
 **yazılmaz**. Bunlar derleme sırasında kaynak repodan, sabit commit'e göre okunur.
