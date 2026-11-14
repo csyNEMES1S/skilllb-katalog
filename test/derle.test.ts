@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { ciktiYaz, derle } from "../scripts/derle.js";
-import { KesikAgacHatasi, type Getirici } from "../scripts/getirici.js";
+import { ErisimEngelliHatasi, KesikAgacHatasi, type Getirici } from "../scripts/getirici.js";
 import { KatalogSemasi, type Kayit } from "../scripts/sema.js";
 import { sahteGetirici, type SahteVeri } from "./sahteGetirici.js";
 
@@ -159,6 +159,23 @@ describe("derle", () => {
     expect(uyar).toHaveBeenCalledWith(expect.stringMatching(/buyuk/));
   });
 
+  it("derle_erisimi_engellenen_repoyu_atlar", async () => {
+    // DMCA (451) gibi kalıcı, repoya özel bir engel bütün kataloğun yayınını sonsuza dek durdurmamalı.
+    const uyar = vi.fn();
+    const sahte = sahteGetirici(veri());
+    const g: Getirici = {
+      ...sahte,
+      async agac(repo, sha) {
+        if (repo === "engelli/repo") throw new ErisimEngelliHatasi(`erişim engelli (451): ${repo}`);
+        return sahte.agac(repo, sha);
+      },
+    };
+    const kayitlar = [kayit({ id: "engelli", kaynak: { repo: "engelli/repo", yol: "s", dal: "main", sha: A } }), kayit()];
+    const k = await derle(kayitlar, g, TABAN, uyar);
+    expect(k.skills.map((s) => s.id)).toEqual(["pdf-ustasi"]);
+    expect(uyar).toHaveBeenCalledWith(expect.stringMatching(/engelli.*451/));
+  });
+
   it("derle_beklenmeyen_hatada_durur", async () => {
     // Ağ / yetki / kota hataları kayıt atlatmaz: yarım bir katalog yayınlamaktansa derleme durur.
     const sahte = sahteGetirici(veri());
@@ -240,6 +257,35 @@ describe("ciktiYaz", () => {
     expect(KatalogSemasi.parse(JSON.parse(await readFile(join(kok, "dist", "catalog.json"), "utf8"))).skills).toHaveLength(1);
     expect(await readFile(join(kok, "dist", "gorseller", "pdf", "ikon.png"), "utf8")).toBe("png");
     expect((await stat(join(kok, "dist", ".nojekyll"))).size).toBe(0);
+  });
+
+  it("cikti_gorsel_kaynagini_silmez", async () => {
+    // --cikti catalog.json verilirse hedef "./gorseller" kaynağın kendisi olur; rm onu silmemeli.
+    const { mkdtemp, mkdir, writeFile, readFile } = await import("node:fs/promises");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const kok = await mkdtemp(join(tmpdir(), "derle "));
+    await mkdir(join(kok, "gorseller", "pdf"), { recursive: true });
+    await writeFile(join(kok, "gorseller", "pdf", "ikon.png"), "png");
+    const k = await derle([kayit()], sahteGetirici(veri()), TABAN, sessiz);
+    await expect(ciktiYaz(k, join(kok, "catalog.json"), join(kok, "gorseller"))).rejects.toThrow(/gorseller/);
+    await expect(ciktiYaz(k, join(kok, "gorseller", "pdf", "catalog.json"), join(kok, "gorseller"))).rejects.toThrow(/gorseller/);
+    expect(await readFile(join(kok, "gorseller", "pdf", "ikon.png"), "utf8")).toBe("png");
+  });
+
+  it("cikti_gorsellerde_sembolik_baglanti_reddedilir", async () => {
+    // Bağlantı dist'e kopyalanırsa Pages paketi (tar --dereference) repo dışındaki dosyayı yayınlayabilir.
+    const { mkdtemp, mkdir, writeFile, symlink, stat } = await import("node:fs/promises");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const kok = await mkdtemp(join(tmpdir(), "derle "));
+    await mkdir(join(kok, "gizli"), { recursive: true });
+    await writeFile(join(kok, "gizli", "anahtar.txt"), "sir");
+    await mkdir(join(kok, "gorseller"), { recursive: true });
+    await symlink(join(kok, "gizli"), join(kok, "gorseller", "baglanti"), "junction");
+    const k = await derle([kayit()], sahteGetirici(veri()), TABAN, sessiz);
+    await expect(ciktiYaz(k, join(kok, "dist", "catalog.json"), join(kok, "gorseller"))).rejects.toThrow(/sembolik/);
+    await expect(stat(join(kok, "dist", "catalog.json"))).rejects.toThrow();
   });
 
   it("derle_gorsel_klasoru_yoksa_sorun_yok", async () => {

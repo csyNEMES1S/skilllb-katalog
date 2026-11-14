@@ -26,6 +26,27 @@ export class KesikAgacHatasi extends Error {
   }
 }
 
+/**
+ * Kaynağa yalnız bu repo için kalıcı olarak erişilemiyor: 451 (DMCA / yasal engel), 410, ya da kota
+ * ve ikincil hız sınırı belirtisi taşımayan 403 ("Repository access blocked"). Çağıran bu kaydı atlayabilir.
+ * Kota/limit 403'ü, 429, 401 ve 5xx ise genel `Error` olarak kalır: bunlar bütün derlemeyi ilgilendirir.
+ */
+export class ErisimEngelliHatasi extends Error {
+  constructor(mesaj: string) {
+    super(mesaj);
+    this.name = "ErisimEngelliHatasi";
+  }
+}
+
+/** 403 yanıtı kota ya da hız sınırından mı geliyor (GitHub belgelerindeki işaretler)? */
+function limitHatasiMi(yanit: Response, govde: string): boolean {
+  return (
+    yanit.headers.get("x-ratelimit-remaining") === "0" ||
+    yanit.headers.has("retry-after") ||
+    /rate limit/i.test(govde)
+  );
+}
+
 const API = "https://api.github.com";
 const RAW = "https://raw.githubusercontent.com";
 
@@ -56,6 +77,14 @@ export function githubGetirici(token?: string): Getirici {
     if (token) basliklar.Authorization = `Bearer ${token}`;
     const yanit = await fetch(url, { headers: basliklar });
     if (yanit.status === 404) throw new BulunamadiHatasi(`bulunamadı (404): ${url}`);
+    if (yanit.status === 451 || yanit.status === 410) {
+      throw new ErisimEngelliHatasi(`erişim engelli (${yanit.status} ${yanit.statusText}): ${url}`);
+    }
+    if (yanit.status === 403) {
+      const govde = await yanit.text().catch(() => "");
+      if (!limitHatasiMi(yanit, govde)) throw new ErisimEngelliHatasi(`erişim engelli (403): ${url}`);
+      throw new Error(`GitHub kota/hız sınırı (403): ${url}`);
+    }
     if (!yanit.ok) throw new Error(`GitHub isteği başarısız (${yanit.status} ${yanit.statusText}): ${url}`);
     return yanit;
   }

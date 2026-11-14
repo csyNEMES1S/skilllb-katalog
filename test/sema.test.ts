@@ -157,6 +157,18 @@ describe("KatalogSemasi ileriye uyumluluk", () => {
 });
 
 describe("KayitSemasi sıkılık ve kaçaklar", () => {
+  it("kayit_goreli_gorsel_gorseller_altinda_olmali", () => {
+    // Yalnız gorseller/ yayınlanır; başka bir göreli yol (.github/…, kayitlar/…) kırık bağlantı olurdu.
+    for (const ikon of [".github/logo.png", "kayitlar/pdf-ustasi.yaml", "gorseller", "gorseller/", "Gorseller/a.png"]) {
+      const k = ornekKayit();
+      k.gorseller.ikon = ikon;
+      expect(KayitSemasi.safeParse(k).success, ikon).toBe(false);
+    }
+    const k = ornekKayit();
+    k.gorseller.onceSonra = ["gorseller/pdf-ustasi/once.png", "https://example.com/sonra.png"];
+    expect(KayitSemasi.safeParse(k).success).toBe(true);
+  });
+
   it("kayit_bilinmeyen_alan_reddedilir", () => {
     const k = ornekKayit();
     k.kategory = "yazi";

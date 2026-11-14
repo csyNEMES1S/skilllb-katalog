@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, vi } from "vitest";
-import { BulunamadiHatasi, KesikAgacHatasi, dosyaListesi, githubAdresleri, githubGetirici, lisansBelirle } from "../scripts/getirici.js";
+import { BulunamadiHatasi, ErisimEngelliHatasi, KesikAgacHatasi, dosyaListesi, githubAdresleri, githubGetirici, lisansBelirle } from "../scripts/getirici.js";
 import { skillMdAyristir } from "../scripts/skillMd.js";
 import { sahteGetirici } from "./sahteGetirici.js";
 
@@ -161,12 +161,12 @@ describe("githubAdresleri", () => {
 describe("githubGetirici (fetch taklit edilir, ağa çıkılmaz)", () => {
   afterEach(() => vi.unstubAllGlobals());
 
-  function fetchTaklidi(yanitlar: Record<string, { durum?: number; govde: unknown }>) {
+  function fetchTaklidi(yanitlar: Record<string, { durum?: number; govde: unknown; basliklar?: Record<string, string> }>) {
     const sahte = vi.fn(async (url: string, _init?: RequestInit) => {
       const y = yanitlar[url];
       if (!y) return new Response("yok", { status: 404 });
       const govde = typeof y.govde === "string" ? y.govde : JSON.stringify(y.govde);
-      return new Response(govde, { status: y.durum ?? 200 });
+      return new Response(govde, { status: y.durum ?? 200, headers: y.basliklar });
     });
     vi.stubGlobal("fetch", sahte);
     return sahte;
@@ -226,6 +226,42 @@ describe("githubGetirici (fetch taklit edilir, ağa çıkılmaz)", () => {
     expect(hata).toBeInstanceOf(Error);
     expect(hata).not.toBeInstanceOf(BulunamadiHatasi);
     expect(hata.message).toMatch(/500/);
+  });
+
+  it("getirici_repoya_ozel_kalici_engel_erisim_engelli_hatasi", async () => {
+    // 451 (DMCA), 410 ve kota başlığı taşımayan 403 ("Repository access blocked") yalnız o repoyu ilgilendirir.
+    const url = githubAdresleri.repo("a/b");
+    const durumlar: { durum: number; govde: unknown; basliklar?: Record<string, string> }[] = [
+      { durum: 451, govde: { message: "Repository access blocked" } },
+      { durum: 410, govde: { message: "Gone" } },
+      { durum: 403, govde: { message: "Repository access blocked" }, basliklar: { "x-ratelimit-remaining": "4999" } },
+    ];
+    for (const y of durumlar) {
+      fetchTaklidi({ [url]: y });
+      const hata = await githubGetirici().repoBilgi("a/b").catch((e) => e);
+      expect(hata, String(y.durum)).toBeInstanceOf(ErisimEngelliHatasi);
+      expect(hata.message).toMatch(String(y.durum));
+    }
+  });
+
+  it("getirici_kota_ve_yetki_hatalari_genel_hata", async () => {
+    // Bunlar tüm derlemeyi ilgilendirir: kayıt atlatmamalı, derleme durmalı.
+    const url = githubAdresleri.repo("a/b");
+    const durumlar: { durum: number; govde: unknown; basliklar?: Record<string, string> }[] = [
+      { durum: 403, govde: { message: "API rate limit exceeded" }, basliklar: { "x-ratelimit-remaining": "0" } },
+      { durum: 403, govde: { message: "You have exceeded a secondary rate limit" } },
+      { durum: 403, govde: "", basliklar: { "retry-after": "60" } },
+      { durum: 429, govde: "Too Many Requests" },
+      { durum: 401, govde: { message: "Bad credentials" } },
+      { durum: 502, govde: "Bad Gateway" },
+    ];
+    for (const y of durumlar) {
+      fetchTaklidi({ [url]: y });
+      const hata = await githubGetirici().repoBilgi("a/b").catch((e) => e);
+      expect(hata, String(y.durum)).toBeInstanceOf(Error);
+      expect(hata, String(y.durum)).not.toBeInstanceOf(ErisimEngelliHatasi);
+      expect(hata, String(y.durum)).not.toBeInstanceOf(BulunamadiHatasi);
+    }
   });
 
   it("getirici_son_commit_bos_liste_bulunamadi", async () => {

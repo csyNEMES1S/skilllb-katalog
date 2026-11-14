@@ -64,12 +64,18 @@ const guvenliYol = z
 
 const httpsUrl = z.string().url("geçerli bir URL olmalı").refine((u) => u.startsWith("https://"), "https ile başlamalı");
 
-/** Kayıttaki görsel: repo içi göreli yol ya da https URL. */
+/**
+ * Kayıttaki görsel: `gorseller/` altında göreli yol ya da https URL. Yalnız `gorseller/` yayınlandığı
+ * için başka bir göreli yol (.github/…, kayitlar/…) kırık bağlantı olurdu.
+ */
 const gorselYolu = z
   .string()
   .refine(
-    (y) => (y.includes("://") ? httpsUrl.safeParse(y).success : guvenliYol.safeParse(y).success),
-    "repo içi göreli yol ya da https URL olmalı",
+    (y) =>
+      y.includes("://")
+        ? httpsUrl.safeParse(y).success
+        : guvenliYol.safeParse(y).success && y.startsWith("gorseller/"),
+    "\"gorseller/\" altında göreli yol ya da https URL olmalı",
   );
 
 /** Git dal adı (git check-ref-format kurallarının özü). */

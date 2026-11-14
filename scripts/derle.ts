@@ -1,6 +1,6 @@
-import { cp, mkdir, rename, rm, stat, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
-import { BulunamadiHatasi, KesikAgacHatasi, dosyaListesi, lisansBelirle, lisansDosyasiMi, type Getirici } from "./getirici.js";
+import { cp, lstat, mkdir, readdir, rename, rm, stat, writeFile } from "node:fs/promises";
+import { dirname, join, relative, resolve, isAbsolute } from "node:path";
+import { BulunamadiHatasi, ErisimEngelliHatasi, KesikAgacHatasi, dosyaListesi, lisansBelirle, lisansDosyasiMi, type Getirici } from "./getirici.js";
 import { KATEGORILER, KatalogSemasi, type Katalog, type Kayit, type Skill } from "./sema.js";
 import { skillMdAyristir } from "./skillMd.js";
 import { guvenlikTara } from "./tarama.js";
@@ -11,9 +11,15 @@ type RepoBilgi = Awaited<ReturnType<Getirici["repoBilgi"]>>;
 /** Kaynağın kendisinden gelen, yalnız o kaydı atlatan sorun (eksik SKILL.md, şemaya uymayan veri). */
 class KayitAtlaHatasi extends Error {}
 
-/** Bu hatalar kaydın kaynağının gittiğini ya da okunamadığını söyler: kayıt atlanır, derleme sürer. */
+/**
+ * Bu hatalar yalnız o kaydın kaynağının gittiğini ya da (kalıcı olarak) okunamadığını söyler:
+ * kayıt atlanır, derleme sürer. Ağ, kota/limit, 401 ve 5xx gibi hatalar derlemeyi durdurur.
+ */
 const atlanabilirMi = (e: unknown) =>
-  e instanceof BulunamadiHatasi || e instanceof KesikAgacHatasi || e instanceof KayitAtlaHatasi;
+  e instanceof BulunamadiHatasi ||
+  e instanceof ErisimEngelliHatasi ||
+  e instanceof KesikAgacHatasi ||
+  e instanceof KayitAtlaHatasi;
 
 /** "a/b c" -> "a/b%20c": parçalar ayrı kodlanır, "/" korunur. */
 const yolKodla = (yol: string) => yol.split("/").map(encodeURIComponent).join("/");
@@ -149,8 +155,14 @@ export async function ciktiYaz(katalog: Katalog, ciktiYolu: string, gorselKlasor
   await mkdir(hedef, { recursive: true });
 
   const gorselHedef = join(hedef, "gorseller");
-  await rm(gorselHedef, { recursive: true, force: true });
+  // Hedef kaynağın kendisi ya da onun içindeyse (ör. --cikti catalog.json) rm kaynağı silerdi.
+  const fark = relative(resolve(gorselKlasoru), resolve(gorselHedef));
+  if (fark === "" || (!fark.startsWith("..") && !isAbsolute(fark))) {
+    throw new Error(`çıktı klasörü görsel kaynağıyla çakışıyor: ${gorselHedef} (gorseller ${gorselKlasoru})`);
+  }
   const kaynakVar = await stat(gorselKlasoru).then((s) => s.isDirectory(), () => false);
+  if (kaynakVar) await sembolikBaglantiYok(gorselKlasoru);
+  await rm(gorselHedef, { recursive: true, force: true });
   if (kaynakVar) await cp(gorselKlasoru, gorselHedef, { recursive: true });
 
   await writeFile(join(hedef, ".nojekyll"), "");
@@ -159,4 +171,18 @@ export async function ciktiYaz(katalog: Katalog, ciktiYolu: string, gorselKlasor
   await writeFile(gecici, `${JSON.stringify(katalog, null, 2)}
 `, "utf8");
   await rename(gecici, ciktiYolu);
+}
+
+/**
+ * Görsel klasöründe sembolik bağlantı (ya da Windows junction) olmamalı: dist'e kopyalanınca Pages
+ * paketi bağlantıyı izleyip repo dışındaki bir dosyayı yayınlayabilir. Kopyalamadan önce denetlenir.
+ */
+async function sembolikBaglantiYok(klasor: string): Promise<void> {
+  for (const g of await readdir(klasor, { withFileTypes: true })) {
+    const yol = join(klasor, g.name);
+    const bilgi = await lstat(yol);
+    if (bilgi.isSymbolicLink()) throw new Error(`görsel klasöründe sembolik bağlantı var, kopyalanmadı: ${yol}`);
+    if (bilgi.isDirectory()) await sembolikBaglantiYok(yol);
+    else if (!bilgi.isFile()) throw new Error(`görsel klasöründe olağan dışı dosya türü: ${yol}`);
+  }
 }
