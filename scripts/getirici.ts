@@ -1,11 +1,12 @@
 import type { Skill } from "./sema.js";
 
-export type AgacGirdisi = { yol: string; tur: "blob" | "tree"; boyut: number };
+/** `sha`: git nesne sha'sı (GitHub tree yanıtında var); içerik değişikliğini boyuttan güvenilir gösterir. */
+export type AgacGirdisi = { yol: string; tur: "blob" | "tree"; boyut: number; sha?: string };
 
 export interface Getirici {
   commit(repo: string, sha: string): Promise<{ sha: string; tarih: string }>;
   sonCommit(repo: string, dal: string, yol: string): Promise<{ sha: string; tarih: string }>; // yolu etkileyen son commit
-  agac(repo: string, sha: string): Promise<{ yol: string; tur: "blob" | "tree"; boyut: number }[]>; // tüm repo, recursive
+  agac(repo: string, sha: string): Promise<AgacGirdisi[]>; // tüm repo, recursive
   dosya(repo: string, sha: string, yol: string): Promise<string>; // raw.githubusercontent.com
   repoBilgi(repo: string): Promise<{ yildiz: number; sahip: string; lisansSpdx: string | null }>;
 }
@@ -100,14 +101,14 @@ export function githubGetirici(token?: string): Getirici {
       return commitDonustur(liste[0]);
     },
     async agac(repo, sha) {
-      const y = await jsonAl<{ truncated: boolean; tree: { path: string; type: string; size?: number }[] }>(
+      const y = await jsonAl<{ truncated: boolean; tree: { path: string; type: string; size?: number; sha?: string }[] }>(
         githubAdresleri.agac(repo, sha),
       );
       // Kesik ağaç eksik bir dosya listesi üretir; sessizce yanlış yayınlamaktansa dur.
       if (y.truncated) throw new KesikAgacHatasi(`${repo}@${sha}: ağaç çok büyük, GitHub eksik (truncated) döndürdü`);
       return y.tree
         .filter((g) => g.type === "blob" || g.type === "tree") // "commit" = alt modül, atlanır
-        .map((g) => ({ yol: g.path, tur: g.type as "blob" | "tree", boyut: g.size ?? 0 }));
+        .map((g) => ({ yol: g.path, tur: g.type as "blob" | "tree", boyut: g.size ?? 0, ...(g.sha ? { sha: g.sha } : {}) }));
     },
     async dosya(repo, sha, yol) {
       return (await iste(githubAdresleri.dosya(repo, sha, yol), false)).text();
