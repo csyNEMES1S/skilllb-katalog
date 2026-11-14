@@ -1,8 +1,11 @@
-import matter from "gray-matter";
 import { parse } from "yaml";
 
-/** Frontmatter bloğu ("---" ... "---"), YAML okunamazsa gövdeyi ayırmak için. */
-const FRONTMATTER = /^---[ \t]*\n[\s\S]*?\n---[ \t]*(?:\n|$)/;
+/**
+ * Frontmatter: metin tam olarak "---" satırıyla (ardından yalnız boşluk/tab) başlar ve bir sonraki tam
+ * "---" satırına kadar sürer. "---js" gibi dil ekli açılışlar frontmatter SAYILMAZ: üçüncü taraf
+ * içerik hiçbir koşulda kod olarak çalıştırılmaz (gray-matter bunları eval ederdi).
+ */
+const FRONTMATTER = /^---[ \t]*\n(?:([\s\S]*?)\n)?---[ \t]*(?:\n|$)/;
 
 const metinAl = (v: unknown): string | undefined => (typeof v === "string" && v.trim() ? v.trim() : undefined);
 
@@ -14,14 +17,16 @@ export function skillMdAyristir(metin: string): { ad?: string; aciklama?: string
   const temiz = metin.replace(/^﻿/, "").replace(/\r\n?/g, "\n");
 
   let veri: Record<string, unknown> = {};
-  let govde: string;
-  try {
-    // Seçenek verildiği için gray-matter önbelleği kullanılmaz.
-    const sonuc = matter(temiz, { engines: { yaml: (s: string) => (parse(s, { schema: "failsafe" }) ?? {}) as object } });
-    veri = typeof sonuc.data === "object" && sonuc.data !== null ? (sonuc.data as Record<string, unknown>) : {};
-    govde = sonuc.content;
-  } catch {
-    govde = temiz.replace(FRONTMATTER, "");
+  let govde = temiz;
+  const eslesme = FRONTMATTER.exec(temiz);
+  if (eslesme) {
+    govde = temiz.slice(eslesme[0].length);
+    try {
+      const okunan: unknown = parse(eslesme[1] ?? "", { schema: "failsafe" });
+      if (typeof okunan === "object" && okunan !== null && !Array.isArray(okunan)) veri = okunan as Record<string, unknown>;
+    } catch {
+      // Bozuk YAML: alanlar boş kalır.
+    }
   }
 
   const cikti: { ad?: string; aciklama?: string; surum?: string; govde: string } = { govde: "" };

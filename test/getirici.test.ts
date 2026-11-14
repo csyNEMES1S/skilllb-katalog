@@ -63,6 +63,18 @@ describe("lisansBelirle", () => {
     expect(lisansBelirle(null, d, "BSD 2-Clause License")).toEqual({ spdx: "BSD-2-Clause", durum: "acik" });
   });
 
+  it("lisans_baska_lisans_adini_anan_kapali_metin_kisitli", () => {
+    const d = [{ yol: "LICENSE.txt" }];
+    const kapali =
+      "Proprietary License\n\n© Anthropic, PBC. All rights reserved.\nThis software is source-available only.\n\n" +
+      "You may not redistribute it.\n\nThird-party components are distributed under the MIT License and BSD terms.";
+    expect(lisansBelirle(null, d, kapali)).toEqual({ spdx: null, durum: "kisitli" });
+    expect(lisansBelirle(null, d, 'Copyright 2026 X\n\nLicensed under the Apache License, Version 2.0 (the "License");')).toEqual({
+      spdx: "Apache-2.0",
+      durum: "acik",
+    });
+  });
+
   it("lisans_klasorde_dosya_var_metin_yok_kisitli", () => {
     expect(lisansBelirle("MIT", [{ yol: "LICENSE.md" }])).toEqual({ spdx: null, durum: "kisitli" });
   });
@@ -96,6 +108,33 @@ describe("skillMdAyristir", () => {
 
   it("skillMd_bozuk_yaml_govdeyi_korur", () => {
     expect(skillMdAyristir("---\nname: [kapanmamis\n---\n# B")).toEqual({ govde: "# B" });
+  });
+
+  it("skillMd_js_frontmatter_calistirilmaz", () => {
+    const g = globalThis as Record<string, unknown>;
+    delete g.__skillMdIsaret;
+    const cikis = vi.spyOn(process, "exit").mockImplementation((() => undefined) as never);
+    try {
+      const girdi = "---js\nprocess.exit(1)\n---\nGövde";
+      expect(skillMdAyristir(girdi)).toEqual({ govde: girdi });
+      expect(cikis).not.toHaveBeenCalled();
+      for (const dil of ["js", "javascript", "coffee", " js"]) {
+        const sonuc = skillMdAyristir(`---${dil}\nglobalThis.__skillMdIsaret = 1; ({ name: "x" })\n---\nGövde`);
+        expect(sonuc.ad).toBeUndefined();
+        expect(g.__skillMdIsaret).toBeUndefined();
+      }
+    } finally {
+      cikis.mockRestore();
+    }
+  });
+
+  it("skillMd_kapanmayan_frontmatter_govde_sayilir", () => {
+    expect(skillMdAyristir("---\nname: x\n# B")).toEqual({ govde: "---\nname: x\n# B" });
+  });
+
+  it("skillMd_bos_frontmatter_ve_bosluklu_ayrac", () => {
+    expect(skillMdAyristir("---\n---\n# B")).toEqual({ govde: "# B" });
+    expect(skillMdAyristir("--- \nname: pdf\n---\t\n# B")).toEqual({ ad: "pdf", govde: "# B" });
   });
 
   it("skillMd_metin_olmayan_alanlar_atlanir", () => {

@@ -99,10 +99,20 @@ export function dosyaListesi(
 /** Skill klasörünün kökündeki LICENSE* / LICENCE* dosyası. */
 const lisansDosyasiMi = (yol: string) => !yol.includes("/") && /^licen[cs]e/i.test(yol);
 
+/**
+ * Lisans adı yalnız metnin başlığında (ilk üç dolu satır) aranır: kapalı bir lisansın gövdesindeki
+ * "üçüncü taraf bileşenler MIT License altında" gibi bir anma onu açık lisans yapmaz.
+ * Apache'nin kısa bildirim biçimi ("Licensed under the Apache License") metnin her yerinde geçerlidir.
+ */
 function metindenSpdx(metin: string): string | null {
-  if (/Apache License/i.test(metin)) return "Apache-2.0";
-  if (/MIT License/i.test(metin)) return "MIT";
-  if (/\bBSD\b/.test(metin)) return /Neither the name|3-Clause/i.test(metin) ? "BSD-3-Clause" : "BSD-2-Clause";
+  const baslik = metin
+    .split(/\r?\n/)
+    .filter((s) => s.trim())
+    .slice(0, 3)
+    .join("\n");
+  if (/Apache License/i.test(baslik) || /Licensed under the Apache License/i.test(metin)) return "Apache-2.0";
+  if (/MIT License/i.test(baslik)) return "MIT";
+  if (/\bBSD\b/.test(baslik)) return /Neither the name|3-Clause/i.test(metin) ? "BSD-3-Clause" : "BSD-2-Clause";
   return null;
 }
 

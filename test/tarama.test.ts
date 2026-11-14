@@ -11,6 +11,31 @@ describe("guvenlikTara", () => {
     ).toEqual({ betikler: ["scripts/a.py"], agIpucu: true });
   });
 
+  it("tarama_betik_ve_ag_plandaki_girdi", () => {
+    expect(guvenlikTara([{ yol: "scripts/a.py", icerik: "import requests" }, { yol: "notes.md" }])).toEqual({
+      betikler: ["scripts/a.py"],
+      agIpucu: true,
+    });
+  });
+
+  it("tarama_import_bicimleri", () => {
+    const ornekler = [
+      "from requests import get",
+      "import httpx",
+      "import aiohttp",
+      "from socket import create_connection",
+      "import socket",
+      "from urllib import request",
+      "import fetch from 'node-fetch'",
+      "const http = require('https')",
+      "import https from 'node:https'",
+      "import { request } from \"undici\"",
+      "Invoke-RestMethod -Uri x",
+      "invoke-webrequest x",
+    ];
+    for (const icerik of ornekler) expect(guvenlikTara([{ yol: "x.py", icerik }]).agIpucu, icerik).toBe(true);
+  });
+
   it("tarama_ag_yok", () => {
     expect(guvenlikTara([{ yol: "scripts/a.py", icerik: "print(1)" }])).toEqual({ betikler: ["scripts/a.py"], agIpucu: false });
   });
