@@ -9,6 +9,9 @@ on:
     paths:
       - "kayitlar/**"
       - "gorseller/**"
+      - "site/**"
+      - "scripts/**"
+      - "package-lock.json"
 
 # Varsayılan izin yok; her iş yalnız gerekeni ister.
 permissions: {}
