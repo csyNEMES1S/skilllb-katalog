@@ -171,6 +171,8 @@ export const lisansDosyasiMi = (yol: string) => !yol.includes("/") && /^licen[cs
  * Lisans adı yalnız metnin başlığında (ilk üç dolu satır) aranır: kapalı bir lisansın gövdesindeki
  * "üçüncü taraf bileşenler MIT License altında" gibi bir anma onu açık lisans yapmaz.
  * Apache'nin kısa bildirim biçimi ("Licensed under the Apache License") metnin her yerinde geçerlidir.
+ * Creative Commons için de "licensed under: <lisans adı>" bildirimi metnin her yerinde geçerlidir
+ * (OWASP türevi içerikler lisansı birkaç satırlık açıklamadan sonra bildirir).
  */
 function metindenSpdx(metin: string): string | null {
   const baslik = metin
@@ -181,6 +183,28 @@ function metindenSpdx(metin: string): string | null {
   if (/Apache License/i.test(baslik) || /Licensed under the Apache License/i.test(metin)) return "Apache-2.0";
   if (/MIT License/i.test(baslik)) return "MIT";
   if (/\bBSD\b/.test(baslik)) return /Neither the name|3-Clause/i.test(metin) ? "BSD-3-Clause" : "BSD-2-Clause";
+  if (/\bISC License\b/i.test(baslik)) return "ISC";
+  if (/Mozilla Public License/i.test(baslik)) return /Mozilla Public License,?\s+(?:version\s+|v)?2\.0\b/i.test(baslik) ? "MPL-2.0" : null;
+
+  const bildirim = /licen[sc]ed under(?: the terms of)?(?: the)?[\s:]*([^\r\n]+)/i.exec(metin)?.[1];
+  for (const parca of [baslik, bildirim]) {
+    const cc = parca === undefined ? undefined : ccSpdx(parca);
+    if (cc !== undefined) return cc;
+  }
+  return null;
+}
+
+/**
+ * Creative Commons lisans adından SPDX kimliği. CC değilse `undefined`; NonCommercial ya da
+ * NoDerivatives içeriyorsa (açık lisans sayılmaz) ya da sürüm yoksa `null`.
+ */
+function ccSpdx(parca: string): string | null | undefined {
+  if (!/Creative Commons|\bCC[ -]BY\b|^\s*Attribution\b.*\d\.\d/im.test(parca)) return undefined;
+  if (/NonCommercial|NoDeriv|\bBY-NC\b|\bBY-ND\b|-NC-|-ND\b|\bNC\b|\bND\b/i.test(parca)) return null;
+  const surum = /\b([1-4]\.0)\b/.exec(parca)?.[1];
+  if (!surum) return null;
+  if (/ShareAlike|\bBY-SA\b/i.test(parca)) return `CC-BY-SA-${surum}`;
+  if (/Attribution|\bCC[ -]BY\b/i.test(parca)) return `CC-BY-${surum}`;
   return null;
 }
 

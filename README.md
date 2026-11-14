@@ -71,7 +71,8 @@ bulunan bir özelliğe dayanıyorsa) verilir. Denenmemiş ya da kısmen çalış
 
 Lisans durumu (`lisans.durum`) derlemede otomatik belirlenir:
 
-- `acik`: skill klasöründe tanınan açık bir lisans (Apache, MIT, BSD) var ya da reponun lisansı açık.
+- `acik`: skill klasöründe tanınan açık bir lisans (Apache, MIT, BSD, ISC, MPL-2.0, CC BY, CC BY-SA) var ya da
+  reponun lisansı açık. NonCommercial (NC) ya da NoDerivatives (ND) içeren CC lisansları `kisitli` sayılır.
 - `kisitli`: skill klasöründe bir lisans dosyası var ama tanınan açık bir lisans değil. Uygulamada
   "Kısıtlı lisans: yalnızca kaynaktan indirilir" yazar.
 - `yok`: ne skill klasöründe ne de repoda lisans bilgisi var. Uygulamada "Lisans belirtilmemiş" yazar.

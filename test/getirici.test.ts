@@ -75,6 +75,56 @@ describe("lisansBelirle", () => {
     });
   });
 
+  it("lisans_cc_by_sa_acik", () => {
+    const d = [{ yol: "LICENSE" }];
+    // getsentry/skills security-review: lisans adı başlıkta değil, "licensed under:" bildiriminde.
+    const owasp =
+      "The reference material in this skill is derived from the OWASP Cheat Sheet Series.\n\n" +
+      "Source: https://cheatsheetseries.owasp.org/\nOWASP Foundation: https://owasp.org/\n\n" +
+      "Original content is licensed under:\n\nCreative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)\n" +
+      "https://creativecommons.org/licenses/by-sa/4.0/\n";
+    expect(lisansBelirle(null, d, owasp)).toEqual({ spdx: "CC-BY-SA-4.0", durum: "acik" });
+    expect(lisansBelirle(null, d, "Attribution-ShareAlike 4.0 International\n\nCreative Commons Attribution-ShareAlike 4.0 International Public License")).toEqual({
+      spdx: "CC-BY-SA-4.0",
+      durum: "acik",
+    });
+    expect(lisansBelirle(null, d, "CC BY-SA 4.0\n\nCopyright 2026 X")).toEqual({ spdx: "CC-BY-SA-4.0", durum: "acik" });
+    expect(lisansBelirle(null, d, "Creative Commons Attribution 4.0 International\n\nBy exercising the Licensed Rights")).toEqual({
+      spdx: "CC-BY-4.0",
+      durum: "acik",
+    });
+    expect(lisansBelirle(null, d, "Copyright 2026 X\n\nThis work is licensed under CC BY 4.0.")).toEqual({ spdx: "CC-BY-4.0", durum: "acik" });
+  });
+
+  it("lisans_cc_by_nc_kisitli", () => {
+    const d = [{ yol: "LICENSE" }];
+    const kisitli = { spdx: null, durum: "kisitli" };
+    expect(lisansBelirle(null, d, "Creative Commons Attribution-NonCommercial 4.0 International")).toEqual(kisitli);
+    expect(lisansBelirle(null, d, "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International")).toEqual(kisitli);
+    expect(lisansBelirle(null, d, "Creative Commons Attribution-NoDerivatives 4.0 International")).toEqual(kisitli);
+    expect(lisansBelirle(null, d, "CC BY-NC-SA 4.0")).toEqual(kisitli);
+    expect(lisansBelirle(null, d, "CC BY-ND 4.0")).toEqual(kisitli);
+    expect(lisansBelirle(null, d, "Copyright 2026 X\n\nThis work is licensed under:\n\nCC BY-NC 4.0\n")).toEqual(kisitli);
+    // Gövdede geçen bir CC anması (bildirim değil) açık lisans yapmaz.
+    expect(
+      lisansBelirle(null, d, "Proprietary License\n\nAll rights reserved.\nNo redistribution.\n\nIcons are from a Creative Commons Attribution 4.0 set."),
+    ).toEqual(kisitli);
+  });
+
+  it("lisans_isc_ve_mpl", () => {
+    const d = [{ yol: "LICENSE" }];
+    expect(lisansBelirle(null, d, "ISC License\n\nCopyright (c) 2026 X\n\nPermission to use, copy, modify")).toEqual({ spdx: "ISC", durum: "acik" });
+    expect(lisansBelirle(null, d, "Mozilla Public License Version 2.0\n==================================\n\n1. Definitions")).toEqual({
+      spdx: "MPL-2.0",
+      durum: "acik",
+    });
+    expect(lisansBelirle(null, d, "Mozilla Public License, version 2.0\n\n1. Definitions")).toEqual({ spdx: "MPL-2.0", durum: "acik" });
+    // Başlık dışında anılan ISC/MPL tanınmaz.
+    expect(
+      lisansBelirle(null, d, "Proprietary License\n\nAll rights reserved.\nNo redistribution.\n\nSome parts are under the ISC License and Mozilla Public License 2.0."),
+    ).toEqual({ spdx: null, durum: "kisitli" });
+  });
+
   it("lisans_klasorde_dosya_var_metin_yok_kisitli", () => {
     expect(lisansBelirle("MIT", [{ yol: "LICENSE.md" }])).toEqual({ spdx: null, durum: "kisitli" });
   });
