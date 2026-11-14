@@ -11,6 +11,9 @@ kaynak:
   yol: skills/mcp-builder
   dal: main
   sha: ca45fc496a3436251f191354091d557da31c15b5
+gorseller:
+  ikon: gorseller/mcp-builder/ikon.svg
+  kapak: gorseller/mcp-builder/kapak.svg
 ornekCumleler:
   - "Trello panolarımı okuyup kart ekleyebilen bir MCP sunucusu yaz."
   - "Şirketimizin hava durumu API'si için TypeScript ile bir MCP sunucusu oluştur."

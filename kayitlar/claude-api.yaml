@@ -11,6 +11,9 @@ kaynak:
   yol: skills/claude-api
   dal: main
   sha: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+gorseller:
+  ikon: gorseller/claude-api/ikon.svg
+  kapak: gorseller/claude-api/kapak.svg
 ornekCumleler:
   - "Python ile Claude API'ye soru gönderip yanıtı ekrana yazan kısa bir program yaz."
   - "Uygulamamda istem önbelleklemeyi (prompt caching) nasıl açarım, örnek kodla göster."

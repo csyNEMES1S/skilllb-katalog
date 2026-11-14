@@ -11,6 +11,9 @@ kaynak:
   yol: skills/performance-optimization
   dal: main
   sha: ee3e8504246bd2ee1be3f3670555e48c9c62212a
+gorseller:
+  ikon: gorseller/performance-optimization/ikon.svg
+  kapak: gorseller/performance-optimization/kapak.svg
 ornekCumleler:
   - "Ana sayfam çok geç açılıyor, nedenini ölçerek bul ve düzelt."
   - "Bu API uç noktası yavaş, N+1 sorgu sorunu var mı incele."

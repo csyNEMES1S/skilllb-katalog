@@ -11,6 +11,9 @@ kaynak:
   yol: skills/find-bugs
   dal: main
   sha: 24361e7958f9644d11f1de100654e3b04a509192
+gorseller:
+  ikon: gorseller/find-bugs/ikon.svg
+  kapak: gorseller/find-bugs/kapak.svg
 ornekCumleler:
   - "Bu daldaki değişikliklerde hata ya da güvenlik açığı var mı bak."
   - "PR açmadan önce yaptığım değişiklikleri hatalar için tara."

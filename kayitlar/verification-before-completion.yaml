@@ -11,6 +11,9 @@ kaynak:
   yol: skills/verification-before-completion
   dal: main
   sha: 3be5aad3dd2400ef23b15680969f4bcd3b6d7b8b
+gorseller:
+  ikon: gorseller/verification-before-completion/ikon.svg
+  kapak: gorseller/verification-before-completion/kapak.svg
 ornekCumleler:
   - "Hatayı düzelttiğini söylemeden önce testleri çalıştır ve çıktıyı göster."
   - "Commit'ten önce derlemenin ve testlerin gerçekten geçtiğini doğrula."

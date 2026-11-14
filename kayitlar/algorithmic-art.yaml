@@ -11,6 +11,9 @@ kaynak:
   yol: skills/algorithmic-art
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/algorithmic-art/ikon.svg
+  kapak: gorseller/algorithmic-art/kapak.svg
 ornekCumleler:
   - "Okyanus dalgalarını andıran, renkleri değiştirilebilen üretken bir sanat eseri yap."
   - "Rüzgârda savrulan parçacıklardan oluşan etkileşimli bir görsel oluştur."

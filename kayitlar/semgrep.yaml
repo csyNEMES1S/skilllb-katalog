@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/static-analysis/skills/semgrep
   dal: main
   sha: 196a9073ab10d35bacf111f945e02c00b2c6883a
+gorseller:
+  ikon: gorseller/semgrep/ikon.svg
+  kapak: gorseller/semgrep/kapak.svg
 ornekCumleler:
   - "Bu projeyi Semgrep ile güvenlik açıkları için tara."
   - "Yalnızca önemli güvenlik bulgularını gösteren hızlı bir Semgrep taraması yap."

@@ -11,6 +11,9 @@ kaynak:
   yol: skills/doc-coauthoring
   dal: main
   sha: 00756142ab04c82a447693cf373c4e0c554d1005
+gorseller:
+  ikon: gorseller/doc-coauthoring/ikon.svg
+  kapak: gorseller/doc-coauthoring/kapak.svg
 ornekCumleler:
   - "Belediyeye sunacağım park projesi teklifini birlikte yazalım."
   - "Yeni mobil uygulamamız için teknik şartname hazırlamama yardım et."

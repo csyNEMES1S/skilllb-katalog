@@ -11,6 +11,9 @@ kaynak:
   yol: skills/diagram-design
   dal: main
   sha: 110842938b5c3664916cb68fbfe37884d30b01a8
+gorseller:
+  ikon: gorseller/diagram-design/ikon.svg
+  kapak: gorseller/diagram-design/kapak.svg
 ornekCumleler:
   - "Uygulamamızın sistem mimarisini gösteren bir diyagram çiz."
   - "Bu Mermaid akış şemasını daha şık bir diyagrama dönüştür."

@@ -11,6 +11,9 @@ kaynak:
   yol: skills/copywriting
   dal: main
   sha: 6d123b4fae5f9160005f75a8870349e4df5a31aa
+gorseller:
+  ikon: gorseller/copywriting/ikon.svg
+  kapak: gorseller/copywriting/kapak.svg
 ornekCumleler:
   - "El yapımı mum dükkânımın ana sayfası için başlık ve tanıtım metni yaz."
   - "Uygulamamın fiyat sayfası metnini daha ikna edici hâle getir."

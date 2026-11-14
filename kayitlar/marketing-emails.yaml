@@ -11,6 +11,9 @@ kaynak:
   yol: skills/emails
   dal: main
   sha: 6d123b4fae5f9160005f75a8870349e4df5a31aa
+gorseller:
+  ikon: gorseller/marketing-emails/ikon.svg
+  kapak: gorseller/marketing-emails/kapak.svg
 ornekCumleler:
   - "Uygulamama yeni kaydolanlar için 5 e-postalık bir hoş geldin dizisi hazırla."
   - "Aboneliğini iptal eden müşterileri geri kazanmak için e-posta akışı tasarla."

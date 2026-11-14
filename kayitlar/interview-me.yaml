@@ -11,6 +11,9 @@ kaynak:
   yol: skills/interview-me
   dal: main
   sha: 1d32b886c25d189b6dd6a455e76728bcaefb96b0
+gorseller:
+  ikon: gorseller/interview-me/ikon.svg
+  kapak: gorseller/interview-me/kapak.svg
 ornekCumleler:
   - "Bir web sitesi istiyorum ama tam ne istediğimden emin değilim, beni sorgula."
   - "Bu projeye başlamadan önce bana sorular sorarak ne istediğimi netleştir."

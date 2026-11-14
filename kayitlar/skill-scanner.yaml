@@ -11,6 +11,9 @@ kaynak:
   yol: skills/skill-scanner
   dal: main
   sha: d18b7aa8ba878354e5c348310230e652f7690f9c
+gorseller:
+  ikon: gorseller/skill-scanner/ikon.svg
+  kapak: gorseller/skill-scanner/kapak.svg
 ornekCumleler:
   - "İndirdiğim bu skill klasörünü kurmadan önce güvenlik açısından tara."
   - "Projedeki tüm skill'leri tara, şüpheli bir şey var mı söyle."

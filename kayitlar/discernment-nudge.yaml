@@ -11,6 +11,9 @@ kaynak:
   yol: skills/discernment-nudge
   dal: main
   sha: f379e5ad66e2febc1616cf8d6284666fecbe514e
+gorseller:
+  ikon: gorseller/discernment-nudge/ikon.svg
+  kapak: gorseller/discernment-nudge/kapak.svg
 ornekCumleler:
   - "Evden çalışan biri olarak aylık bütçemi nasıl planlamalıyım?"
   - "Küçük bir kafe açmanın ilk yıl maliyetini tahmin eder misin?"

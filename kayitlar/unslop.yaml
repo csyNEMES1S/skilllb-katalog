@@ -11,6 +11,9 @@ kaynak:
   yol: skills/unslop
   dal: main
   sha: 97daa3eb365670ea3f87ed85356cbfcee18105a5
+gorseller:
+  ikon: gorseller/unslop/ikon.svg
+  kapak: gorseller/unslop/kapak.svg
 ornekCumleler:
   - "Bu pano ekranı çok yapay zekâ işi gibi duruyor, düzelt."
   - "Açılış sayfamdaki parlama ve gradyanları kaldırıp daha özenli bir tasarım yap."

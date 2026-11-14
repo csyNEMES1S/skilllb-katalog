@@ -11,6 +11,9 @@ kaynak:
   yol: skills/internal-comms
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/internal-comms/ikon.svg
+  kapak: gorseller/internal-comms/kapak.svg
 ornekCumleler:
   - "Bu haftaki notlarımdan ekibime gidecek kısa bir haftalık güncelleme yaz."
   - "Dün yaşanan sunucu kesintisi için bir olay raporu hazırla."

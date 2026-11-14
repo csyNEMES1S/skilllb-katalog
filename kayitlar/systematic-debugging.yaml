@@ -11,6 +11,9 @@ kaynak:
   yol: skills/systematic-debugging
   dal: main
   sha: 22f0b463e7a5e579904dd6211a520321035526f7
+gorseller:
+  ikon: gorseller/systematic-debugging/ikon.svg
+  kapak: gorseller/systematic-debugging/kapak.svg
 ornekCumleler:
   - "Uygulamam giriş yaparken bazen donuyor, nedenini adım adım bul."
   - "Bu test dün geçiyordu, bugün kırılıyor. Rastgele düzeltme deneme, önce nedenini bul."

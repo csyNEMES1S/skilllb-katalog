@@ -11,6 +11,9 @@ kaynak:
   yol: skills/productivity/teach
   dal: main
   sha: ad5400b930b297b0c0cb231ff1ffe42a7da666aa
+gorseller:
+  ikon: gorseller/teach/ikon.svg
+  kapak: gorseller/teach/kapak.svg
 ornekCumleler:
   - "/teach SQL öğrenmek istiyorum"
   - "/teach Gitar akorlarını sıfırdan öğret"

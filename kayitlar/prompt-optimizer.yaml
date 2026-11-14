@@ -11,6 +11,9 @@ kaynak:
   yol: skills/prompt-optimizer
   dal: main
   sha: c190d369bcbaa6cfdd95e9edfdba040506b4db76
+gorseller:
+  ikon: gorseller/prompt-optimizer/ikon.svg
+  kapak: gorseller/prompt-optimizer/kapak.svg
 ornekCumleler:
   - "Müşteri destek botumuzun sistem istemini daha tutarlı yanıt verecek şekilde iyileştir."
   - "GPT için yazılmış bu istemi Claude'a uyarla."

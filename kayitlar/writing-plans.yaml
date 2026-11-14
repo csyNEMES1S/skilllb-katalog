@@ -11,6 +11,9 @@ kaynak:
   yol: skills/writing-plans
   dal: main
   sha: 8ca22dba9a94f28898bbce59f2537ff4d87c747d
+gorseller:
+  ikon: gorseller/writing-plans/ikon.svg
+  kapak: gorseller/writing-plans/kapak.svg
 ornekCumleler:
   - "Bu şartnameye göre ödeme özelliği için adım adım bir uygulama planı yaz."
   - "Blog sitesine yorum ekleme işini küçük, testli görevlere bölen bir plan hazırla."

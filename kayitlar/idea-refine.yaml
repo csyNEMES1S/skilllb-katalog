@@ -11,6 +11,9 @@ kaynak:
   yol: skills/idea-refine
   dal: main
   sha: 24596abf8689b895737c5681a642682c66f58058
+gorseller:
+  ikon: gorseller/idea-refine/ikon.svg
+  kapak: gorseller/idea-refine/kapak.svg
 ornekCumleler:
   - "Mahalle için bir takas uygulaması fikrim var, birlikte geliştirelim."
   - "Bu iş planının varsayımlarını zorla, zayıf yerlerini göster."

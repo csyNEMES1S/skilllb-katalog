@@ -11,6 +11,9 @@ kaynak:
   yol: skills/gha-security-review
   dal: main
   sha: b11ee5163295996fa6449c4842749811c82ac77c
+gorseller:
+  ikon: gorseller/gha-security-review/ikon.svg
+  kapak: gorseller/gha-security-review/kapak.svg
 ornekCumleler:
   - "Repomdaki GitHub Actions iş akışlarını güvenlik açısından incele."
   - "Fork'tan gelen PR'lar bu workflow ile gizli anahtarlarımı çalabilir mi?"

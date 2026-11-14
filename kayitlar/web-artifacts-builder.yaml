@@ -11,6 +11,9 @@ kaynak:
   yol: skills/web-artifacts-builder
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/web-artifacts-builder/ikon.svg
+  kapak: gorseller/web-artifacts-builder/kapak.svg
 ornekCumleler:
   - "Görevlerimi sürükleyip bırakarak düzenleyebileceğim bir yapılacaklar panosu yap."
   - "Aylık bütçemi kategorilere göre gösteren, filtrelenebilen bir pano artifact'i oluştur."

@@ -11,6 +11,9 @@ kaynak:
   yol: skills/test-driven-development
   dal: main
   sha: 5bf4e78011075bcfc0dc295f0724994cd123ee71
+gorseller:
+  ikon: gorseller/test-driven-development/ikon.svg
+  kapak: gorseller/test-driven-development/kapak.svg
 ornekCumleler:
   - "Sepet toplamını hesaplayan fonksiyonu test güdümlü geliştirme (TDD) ile yaz."
   - "Tarih biçimlendirme hatasını düzeltmeden önce hatayı gösteren bir test yaz."

@@ -11,6 +11,9 @@ kaynak:
   yol: skills/xlsx
   dal: main
   sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+gorseller:
+  ikon: gorseller/xlsx/ikon.svg
+  kapak: gorseller/xlsx/kapak.svg
 ornekCumleler:
   - "Aylık gelir ve giderlerimi takip edeceğim, toplamları kendisi hesaplayan bir Excel tablosu hazırla."
   - "Bu CSV dosyasındaki tekrar eden satırları sil ve sonucu Excel olarak ver."

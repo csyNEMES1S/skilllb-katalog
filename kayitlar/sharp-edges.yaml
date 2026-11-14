@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/sharp-edges/skills/sharp-edges
   dal: main
   sha: 123037ec8aed26f0d86327cc39137ee5043e5deb
+gorseller:
+  ikon: gorseller/sharp-edges/ikon.svg
+  kapak: gorseller/sharp-edges/kapak.svg
 ornekCumleler:
   - "Kütüphanemizin şifreleme API'si yanlış kullanıma açık mı, değerlendir."
   - "Bu yapılandırma dosyasında güvensiz varsayılan ayar var mı bak."

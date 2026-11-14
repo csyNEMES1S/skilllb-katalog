@@ -11,6 +11,9 @@ kaynak:
   yol: skills/theme-factory
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/theme-factory/ikon.svg
+  kapak: gorseller/theme-factory/kapak.svg
 ornekCumleler:
   - "Bu sunuma uygulayabileceğin hazır temaları göster."
   - "Raporuma sakin ve profesyonel duran bir tema uygula."

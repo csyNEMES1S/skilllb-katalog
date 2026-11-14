@@ -11,6 +11,9 @@ kaynak:
   yol: skills/git-workflow-and-versioning
   dal: main
   sha: 884f64649779cd92804417c0baf564813b111bfc
+gorseller:
+  ikon: gorseller/git-workflow-and-versioning/ikon.svg
+  kapak: gorseller/git-workflow-and-versioning/kapak.svg
 ornekCumleler:
   - "Bu dağınık değişiklikleri anlamlı ayrı commit'lere böl."
   - "Yeni sürüm için numara öner ve CHANGELOG girdisini yaz."

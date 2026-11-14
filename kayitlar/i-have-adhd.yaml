@@ -11,6 +11,9 @@ kaynak:
   yol: skills/i-have-adhd
   dal: main
   sha: 5a9244e0c9e69d966243a6104d4c69ac736c9396
+gorseller:
+  ikon: gorseller/i-have-adhd/ikon.svg
+  kapak: gorseller/i-have-adhd/kapak.svg
 ornekCumleler:
   - "/i-have-adhd"
   - "Bu hatayı nasıl düzeltirim? Kısa, adım adım ve ilk yapacağım şeyle başlayarak anlat."

@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/playground/skills/playground
   dal: main
   sha: 4e459fbe7425a1880142a1b919cd62d719f657f4
+gorseller:
+  ikon: gorseller/playground/ikon.svg
+  kapak: gorseller/playground/kapak.svg
 ornekCumleler:
   - "Butonlarımın renk ve köşe yuvarlaklığını deneyebileceğim bir oyun alanı yap."
   - "SQL sorgusu kurmayı görsel olarak deneyebileceğim bir araç hazırla."

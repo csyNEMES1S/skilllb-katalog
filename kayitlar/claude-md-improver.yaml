@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/claude-md-management/skills/claude-md-improver
   dal: main
   sha: a86e34672c44fa1fb1ae2b2c4143abcf26612ace
+gorseller:
+  ikon: gorseller/claude-md-improver/ikon.svg
+  kapak: gorseller/claude-md-improver/kapak.svg
 ornekCumleler:
   - "Projemdeki CLAUDE.md dosyasını denetle ve iyileştir."
   - "CLAUDE.md'deki komutlar hâlâ güncel mi, kontrol et."

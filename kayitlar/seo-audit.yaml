@@ -11,6 +11,9 @@ kaynak:
   yol: skills/seo-audit
   dal: main
   sha: c01f0843c4fb84bcd7c1e7fa1908758723ad9ef3
+gorseller:
+  ikon: gorseller/seo-audit/ikon.svg
+  kapak: gorseller/seo-audit/kapak.svg
 ornekCumleler:
   - "Sitemin Google trafiği son ayda düştü, nedenini bulmama yardım et."
   - "Kafemin sitesi için yerel SEO denetimi yap."

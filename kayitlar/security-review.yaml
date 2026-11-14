@@ -11,6 +11,9 @@ kaynak:
   yol: skills/security-review
   dal: main
   sha: 6d20de492725c78e805aa0741507bb90d1982cc7
+gorseller:
+  ikon: gorseller/security-review/ikon.svg
+  kapak: gorseller/security-review/kapak.svg
 ornekCumleler:
   - "Bu Django görünümünde güvenlik açığı var mı, incele."
   - "Giriş ve şifre sıfırlama kodumu OWASP'a göre güvenlik açısından gözden geçir."

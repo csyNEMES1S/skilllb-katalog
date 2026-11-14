@@ -11,6 +11,9 @@ kaynak:
   yol: skills/security-audit
   dal: main
   sha: c1c8a8c1471069fb0e188eeaff69b8e8db6564a8
+gorseller:
+  ikon: gorseller/security-audit/ikon.svg
+  kapak: gorseller/security-audit/kapak.svg
 ornekCumleler:
   - "Bu API projesinde uçtan uca bir güvenlik denetimi yap ve rapor hazırla."
   - "Dosya yükleme kodum yetkisiz erişime açık mı, incele."

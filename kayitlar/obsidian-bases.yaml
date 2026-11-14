@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/obsidian/skills/obsidian-bases
   dal: main
   sha: 96cf4d19ff1255dce0ea90a19ce4951354b46bd5
+gorseller:
+  ikon: gorseller/obsidian-bases/ikon.svg
+  kapak: gorseller/obsidian-bases/kapak.svg
 ornekCumleler:
   - "Okuduğum kitap notlarını puana göre sıralayan bir Obsidian tablosu yap."
   - "Görev notlarımı duruma göre gösteren bir kanban görünümü hazırla."

@@ -11,6 +11,9 @@ kaynak:
   yol: skills/slack-gif-creator
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/slack-gif-creator/ikon.svg
+  kapak: gorseller/slack-gif-creator/kapak.svg
 ornekCumleler:
   - "Slack için zıplayan bir kahve fincanı emojisi GIF'i yap."
   - "Ekibimiz için 'Tebrikler!' yazısı parlayan hareketli bir GIF hazırla."

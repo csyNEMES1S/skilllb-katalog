@@ -11,6 +11,9 @@ kaynak:
   yol: skills/skill-creator
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/skill-creator/ikon.svg
+  kapak: gorseller/skill-creator/kapak.svg
 ornekCumleler:
   - "Haftalık toplantı notlarımı hep aynı biçimde özetleyen bir skill oluştur."
   - "Bu skill bazen hiç devreye girmiyor, açıklamasını iyileştir."

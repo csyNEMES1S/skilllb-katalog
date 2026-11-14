@@ -11,6 +11,9 @@ kaynak:
   yol: skills/pptx
   dal: main
   sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+gorseller:
+  ikon: gorseller/pptx/ikon.svg
+  kapak: gorseller/pptx/kapak.svg
 ornekCumleler:
   - "Okulumuzun geri dönüşüm projesi için 8 slaytlık bir sunum hazırla."
   - "Bu sunumdaki tüm slaytlara konuşmacı notu ekle."

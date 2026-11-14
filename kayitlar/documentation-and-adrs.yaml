@@ -11,6 +11,9 @@ kaynak:
   yol: skills/documentation-and-adrs
   dal: main
   sha: 551c59cfddb6428be85364ba7588cf92c4c51448
+gorseller:
+  ikon: gorseller/documentation-and-adrs/ikon.svg
+  kapak: gorseller/documentation-and-adrs/kapak.svg
 ornekCumleler:
   - "Neden PostgreSQL seçtiğimizi anlatan bir mimari karar kaydı yaz."
   - "README'deki kurulum adımları koda göre hâlâ doğru mu, kontrol et."

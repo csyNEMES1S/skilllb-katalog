@@ -11,6 +11,9 @@ kaynak:
   yol: skills/webapp-testing
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/webapp-testing/ikon.svg
+  kapak: gorseller/webapp-testing/kapak.svg
 ornekCumleler:
   - "localhost:3000'deki kayıt formunu doldurup gönder ve çalışıp çalışmadığını kontrol et."
   - "Uygulamamın ana sayfasının ekran görüntüsünü al ve konsolda hata var mı bak."

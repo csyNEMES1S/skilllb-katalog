@@ -11,6 +11,9 @@ kaynak:
   yol: skills/finishing-a-development-branch
   dal: main
   sha: b36e0829c6d0140e93cfef2ca599b1b07d4a7797
+gorseller:
+  ikon: gorseller/finishing-a-development-branch/ikon.svg
+  kapak: gorseller/finishing-a-development-branch/kapak.svg
 ornekCumleler:
   - "Bu özellik dalındaki iş bitti, şimdi ne yapalım?"
   - "Testler geçiyorsa bu dalı main'e birleştirmeme yardım et."

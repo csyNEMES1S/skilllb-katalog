@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/obsidian/skills/obsidian-markdown
   dal: main
   sha: e389391fa6fa7d1fdade84b205bc8cd745141e6e
+gorseller:
+  ikon: gorseller/obsidian-markdown/ikon.svg
+  kapak: gorseller/obsidian-markdown/kapak.svg
 ornekCumleler:
   - "Bu toplantı notlarını etiketli, bağlantılı bir Obsidian notuna çevir."
   - "Kitap özetim için Obsidian'da uyarı kutuları olan bir not hazırla."

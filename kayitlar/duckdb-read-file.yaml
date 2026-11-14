@@ -11,6 +11,9 @@ kaynak:
   yol: skills/read-file
   dal: main
   sha: 23a6eab5a6457efac5738ae8ab3c5d56ab570d09
+gorseller:
+  ikon: gorseller/duckdb-read-file/ikon.svg
+  kapak: gorseller/duckdb-read-file/kapak.svg
 ornekCumleler:
   - "satislar.csv dosyasında ne var, kısaca özetle."
   - "Bu Parquet dosyasında kaç satır var ve sütunları neler?"

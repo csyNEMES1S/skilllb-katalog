@@ -11,6 +11,9 @@ kaynak:
   yol: skills/canvas-design
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/canvas-design/ikon.svg
+  kapak: gorseller/canvas-design/kapak.svg
 ornekCumleler:
   - "Mahalle kitap kulübümüzün buluşması için bir afiş tasarla, PDF olarak ver."
   - "Sonbahar temalı, sade ve modern bir poster hazırla."

@@ -11,6 +11,9 @@ kaynak:
   yol: skills/academy-guide
   dal: main
   sha: 0a64e398ec6bb34a494f0c347e8ccae53a862f8e
+gorseller:
+  ikon: gorseller/academy-guide/ikon.svg
+  kapak: gorseller/academy-guide/kapak.svg
 ornekCumleler:
   - "Claude'da projeler nasıl çalışıyor, öğrenmeye nereden başlamalıyım?"
   - "Ekibime Claude'u tanıtmak istiyorum, hangi eğitimleri önerirsin?"

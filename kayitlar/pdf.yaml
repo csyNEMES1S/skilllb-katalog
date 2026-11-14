@@ -11,6 +11,9 @@ kaynak:
   yol: skills/pdf
   dal: main
   sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+gorseller:
+  ikon: gorseller/pdf/ikon.svg
+  kapak: gorseller/pdf/kapak.svg
 ornekCumleler:
   - "Bu üç PDF'i tek dosyada birleştir, sıra fatura, sözleşme, ek olsun."
   - "Ekteki PDF'teki tabloları çıkar ve bana Excel dosyası olarak ver."

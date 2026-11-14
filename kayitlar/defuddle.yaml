@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/obsidian/skills/defuddle
   dal: main
   sha: 330aed55c313c81d0c2234f9d80efdce27eb6f47
+gorseller:
+  ikon: gorseller/defuddle/ikon.svg
+  kapak: gorseller/defuddle/kapak.svg
 ornekCumleler:
   - "Bu makale sayfasını reklamsız, temiz Markdown olarak kaydet."
   - "Şu blog yazısının yalnızca başlığını ve açıklamasını çıkar."

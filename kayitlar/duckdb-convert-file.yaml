@@ -11,6 +11,9 @@ kaynak:
   yol: skills/convert-file
   dal: main
   sha: 2bf9f47e342b500fcaaffda041cc21db6fd6051f
+gorseller:
+  ikon: gorseller/duckdb-convert-file/ikon.svg
+  kapak: gorseller/duckdb-convert-file/kapak.svg
 ornekCumleler:
   - "musteriler.csv dosyasını Excel'e çevir."
   - "Bu JSON dosyasını Parquet biçiminde kaydet."

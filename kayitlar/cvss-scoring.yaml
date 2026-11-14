@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/cvss-scoring/skills/cvss-scoring
   dal: main
   sha: e4dd0bb5b15535f7c5a0834187dffba6ac37e4ff
+gorseller:
+  ikon: gorseller/cvss-scoring/ikon.svg
+  kapak: gorseller/cvss-scoring/kapak.svg
 ornekCumleler:
   - "Giriş yapmadan başka kullanıcıların faturalarını görebiliyorum; bunun CVSS vektörü ne olur?"
   - "Bu güvenlik bulgusu için CVSS v4.0 vektörü çıkar."

@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/obsidian/skills/json-canvas
   dal: main
   sha: 60b7f25b04ffc718a615f69436bd6031859ea3e6
+gorseller:
+  ikon: gorseller/json-canvas/ikon.svg
+  kapak: gorseller/json-canvas/kapak.svg
 ornekCumleler:
   - "Tez konum için Obsidian'da bir zihin haritası tuvali oluştur."
   - "Proje adımlarını gösteren bir akış şeması .canvas dosyası hazırla."

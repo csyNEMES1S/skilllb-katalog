@@ -11,6 +11,9 @@ kaynak:
   yol: skills/receiving-code-review
   dal: main
   sha: 3fb75974186ea7fada621d8ab77b3b02169baf57
+gorseller:
+  ikon: gorseller/receiving-code-review/ikon.svg
+  kapak: gorseller/receiving-code-review/kapak.svg
 ornekCumleler:
   - "PR'ıma gelen bu altı yorumu değerlendir, hangileri gerçekten doğru?"
   - "İnceleyen bu fonksiyonun silinmesini istiyor, uygulamadan önce kontrol et."

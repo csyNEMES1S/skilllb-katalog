@@ -11,6 +11,9 @@ kaynak:
   yol: skills/spec-driven-development
   dal: main
   sha: 480bed13919a6c03193725b4313b7c1a61a83c51
+gorseller:
+  ikon: gorseller/spec-driven-development/ikon.svg
+  kapak: gorseller/spec-driven-development/kapak.svg
 ornekCumleler:
   - "Yeni randevu uygulamam için önce bir şartname yazalım."
   - "Bu özelliğin ilk sürümde ne olacağını, sonraya neyin kalacağını belirleyen bir şartname hazırla."

@@ -11,6 +11,9 @@ kaynak:
   yol: plugins/property-based-testing/skills/property-based-testing
   dal: main
   sha: 123037ec8aed26f0d86327cc39137ee5043e5deb
+gorseller:
+  ikon: gorseller/property-based-testing/ikon.svg
+  kapak: gorseller/property-based-testing/kapak.svg
 ornekCumleler:
   - "JSON ayrıştırıcım için Hypothesis ile özellik tabanlı testler yaz."
   - "fast-check bir karşı örnek buldu, bu gerçek bir hata mı?"

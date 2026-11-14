@@ -11,6 +11,9 @@ kaynak:
   yol: skills/brand-guidelines
   dal: main
   sha: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+gorseller:
+  ikon: gorseller/brand-guidelines/ikon.svg
+  kapak: gorseller/brand-guidelines/kapak.svg
 ornekCumleler:
   - "Bu sunumu Anthropic'in marka renkleri ve yazı tipleriyle yeniden biçimlendir."
   - "Anthropic tarzında, marka renklerine uygun bir tanıtım sayfası hazırla."
