@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, vi } from "vitest";
-import { BulunamadiHatasi, dosyaListesi, githubAdresleri, githubGetirici, lisansBelirle } from "../scripts/getirici.js";
+import { BulunamadiHatasi, KesikAgacHatasi, dosyaListesi, githubAdresleri, githubGetirici, lisansBelirle } from "../scripts/getirici.js";
 import { skillMdAyristir } from "../scripts/skillMd.js";
 import { sahteGetirici } from "./sahteGetirici.js";
 
@@ -236,6 +236,8 @@ describe("githubGetirici (fetch taklit edilir, ağa çıkılmaz)", () => {
   it("getirici_kesik_agaci_reddeder", async () => {
     fetchTaklidi({ [githubAdresleri.agac("a/b", SHA)]: { govde: { truncated: true, tree: [] } } });
     await expect(githubGetirici().agac("a/b", SHA)).rejects.toThrow(/eksik/);
+    fetchTaklidi({ [githubAdresleri.agac("a/b", SHA)]: { govde: { truncated: true, tree: [] } } });
+    await expect(githubGetirici().agac("a/b", SHA)).rejects.toBeInstanceOf(KesikAgacHatasi);
   });
 });
 

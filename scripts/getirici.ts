@@ -18,6 +18,14 @@ export class BulunamadiHatasi extends Error {
   }
 }
 
+/** GitHub ağacı kesik (truncated) döndürdü: dosya listesi eksik olurdu. Çağıran bu kaydı atlayabilir. */
+export class KesikAgacHatasi extends Error {
+  constructor(mesaj: string) {
+    super(mesaj);
+    this.name = "KesikAgacHatasi";
+  }
+}
+
 const API = "https://api.github.com";
 const RAW = "https://raw.githubusercontent.com";
 
@@ -67,7 +75,7 @@ export function githubGetirici(token?: string): Getirici {
         githubAdresleri.agac(repo, sha),
       );
       // Kesik ağaç eksik bir dosya listesi üretir; sessizce yanlış yayınlamaktansa dur.
-      if (y.truncated) throw new Error(`${repo}@${sha}: ağaç çok büyük, GitHub eksik (truncated) döndürdü`);
+      if (y.truncated) throw new KesikAgacHatasi(`${repo}@${sha}: ağaç çok büyük, GitHub eksik (truncated) döndürdü`);
       return y.tree
         .filter((g) => g.type === "blob" || g.type === "tree") // "commit" = alt modül, atlanır
         .map((g) => ({ yol: g.path, tur: g.type as "blob" | "tree", boyut: g.size ?? 0 }));
@@ -97,7 +105,7 @@ export function dosyaListesi(
 }
 
 /** Skill klasörünün kökündeki LICENSE* / LICENCE* dosyası. */
-const lisansDosyasiMi = (yol: string) => !yol.includes("/") && /^licen[cs]e/i.test(yol);
+export const lisansDosyasiMi = (yol: string) => !yol.includes("/") && /^licen[cs]e/i.test(yol);
 
 /**
  * Lisans adı yalnız metnin başlığında (ilk üç dolu satır) aranır: kapalı bir lisansın gövdesindeki
