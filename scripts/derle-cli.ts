@@ -2,6 +2,7 @@ import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { ciktiYaz, derle } from "./derle.js";
 import { githubGetirici } from "./getirici.js";
+import { gunlukSatiri } from "./gunluk.js";
 import { kayitlariOku } from "./kayitOku.js";
 
 const GORSEL_TABAN_URL = "https://csynemes1s.github.io/skilllb-katalog/";
@@ -21,7 +22,7 @@ async function ana(): Promise<number> {
   });
 
   const kayitlar = await kayitlariOku(resolve(values.kayitlar));
-  const uyar = (m: string) => console.error(`uyarı: ${m}`);
+  const uyar = (m: string) => console.error(gunlukSatiri("uyarı", m));
   const katalog = await derle(kayitlar, githubGetirici(process.env.GITHUB_TOKEN || undefined), GORSEL_TABAN_URL, uyar);
 
   const atlanan = kayitlar.length - katalog.skills.length;
@@ -42,7 +43,7 @@ ana().then(
     process.exitCode = kod;
   },
   (e: unknown) => {
-    console.error(`hata: ${e instanceof Error ? e.message : String(e)}`);
+    console.error(gunlukSatiri("hata", e instanceof Error ? e.message : String(e)));
     process.exitCode = 1;
   },
 );

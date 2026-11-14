@@ -2,6 +2,7 @@ import { mkdir, rename, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { githubGetirici } from "./getirici.js";
+import { gunlukSatiri } from "./gunluk.js";
 import { guncellemeleriBul, kayitDosyasiGuncelle } from "./guncelleme.js";
 import { kayitlariOku } from "./kayitOku.js";
 
@@ -34,7 +35,7 @@ async function ana(): Promise<number> {
   if (positionals.length) throw new Error(`beklenmeyen argüman: ${positionals.join(" ")}`);
 
   const kayitlar = await kayitlariOku(resolve(values.kayitlar));
-  const uyar = (m: string) => console.error(`uyarı: ${m}`);
+  const uyar = (m: string) => console.error(gunlukSatiri("uyarı", m));
   const guncellemeler = await guncellemeleriBul(kayitlar, githubGetirici(process.env.GITHUB_TOKEN || undefined), uyar);
 
   const cikti = resolve(values.cikti);
@@ -51,7 +52,7 @@ ana().then(
     process.exitCode = kod;
   },
   (e: unknown) => {
-    console.error(`hata: ${e instanceof Error ? e.message : String(e)}`);
+    console.error(gunlukSatiri("hata", e instanceof Error ? e.message : String(e)));
     process.exitCode = 1;
   },
 );
