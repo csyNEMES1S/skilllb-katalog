@@ -10,7 +10,7 @@ kaynak:
   repo: anthropics/skills
   yol: skills/docx
   dal: main
-  sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+  sha: 1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064
 ornekCumleler:
   - "Kafe açılışı için iki sayfalık bir iş planını Word dosyası olarak hazırla."
   - "Bu sözleşmede 'Kiracı' geçen her yeri 'Müşteri' yap, değişiklikler izlenebilir olsun."
