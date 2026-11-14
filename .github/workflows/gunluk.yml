@@ -1,0 +1,132 @@
+name: Günlük derleme
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "kayitlar/**"
+      - "gorseller/**"
+
+# Varsayılan izin yok; her iş yalnız gerekeni ister.
+permissions: {}
+
+# Aynı anda iki çalışma olmasın (ikisi de Pages'e yazar ve aynı dalları açabilir). Yarıdaki iş kesilmez.
+concurrency:
+  group: gunluk
+  cancel-in-progress: false
+
+jobs:
+  yayinla:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.dagit.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Kataloğu derle
+        run: npm run derle -- --cikti dist/catalog.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: dagit
+        uses: actions/deploy-pages@v4
+
+  guncellemeler:
+    # Yalnız zamanlanmış ve elle başlatılan çalışmalarda; kayıt push'u yalnız yayınlar.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Güncellemeleri bul
+        run: npm run guncelle -- --cikti dist/guncellemeler.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Git kimliği
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Güncelleme PR'larını aç
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        # Başlık, gövde ve dosya adları güvenilmez metindir: hiçbiri ${{ }} ile buraya gömülmez,
+        # jq -r ile tırnaklı değişkenlere okunur, gövde dosyadan verilir. Güvenilmez metin
+        # "::komut::" biçimli günlük satırlarına da yazılmaz (yalnız doğrulanmış ID/DAL yazılır).
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSYA="dist/guncellemeler.json"
+          GOVDE="$RUNNER_TEMP/govde.md"
+          ADET="$(jq 'length' "$DOSYA")"
+          HATA=0
+          echo "$ADET güncelleme bulundu"
+
+          for ((i = 0; i < ADET; i++)); do
+            ID="$(jq -r --argjson i "$i" '.[$i].id' "$DOSYA")"
+            SHA="$(jq -r --argjson i "$i" '.[$i].yeniSha' "$DOSYA")"
+            DAL="$(jq -r --argjson i "$i" '.[$i].dal' "$DOSYA")"
+            BASLIK="$(jq -r --argjson i "$i" '.[$i].baslik' "$DOSYA")"
+            jq -r --argjson i "$i" '.[$i].govde' "$DOSYA" > "$GOVDE"
+
+            if ! [[ "$ID" =~ ^[a-z0-9][a-z0-9-]{0,63}$ && "$SHA" =~ ^[0-9a-f]{40}$ \
+                    && "$DAL" =~ ^guncelleme/[a-z0-9-]+-[0-9a-f]{7}$ && "$DAL" == "guncelleme/$ID-${SHA:0:7}" ]]; then
+              echo "::error::$i. öğe geçersiz (id, sha ya da dal deseni tutmuyor), atlandı"
+              HATA=1
+              continue
+            fi
+
+            if git ls-remote --exit-code --heads origin "refs/heads/$DAL" > /dev/null; then
+              echo "$DAL: dal zaten var, atlandı"
+              continue
+            fi
+            PR_SAYISI="$(gh pr list --head "$DAL" --state all --json number -q length)"
+            if [[ "$PR_SAYISI" != "0" ]]; then
+              echo "$DAL: bu dal için PR zaten var ($PR_SAYISI), atlandı"
+              continue
+            fi
+
+            git switch --quiet --force-create "$DAL" origin/main
+            npm run --silent guncelle -- --uygula "$ID" "$SHA"
+            git add -- "kayitlar/$ID.yaml"
+            git commit --quiet --message "$BASLIK"
+            git push --quiet origin "refs/heads/$DAL:refs/heads/$DAL"
+
+            if gh pr create --title "$BASLIK" --body-file "$GOVDE" --base main --head "$DAL"; then
+              echo "$DAL: PR açıldı"
+            else
+              # Dal kalırsa ertesi gün "dal var" diye atlanır ve güncelleme kaybolur.
+              echo "::error::$DAL: PR açılamadı, dal siliniyor"
+              git push --quiet origin --delete "$DAL" || echo "::error::$DAL: dal silinemedi, elle silin"
+              HATA=1
+            fi
+            git switch --quiet --detach origin/main
+          done
+
+          exit "$HATA"
