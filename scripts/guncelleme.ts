@@ -12,8 +12,13 @@ export type Guncelleme = {
 
 const ID_DESENI = /^[a-z0-9][a-z0-9-]{0,63}$/;
 const SHA_DESENI = /^[0-9a-f]{40}$/;
-/** PR gövdesi GitHub'da 65 536 karakterle sınırlı; çok uzun listeler kısaltılır. */
-const LISTE_SINIRI = 200;
+/** Bir listede gösterilen en çok dosya; gövde yine de sığmazsa daha küçük sınırlar denenir. */
+const LISTE_SINIRLARI = [200, 50, 10, 0];
+/**
+ * PR gövdesi GitHub'da en çok 65 536 karakter. Aşılırsa `gh pr create` düşer, ama dal zaten push
+ * edilmiş olur ve ertesi gün "dal var" diye güncelleme sessizce kaybolur. Pay bırakılır.
+ */
+const GOVDE_SINIRI = 60_000;
 
 /** Kaynağın kendisinden gelen, yalnız o kaydı atlatan sorun. */
 class KayitAtlaHatasi extends Error {}
@@ -63,16 +68,28 @@ export function mdKod(metin: string): string {
 /** Sahibin yazdığı tek satırlık metin (ad): satır sonları boşluğa indirilir. */
 const tekSatir = (m: string) => m.replace(/\s+/g, " ").trim();
 
-function liste(baslik: string, dosyalar: string[]): string[] {
+function liste(baslik: string, dosyalar: string[], sinir: number): string[] {
   if (!dosyalar.length) return [];
   const satirlar = [`### ${baslik} (${dosyalar.length})`, ""];
-  for (const d of dosyalar.slice(0, LISTE_SINIRI)) satirlar.push(`- ${mdKod(d)}`);
-  if (dosyalar.length > LISTE_SINIRI) satirlar.push(`- … ve ${dosyalar.length - LISTE_SINIRI} dosya daha`);
+  for (const d of dosyalar.slice(0, sinir)) satirlar.push(`- ${mdKod(d)}`);
+  if (dosyalar.length > sinir) satirlar.push(`- … ve ${dosyalar.length - sinir} dosya daha`);
   satirlar.push("");
   return satirlar;
 }
 
-function govdeYaz(kayit: Kayit, yeni: { sha: string; tarih: string }, f: Omit<Guncelleme, "id" | "eskiSha" | "yeniSha" | "dal" | "baslik" | "govde">): string {
+type Farklar = Omit<Guncelleme, "id" | "eskiSha" | "yeniSha" | "dal" | "baslik" | "govde">;
+
+/** Gövdeyi GitHub sınırına sığan en geniş liste sınırıyla yazar. */
+function govdeYaz(kayit: Kayit, yeni: { sha: string; tarih: string }, f: Farklar, eskiYok: boolean): string {
+  let govde = "";
+  for (const sinir of LISTE_SINIRLARI) {
+    govde = govdeTaslak(kayit, yeni, f, eskiYok, sinir);
+    if (govde.length <= GOVDE_SINIRI) break;
+  }
+  return govde;
+}
+
+function govdeTaslak(kayit: Kayit, yeni: { sha: string; tarih: string }, f: Farklar, eskiYok: boolean, sinir: number): string {
   const { repo, yol, sha: eski } = kayit.kaynak;
   const satirlar = [
     `## ${tekSatir(kayit.ad)} için kaynak güncellemesi`,
@@ -83,14 +100,20 @@ function govdeYaz(kayit: Kayit, yeni: { sha: string; tarih: string }, f: Omit<Gu
     `- Yeni sürüm: ${mdKod(yeni.sha.slice(0, 7))} (${mdKod(yeni.tarih)})`,
     "",
   ];
-  const uyarilar = f.yeniBetikler.slice(0, LISTE_SINIRI).map((b) => `⚠ Yeni betik: ${mdKod(b)}`);
-  if (f.yeniBetikler.length > LISTE_SINIRI) uyarilar.push(`⚠ … ve ${f.yeniBetikler.length - LISTE_SINIRI} yeni betik daha`);
+  if (eskiYok) {
+    satirlar.push(
+      "⚠ Şu anki sürümün commit'i kaynakta artık yok (force-push ya da rebase olabilir); derleme bu kaydı atlıyor. Aşağıdaki listeler eski sürümle karşılaştırılamadı: yeni sürümdeki her dosya \"eklenen\", her betik \"yeni\" sayıldı.",
+      "",
+    );
+  }
+  const uyarilar = f.yeniBetikler.slice(0, sinir).map((b) => `⚠ Yeni betik: ${mdKod(b)}`);
+  if (f.yeniBetikler.length > sinir) uyarilar.push(`⚠ … ve ${f.yeniBetikler.length - sinir} yeni betik daha`);
   if (f.agIpucuYeni) uyarilar.push("⚠ Ağ erişimi ipucu belirdi: yeni sürümdeki betiklerde ağa bağlanan kod izi var.");
   if (uyarilar.length) satirlar.push(...uyarilar.flatMap((u) => [u, ""]), "Birleştirmeden önce bu betikleri okuyun.", "");
   satirlar.push(
-    ...liste("Eklenen dosyalar", f.eklenen),
-    ...liste("Silinen dosyalar", f.silinen),
-    ...liste("Değişen dosyalar", f.degisen),
+    ...liste("Eklenen dosyalar", f.eklenen, sinir),
+    ...liste("Silinen dosyalar", f.silinen, sinir),
+    ...liste("Değişen dosyalar", f.degisen, sinir),
     `[Tüm farkları GitHub'da gör](https://github.com/${repo}/compare/${eski}...${yeni.sha})`,
     "",
     `Bu PR yalnız ${mdKod(`kayitlar/${kayit.id}.yaml`)} içindeki ${mdKod("kaynak.sha")} değerini değiştirir. Birleştirilene kadar kullanıcılar şu anki sürümü görür.`,
@@ -136,8 +159,19 @@ export async function guncellemeleriBul(
     if (yeni.sha === eskiSha) return undefined;
     if (!SHA_DESENI.test(yeni.sha)) throw new KayitAtlaHatasi(`son commit sha'sı beklenmedik biçimde: ${JSON.stringify(yeni.sha)}`);
 
-    const eski = klasorDosyalari(await agacAl(repo, eskiSha), yol);
     const son = klasorDosyalari(await agacAl(repo, yeni.sha), yol);
+    // Dal yeniden yazılıp sabit commit silindiyse (force-push/rebase) derleme kaydı atlar; atlamak
+    // yerine PR önerilir ki kayıt kurtarılabilsin. Karşılaştırma yapılamaz: eski sürüm boş sayılır.
+    let eskiYok = false;
+    const eski = await agacAl(repo, eskiSha).then(
+      (a) => klasorDosyalari(a, yol),
+      (e: unknown) => {
+        if (!(e instanceof BulunamadiHatasi)) throw e;
+        eskiYok = true;
+        uyar(`/${kayit.id}/ sabit commit ${eskiSha.slice(0, 7)} kaynakta yok (force-push/rebase?); yeni sürüme PR önerilecek`);
+        return new Map<string, DosyaBilgisi>();
+      },
+    );
     if (!son.has("SKILL.md")) {
       throw new KayitAtlaHatasi(`yeni sürümde (${yeni.sha.slice(0, 7)}) "${yol}/SKILL.md" yok (klasör silinmiş ya da taşınmış olabilir)`);
     }
@@ -179,7 +213,7 @@ export async function guncellemeleriBul(
       yeniSha: yeni.sha,
       dal: `guncelleme/${kayit.id}-${yeni.sha.slice(0, 7)}`,
       baslik: `Güncelleme: ${tekSatir(kayit.ad)} (${eskiSha.slice(0, 7)} → ${yeni.sha.slice(0, 7)})`,
-      govde: govdeYaz(kayit, yeni, farklar),
+      govde: govdeYaz(kayit, yeni, farklar, eskiYok),
       ...farklar,
     };
   }

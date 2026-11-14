@@ -260,3 +260,37 @@ describe("githubGetirici ağaç sha", () => {
     ]);
   });
 });
+
+describe("guncelleme sınır durumları", () => {
+  it("guncelleme_govde_github_sinirini_asmaz", async () => {
+    // GitHub PR gövdesi en çok 65 536 karakter; aşılırsa `gh pr create` düşer ama dal zaten push
+    // edilmiş olur ve ertesi gün "dal var" diye güncelleme sessizce kaybolur.
+    const uzun = (i: number) => `assets/${"çok-uzun-klasör-adı/".repeat(12)}dosya-${i}.py`;
+    const eski: Record<string, string> = { "SKILL.md": "x" };
+    const yeni: Record<string, string> = { "SKILL.md": "xy" };
+    for (let i = 0; i < 300; i++) {
+      eski[`eski/${uzun(i)}`] = "1";
+      yeni[uzun(i)] = "2";
+    }
+    const [u] = await guncellemeleriBul([kayit()], sahteGetirici(veri(eski, yeni)));
+    expect(u.eklenen.length).toBe(300);
+    expect(u.govde.length).toBeLessThanOrEqual(65536);
+    expect(u.govde).toContain(`https://github.com/${REPO}/compare/${A}...${B}`);
+    expect(u.govde).toContain("dosya daha");
+  });
+
+  it("guncelleme_eski_sha_kaynakta_yoksa_yine_onerir", async () => {
+    // Force-push/rebase sonrası sabit commit silinmişse derleme kaydı atlar; kurtarmanın tek yolu
+    // yeni sürüme PR'dır. Bütün dosyalar "eklenen", bütün betikler "yeni" sayılır.
+    const uyar = vi.fn();
+    const v = veri({}, { "SKILL.md": "x", "a.py": "import requests\n" });
+    delete v[REPO].dosyalar![A];
+    const [u] = await guncellemeleriBul([kayit()], sahteGetirici(v), uyar);
+    expect(u.eklenen).toEqual(["SKILL.md", "a.py"]);
+    expect(u.silinen).toEqual([]);
+    expect(u.yeniBetikler).toEqual(["a.py"]);
+    expect(u.agIpucuYeni).toBe(true);
+    expect(u.govde).toContain("artık yok");
+    expect(uyar).toHaveBeenCalledWith(expect.stringMatching(/pdf-ustasi/));
+  });
+});
