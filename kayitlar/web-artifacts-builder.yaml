@@ -1,6 +1,6 @@
 id: web-artifacts-builder
 ad: "Gelişmiş Artifact Kurucu"
-kisaAciklama: "claude.ai için çok parçalı React artifact'leri hazırlar."
+kisaAciklama: "claude.ai için çok bileşenli, etkileşimli sayfalar kurar."
 neIseYarar:
   - "React, Tailwind CSS ve shadcn/ui ile çok bileşenli, etkileşimli sayfalar kurar."
   - "Tüm kodu claude.ai'de gösterilebilen tek bir HTML dosyasında paketler."
@@ -20,7 +20,7 @@ uyumluluk:
     sahibiDenedi: false
   antigravity:
     durum: calismaz
-    neden: "Çıktısı claude.ai artifact'i olarak gösterilmek üzere hazırlanıyor."
+    neden: "Çıktıyı claude.ai'de artifact olarak göstermek için yazılmış; Antigravity'de bu gösterim yok."
     sahibiDenedi: false
 dogrulandi: false
 benzerler: [frontend-design, theme-factory]

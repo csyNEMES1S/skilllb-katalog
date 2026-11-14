@@ -4,7 +4,7 @@ kisaAciklama: "Anthropic'in marka renklerini ve yazı tiplerini uygular."
 neIseYarar:
   - "Belge, sunum ya da sayfalara Anthropic'in resmî renk paletini uygular."
   - "Başlık ve metinlerde markanın yazı tipi kurallarını kullanır."
-  - "Kendi markanın kuralları için bir skill yazmak istersen iyi bir örnek olur."
+  - "Bu yazı tipleri bilgisayarda yoksa Arial ve Georgia gibi yaygın yazı tiplerini kullanır."
 kategori: tasarim
 kaynak:
   repo: anthropics/skills

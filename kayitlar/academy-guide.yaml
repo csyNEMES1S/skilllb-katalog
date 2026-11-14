@@ -19,8 +19,8 @@ uyumluluk:
     durum: calisir
     sahibiDenedi: false
   antigravity:
-    durum: calismaz
-    neden: "Yalnızca Claude ürünleriyle ilgili sorularda Claude Academy içeriği önermek için yazılmış."
+    durum: bilinmiyor
+    neden: "Yalnızca Claude ürünleri hakkındaki sorularda Claude Academy içeriği önerir; Antigravity'de nadiren işe yarar."
     sahibiDenedi: false
 dogrulandi: false
 benzerler: [discernment-nudge, skill-creator]

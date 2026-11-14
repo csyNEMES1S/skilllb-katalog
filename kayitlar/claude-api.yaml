@@ -1,6 +1,6 @@
 id: claude-api
 ad: "Claude API Rehberi"
-kisaAciklama: "Claude API ile uygulama yazarken güncel başvuru kaynağı."
+kisaAciklama: "Claude API ile uygulama yazarken güncel bilgi ve kod verir."
 neIseYarar:
   - "Model adları, fiyatlar ve sınırlar gibi bilgileri ezberden değil, güncel kaynaktan verir."
   - "Akışlı yanıt, araç kullanımı, önbellekleme gibi özellikler için doğru kod örnekleri sunar."

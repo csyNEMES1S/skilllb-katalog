@@ -4,7 +4,7 @@ kisaAciklama: "Sunum ve belgelere hazır renk ve yazı tipi temaları uygular."
 neIseYarar:
   - "Okyanus, gün batımı, orman gibi 10 hazır temayı örnek dosyasıyla gösterip seçtirir."
   - "Seçilen temanın renklerini ve yazı tiplerini sunuma, belgeye ya da sayfaya uygular."
-  - "Hazır temalar uymazsa verdiğin tarife göre yeni bir tema oluşturur."
+  - "Hazır temalar uymazsa anlattığın havaya göre yeni bir tema oluşturur."
 kategori: tasarim
 kaynak:
   repo: anthropics/skills

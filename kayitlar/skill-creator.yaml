@@ -20,8 +20,8 @@ uyumluluk:
     durum: calisir
     sahibiDenedi: false
   antigravity:
-    durum: calismaz
-    neden: "Deneme ve açıklama iyileştirme adımları Claude Code'daki claude -p komutuna ve alt ajanlara dayanıyor."
+    durum: bilinmiyor
+    neden: "Skill yazma adımları her yerde işleyebilir; açıklama iyileştirme adımı Claude Code'daki claude -p komutunu, karşılaştırmalı deneme alt ajanları gerektirir."
     sahibiDenedi: false
 dogrulandi: false
 benzerler: [mcp-builder, doc-coauthoring]

@@ -1,10 +1,10 @@
 id: algorithmic-art
 ad: "Kodla Sanat Üretici"
-kisaAciklama: "p5.js ile kodla üretilen etkileşimli sanat eserleri yapar."
+kisaAciklama: "Kodla etkileşimli, soyut sanat eserleri üretir."
 neIseYarar:
-  - "Akış alanları, parçacık sistemleri gibi tekniklerle kodla üretilen (üretken) sanat oluşturur."
-  - "Her eser bir tohum (seed) sayısıyla üretilir, aynı tohumla aynı sonuç yeniden elde edilir."
-  - "Ayarları kaydırıcılarla değiştirilebilen, tarayıcıda açılan tek bir HTML dosyası verir."
+  - "Akış alanları, parçacık sistemleri gibi tekniklerle kodla (p5.js) soyut sanat eserleri üretir."
+  - "Her eser bir başlangıç sayısıyla (tohum) üretilir; aynı sayıyla aynı eseri yeniden elde edersin."
+  - "Tarayıcıda açılan tek bir HTML dosyası verir; ayarları kaydırıcılarla değiştirip sonucu PNG olarak indirebilirsin."
 kategori: tasarim
 kaynak:
   repo: anthropics/skills

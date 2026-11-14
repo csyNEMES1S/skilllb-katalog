@@ -1,6 +1,6 @@
 id: systematic-debugging
 ad: "Sistemli Hata Ayıklama"
-kisaAciklama: "Hatanın kök nedenini bulmadan düzeltmeye girişmez."
+kisaAciklama: "Kod hatalarının önce kök nedenini bulur, sonra düzeltir."
 neIseYarar:
   - "Hata mesajını okuyarak, hatayı yeniden üreterek ve son değişikliklere bakarak işe başlar."
   - "Çalışan benzer kodla karşılaştırıp bir varsayım kurar ve bunu küçük bir denemeyle sınar."

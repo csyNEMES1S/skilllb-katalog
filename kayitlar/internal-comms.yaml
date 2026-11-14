@@ -2,9 +2,9 @@ id: internal-comms
 ad: "Şirket İçi Yazışma"
 kisaAciklama: "Durum raporu, bülten gibi şirket içi yazıları hazırlar."
 neIseYarar:
-  - "İlerleme, Planlar, Sorunlar (3P) biçiminde ekip güncellemeleri yazar."
+  - "Ekip güncellemelerini ilerleme, planlar ve sorunlar başlıklarıyla (3P biçimi) yazar."
   - "Şirket bülteni, sık sorulan sorular ve yöneticilere durum raporu hazırlar."
-  - "Olay (incident) raporlarını ve proje güncellemelerini düzenli bir biçime sokar."
+  - "Olay raporlarını (ör. bir kesintinin ardından) ve proje güncellemelerini düzenli bir biçime sokar."
 kategori: yazi
 kaynak:
   repo: anthropics/skills

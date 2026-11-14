@@ -61,6 +61,25 @@ Kayıt sıkı denetlenir: listede olmayan bir alan yazım hatası sayılır ve d
 Lisans, yıldız sayısı, yazar, dosya listesi, boyut, sürüm ve güvenlik bilgisi (betikler, ağ ipucu) kayda
 **yazılmaz**. Bunlar derleme sırasında kaynak repodan, sabit commit'e göre okunur.
 
+`kisaAciklama` için 60 karakter sınırını derleme denetlemez; kaydı yazarken kendin say.
+
+`uyumluluk` yazarken: `calismaz` yalnızca skill o araçta gerçekten iş göremiyorsa (ör. yalnız Claude'da
+bulunan bir özelliğe dayanıyorsa) verilir. Denenmemiş ya da kısmen çalışması beklenen skill'ler
+`bilinmiyor` kalır; kısmi durum `neden` alanında anlatılabilir.
+
+### Lisansı olmayan ya da kısıtlı skill'ler
+
+Lisans durumu (`lisans.durum`) derlemede otomatik belirlenir:
+
+- `acik`: skill klasöründe tanınan açık bir lisans (Apache, MIT, BSD) var ya da reponun lisansı açık.
+- `kisitli`: skill klasöründe bir lisans dosyası var ama tanınan açık bir lisans değil. Uygulamada
+  "Kısıtlı lisans: yalnızca kaynaktan indirilir" yazar.
+- `yok`: ne skill klasöründe ne de repoda lisans bilgisi var. Uygulamada "Lisans belirtilmemiş" yazar.
+
+Lisansı `yok` ya da `kisitli` olan skill'ler de katalogda gösterilebilir. Dosyaları bu repoya ya da
+uygulamaya kopyalanmaz; kullanıcı her zaman kaynak repodan indirir ve lisans durumu skill sayfasında açıkça
+görünür. Böyle bir kaydı silmen gerekmez, ama kullanıcıya önermeden önce kaynağın kullanım koşullarına bak.
+
 ## Örnek kayıt
 
 ```yaml
