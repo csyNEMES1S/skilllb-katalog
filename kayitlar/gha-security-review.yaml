@@ -1,0 +1,25 @@
+id: gha-security-review
+ad: "GitHub Actions Güvenlik İncelemesi"
+kisaAciklama: "GitHub Actions iş akışlarındaki saldırı açıklarını bulur."
+neIseYarar:
+  - "GitHub Actions iş akışlarını (.github/workflows) dışarıdan bir saldırganın kötüye kullanabileceği açıklar için inceler."
+  - "Pwn request, ifade enjeksiyonu, kimlik bilgisi sızması ve tedarik zinciri saldırılarını arar."
+  - "Her bulgu için somut bir saldırı senaryosu ve düzeltme yazar; senaryo kurulamıyorsa raporlamaz."
+kategori: guvenlik
+kaynak:
+  repo: getsentry/skills
+  yol: skills/gha-security-review
+  dal: main
+  sha: b11ee5163295996fa6449c4842749811c82ac77c
+ornekCumleler:
+  - "Repomdaki GitHub Actions iş akışlarını güvenlik açısından incele."
+  - "Fork'tan gelen PR'lar bu workflow ile gizli anahtarlarımı çalabilir mi?"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-review, semgrep]

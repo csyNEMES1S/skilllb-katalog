@@ -1,0 +1,25 @@
+id: cvss-scoring
+ad: "CVSS Puanlayıcı"
+kisaAciklama: "Bir güvenlik açığından CVSS v4.0 vektörü üretir."
+neIseYarar:
+  - "Düz metinle anlatılan bir güvenlik açığından CVSS v4.0 vektör dizesi üretir."
+  - "Saldırı yolu, karmaşıklık, gereken yetki gibi temel ölçütleri tek tek gerekçesiyle değerlendirir."
+  - "Sayısal puanı kendisi hesaplamaz; vektörün uygulandığı FIRST.org hesaplayıcı bağlantısını verir."
+kategori: guvenlik
+kaynak:
+  repo: trailofbits/skills
+  yol: plugins/cvss-scoring/skills/cvss-scoring
+  dal: main
+  sha: e4dd0bb5b15535f7c5a0834187dffba6ac37e4ff
+ornekCumleler:
+  - "Giriş yapmadan başka kullanıcıların faturalarını görebiliyorum; bunun CVSS vektörü ne olur?"
+  - "Bu güvenlik bulgusu için CVSS v4.0 vektörü çıkar."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-audit, differential-review]

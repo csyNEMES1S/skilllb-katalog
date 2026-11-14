@@ -1,0 +1,25 @@
+id: receiving-code-review
+ad: "İnceleme Yorumlarını Ele Alma"
+kisaAciklama: "İnceleme yorumlarını körü körüne değil, sınayarak uygular."
+neIseYarar:
+  - "Kod incelemesindeki önerileri uygulamadan önce okur, kendi sözleriyle yeniden ifade eder ve kodda doğrular."
+  - "Anlaşılmayan bir madde varsa hiçbirine başlamadan önce açıklama ister."
+  - "Yanlış görünen öneriye teknik gerekçeyle itiraz eder; maddeleri tek tek uygulayıp her birini test eder."
+kategori: kod-test
+kaynak:
+  repo: obra/superpowers
+  yol: skills/receiving-code-review
+  dal: main
+  sha: 3fb75974186ea7fada621d8ab77b3b02169baf57
+ornekCumleler:
+  - "PR'ıma gelen bu altı yorumu değerlendir, hangileri gerçekten doğru?"
+  - "İnceleyen bu fonksiyonun silinmesini istiyor, uygulamadan önce kontrol et."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [requesting-code-review, verification-before-completion]

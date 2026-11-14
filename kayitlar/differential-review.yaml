@@ -1,0 +1,25 @@
+id: differential-review
+ad: "Değişiklik Güvenlik İncelemesi"
+kisaAciklama: "PR ve commit'leri güvenlik açısından inceleyip rapor yazar."
+neIseYarar:
+  - "Bir PR, commit ya da diff'i güvenlik açısından inceler; kimlik doğrulama, şifreleme ve dış çağrılar gibi riskli yerlere odaklanır."
+  - "git geçmişine bakarak değişikliğin daha önce düzeltilmiş bir hatayı geri getirip getirmediğini kontrol eder."
+  - "Değişen kodu kaç yerin çağırdığını sayar, testsiz kalan kısımları bulur ve markdown bir rapor yazar."
+kategori: guvenlik
+kaynak:
+  repo: trailofbits/skills
+  yol: plugins/differential-review/skills/differential-review
+  dal: main
+  sha: 123037ec8aed26f0d86327cc39137ee5043e5deb
+ornekCumleler:
+  - "Bu PR'ı güvenlik açısından incele ve rapor yaz."
+  - "Son commit eski bir güvenlik hatasını geri getirmiş olabilir mi?"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [find-bugs, security-review, requesting-code-review]

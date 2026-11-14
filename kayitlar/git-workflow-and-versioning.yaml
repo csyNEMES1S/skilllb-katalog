@@ -1,0 +1,25 @@
+id: git-workflow-and-versioning
+ad: "Git Düzeni ve Sürümleme"
+kisaAciklama: "Temiz commit'ler, düzenli dallar ve sürüm notları hazırlar."
+neIseYarar:
+  - "Değişiklikleri küçük, tek konulu (atomik) commit'lere böler ve açıklayıcı commit mesajları yazar."
+  - "Kısa ömürlü dallar, dal adlandırma ve çakışma çözme gibi günlük git işlerinde düzen sağlar."
+  - "Sürüm çıkarırken anlamsal sürüm numarasını (semver) seçer, etiket koyar ve okunur bir değişiklik günlüğü yazar."
+kategori: kod-test
+kaynak:
+  repo: addyosmani/agent-skills
+  yol: skills/git-workflow-and-versioning
+  dal: main
+  sha: 884f64649779cd92804417c0baf564813b111bfc
+ornekCumleler:
+  - "Bu dağınık değişiklikleri anlamlı ayrı commit'lere böl."
+  - "Yeni sürüm için numara öner ve CHANGELOG girdisini yaz."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [finishing-a-development-branch, documentation-and-adrs]

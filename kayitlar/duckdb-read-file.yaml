@@ -1,0 +1,26 @@
+id: duckdb-read-file
+ad: "DuckDB Veri Dosyası Okuyucu"
+kisaAciklama: "CSV, Excel, Parquet gibi veri dosyalarını açıp özetler."
+neIseYarar:
+  - "CSV, JSON, Parquet, Excel, SQLite gibi veri dosyalarını DuckDB ile açıp içine bakar."
+  - "Sütunları ve türlerini, satır sayısını ve ilk 20 satırı gösterir, veri hakkındaki sorunu yanıtlar."
+  - "S3 ya da https adresindeki uzak veri dosyalarını da okuyabilir."
+kategori: veri-grafik
+kaynak:
+  repo: duckdb/duckdb-skills
+  yol: skills/read-file
+  dal: main
+  sha: 23a6eab5a6457efac5738ae8ab3c5d56ab570d09
+ornekCumleler:
+  - "satislar.csv dosyasında ne var, kısaca özetle."
+  - "Bu Parquet dosyasında kaç satır var ve sütunları neler?"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    neden: "DuckDB komut satırı aracını ister; dosya adını Claude Code'daki komut argümanlarından ($0) alır."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [duckdb-convert-file, xlsx]

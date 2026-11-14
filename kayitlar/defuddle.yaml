@@ -1,0 +1,25 @@
+id: defuddle
+ad: "Web Sayfası Temizleyici"
+kisaAciklama: "Web sayfasının asıl içeriğini temiz Markdown olarak çıkarır."
+neIseYarar:
+  - "Bir web sayfasındaki menü, reklam gibi kalabalığı atıp asıl içeriği temiz Markdown olarak çıkarır."
+  - "Sonucu dosyaya kaydedebilir; başlık, açıklama gibi sayfa bilgilerini ayrıca alabilir."
+  - "Defuddle komut satırı aracını kullanır; araç kurulu değilse bunu söyler ve kurmayı önerir."
+kategori: belge-ofis
+kaynak:
+  repo: obsidianmd/obsidian-skills
+  yol: plugins/obsidian/skills/defuddle
+  dal: main
+  sha: 330aed55c313c81d0c2234f9d80efdce27eb6f47
+ornekCumleler:
+  - "Bu makale sayfasını reklamsız, temiz Markdown olarak kaydet."
+  - "Şu blog yazısının yalnızca başlığını ve açıklamasını çıkar."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [obsidian-markdown, pdf]

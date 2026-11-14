@@ -1,0 +1,26 @@
+id: i-have-adhd
+ad: "DEHB Dostu Yanıtlar"
+kisaAciklama: "Yanıtları DEHB'li okur için sade ve eyleme dönük yazar."
+neIseYarar:
+  - "Yanıtları DEHB'li bir okur için düzenler: ilk satırda hemen yapılacak işi söyler."
+  - "Çok adımlı işleri numaralı, kısa adımlara böler; konudan sapmaz, süreleri somut olarak tahmin eder."
+  - "/i-have-adhd ile açılır ve \"stop adhd mode\" diyene kadar oturum boyunca açık kalır."
+kategori: diger
+kaynak:
+  repo: ayghri/i-have-adhd
+  yol: skills/i-have-adhd
+  dal: main
+  sha: 5a9244e0c9e69d966243a6104d4c69ac736c9396
+ornekCumleler:
+  - "/i-have-adhd"
+  - "Bu hatayı nasıl düzeltirim? Kısa, adım adım ve ilk yapacağım şeyle başlayarak anlat."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    neden: "Elle /i-have-adhd komutuyla açılacak şekilde ayarlı; bu komut biçimini desteklemeyen araçlarda kendiliğinden devreye girmez."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [discernment-nudge]

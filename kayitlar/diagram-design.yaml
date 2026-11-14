@@ -1,0 +1,26 @@
+id: diagram-design
+ad: "Diyagram Tasarımcısı"
+kisaAciklama: "Mimari, akış, zaman çizelgesi gibi şık diyagramlar çizer."
+neIseYarar:
+  - "Mimari, akış şeması, zaman çizelgesi, organizasyon şeması, Gantt gibi elli türde diyagram hazırlar."
+  - "Diyagramları satır içi SVG'li tek bir HTML dosyası olarak verir; PNG ya da SVG olarak da dışa aktarabilir."
+  - "draw.io, Mermaid, Excalidraw ve PlantUML dosyalarını içe alır; ilk kullanımda markana uygun stil ayarlamayı önerir."
+kategori: tasarim
+kaynak:
+  repo: cathrynlavery/diagram-design
+  yol: skills/diagram-design
+  dal: main
+  sha: 110842938b5c3664916cb68fbfe37884d30b01a8
+ornekCumleler:
+  - "Uygulamamızın sistem mimarisini gösteren bir diyagram çiz."
+  - "Bu Mermaid akış şemasını daha şık bir diyagrama dönüştür."
+  - "Proje takvimimiz için bir Gantt şeması hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [json-canvas, canvas-design, frontend-design]

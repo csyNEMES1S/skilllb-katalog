@@ -1,0 +1,25 @@
+id: obsidian-markdown
+ad: "Obsidian Not Yazıcı"
+kisaAciklama: "Obsidian'a uygun bağlantılı, düzenli notlar yazar."
+neIseYarar:
+  - "Obsidian notlarını wikilink ([[Not]]), gömme, uyarı kutusu (callout) gibi Obsidian'a özgü yazımla doğru biçimde yazar."
+  - "Notların başına başlık, etiket ve takma ad gibi özellikler (frontmatter) ekler."
+  - "Notları birbirine bağlar; başka notları, resimleri ya da PDF'leri nota gömer."
+kategori: belge-ofis
+kaynak:
+  repo: obsidianmd/obsidian-skills
+  yol: plugins/obsidian/skills/obsidian-markdown
+  dal: main
+  sha: e389391fa6fa7d1fdade84b205bc8cd745141e6e
+ornekCumleler:
+  - "Bu toplantı notlarını etiketli, bağlantılı bir Obsidian notuna çevir."
+  - "Kitap özetim için Obsidian'da uyarı kutuları olan bir not hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [json-canvas, obsidian-bases]

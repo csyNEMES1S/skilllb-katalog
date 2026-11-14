@@ -1,0 +1,25 @@
+id: content-strategy
+ad: "İçerik Stratejisi"
+kisaAciklama: "Ne yazacağını planlar: konu kümeleri ve yayın takvimi."
+neIseYarar:
+  - "Ne yazacağına karar vermek için konu kümeleri, yayın takvimi ve içerik yol haritası hazırlar."
+  - "İçerik fikirlerini müşteri soruları, arama talebi ve rakiplerdeki boşluklara göre önceliklendirir."
+  - "Yazıların neden müşteri getirmediğini inceler; her içeriği ayrı bir ürün gibi ele alır."
+kategori: yazi
+kaynak:
+  repo: coreyhaines31/marketingskills
+  yol: skills/content-strategy
+  dal: main
+  sha: 6d123b4fae5f9160005f75a8870349e4df5a31aa
+ornekCumleler:
+  - "Muhasebe yazılımımız için üç aylık bir blog içerik planı hazırla."
+  - "Blog yazılarımız okunuyor ama müşteri getirmiyor, nedenini birlikte bulalım."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [seo-audit, copywriting, marketing-emails]

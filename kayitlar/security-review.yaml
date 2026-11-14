@@ -1,0 +1,25 @@
+id: security-review
+ad: "Güvenlik Kod İncelemesi"
+kisaAciklama: "Koddaki güvenlik açıklarını OWASP rehberlerine göre arar."
+neIseYarar:
+  - "Koddaki enjeksiyon, XSS, kimlik doğrulama, yetkilendirme ve şifreleme açıklarını OWASP rehberlerine göre arar."
+  - "Bir bulguyu raporlamadan önce verinin nereden geldiğini kod tabanında izler; yalnızca saldırganın kontrol ettiği girdileri işaretler."
+  - "Bulguları güven düzeyine göre ayırır, yalnızca yüksek güvenli olanları önem derecesiyle raporlar."
+kategori: guvenlik
+kaynak:
+  repo: getsentry/skills
+  yol: skills/security-review
+  dal: main
+  sha: 6d20de492725c78e805aa0741507bb90d1982cc7
+ornekCumleler:
+  - "Bu Django görünümünde güvenlik açığı var mı, incele."
+  - "Giriş ve şifre sıfırlama kodumu OWASP'a göre güvenlik açısından gözden geçir."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-audit, find-bugs, security-and-hardening]

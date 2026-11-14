@@ -1,0 +1,25 @@
+id: copywriting
+ad: "Pazarlama Metni Yazarı"
+kisaAciklama: "Açılış ve ürün sayfaları için ikna edici metin yazar."
+neIseYarar:
+  - "Ana sayfa, açılış sayfası, fiyat ve özellik sayfaları için pazarlama metni yazar ya da yeniden yazar."
+  - "Önce sayfanın amacını, hedef kitleyi ve ürünün farkını sorar; kanıtlanamayan iddiaları yazmaz."
+  - "\"Bu X değil, Y\" gibi yapay zekâ kokan kalıplardan kaçınır."
+kategori: yazi
+kaynak:
+  repo: coreyhaines31/marketingskills
+  yol: skills/copywriting
+  dal: main
+  sha: 6d123b4fae5f9160005f75a8870349e4df5a31aa
+ornekCumleler:
+  - "El yapımı mum dükkânımın ana sayfası için başlık ve tanıtım metni yaz."
+  - "Uygulamamın fiyat sayfası metnini daha ikna edici hâle getir."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [copy-editing, content-strategy, marketing-emails]

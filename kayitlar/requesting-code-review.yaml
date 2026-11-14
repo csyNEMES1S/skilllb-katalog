@@ -1,0 +1,26 @@
+id: requesting-code-review
+ad: "Kod İncelemesi İsteme"
+kisaAciklama: "Biten işi ayrı bir gözden geçiriciye inceletir."
+neIseYarar:
+  - "Bir görev ya da büyük bir özellik bitince kodu ayrı bir gözden geçirici alt ajana inceletir."
+  - "Gözden geçiriciye yalnızca gerekenleri verir: ne yapıldığı, gereksinimler ve başlangıç ile bitiş commit'leri."
+  - "Gelen bulguları önem sırasına göre ele alır: kritik olanları hemen düzeltir, küçükleri sonraya not eder."
+kategori: kod-test
+kaynak:
+  repo: obra/superpowers
+  yol: skills/requesting-code-review
+  dal: main
+  sha: bb92a77741419a4ab5f06e711a283343f1ada0c3
+ornekCumleler:
+  - "Giriş özelliğini bitirdim, birleştirmeden önce kodu inceletir misin?"
+  - "Son iki commit'teki değişiklikleri plana göre gözden geçirt."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    neden: "İncelemeyi ayrı bir alt ajana yaptırır; alt ajan başlatamayan araçlarda yalnızca kısmen işe yarar."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [receiving-code-review, find-bugs, differential-review]

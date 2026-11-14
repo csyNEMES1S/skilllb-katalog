@@ -1,0 +1,26 @@
+id: claude-md-improver
+ad: "CLAUDE.md İyileştirici"
+kisaAciklama: "Projedeki CLAUDE.md dosyalarını denetleyip iyileştirir."
+neIseYarar:
+  - "Repodaki tüm CLAUDE.md dosyalarını bulur ve kalite ölçütlerine göre değerlendirir."
+  - "Eksik komutları, belirsiz mimari bilgisini ve eskimiş içeriği gösteren bir rapor hazırlar."
+  - "Onayını aldıktan sonra CLAUDE.md dosyalarında hedefli iyileştirmeler yapar."
+kategori: kod-test
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: plugins/claude-md-management/skills/claude-md-improver
+  dal: main
+  sha: a86e34672c44fa1fb1ae2b2c4143abcf26612ace
+ornekCumleler:
+  - "Projemdeki CLAUDE.md dosyasını denetle ve iyileştir."
+  - "CLAUDE.md'deki komutlar hâlâ güncel mi, kontrol et."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: calismaz
+    neden: "Claude Code'un proje belleği olan CLAUDE.md dosyaları için yazılmış; Antigravity bu dosyaları kullanmaz."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [skill-creator, documentation-and-adrs]

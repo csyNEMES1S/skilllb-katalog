@@ -1,0 +1,25 @@
+id: interview-me
+ad: "Beni Sorgula"
+kisaAciklama: "Ne istediğini tek tek sorularla netleştirir."
+neIseYarar:
+  - "\"Bana bir pano yap\" gibi belirsiz bir isteği kimin için ve neden istendiği netleşene kadar sorgular."
+  - "Her seferinde tek soru sorar; asıl amacı yaklaşık %95 emin olana kadar anlamaya çalışır."
+  - "Plan, şartname ya da kod yazılmadan önce istenen ile gerçekten gereken arasındaki farkı yakalar."
+kategori: diger
+kaynak:
+  repo: addyosmani/agent-skills
+  yol: skills/interview-me
+  dal: main
+  sha: 1d32b886c25d189b6dd6a455e76728bcaefb96b0
+ornekCumleler:
+  - "Bir web sitesi istiyorum ama tam ne istediğimden emin değilim, beni sorgula."
+  - "Bu projeye başlamadan önce bana sorular sorarak ne istediğimi netleştir."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [idea-refine, doc-coauthoring]

@@ -1,0 +1,26 @@
+id: duckdb-convert-file
+ad: "DuckDB Dosya Dönüştürücü"
+kisaAciklama: "Veri dosyalarını CSV, Parquet, Excel arasında dönüştürür."
+neIseYarar:
+  - "Veri dosyalarını CSV, Parquet, JSON, Excel, GeoJSON gibi biçimler arasında dönüştürür."
+  - "Çıktı biçimini dosya uzantısından anlar; çıktı adı verilmezse Parquet'e çevirir."
+  - "Dönüşümü tek bir DuckDB komutuyla yapar; uzak adreslerdeki dosyalardan da okuyabilir."
+kategori: veri-grafik
+kaynak:
+  repo: duckdb/duckdb-skills
+  yol: skills/convert-file
+  dal: main
+  sha: 2bf9f47e342b500fcaaffda041cc21db6fd6051f
+ornekCumleler:
+  - "musteriler.csv dosyasını Excel'e çevir."
+  - "Bu JSON dosyasını Parquet biçiminde kaydet."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    neden: "DuckDB komut satırı aracını ister; dosya adlarını Claude Code'daki komut argümanlarından ($0, $1) alır."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [duckdb-read-file, xlsx]

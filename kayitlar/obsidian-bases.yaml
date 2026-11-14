@@ -1,0 +1,25 @@
+id: obsidian-bases
+ad: "Obsidian Veri Görünümleri"
+kisaAciklama: "Obsidian notlarını tablo ve kanban görünümlerinde listeler."
+neIseYarar:
+  - "Obsidian Bases (.base) dosyalarıyla notlarını bir veritabanı gibi listeleyen görünümler oluşturur."
+  - "Notları etiket, klasör, özellik ya da tarihe göre süzer; hesaplanan alanlar için formül ekler."
+  - "Tablo, kart, liste, harita ve kanban görünümleri hazırlar, YAML yazım hatalarını kontrol eder."
+kategori: veri-grafik
+kaynak:
+  repo: obsidianmd/obsidian-skills
+  yol: plugins/obsidian/skills/obsidian-bases
+  dal: main
+  sha: 96cf4d19ff1255dce0ea90a19ce4951354b46bd5
+ornekCumleler:
+  - "Okuduğum kitap notlarını puana göre sıralayan bir Obsidian tablosu yap."
+  - "Görev notlarımı duruma göre gösteren bir kanban görünümü hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [obsidian-markdown, xlsx]

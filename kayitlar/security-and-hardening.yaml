@@ -1,0 +1,25 @@
+id: security-and-hardening
+ad: "Güvenli Kod ve Sıkılaştırma"
+kisaAciklama: "Kullanıcı girdisi ve oturum işlerinde güvenli kod yazar."
+neIseYarar:
+  - "Kullanıcı girdisi, oturum açma ya da veri saklama içeren işlerde önce kısa bir tehdit modeli çıkarır."
+  - "Enjeksiyon, XSS, CORS, dosya yükleme, SSRF ve istek sınırlama için koruma önlemlerini uygular."
+  - "Gizli anahtarların koda girmesini engeller, bağımlılıklardaki bilinen açıkları denetler, GDPR gibi gizlilik kurallarını gözetir."
+kategori: guvenlik
+kaynak:
+  repo: addyosmani/agent-skills
+  yol: skills/security-and-hardening
+  dal: main
+  sha: 7acb450cdd9620bb9ee12fac17ecebf1422cbe53
+ornekCumleler:
+  - "Kayıt formuma güvenlik önlemleri ekle, girdileri doğrula."
+  - "Dosya yükleme özelliğimi güvenli hâle getir."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-review, security-audit, sharp-edges]

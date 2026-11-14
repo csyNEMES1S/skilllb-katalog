@@ -1,0 +1,25 @@
+id: prompt-optimizer
+ad: "İstem (Prompt) İyileştirici"
+kisaAciklama: "Yapay zekâ istemlerini yazar ve denemelerle iyileştirir."
+neIseYarar:
+  - "Yapay zekâ ajanları için yeni bir istem (prompt) ya da sistem istemi yazar, var olanı iyileştirir."
+  - "İşe başarı ölçütlerini ve küçük bir deneme (eval) setini belirleyerek başlar, değişiklikleri bu denemelerle sınar."
+  - "İstemleri OpenAI, Claude ve Gemini model aileleri arasında taşırken her birinin farklarını dikkate alır."
+kategori: yazi
+kaynak:
+  repo: getsentry/skills
+  yol: skills/prompt-optimizer
+  dal: main
+  sha: c190d369bcbaa6cfdd95e9edfdba040506b4db76
+ornekCumleler:
+  - "Müşteri destek botumuzun sistem istemini daha tutarlı yanıt verecek şekilde iyileştir."
+  - "GPT için yazılmış bu istemi Claude'a uyarla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [skill-creator, claude-api]

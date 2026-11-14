@@ -1,0 +1,25 @@
+id: documentation-and-adrs
+ad: "Karar Kaydı ve Belgeleme"
+kisaAciklama: "Mimari kararları kayda geçirir, eskiyen belgeleri bulur."
+neIseYarar:
+  - "Önemli bir mimari kararı bağlamı ve değerlendirilen seçeneklerle birlikte karar kaydı (ADR) olarak yazar."
+  - "Kodun ne yaptığını değil, neden öyle yapıldığını anlatan yorum ve belgeler ekler."
+  - "Belgelerin koddan geri kalıp kalmadığını bulur ve belgelerin sessizce eskimesini önleyecek bir kontrol önerir."
+kategori: kod-test
+kaynak:
+  repo: addyosmani/agent-skills
+  yol: skills/documentation-and-adrs
+  dal: main
+  sha: 551c59cfddb6428be85364ba7588cf92c4c51448
+ornekCumleler:
+  - "Neden PostgreSQL seçtiğimizi anlatan bir mimari karar kaydı yaz."
+  - "README'deki kurulum adımları koda göre hâlâ doğru mu, kontrol et."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [doc-coauthoring, spec-driven-development]

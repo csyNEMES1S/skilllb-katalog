@@ -1,0 +1,25 @@
+id: unslop
+ad: "Yapay Görünümlü Arayüz Düzeltici"
+kisaAciklama: "Yapay zekâ kokan arayüzleri özenli bir tasarıma çevirir."
+neIseYarar:
+  - "Yapay zekâyla üretilmiş gibi duran arayüzlerdeki mor gradyan, parlama, emoji etiket gibi izleri bulur."
+  - "Boşluk, renk, ikon, metin, yazı tipi, yerleşim ve hareketi bu sırayla düzeltir; özellikleri ve içeriği korur."
+  - "Ürünün kendisinden bir görsel yön çıkarır; görsel üretme aracı varsa gerçek bir ana görsel hazırlar."
+kategori: tasarim
+kaynak:
+  repo: heydamir/unslop
+  yol: skills/unslop
+  dal: main
+  sha: 97daa3eb365670ea3f87ed85356cbfcee18105a5
+ornekCumleler:
+  - "Bu pano ekranı çok yapay zekâ işi gibi duruyor, düzelt."
+  - "Açılış sayfamdaki parlama ve gradyanları kaldırıp daha özenli bir tasarım yap."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [frontend-design, theme-factory]

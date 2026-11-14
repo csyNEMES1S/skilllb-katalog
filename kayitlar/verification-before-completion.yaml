@@ -1,0 +1,25 @@
+id: verification-before-completion
+ad: "Bitti Demeden Doğrula"
+kisaAciklama: "\"Bitti\" demeden önce testleri çalıştırıp kanıt gösterir."
+neIseYarar:
+  - "Bir işin bittiğini, hatanın düzeldiğini ya da testlerin geçtiğini söylemeden önce ilgili komutu yeniden çalıştırır."
+  - "Komut çıktısını ve çıkış kodunu okur; başarıyı yalnızca kanıt varsa dile getirir."
+  - "\"Herhalde çalışır\", \"Tamamdır!\" gibi kanıtsız başarı ifadelerine izin vermez."
+kategori: kod-test
+kaynak:
+  repo: obra/superpowers
+  yol: skills/verification-before-completion
+  dal: main
+  sha: 3be5aad3dd2400ef23b15680969f4bcd3b6d7b8b
+ornekCumleler:
+  - "Hatayı düzelttiğini söylemeden önce testleri çalıştır ve çıktıyı göster."
+  - "Commit'ten önce derlemenin ve testlerin gerçekten geçtiğini doğrula."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [systematic-debugging, test-driven-development, finishing-a-development-branch]

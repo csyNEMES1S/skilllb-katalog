@@ -1,0 +1,25 @@
+id: playground
+ad: "Etkileşimli Oyun Alanı"
+kisaAciklama: "Ayarlarla oynanabilen, canlı önizlemeli HTML araçlar yapar."
+neIseYarar:
+  - "Bir konuyu görsel olarak ayarlayabileceğin, tek dosyalık etkileşimli HTML \"oyun alanları\" hazırlar."
+  - "Bir yanda ayar kontrolleri, öbür yanda canlı önizleme olur; seçimlerin kopyalanabilir bir isteme dönüşür."
+  - "Tasarım, veri sorgusu, kavram haritası, belge eleştirisi ve kod incelemesi için hazır şablonlar kullanır."
+kategori: tasarim
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: plugins/playground/skills/playground
+  dal: main
+  sha: 4e459fbe7425a1880142a1b919cd62d719f657f4
+ornekCumleler:
+  - "Butonlarımın renk ve köşe yuvarlaklığını deneyebileceğim bir oyun alanı yap."
+  - "SQL sorgusu kurmayı görsel olarak deneyebileceğim bir araç hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [web-artifacts-builder, frontend-design]

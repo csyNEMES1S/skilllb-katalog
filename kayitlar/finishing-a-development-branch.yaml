@@ -1,0 +1,25 @@
+id: finishing-a-development-branch
+ad: "Dalı Toparlayıp Bitirme"
+kisaAciklama: "Biten dalı birleştirir, PR açar ya da olduğu gibi bırakır."
+neIseYarar:
+  - "İş bitince önce tüm testleri çalıştırır; testler geçmiyorsa birleştirme adımına geçmez."
+  - "Yerelde birleştirme, push edip Pull Request açma ya da dalı olduğu gibi bırakma seçeneklerini sunar."
+  - "Dal silme gibi geri alınamaz işleri yalnızca açık onayla yapar, kendiliğinden --force kullanmaz."
+kategori: kod-test
+kaynak:
+  repo: obra/superpowers
+  yol: skills/finishing-a-development-branch
+  dal: main
+  sha: b36e0829c6d0140e93cfef2ca599b1b07d4a7797
+ornekCumleler:
+  - "Bu özellik dalındaki iş bitti, şimdi ne yapalım?"
+  - "Testler geçiyorsa bu dalı main'e birleştirmeme yardım et."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [git-workflow-and-versioning, verification-before-completion]

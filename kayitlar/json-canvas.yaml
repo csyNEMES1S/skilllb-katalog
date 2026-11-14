@@ -1,0 +1,25 @@
+id: json-canvas
+ad: "Obsidian Tuval Hazırlayıcı"
+kisaAciklama: "Obsidian için zihin haritası ve akış tuvalleri hazırlar."
+neIseYarar:
+  - "Obsidian'ın .canvas dosyalarını düğümler, bağlantılar ve gruplarla sıfırdan oluşturur."
+  - "Zihin haritası, akış şeması gibi görsel tuvaller hazırlar; var olan bir tuvale üst üste binmeden yeni düğüm ekler."
+  - "Dosyanın geçerli JSON olduğunu ve her bağlantının var olan bir düğümü gösterdiğini kontrol eder."
+kategori: belge-ofis
+kaynak:
+  repo: obsidianmd/obsidian-skills
+  yol: plugins/obsidian/skills/json-canvas
+  dal: main
+  sha: 60b7f25b04ffc718a615f69436bd6031859ea3e6
+ornekCumleler:
+  - "Tez konum için Obsidian'da bir zihin haritası tuvali oluştur."
+  - "Proje adımlarını gösteren bir akış şeması .canvas dosyası hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [obsidian-markdown, diagram-design]

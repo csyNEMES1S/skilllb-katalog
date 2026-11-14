@@ -1,0 +1,26 @@
+id: skill-scanner
+ad: "Skill Güvenlik Tarayıcısı"
+kisaAciklama: "Bir skill'i kurmadan önce güvenlik açısından tarar."
+neIseYarar:
+  - "Bir skill'i kurmadan önce prompt injection, kötü amaçlı betik, aşırı izin ve sızan gizli bilgi açısından tarar."
+  - "Paketteki Python betiğiyle şüpheli kalıpları otomatik bulur, sonra bunların gerçekten tehlikeli olup olmadığını değerlendirir."
+  - "SKILL.md başındaki adı, açıklamayı ve izin verilen araçları (allowed-tools) denetler."
+kategori: guvenlik
+kaynak:
+  repo: getsentry/skills
+  yol: skills/skill-scanner
+  dal: main
+  sha: d18b7aa8ba878354e5c348310230e652f7690f9c
+ornekCumleler:
+  - "İndirdiğim bu skill klasörünü kurmadan önce güvenlik açısından tara."
+  - "Projedeki tüm skill'leri tara, şüpheli bir şey var mı söyle."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    neden: "Tarama betiği uv aracını gerektirir; betik çalışmazsa elle inceleme adımlarıyla devam eder."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [skill-creator, security-review]

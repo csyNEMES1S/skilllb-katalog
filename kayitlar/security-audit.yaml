@@ -1,0 +1,25 @@
+id: security-audit
+ad: "Kapsamlı Güvenlik Denetimi"
+kisaAciklama: "Kod tabanında gerçek güvenlik açıklarını bulur, raporlar."
+neIseYarar:
+  - "Kod tabanında gerçek bir güven sınırını aşan güvenlik açıklarını arar; kaynak koda dayanır, savunma amaçlıdır."
+  - "Varsayılan olarak yalnızca güvenlik sorularına yol gösterir; tam denetimi ancak sen açıkça istersen başlatır."
+  - "Tam denetimde keşif, tarama ve doğrulama aşamalarından geçip bulguları ve en küçük etkili düzeltmeyi içeren bir rapor yazar."
+kategori: guvenlik
+kaynak:
+  repo: cloudflare/security-audit-skill
+  yol: skills/security-audit
+  dal: main
+  sha: c1c8a8c1471069fb0e188eeaff69b8e8db6564a8
+ornekCumleler:
+  - "Bu API projesinde uçtan uca bir güvenlik denetimi yap ve rapor hazırla."
+  - "Dosya yükleme kodum yetkisiz erişime açık mı, incele."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-review, sharp-edges, security-and-hardening]

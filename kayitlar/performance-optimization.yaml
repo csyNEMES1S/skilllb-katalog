@@ -1,0 +1,25 @@
+id: performance-optimization
+ad: "Performans İyileştirme"
+kisaAciklama: "Önce ölçer, darboğazı bulur, sonra hızlandırır."
+neIseYarar:
+  - "Hızlandırmadan önce ölçer; darboğazı tahminle değil, ölçümle bulur."
+  - "Ön yüzde Core Web Vitals değerlerini, arka uçta N+1 sorgu gibi yavaş veritabanı kalıplarını ele alır."
+  - "Düzeltmeden sonra yeniden ölçer, iyileşme yoksa değişikliği geri alır ve yeniden yavaşlamaya karşı önlem ekler."
+kategori: kod-test
+kaynak:
+  repo: addyosmani/agent-skills
+  yol: skills/performance-optimization
+  dal: main
+  sha: ee3e8504246bd2ee1be3f3670555e48c9c62212a
+ornekCumleler:
+  - "Ana sayfam çok geç açılıyor, nedenini ölçerek bul ve düzelt."
+  - "Bu API uç noktası yavaş, N+1 sorgu sorunu var mı incele."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [systematic-debugging, webapp-testing]

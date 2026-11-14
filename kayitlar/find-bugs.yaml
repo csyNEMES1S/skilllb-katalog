@@ -1,0 +1,26 @@
+id: find-bugs
+ad: "Daldaki Hataları Bul"
+kisaAciklama: "Daldaki değişikliklerde hata ve güvenlik açığı arar."
+neIseYarar:
+  - "Daldaki değişikliklerin tamamını (git diff) okuyup hata, güvenlik açığı ve kod kalitesi sorunlarını arar."
+  - "Her değişen dosyada kullanıcı girdilerini, veritabanı sorgularını ve yetki kontrollerini çıkarıp bir güvenlik listesinden geçirir."
+  - "Bulguları dosya ve satırıyla, önem derecesi ve düzeltme önerisiyle raporlar; kodu kendisi değiştirmez."
+kategori: kod-test
+kaynak:
+  repo: getsentry/skills
+  yol: skills/find-bugs
+  dal: main
+  sha: 24361e7958f9644d11f1de100654e3b04a509192
+ornekCumleler:
+  - "Bu daldaki değişikliklerde hata ya da güvenlik açığı var mı bak."
+  - "PR açmadan önce yaptığım değişiklikleri hatalar için tara."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    neden: "Ana dalı bulmak için GitHub'ın gh komut satırı aracını kullanır."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-review, differential-review, requesting-code-review]

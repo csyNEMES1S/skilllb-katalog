@@ -1,0 +1,26 @@
+id: semgrep
+ad: "Semgrep Güvenlik Taraması"
+kisaAciklama: "Kodu Semgrep kurallarıyla güvenlik açıkları için tarar."
+neIseYarar:
+  - "Kod tabanındaki dilleri algılayıp uygun Semgrep kural setlerini seçer ve tarama planını önce sana onaylatır."
+  - "Onaydan sonra taramaları paralel çalıştırır ve sonuçları tek bir SARIF dosyasında birleştirir."
+  - "Semgrep'in dışarıya kullanım verisi göndermemesi için her komutu --metrics=off ile çalıştırır."
+kategori: guvenlik
+kaynak:
+  repo: trailofbits/skills
+  yol: plugins/static-analysis/skills/semgrep
+  dal: main
+  sha: 196a9073ab10d35bacf111f945e02c00b2c6883a
+ornekCumleler:
+  - "Bu projeyi Semgrep ile güvenlik açıkları için tara."
+  - "Yalnızca önemli güvenlik bulgularını gösteren hızlı bir Semgrep taraması yap."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    neden: "Semgrep'in kurulu olmasını gerektirir; onay ve görev takibi için Claude Code araçlarını kullanır."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [gha-security-review, security-review]

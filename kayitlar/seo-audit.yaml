@@ -1,0 +1,25 @@
+id: seo-audit
+ad: "SEO Denetimi"
+kisaAciklama: "Sitenin arama motoru sorunlarını bulup öneriler verir."
+neIseYarar:
+  - "Bir sitenin arama motoru (SEO) sorunlarını teşhis eder: dizine eklenme, teknik ayarlar ve sayfa içi öğeler."
+  - "Trafik düşüşü, sıralamaya girmeyen sayfa, canonical, hreflang ve yönlendirme gibi sorunları inceler."
+  - "Core Web Vitals ve yerel SEO dahil, önceliklendirilmiş ve uygulanabilir öneriler verir."
+kategori: diger
+kaynak:
+  repo: coreyhaines31/marketingskills
+  yol: skills/seo-audit
+  dal: main
+  sha: c01f0843c4fb84bcd7c1e7fa1908758723ad9ef3
+ornekCumleler:
+  - "Sitemin Google trafiği son ayda düştü, nedenini bulmama yardım et."
+  - "Kafemin sitesi için yerel SEO denetimi yap."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [content-strategy, copywriting, performance-optimization]

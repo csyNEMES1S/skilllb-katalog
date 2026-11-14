@@ -1,0 +1,26 @@
+id: teach
+ad: "Kişisel Öğretmen"
+kisaAciklama: "İstediğin konuyu oturumlar boyunca derslerle öğretir."
+neIseYarar:
+  - "Öğrenmek istediğin bir konuyu, bulunduğun klasörü bir ders çalışma alanına çevirerek birden çok oturumda öğretir."
+  - "Önce neden öğrenmek istediğini sorar, güvenilir kaynaklar bulur ve her dersi kısa, tek bir HTML dosyası olarak hazırlar."
+  - "Öğrendiklerini kayda geçirir; hatırlama ve aralıklı tekrar alıştırmalarıyla kalıcı öğrenmeyi hedefler."
+kategori: diger
+kaynak:
+  repo: mattpocock/skills
+  yol: skills/productivity/teach
+  dal: main
+  sha: ad5400b930b297b0c0cb231ff1ffe42a7da666aa
+ornekCumleler:
+  - "/teach SQL öğrenmek istiyorum"
+  - "/teach Gitar akorlarını sıfırdan öğret"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    neden: "Elle /teach komutuyla açılacak şekilde ayarlı; bu komut biçimini desteklemeyen araçlarda kendiliğinden devreye girmez."
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [academy-guide, interview-me]

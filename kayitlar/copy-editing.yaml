@@ -1,0 +1,25 @@
+id: copy-editing
+ad: "Metin Düzeltici"
+kisaAciklama: "Var olan pazarlama metnini baştan yazmadan sıkılaştırır."
+neIseYarar:
+  - "Var olan pazarlama metnini baştan yazmadan sıkılaştırır, düzeltir ve tazeler."
+  - "Metni açıklık, ton, kanıt gibi konularda ayrı ayrı geçişlerle (yedi tarama) gözden geçirir."
+  - "Yalnızca bir satır istenirse yalnızca o satırı değiştirir; yazarın sesini korur."
+kategori: yazi
+kaynak:
+  repo: coreyhaines31/marketingskills
+  yol: skills/copy-editing
+  dal: main
+  sha: 6d123b4fae5f9160005f75a8870349e4df5a31aa
+ornekCumleler:
+  - "Bu açılış sayfası metnini kısalt ve daha net yap."
+  - "Şu başlık satırını tut mu, değiştir mi? Gerekçesiyle söyle."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [copywriting, doc-coauthoring]

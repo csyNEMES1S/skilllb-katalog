@@ -1,0 +1,25 @@
+id: sharp-edges
+ad: "Tehlikeli Tasarım Avcısı"
+kisaAciklama: "Yanlış kullanıma açık API ve ayarları bulur."
+neIseYarar:
+  - "Yanlış kullanılmaya açık API'leri, tehlikeli yapılandırma seçeneklerini ve kolayca hataya yol açan tasarımları bulur."
+  - "Güvenli kullanımın en kolay yol olup olmadığını, yani varsayılanların güvenli olup olmadığını değerlendirir."
+  - "C, Go, Python, JavaScript, Rust gibi birçok dil için ayrı başvuru notlarıyla çalışır."
+kategori: guvenlik
+kaynak:
+  repo: trailofbits/skills
+  yol: plugins/sharp-edges/skills/sharp-edges
+  dal: main
+  sha: 123037ec8aed26f0d86327cc39137ee5043e5deb
+ornekCumleler:
+  - "Kütüphanemizin şifreleme API'si yanlış kullanıma açık mı, değerlendir."
+  - "Bu yapılandırma dosyasında güvensiz varsayılan ayar var mı bak."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-audit, security-review]

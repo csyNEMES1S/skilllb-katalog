@@ -1,0 +1,25 @@
+id: writing-plans
+ad: "Uygulama Planı Yazıcı"
+kisaAciklama: "Şartnameden adım adım, testli bir uygulama planı yazar."
+neIseYarar:
+  - "Bir şartnameden ya da istek listesinden, projeyi hiç görmemiş birinin uygulayabileceği bir plan yazar."
+  - "Hangi dosyaların oluşturulacağını ya da değişeceğini, adları ve her görevi doğrulayacak testleri tek tek belirtir."
+  - "Her görevi küçük adımlara böler: başarısız testi yaz, çalıştır, kodu yaz, testi geçir, commit et."
+kategori: kod-test
+kaynak:
+  repo: obra/superpowers
+  yol: skills/writing-plans
+  dal: main
+  sha: 8ca22dba9a94f28898bbce59f2537ff4d87c747d
+ornekCumleler:
+  - "Bu şartnameye göre ödeme özelliği için adım adım bir uygulama planı yaz."
+  - "Blog sitesine yorum ekleme işini küçük, testli görevlere bölen bir plan hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [spec-driven-development, test-driven-development, verification-before-completion]

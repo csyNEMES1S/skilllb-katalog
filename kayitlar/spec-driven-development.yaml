@@ -1,0 +1,25 @@
+id: spec-driven-development
+ad: "Önce Şartname"
+kisaAciklama: "Kod yazmadan önce şartname, plan ve görev listesi çıkarır."
+neIseYarar:
+  - "Kod yazmadan önce amaç, kapsam, komutlar, test yaklaşımı ve başarı ölçütlerini içeren bir şartname yazar."
+  - "Şartname onaylanınca plana, sonra küçük görevlere geçer; her aşama bir onay kapısıdır."
+  - "İlk sürüme girmeyecek fikirleri ayrı bir listeye ayırır ve şartnameyi proje ilerledikçe güncel tutar."
+kategori: kod-test
+kaynak:
+  repo: addyosmani/agent-skills
+  yol: skills/spec-driven-development
+  dal: main
+  sha: 480bed13919a6c03193725b4313b7c1a61a83c51
+ornekCumleler:
+  - "Yeni randevu uygulamam için önce bir şartname yazalım."
+  - "Bu özelliğin ilk sürümde ne olacağını, sonraya neyin kalacağını belirleyen bir şartname hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [writing-plans, interview-me, doc-coauthoring]

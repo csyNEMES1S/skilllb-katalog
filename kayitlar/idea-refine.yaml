@@ -1,0 +1,25 @@
+id: idea-refine
+ad: "Fikir Geliştirici"
+kisaAciklama: "Bulanık bir fikri sorularla netleştirip tek sayfaya döker."
+neIseYarar:
+  - "Henüz bulanık bir fikri sorularla netleştirir ve farklı varyasyonlar üretir."
+  - "Seçenekleri gruplar, gizli varsayımları ortaya çıkarır ve fikrin zayıf noktalarını sınar."
+  - "Sonunda üzerinde çalışılabilecek tek sayfalık bir markdown özet hazırlar."
+kategori: diger
+kaynak:
+  repo: addyosmani/agent-skills
+  yol: skills/idea-refine
+  dal: main
+  sha: 24596abf8689b895737c5681a642682c66f58058
+ornekCumleler:
+  - "Mahalle için bir takas uygulaması fikrim var, birlikte geliştirelim."
+  - "Bu iş planının varsayımlarını zorla, zayıf yerlerini göster."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [interview-me, spec-driven-development]
