@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; img-src 'self' https: data:">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; img-src 'self' https: data:; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <title>SkillLB listesi</title>
 <style>
@@ -83,9 +83,15 @@ li.yok b { color: var(--muted); }
   };
   if (en) document.documentElement.lang = "en";
 
+  function gorunmezMi(n) {
+    return n < 0x20 || (n >= 0x7f && n <= 0x9f) || n === 0xad || (n >= 0x200b && n <= 0x200f) ||
+      (n >= 0x2028 && n <= 0x202e) || (n >= 0x2060 && n <= 0x2069) || n === 0xfeff;
+  }
+
   function adTemizle(ham) {
-    var t = String(ham || "").replace(/[\u0000-\u001f\u007f-\u009f]/g, "").trim();
-    return Array.from(t).slice(0, 60).join("");
+    // Denetim karakterleri ve görünmez biçim karakterleri (yön değiştiriciler, sıfır genişlikliler) silinir.
+    var t = Array.from(String(ham || "")).filter(function (c) { return !gorunmezMi(c.codePointAt(0)); }).join("").trim();
+    return Array.from(t).slice(0, 60).join("").trim();
   }
 
   var p = new URLSearchParams(location.hash.replace(/^#/, ""));
