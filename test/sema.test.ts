@@ -207,3 +207,57 @@ describe("KayitSemasi sıkılık ve kaçaklar", () => {
     expect(KayitSemasi.safeParse(k).success).toBe(true);
   });
 });
+
+describe("KatalogSemasi bilinmeyen enum değerleri", () => {
+  it("katalog_bilinmeyen_uyum_durumu_bilinmiyor_olur", () => {
+    const k = ornekKatalog();
+    k.skills[0].uyumluluk.claude.durum = "kismen";
+    const sonuc = KatalogSemasi.parse(k);
+    expect(sonuc.skills[0].uyumluluk.claude.durum).toBe("bilinmiyor");
+    expect(sonuc.skills[0].uyumluluk.antigravity.durum).toBe("bilinmiyor");
+  });
+
+  it("katalog_bilinen_uyum_durumu_korunur", () => {
+    expect(KatalogSemasi.parse(ornekKatalog()).skills[0].uyumluluk.claude.durum).toBe("calisir");
+  });
+
+  it("katalog_bilinmeyen_lisans_durumu_kisitli_olur", () => {
+    const k = ornekKatalog();
+    k.skills[0].lisans.durum = "ozel";
+    expect(KatalogSemasi.parse(k).skills[0].lisans.durum).toBe("kisitli");
+  });
+
+  it("katalog_bilinmeyen_ornek_turu_atilir", () => {
+    const k = ornekKatalog();
+    k.skills[0].ornekler.push({ tur: "ses", baslik: "Dinle", sureSn: 30 });
+    const sonuc = KatalogSemasi.parse(k);
+    expect(sonuc.skills[0].ornekler).toHaveLength(1);
+    expect(sonuc.skills[0].ornekler[0].tur).toBe("gorsel");
+  });
+
+  it("katalog_bicimsiz_enum_alanlari_yine_reddedilir", () => {
+    const eksikDurum = ornekKatalog();
+    delete eksikDurum.skills[0].uyumluluk.claude.durum;
+    expect(KatalogSemasi.safeParse(eksikDurum).success).toBe(false);
+    const sayiLisans = ornekKatalog();
+    sayiLisans.skills[0].lisans.durum = 3;
+    expect(KatalogSemasi.safeParse(sayiLisans).success).toBe(false);
+    const bozukOrnek = ornekKatalog();
+    bozukOrnek.skills[0].ornekler.push({ tur: "video", baslik: "Eksik url" });
+    expect(KatalogSemasi.safeParse(bozukOrnek).success).toBe(false);
+  });
+});
+
+describe("KayitSemasi enum alanları sıkı kalır", () => {
+  it("kayit_bilinmeyen_uyum_durumu_reddedilir", () => {
+    const k = ornekKayit();
+    k.uyumluluk.claude.durum = "kismen";
+    expect(KayitSemasi.safeParse(k).success).toBe(false);
+  });
+
+  it("kayit_bilinmeyen_ornek_turu_reddedilir", () => {
+    const k = ornekKayit();
+    k.ornekler.push({ tur: "ses", baslik: "Dinle", url: "https://example.com/a.mp3" });
+    expect(KayitSemasi.safeParse(k).success).toBe(false);
+  });
+});

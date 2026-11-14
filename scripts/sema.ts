@@ -162,7 +162,31 @@ const kategorilerSemasi = z
   )
   .transform(() => KATEGORILER);
 
-const uyum = z.object(uyumAlanlari);
+/**
+ * Bilinmeyen enum değeri için hoşgörülü alan: boş olmayan bir metin olmalı, tanınmıyorsa
+ * `yedek` değerine düşer (eski uygulama sürümü yeni bir değer yüzünden kataloğu reddetmesin).
+ */
+function yumusakEnum<T extends string>(degerler: readonly T[], yedek: T) {
+  return z
+    .custom<T>((v) => typeof v === "string" && v.length > 0, "boş olmayan bir metin olmalı")
+    .transform((v): T => ((degerler as readonly string[]).includes(v) ? v : yedek));
+}
+
+const UYUM_DURUMLARI = ["calisir", "calismaz", "bilinmiyor"] as const;
+const LISANS_DURUMLARI = ["acik", "kisitli", "yok"] as const;
+const ORNEK_TURLERI = ["gorsel", "video"] as const;
+
+const uyum = z.object({ ...uyumAlanlari, durum: yumusakEnum(UYUM_DURUMLARI, "bilinmiyor") });
+
+/** Türü tanınmayan örnekler doğrulanmadan önce listeden atılır; tanınanlar tam doğrulanır. */
+const yayinOrnekleri = z
+  .array(z.any())
+  .transform((liste) =>
+    liste.filter(
+      (o) => !(typeof o === "object" && o !== null && typeof o.tur === "string" && !(ORNEK_TURLERI as readonly string[]).includes(o.tur)),
+    ),
+  )
+  .pipe(z.array(z.object(ornekAlanlari)));
 
 const SkillSemasi: z.ZodType<Skill> = z.object({
   id: z.string().regex(/^[a-z0-9][a-z0-9-]{0,63}$/),
@@ -178,12 +202,12 @@ const SkillSemasi: z.ZodType<Skill> = z.object({
   dogrulandi: z.boolean(),
   oneCikan: z.boolean(),
   haftaninSkilli: z.boolean(),
-  ornekler: z.array(z.object(ornekAlanlari)),
+  ornekler: yayinOrnekleri,
   benzerler: z.array(z.string()),
   otomatikGuncelle: z.boolean(),
   surum: metin,
   guncellemeTarihi: z.string().datetime({ offset: true }),
-  lisans: z.object({ spdx: z.string().nullable(), durum: z.enum(["acik", "kisitli", "yok"]) }),
+  lisans: z.object({ spdx: z.string().nullable(), durum: yumusakEnum(LISANS_DURUMLARI, "kisitli") }),
   yildiz: z.number().int().nonnegative(),
   yazar: metin,
   readme: z.string(),
