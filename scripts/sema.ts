@@ -40,18 +40,27 @@ export type Skill = Required<Omit<Kayit, "kaynak" | "gorseller" | "nasilKullanil
 export type Katalog = { surum: 1; olusturulma: string; kategoriler: typeof KATEGORILER; skills: Skill[] };
 
 // ---- Ortak parçalar ----
+//
+// İleriye uyumluluk: Bu dosya uygulamaya kopyalanır ve uygulama indirdiği catalog.json'ı
+// KatalogSemasi ile doğrular. Bu yüzden yayınlanan Skill/Katalog nesneleri bilinmeyen alanları
+// reddetmez, sessizce atar (zod varsayılanı). Bilinmeyen bir kategori "diger"e düşer. Sahibinin
+// elle yazdığı Kayit ise yazım hatalarını yakalamak için `.strict()` kalır.
 
 const KATEGORI_IDLERI = KATEGORILER.map((k) => k.id) as unknown as [KategoriId, ...KategoriId[]];
 
 const metin = z.string().trim().min(1, "boş olamaz");
 const metinListesi = z.array(metin);
 
-/** Göreli yol: boş değil, "/" ya da "\" ile başlamaz, ".." parçası içermez. */
+/**
+ * Göreli yol ("/" ayraçlı). Reddedilenler: baştaki "/", ters bölü, ":" (Windows sürücü öneki),
+ * denetim karakterleri, boş parça ("a//b", sondaki "/") ve yalnız nokta/boşluktan oluşan parça
+ * (".", "..", ".. " — Windows sondaki nokta ve boşlukları atar).
+ */
 const guvenliYol = z
   .string()
   .min(1, "boş olamaz")
-  .refine((y) => !/^[\\/]/.test(y), "\"/\" ile başlayamaz")
-  .refine((y) => !y.split(/[\\/]/).includes(".."), "\"..\" içeremez");
+  .refine((y) => !/[\\:\u0000-\u001f\u007f]/.test(y), "ters bölü, \":\" ya da denetim karakteri içeremez")
+  .refine((y) => y.split("/").every((p) => p.length > 0 && !/^[. ]+$/.test(p)), "boş, \".\" ya da \"..\" parça içeremez");
 
 const httpsUrl = z.string().url("geçerli bir URL olmalı").refine((u) => u.startsWith("https://"), "https ile başlamalı");
 
@@ -63,44 +72,51 @@ const gorselYolu = z
     "repo içi göreli yol ya da https URL olmalı",
   );
 
-const kaynakSemasi = z
-  .object({
-    repo: z
-      .string()
-      .regex(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/, "\"sahip/ad\" biçiminde olmalı")
-      // Desen "../x" gibi yalnız noktadan oluşan parçaları da kabul ediyor; onları ayrıca reddet.
-      .refine((r) => r.split("/").every((p) => !/^\.+$/.test(p)), "\".\" ya da \"..\" parça olamaz"),
-    yol: guvenliYol,
-    dal: metin,
-    sha: z.string().regex(/^[0-9a-f]{40}$/, "40 karakterlik commit sha olmalı"),
-  })
-  .strict();
+/** Git dal adı (git check-ref-format kurallarının özü). */
+const dalAdi = z
+  .string()
+  .min(1, "boş olamaz")
+  .refine(
+    (d) =>
+      !/[\s\u0000-\u001f\u007f~^:?*[\\]/.test(d) &&
+      !d.includes("..") &&
+      !d.includes("@{") &&
+      !d.startsWith("-") &&
+      !d.endsWith(".lock") &&
+      d.split("/").every((p) => p.length > 0 && !p.startsWith(".")),
+    "geçerli bir git dal adı olmalı",
+  );
 
-const UyumSemasi: z.ZodType<Uyum> = z
-  .object({
-    durum: z.enum(["calisir", "calismaz", "bilinmiyor"]),
-    neden: metin.optional(),
-    sahibiDenedi: z.boolean(),
-  })
-  .strict();
+const kaynakAlanlari = {
+  repo: z
+    .string()
+    .regex(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/, "\"sahip/ad\" biçiminde olmalı")
+    // Desen "../x" gibi yalnız noktadan oluşan parçaları da kabul ediyor; onları ayrıca reddet.
+    .refine((r) => r.split("/").every((p) => !/^\.+$/.test(p)), "\".\" ya da \"..\" parça olamaz"),
+  yol: guvenliYol,
+  dal: dalAdi,
+  sha: z.string().regex(/^[0-9a-f]{40}$/, "40 karakterlik commit sha olmalı"),
+};
 
-const uyumlulukSemasi = z.object({ claude: UyumSemasi, antigravity: UyumSemasi }).strict();
+const uyumAlanlari = {
+  durum: z.enum(["calisir", "calismaz", "bilinmiyor"]),
+  neden: metin.optional(),
+  sahibiDenedi: z.boolean(),
+};
 
-const OrnekSemasi: z.ZodType<Ornek> = z
-  .object({
-    tur: z.enum(["gorsel", "video"]),
-    baslik: metin,
-    uretici: metin.optional(),
-    url: httpsUrl,
-    kapak: httpsUrl.optional(),
-  })
-  .strict();
+const ornekAlanlari = {
+  tur: z.enum(["gorsel", "video"]),
+  baslik: metin,
+  uretici: metin.optional(),
+  url: httpsUrl,
+  kapak: httpsUrl.optional(),
+};
 
-const nasilKullanilirSemasi = z
-  .object({ claude: metinListesi.optional(), antigravity: metinListesi.optional() })
-  .strict();
+const nasilKullanilirAlanlari = { claude: metinListesi.optional(), antigravity: metinListesi.optional() };
 
-// ---- Kayıt ----
+// ---- Kayıt (sıkı: bilinmeyen alan yazım hatasıdır) ----
+
+const sikiUyum = z.object(uyumAlanlari).strict();
 
 export const KayitSemasi: z.ZodType<Kayit> = z
   .object({
@@ -109,69 +125,76 @@ export const KayitSemasi: z.ZodType<Kayit> = z
     kisaAciklama: metin,
     neIseYarar: metinListesi,
     kategori: z.enum(KATEGORI_IDLERI),
-    kaynak: kaynakSemasi,
+    kaynak: z.object(kaynakAlanlari).strict(),
     gorseller: z
       .object({ ikon: gorselYolu.optional(), kapak: gorselYolu.optional(), onceSonra: z.array(gorselYolu).optional() })
       .strict()
       .optional(),
     ornekCumleler: metinListesi,
-    nasilKullanilir: nasilKullanilirSemasi.optional(),
-    uyumluluk: uyumlulukSemasi,
+    nasilKullanilir: z.object(nasilKullanilirAlanlari).strict().optional(),
+    uyumluluk: z.object({ claude: sikiUyum, antigravity: sikiUyum }).strict(),
     dogrulandi: z.boolean().optional(),
     oneCikan: z.boolean().optional(),
     haftaninSkilli: z.boolean().optional(),
-    ornekler: z.array(OrnekSemasi).optional(),
+    ornekler: z.array(z.object(ornekAlanlari).strict()).optional(),
     benzerler: z.array(z.string()).optional(),
     otomatikGuncelle: z.boolean().default(false),
   })
   .strict();
 
-// ---- Katalog ----
+// ---- Katalog (hoşgörülü: bilinmeyen alanlar atılır) ----
 
-const SkillSemasi: z.ZodType<Skill> = z
-  .object({
-    id: z.string().regex(/^[a-z0-9][a-z0-9-]{0,63}$/),
-    ad: metin,
-    kisaAciklama: metin,
-    neIseYarar: metinListesi,
-    kategori: z.enum(KATEGORI_IDLERI),
-    kaynak: kaynakSemasi.extend({ url: httpsUrl }),
-    gorseller: z
-      .object({ ikon: httpsUrl.optional(), kapak: httpsUrl.optional(), onceSonra: z.array(httpsUrl) })
-      .strict(),
-    ornekCumleler: metinListesi,
-    nasilKullanilir: nasilKullanilirSemasi,
-    uyumluluk: uyumlulukSemasi,
-    dogrulandi: z.boolean(),
-    oneCikan: z.boolean(),
-    haftaninSkilli: z.boolean(),
-    ornekler: z.array(OrnekSemasi),
-    benzerler: z.array(z.string()),
-    otomatikGuncelle: z.boolean(),
-    surum: metin,
-    guncellemeTarihi: z.string().datetime({ offset: true }),
-    lisans: z
-      .object({ spdx: z.string().nullable(), durum: z.enum(["acik", "kisitli", "yok"]) })
-      .strict(),
-    yildiz: z.number().int().nonnegative(),
-    yazar: metin,
-    readme: z.string(),
-    dosyalar: z.array(z.object({ yol: guvenliYol, boyut: z.number().int().nonnegative() }).strict()),
-    boyut: z.number().int().nonnegative(),
-    guvenlik: z.object({ betikler: z.array(z.string()), agIpucu: z.boolean() }).strict(),
-  })
-  .strict();
+/** Bilinmeyen kategori kimliği eski uygulama sürümlerinde "diger" olarak gösterilir. */
+const skillKategorisi = z
+  .custom<KategoriId>((v) => typeof v === "string" && v.length > 0, "kategori boş olamaz")
+  .transform((v): KategoriId => ((KATEGORI_IDLERI as readonly string[]).includes(v) ? v : "diger"));
 
-const kategorilerSemasi = z.custom<typeof KATEGORILER>(
-  (v) => JSON.stringify(v) === JSON.stringify(KATEGORILER),
-  "kategoriler sabit listeyle aynı olmalı",
-);
+/**
+ * Katalogdaki kategori listesi biçim olarak denetlenir, ardından bu sürümün bildiği sabit listeyle
+ * değiştirilir (yeni kategoriler eski sürümde ayrı raf açmaz, skill'leri "diger"e düşer).
+ */
+const kategorilerSemasi = z
+  .custom<typeof KATEGORILER>(
+    (v) =>
+      Array.isArray(v) &&
+      v.every((k) => typeof k === "object" && k !== null && typeof k.id === "string" && typeof k.ad === "string"),
+    "kategoriler { id, ad } listesi olmalı",
+  )
+  .transform(() => KATEGORILER);
 
-export const KatalogSemasi: z.ZodType<Katalog> = z
-  .object({
-    surum: z.literal(1),
-    olusturulma: z.string().datetime({ offset: true }),
-    kategoriler: kategorilerSemasi,
-    skills: z.array(SkillSemasi),
-  })
-  .strict();
+const uyum = z.object(uyumAlanlari);
+
+const SkillSemasi: z.ZodType<Skill> = z.object({
+  id: z.string().regex(/^[a-z0-9][a-z0-9-]{0,63}$/),
+  ad: metin,
+  kisaAciklama: metin,
+  neIseYarar: metinListesi,
+  kategori: skillKategorisi,
+  kaynak: z.object({ ...kaynakAlanlari, url: httpsUrl }),
+  gorseller: z.object({ ikon: httpsUrl.optional(), kapak: httpsUrl.optional(), onceSonra: z.array(httpsUrl) }),
+  ornekCumleler: metinListesi,
+  nasilKullanilir: z.object(nasilKullanilirAlanlari),
+  uyumluluk: z.object({ claude: uyum, antigravity: uyum }),
+  dogrulandi: z.boolean(),
+  oneCikan: z.boolean(),
+  haftaninSkilli: z.boolean(),
+  ornekler: z.array(z.object(ornekAlanlari)),
+  benzerler: z.array(z.string()),
+  otomatikGuncelle: z.boolean(),
+  surum: metin,
+  guncellemeTarihi: z.string().datetime({ offset: true }),
+  lisans: z.object({ spdx: z.string().nullable(), durum: z.enum(["acik", "kisitli", "yok"]) }),
+  yildiz: z.number().int().nonnegative(),
+  yazar: metin,
+  readme: z.string(),
+  dosyalar: z.array(z.object({ yol: guvenliYol, boyut: z.number().int().nonnegative() })),
+  boyut: z.number().int().nonnegative(),
+  guvenlik: z.object({ betikler: z.array(z.string()), agIpucu: z.boolean() }),
+});
+
+export const KatalogSemasi: z.ZodType<Katalog> = z.object({
+  surum: z.literal(1),
+  olusturulma: z.string().datetime({ offset: true }),
+  kategoriler: kategorilerSemasi,
+  skills: z.array(SkillSemasi),
+});
