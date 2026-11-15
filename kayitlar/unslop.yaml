@@ -10,7 +10,7 @@ kaynak:
   repo: heydamir/unslop
   yol: skills/unslop
   dal: main
-  sha: 97daa3eb365670ea3f87ed85356cbfcee18105a5
+  sha: 5cd3b65ceed91782f9d339d3d2eff834fdaf5495
 gorseller:
   ikon: gorseller/unslop/ikon.svg
   kapak: gorseller/unslop/kapak.svg
