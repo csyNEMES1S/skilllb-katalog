@@ -125,14 +125,16 @@ const CEVRILMEMIS = "# TASLAK (keşif): Türkçe metinleri düzeltin";
 /** Keşfin yazdığı ve henüz çevrilmemiş taslak mı? */
 export const cevrilecekMi = (yamlMetni: string) => yamlMetni.replace(/^\uFEFF/, "").startsWith(CEVRILMEMIS);
 
-/** Taslağın Türkçe alanlarını değiştirir; kaynak, en, görseller ve yorumlar korunur. */
+/** Taslağın Türkçe alanlarını değiştirir; kaynak, en, görseller ve diğer yorumlar korunur. */
 export function taslakCevir(yamlMetni: string, tr: TurkceMetin): string {
-  const belge = parseDocument(yamlMetni);
+  // Eski başlık satırı metinden çıkarılır (YAML yorumu olarak ilk alana yapışıp kalmasın).
+  const govde = yamlMetni.replace(/^﻿/, "").replace(/^# TASLAK[^\n]*\r?\n/, "");
+  const belge = parseDocument(govde);
   belge.set("ad", tr.ad);
   belge.set("kisaAciklama", tr.kisaAciklama);
   belge.set("neIseYarar", tr.neIseYarar);
   belge.set("kategori", tr.kategori);
   belge.set("ornekCumleler", tr.ornekCumleler);
-  belge.commentBefore = " TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.";
-  return belge.toString({ lineWidth: 0 });
+  const baslik = "# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.";
+  return `${baslik}\n${belge.toString({ lineWidth: 0 })}`;
 }

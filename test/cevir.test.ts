@@ -79,6 +79,7 @@ describe("taslakCevir", () => {
     const tr = JSON.parse(iyiYanit);
     const yeni = taslakCevir(taslak, tr);
     expect(cevrilecekMi(yeni)).toBe(false);
+    expect(yeni.match(/# TASLAK/g)).toHaveLength(1);
     expect(yeni.split("\n")[0]).toContain("Claude çevirisi");
     const k = KayitSemasi.parse(parse(yeni));
     expect(k).toMatchObject({ ad: "Test Yazarı", kisaAciklama: "Kodun için test yazar.", kategori: "kod-test" });
