@@ -1,19 +1,9 @@
 # Keşif kuyruğu: bilgisayardaki skill indeksinden (2026-11-15). Her gün baştan 10 aday işlenir, incelenen satırlar silinir.
 # Biçim: sahip/ad:klasör
-alirezarezvani/claude-skills:marketing-skill/skills/ab-test-setup
-anthropics/claude-plugins-official:external_plugins/discord/skills/access
-JuliusBrussee/caveman:plugins/caveman/skills/cavecrew
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/ai-behavior-trees-utility-ai
-leonxlnx/taste-skill:skills/taste-skill
 knifelemon/filee:skills/filee
-nutlope/hallmark:skills/hallmark
-alirezarezvani/claude-skills:ra-qm-team/access-lifecycle/skills/access-lifecycle
-anthropics/claude-plugins-official:plugins/plugin-dev/skills/agent-development
-JuliusBrussee/caveman:skills/caveman-commit
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/audio-design
 alirezarezvani/claude-skills:marketing-skill/skills/ad-creative
-anthropics/claude-plugins-official:plugins/mcp-server-dev/skills/build-mcp-app
-JuliusBrussee/caveman:plugins/caveman/skills/caveman-compress
 gamedev-skills/awesome-gamedev-agent-skills:skills/other-engines/bevy-ecs
 alirezarezvani/claude-skills:engineering-team/skills/adversarial-reviewer
 anthropics/claude-plugins-official:plugins/mcp-server-dev/skills/build-mcp-server

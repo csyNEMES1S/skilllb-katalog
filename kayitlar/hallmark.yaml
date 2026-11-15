@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: hallmark
+ad: Hallmark
+kisaAciklama: Design skill for websites and new pages that look…
+neIseYarar:
+  - Design skill for websites and new pages that look designed, not generated.
+  - Use when the user asks to build or design something new, or names Hallmark.
+  - Never use it on an existing design unless the user names Hallmark, as in `/hallmark redesign <path>`.
+kategori: tasarim
+kaynak:
+  repo: Nutlope/hallmark
+  yol: skills/hallmark
+  dal: main
+  sha: ffed480cc06a3fabef4254b8879c7a35e20837fb
+gorseller:
+  ikon: gorseller/hallmark/ikon.svg
+  kapak: gorseller/hallmark/kapak.svg
+ornekCumleler:
+  - Hallmark skill'ini kullanarak bu işi yap.
+  - /hallmark
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Hallmark
+  kisaAciklama: Design skill for websites and new pages that look…
+  neIseYarar:
+    - Design skill for websites and new pages that look designed, not generated.
+    - Use when the user asks to build or design something new, or names Hallmark.
+    - Never use it on an existing design unless the user names Hallmark, as in `/hallmark redesign <path>`.

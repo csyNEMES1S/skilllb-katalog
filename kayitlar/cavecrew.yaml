@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: cavecrew
+ad: Cavecrew
+kisaAciklama: When to delegate to `cavecrew-investigator` (locate code)…
+neIseYarar:
+  - When to delegate to `cavecrew-investigator` (locate code), `cavecrew-builder` (1-2 file edit) or `cavecrew-reviewer` (diff review) instead of working inline or using `Explore`.
+  - Their output is compressed, so main context lasts longer.
+  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+kategori: kod-test
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: plugins/caveman/skills/cavecrew
+  dal: main
+  sha: f692a3d0cb48962fd3315a981c9edde9f11d86be
+gorseller:
+  ikon: gorseller/cavecrew/ikon.svg
+  kapak: gorseller/cavecrew/kapak.svg
+ornekCumleler:
+  - Cavecrew skill'ini kullanarak bu işi yap.
+  - /cavecrew
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Cavecrew
+  kisaAciklama: When to delegate to `cavecrew-investigator` (locate code)…
+  neIseYarar:
+    - When to delegate to `cavecrew-investigator` (locate code), `cavecrew-builder` (1-2 file edit) or `cavecrew-reviewer` (diff review) instead of working inline or using `Explore`.
+    - Their output is compressed, so main context lasts longer.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.

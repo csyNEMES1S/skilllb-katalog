@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: caveman-compress
+ad: Caveman Compress
+kisaAciklama: Compress a memory file such as CLAUDE.md or a todo list…
+neIseYarar:
+  - Compress a memory file such as CLAUDE.md or a todo list into caveman format to save input tokens, keeping a readable backup.
+  - Sends the file's text to the configured model provider.
+  - "Trigger: /caveman-compress."
+kategori: diger
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: plugins/caveman/skills/caveman-compress
+  dal: main
+  sha: f5523a8e7bd09c30a2e218ca1afe7a1dab5c09ce
+gorseller:
+  ikon: gorseller/caveman-compress/ikon.svg
+  kapak: gorseller/caveman-compress/kapak.svg
+ornekCumleler:
+  - Caveman Compress skill'ini kullanarak bu işi yap.
+  - /caveman-compress
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Caveman Compress
+  kisaAciklama: Compress a memory file such as CLAUDE.md or a todo list…
+  neIseYarar:
+    - Compress a memory file such as CLAUDE.md or a todo list into caveman format to save input tokens, keeping a readable backup.
+    - Sends the file's text to the configured model provider.
+    - "Trigger: /caveman-compress."
