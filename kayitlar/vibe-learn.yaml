@@ -1,0 +1,39 @@
+id: vibe-learn
+ad: "Öğrenerek Kodlama"
+kisaAciklama: "Tasarımı sen yaparsın, yapay zekâ geri bildirim verip yazar."
+neIseYarar:
+  - "Kodlarken öğrenmeni önceler: önce senin yaklaşımını sorar, kararları sana bırakır ve akıl yürütmene geri bildirim verir."
+  - "Bilmediğin kavramları sade biçimde anlatır; sen onaylayınca konuşulan kodu yazar ve ne yaptığını açıklar."
+  - "Seviyeni, tercihlerini ve ilerlemeni projedeki küçük bir not klasöründe tutar; sonraki oturumlarda kaldığın yerden devam eder."
+kategori: kod-test
+kaynak:
+  repo: nykooi1/vibe-wise
+  yol: skills/learn
+  dal: main
+  sha: 6cf815b34906812aa8e9a21c7ec12c7c3630ced0
+gorseller:
+  ikon: gorseller/vibe-learn/ikon.svg
+  kapak: gorseller/vibe-learn/kapak.svg
+ornekCumleler:
+  - "/learn Basit bir yapılacaklar listesi uygulaması yapmak istiyorum"
+  - "/learn Bu projedeki giriş sistemini anlayarak geliştirmek istiyorum"
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Elle /learn komutuyla açılacak şekilde ayarlı; projede .vibe-wise adlı bir not klasörü oluşturur."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [teach, interview-me]
+en:
+  ad: "Learn While Coding"
+  kisaAciklama: "You design, the AI gives feedback and writes the code."
+  neIseYarar:
+    - "Puts your learning first while coding: asks for your approach first, leaves decisions to you and gives feedback on your reasoning."
+    - "Explains unfamiliar concepts in plain terms; once you approve, writes the agreed code and explains what it does."
+    - "Keeps your level, preferences and progress in a small notes folder in the project and picks up where you left off next time."
+  ornekCumleler:
+    - "/learn I want to build a simple to-do app"
+    - "/learn I want to improve the login system in this project while understanding it"

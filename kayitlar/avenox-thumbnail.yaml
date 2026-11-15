@@ -1,0 +1,39 @@
+id: avenox-thumbnail
+ad: "YouTube Kapak Resmi Üretici"
+kisaAciklama: "Maskotlu, dikkat çekici YouTube kapakları üretir."
+neIseYarar:
+  - "Videonuza uygun 2-4 kelimelik çarpıcı bir başlık, maskot ve araç logosuyla kapak resmi tasarlar."
+  - "Aynı anda birkaç alternatif üretir, tekrar eden resimleri eler ve hangisinin daha iyi olduğunu söyler."
+  - "Sonucu YouTube'un istediği 1280x720 boyutuna getirir; A/B testi için hazır bırakır."
+kategori: tasarim
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/avenox-thumbnail
+  dal: main
+  sha: d3a165dbfe144eed6ce58ed61f51467872df5a32
+gorseller:
+  ikon: gorseller/avenox-thumbnail/ikon.svg
+  kapak: gorseller/avenox-thumbnail/kapak.svg
+ornekCumleler:
+  - "Şu videom için üç farklı kapak resmi alternatifi üret."
+  - "Maskotumu kullanarak eski videolarıma yeni kapaklar hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Resim üretmek için Codex komut satırı aracı (OpenAI hesabı) ve codex-fleet skill'i gerekir; maskot referans resmini siz vermelisiniz. Boyutlandırma adımı Mac'e göre yazılmış."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [canvas-design]
+en:
+  ad: "YouTube Thumbnail Factory"
+  kisaAciklama: "Makes eye-catching mascot YouTube thumbnails."
+  neIseYarar:
+    - "Designs a thumbnail with a bold 2-4 word hook, your mascot and a tool logo that fits the video."
+    - "Generates several alternatives at once, removes duplicates and recommends the best one."
+    - "Resizes the result to YouTube's 1280x720 and leaves it ready for A/B testing."
+  ornekCumleler:
+    - "Make three different thumbnail options for my latest video."
+    - "Use my mascot to create new thumbnails for my older videos."

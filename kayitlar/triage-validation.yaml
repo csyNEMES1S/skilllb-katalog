@@ -1,0 +1,37 @@
+id: triage-validation
+ad: "Bulgu Doğrulama Kapısı"
+kisaAciklama: "Raporlamadan önce bulgunun geçerli olup olmadığını sınar."
+neIseYarar:
+  - "Yalnız izinli testlerde kullanın: bir bulguyu raporlamadan önce 7 soruluk kapıdan geçirir."
+  - "Kapsam dışı, bilinen ya da etkisi kanıtlanamayan bulguları erkenden ayıklamanızı sağlar."
+  - "Sahte pozitif tuzaklarını, önem derecesi ölçütlerini ve gönderim öncesi hızlı kontrolü anlatır."
+kategori: guvenlik
+kaynak:
+  repo: elementalsouls/Claude-BugHunter
+  yol: skills/triage-validation
+  dal: main
+  sha: 9a1863c682d3dcb0808aa3efdb42251e731cddda
+gorseller:
+  ikon: gorseller/triage-validation/ikon.svg
+  kapak: gorseller/triage-validation/kapak.svg
+ornekCumleler:
+  - "Bu bulguyu raporlamadan önce geçerli mi diye 7 soruluk kapıdan geçir."
+  - "Bu 400 hatası gerçekten kimlik doğrulama atlatması mı, nasıl doğrularım?"
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Finding Validation Gate"
+  kisaAciklama: "Checks whether a finding is valid before you report it."
+  neIseYarar:
+    - "Use only on authorized tests: runs a finding through a 7-question gate before you report it."
+    - "Helps you drop out-of-scope, known or unproven findings early."
+    - "Explains false-positive traps, severity checks and a quick pre-submit review."
+  ornekCumleler:
+    - "Run this finding through the 7-question gate before I report it."
+    - "Is this 400 error really an auth bypass? How do I verify?"

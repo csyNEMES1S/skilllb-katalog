@@ -1,0 +1,38 @@
+id: supabase-postgres-best-practices
+ad: "Postgres Uzmanı"
+kisaAciklama: "Postgres tablo ve sorgularını daha hızlı, güvenli yazar."
+neIseYarar:
+  - "Tablo tasarımı, indeks ve SQL sorgusu yazarken Supabase'in öncelik sıralı en iyi uygulama kurallarını uygular."
+  - "Yavaş sorgu, bağlantı sorunu, kilitlenme ve yanlış kullanıcıya görünen satırlar gibi sorunların nedenini bulur."
+  - "Satır güvenliği (RLS), taşıma dosyaları (migration) ve vektör arama gibi konularda hazır doğru/yanlış örnekler sunar."
+kategori: kod-test
+kaynak:
+  repo: supabase/agent-skills
+  yol: skills/supabase-postgres-best-practices
+  dal: main
+  sha: 1207767388a0ffb55f21fb4e6988fee96942431d
+gorseller:
+  ikon: gorseller/supabase-postgres-best-practices/ikon.svg
+  kapak: gorseller/supabase-postgres-best-practices/kapak.svg
+ornekCumleler:
+  - "Bu sorgu çok yavaş çalışıyor, nedenini bul ve düzelt."
+  - "Siparişler için doğru indeksleri öner ve tabloyu yeniden tasarla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [supabase, performance-optimization]
+en:
+  ad: "Postgres Expert"
+  kisaAciklama: "Writes faster, safer Postgres tables and queries."
+  neIseYarar:
+    - "Applies Supabase's prioritized best-practice rules when designing tables, indexes and SQL queries."
+    - "Finds the cause of slow queries, connection problems, locking and rows visible to the wrong user."
+    - "Offers ready-made right/wrong examples for row-level security, migrations and vector search."
+  ornekCumleler:
+    - "This query is very slow, find out why and fix it."
+    - "Suggest the right indexes for orders and redesign the table."

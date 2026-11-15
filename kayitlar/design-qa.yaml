@@ -1,0 +1,39 @@
+id: design-qa
+ad: "Arayüz Bitiş Kontrolü"
+kisaAciklama: "Bitti denmeden önce arayüzün eksik yanlarını yakalar."
+neIseYarar:
+  - "Hiçbir şey yapmayan düğmeleri, kırık bağlantıları, taslak yazıları ve kaldırılmış odak çerçevelerini kodda bulur."
+  - "Her ekranda yükleniyor, boş, hata gibi durumların hazırlanıp hazırlanmadığını bir tabloyla denetler."
+  - "Tarayıcıda görünen sayfanın renk karşıtlığını, tıklama alanı boyutunu ve dar ekran uyumunu ölçer; bitiş onay formu doldurur."
+kategori: tasarim
+kaynak:
+  repo: alirezarezvani/claude-skills
+  yol: product-team/design-qa/skills/design-qa
+  dal: main
+  sha: 99ed0a750b6033f35a69083ba7cf2070bcb5c30c
+gorseller:
+  ikon: gorseller/design-qa/ikon.svg
+  kapak: gorseller/design-qa/kapak.svg
+ornekCumleler:
+  - "Bu sayfayı yayına almadan önce eksik ve bitmemiş yerleri kontrol et."
+  - "Yapay zekânın yaptığı bu ekran sıradan ve yarım görünüyor, neleri eksik?"
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Python 3 gerektirir; canlı sayfayı yakalamak için Node.js ve kendi projenizde Playwright kurulu olması gerekir. Betikler internete bağlanmaz."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [a11y-audit, frontend-design]
+en:
+  ad: "UI Finish Check"
+  kisaAciklama: "Catches what is missing from a UI before it is called done."
+  neIseYarar:
+    - "Finds buttons that do nothing, broken links, placeholder text and removed focus outlines in the code."
+    - "Checks with a matrix whether every screen has states such as loading, empty and error."
+    - "Measures the rendered page for color contrast, tap target size and narrow-screen fit, and fills in a sign-off sheet."
+  ornekCumleler:
+    - "Check this page for anything missing or unfinished before we ship."
+    - "This AI-made screen looks generic and half-done; what is missing?"

@@ -1,0 +1,37 @@
+id: evidence-hygiene
+ad: "Kanıt Hijyeni ve Maskeleme"
+kisaAciklama: "Rapor kanıtında çerez ve kişisel veriyi gizlemeyi öğretir."
+neIseYarar:
+  - "Yalnız izinli testlerde kullanın: ekran görüntüsü ve HAR dosyalarında oturum çerezlerini maskelemeyi anlatır."
+  - "Başkasının kişisel verisini kanıtta nasıl kapatacağınızı ve neyin görünür kalabileceğini söyler."
+  - "Kanıt çekme sırası, dosya adlandırma ve gönderim sonrası parola yenileme adımlarını sıralar."
+kategori: guvenlik
+kaynak:
+  repo: elementalsouls/Claude-BugHunter
+  yol: skills/evidence-hygiene
+  dal: main
+  sha: 9a1863c682d3dcb0808aa3efdb42251e731cddda
+gorseller:
+  ikon: gorseller/evidence-hygiene/ikon.svg
+  kapak: gorseller/evidence-hygiene/kapak.svg
+ornekCumleler:
+  - "Rapora ekleyeceğim HAR dosyasından çerez ve token değerlerini nasıl temizlerim?"
+  - "PoC ekran görüntüsünü çekmeden önce kontrol edeceğim şeyleri listele."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Evidence Hygiene and Redaction"
+  kisaAciklama: "Hides cookies and personal data in report evidence."
+  neIseYarar:
+    - "Use only on authorized tests: explains how to mask session cookies in screenshots and HAR files."
+    - "Shows how to cover other people's personal data in evidence and what can safely stay visible."
+    - "Lists capture order, file naming and post-submission credential rotation steps."
+  ornekCumleler:
+    - "How do I strip cookie and token values from the HAR I'm attaching?"
+    - "List what to check before I take a PoC screenshot."

@@ -1,0 +1,39 @@
+id: omp-fleet
+ad: "Oh My Pi Filo Yöneticisi"
+kisaAciklama: "Oh My Pi (omp) ile ucuz ve paralel kod işleri yürütür."
+neIseYarar:
+  - "Oh My Pi komut satırı aracıyla kod işlerini ve ucuz model katmanıyla bağlam toplama işlerini yürütür."
+  - "Ücretli yedek sağlayıcılara habersiz para harcanmasın diye yalnızca kendi aboneliğinizi kullanan bir ayar dosyası kullanır."
+  - "Tek süreç içinde alt ajanlarla ya da birden çok süreçle paralel çalışır; bellek maliyetini hesaba katar."
+kategori: kod-test
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/omp-fleet
+  dal: main
+  sha: 8a8035a989ea02cd5605baf397082f43eae55aca
+gorseller:
+  ikon: gorseller/omp-fleet/ikon.svg
+  kapak: gorseller/omp-fleet/kapak.svg
+ornekCumleler:
+  - "omp ile bu depodaki bütün çağrıları bulup özetle."
+  - "Ucuz modelle şu 40 dosyadaki tutarsızlıkları tara."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Oh My Pi (omp) aracını ve OpenAI Codex aboneliğini siz kurmalısınız. Görevler onaysız (yolo) modda çalışır; dikkatli kullanın. Her omp süreci yaklaşık 1,7 GB bellek tutabilir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [codex-fleet]
+en:
+  ad: "Oh My Pi Fleet"
+  kisaAciklama: "Runs cheap parallel coding jobs with Oh My Pi."
+  neIseYarar:
+    - "Runs code tasks and cheap-tier context gathering through the Oh My Pi (omp) CLI."
+    - "Uses a config overlay so only your own subscription is billed, never a metered fallback."
+    - "Fans out with in-process subagents or multiple processes while budgeting memory."
+  ornekCumleler:
+    - "Use omp to find and summarize every caller of this function."
+    - "Scan these 40 files for drift with the cheap model tier."

@@ -1,0 +1,41 @@
+id: supabase
+ad: "Supabase Rehberi"
+kisaAciklama: "Supabase işlerinde güncel ve güvenli yol gösterir."
+neIseYarar:
+  - "Supabase veritabanı, giriş (Auth), depolama ve Edge Function işlerinde güncel belgelere bakarak ilerler."
+  - "Satır güvenliği (RLS), anahtar gizliliği ve görünümler gibi sık yapılan güvenlik hatalarını kontrol listesiyle önler."
+  - "Hata ayıklamada logları ve belgeleri inceler, tablo değişikliklerini düzgün biçimde taşıma dosyalarına (migration) çevirir."
+kategori: kod-test
+kaynak:
+  repo: supabase/agent-skills
+  yol: skills/supabase
+  dal: main
+  sha: c9be0e931b7930f7d02126d04774d904c381e7d7
+gorseller:
+  ikon: gorseller/supabase/ikon.svg
+  kapak: gorseller/supabase/kapak.svg
+ornekCumleler:
+  - "Supabase'de kullanıcıların yalnız kendi satırlarını görmesi için güvenlik kuralı yaz."
+  - "Supabase'de bu tabloya yazarken neden izin hatası alıyorum, bakar mısın?"
+  - "Veritabanıma yeni bir tablo ekle ve değişikliği migration olarak kaydet."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Güncel belgeler ve değişiklik günlüğü için supabase.com'a bağlanır; Supabase hesabı ve (varsa) Supabase CLI ya da MCP bağlantısı gerekir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [supabase-postgres-best-practices]
+en:
+  ad: "Supabase Guide"
+  kisaAciklama: "Current, safe guidance for working with Supabase."
+  neIseYarar:
+    - "Checks current docs while working on Supabase database, Auth, Storage and Edge Function tasks."
+    - "Runs a security checklist to avoid common mistakes with row-level security, API keys and views."
+    - "Helps debug errors using logs and docs, and turns table changes into proper migrations."
+  ornekCumleler:
+    - "Write a security rule so users can only see their own rows in Supabase."
+    - "Why do I get a permission error when writing to this Supabase table?"
+    - "Add a new table to my database and save the change as a migration."

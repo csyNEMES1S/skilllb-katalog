@@ -1,0 +1,39 @@
+id: session-report
+ad: "Kullanım Raporu"
+kisaAciklama: "Claude Code kullanımını HTML raporuna döker."
+neIseYarar:
+  - "Bilgisayarındaki Claude Code oturum kayıtlarını tarar; harcanan token, önbellek, alt ajan ve skill kullanımını hesaplar."
+  - "En çok harcama yapan proje ve istekleri bulur, yüzdeler ve kısa bulgularla gösterir."
+  - "Tek dosyalık, tıklanıp sıralanabilir bir HTML raporu çalışma klasörüne kaydeder ve tasarruf önerileri ekler."
+kategori: veri-grafik
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: plugins/session-report/skills/session-report
+  dal: main
+  sha: 9dc3809e747a4e7fd4a3dee56501e4f711693901
+gorseller:
+  ikon: gorseller/session-report/ikon.svg
+  kapak: gorseller/session-report/kapak.svg
+ornekCumleler:
+  - "Son 7 günün Claude Code kullanım raporunu çıkar."
+  - "Bu ay en çok token harcayan projelerimi göster."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Kullanıcı klasöründeki Claude Code kayıtlarını yalnız okur (internete göndermez); Node.js gerektirir. Rapor sayfası açılınca yazı tipini Google Fonts'tan yükler."
+    sahibiDenedi: false
+  antigravity:
+    durum: calismaz
+    neden: "Claude Code'a özgü oturum kayıtlarını okur; Antigravity'nin kayıt biçimi farklı."
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Usage Report"
+  kisaAciklama: "Turns Claude Code usage into an HTML report."
+  neIseYarar:
+    - "Scans the Claude Code session logs on your computer and calculates token, cache, sub-agent and skill usage."
+    - "Finds the projects and requests that spend the most and shows them with percentages and short findings."
+    - "Saves a single-file, sortable HTML report in your working folder and adds saving suggestions."
+  ornekCumleler:
+    - "Make my Claude Code usage report for the last 7 days."
+    - "Show which projects used the most tokens this month."

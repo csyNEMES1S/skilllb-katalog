@@ -1,0 +1,38 @@
+id: ponytail
+ad: "Tembel Kıdemli Geliştirici"
+kisaAciklama: "Kod işini en küçük değişiklikle çözer, kısa yanıt verir."
+neIseYarar:
+  - "Gereksiz özellik, ek kütüphane ve soyutlama eklemeden sorunu çözen en küçük kod değişikliğini seçer."
+  - "Değişikliğin dokunduğu çağıran kodları, testleri ve ayarları tek tek kontrol eder, eksik bırakmaz."
+  - "Yanıtın sonuna neyi atladığını ve bilmen gereken riski yazar; hafif, tam ve aşırı olmak üzere üç seviyesi vardır."
+kategori: kod-test
+kaynak:
+  repo: dietrichgebert/ponytail
+  yol: skills/ponytail
+  dal: main
+  sha: df9e89941d50419fd5bcf1de41e28097f1db49b2
+gorseller:
+  ikon: gorseller/ponytail/ikon.svg
+  kapak: gorseller/ponytail/kapak.svg
+ornekCumleler:
+  - "/ponytail Bu hatayı en basit şekilde düzelt."
+  - "Bu özellik için yeni kütüphane eklemeden çözüm bul, fazla mühendislik yapma."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [test-driven-development, systematic-debugging]
+en:
+  ad: "Lazy Senior Dev"
+  kisaAciklama: "Solves coding tasks with the smallest change, short replies."
+  neIseYarar:
+    - "Picks the smallest code change that fully solves the problem, with no extra features, libraries or abstractions."
+    - "Checks every caller, test and config a change touches so nothing is left half-done."
+    - "Ends each reply with what it skipped and any risk you should know; comes in lite, full and ultra levels."
+  ornekCumleler:
+    - "/ponytail Fix this bug in the simplest way."
+    - "Solve this without adding a new library, and don't over-engineer it."

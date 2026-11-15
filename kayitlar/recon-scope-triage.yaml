@@ -1,0 +1,37 @@
+id: recon-scope-triage
+ad: "Keşif Çıktısı Sahiplik Ayıklama"
+kisaAciklama: "Keşif çıktısını sahiplik ve sahte alarm için ayıklar."
+neIseYarar:
+  - "Yalnız izinli testlerde kullanın: otomatik keşif sonuçlarının gerçekten hedefe ait olup olmadığını denetler."
+  - "Aynı isimli başka şirketlerin depo, depolama alanı ve uygulamalarını yanlışlıkla test etmenizi önler."
+  - "Sahte kritik uyarıları (her adrese 200 dönen siteler) basit bir kontrol testiyle eler."
+kategori: guvenlik
+kaynak:
+  repo: elementalsouls/Claude-BugHunter
+  yol: skills/recon-scope-triage
+  dal: main
+  sha: 8063d38a7fd722e9037cd8fe139ecce8edafbb86
+gorseller:
+  ikon: gorseller/recon-scope-triage/ikon.svg
+  kapak: gorseller/recon-scope-triage/kapak.svg
+ornekCumleler:
+  - "Bu keşif raporundaki varlıkların gerçekten hedef şirkete ait olup olmadığını kontrol et."
+  - "Tarayıcının bulduğu 300 kritik bulguyu sahiplik ve sahte alarm açısından ayıkla."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Recon Ownership Triage"
+  kisaAciklama: "Filters recon output for ownership and false alarms."
+  neIseYarar:
+    - "Use only on authorized tests: checks whether recon results really belong to the target."
+    - "Keeps you from testing unrelated companies that share the same name."
+    - "Weeds out fake critical alerts (sites answering 200 for every path) with a simple control test."
+  ornekCumleler:
+    - "Check whether the assets in this recon report really belong to our target."
+    - "Triage these 300 scanner criticals for ownership and false positives."

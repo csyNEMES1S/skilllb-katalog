@@ -1,0 +1,39 @@
+id: handoff
+ad: "Devir Notu"
+kisaAciklama: "Sohbeti, yeni oturumun devralacağı kısa nota çevirir."
+neIseYarar:
+  - "Şu ana kadarki konuşmayı, yeni bir yapay zekâ oturumunun kaldığı yerden sürdürebileceği kısa bir devir notuna özetler."
+  - "Notta bir sonraki oturumun hangi skill'leri kullanması gerektiğini önerir; plan ve karar belgelerini tekrar yazmak yerine yoluyla gösterir."
+  - "Notu çalışma klasörüne değil geçici klasöre kaydeder ve parola, anahtar gibi gizli bilgileri siler."
+kategori: yazi
+kaynak:
+  repo: mattpocock/skills
+  yol: skills/productivity/handoff
+  dal: main
+  sha: 0f5e033ebc47b142f5ffa56a582ede6d9d9bada3
+gorseller:
+  ikon: gorseller/handoff/ikon.svg
+  kapak: gorseller/handoff/kapak.svg
+ornekCumleler:
+  - "/handoff Yarın arayüz testlerine devam edeceğiz"
+  - "Bu konuşmayı başka bir oturuma devretmek için not hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Elle /handoff komutuyla çalıştırılacak şekilde ayarlı; kendiliğinden devreye girmez."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [teach]
+en:
+  ad: "Handoff Note"
+  kisaAciklama: "Turns a chat into a short note for the next session."
+  neIseYarar:
+    - "Summarizes the conversation so far into a short handoff note a fresh AI session can pick up and continue from."
+    - "Suggests which skills the next session should use and points to plans and decision documents by path instead of rewriting them."
+    - "Saves the note to a temporary folder rather than your workspace and removes secrets such as passwords and keys."
+  ornekCumleler:
+    - "/handoff We will continue with the interface tests tomorrow"
+    - "Write a note so I can hand this conversation over to another session."

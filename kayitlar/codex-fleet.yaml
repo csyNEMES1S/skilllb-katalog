@@ -1,0 +1,41 @@
+id: codex-fleet
+ad: "Codex Filo Yöneticisi"
+kisaAciklama: "Codex ile kod işi, resim ve paralel görev çalıştırır."
+neIseYarar:
+  - "Kod inceleme, düzenleme ve analiz gibi işleri Codex komut satırı aracına devredip sonucu özetler."
+  - "Codex'in yerleşik resim üretimiyle simge, afiş, arka plan ve maket resimleri hazırlar."
+  - "Birçok görevi aynı anda paralel çalıştırır; yazan görevleri ayrı çalışma kopyalarında izole eder."
+kategori: kod-test
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/codex-fleet
+  dal: main
+  sha: 18e74b8741f851d3362fe00c8f632bec391e947b
+gorseller:
+  ikon: gorseller/codex-fleet/ikon.svg
+  kapak: gorseller/codex-fleet/kapak.svg
+ornekCumleler:
+  - "Codex'e söyle, şu klasördeki kodu hatalar için incelesin."
+  - "Codex ile uygulama için dört farklı simge resmi üret."
+  - "Üç ayrı modülü paralel olarak Codex'e inceletip sonuçları özetle."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Codex komut satırı aracı ve OpenAI hesabı gerekir. Dosya yazma ya da ağ erişimi için geniş izin ister, kullanmadan önce sizden onay almalıdır. Windows'ta Git Bash ve PowerShell 7 gerekir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [fable-orchestration]
+en:
+  ad: "Codex Fleet"
+  kisaAciklama: "Runs code tasks, images and parallel jobs on Codex."
+  neIseYarar:
+    - "Hands code review, edits and analysis to the Codex CLI and summarizes the result."
+    - "Generates icons, banners, backgrounds and mockups with Codex's built-in image tool."
+    - "Runs many jobs in parallel, isolating write jobs in separate worktrees."
+  ornekCumleler:
+    - "Ask Codex to review the code in this folder for bugs."
+    - "Use Codex to generate four different app icons."
+    - "Have Codex review three modules in parallel and summarize the findings."

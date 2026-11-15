@@ -1,0 +1,37 @@
+id: offensive-reporting
+ad: "Sızma Testi Rapor Yazımı"
+kisaAciklama: "Sızma testi raporunu yönetici özetiyle birlikte hazırlar."
+neIseYarar:
+  - "Yalnız izinli testlerde kullanın: sızma testi sonrası teslim edilecek raporu baştan sona kurgulamaya yardım eder."
+  - "Teknik olmayan okuyucular için yönetici özeti ve bulgu şablonları (özet, adımlar, etki, çözüm) hazırlar."
+  - "CVSS puanlamayı, kanıt saklama ve maskeleme kurallarını, yeniden test ve kapanış adımlarını anlatır."
+kategori: guvenlik
+kaynak:
+  repo: SnailSploit/Claude-Red
+  yol: Skills/utility/offensive-reporting
+  dal: main
+  sha: 70e0c89e3be457c1f7fe071c0ed5c9fb1da6f0fb
+gorseller:
+  ikon: gorseller/offensive-reporting/ikon.svg
+  kapak: gorseller/offensive-reporting/kapak.svg
+ornekCumleler:
+  - "Sızma testimin bulgularından yönetici özeti ve teknik bulgu bölümü hazırla."
+  - "Bu taslak raporu CISO'nun 90 saniyede okuyacağı şekilde yeniden düzenle."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Pentest Report Writing"
+  kisaAciklama: "Builds a pentest report with an executive summary."
+  neIseYarar:
+    - "Use only on authorized tests: helps structure the full report delivered after a penetration test."
+    - "Prepares an executive summary for non-technical readers and finding templates (summary, steps, impact, fix)."
+    - "Covers CVSS scoring, evidence storage and redaction rules, and retest and closeout steps."
+  ornekCumleler:
+    - "Turn my pentest findings into an executive summary and technical findings section."
+    - "Restructure this draft so a CISO can read it in 90 seconds."

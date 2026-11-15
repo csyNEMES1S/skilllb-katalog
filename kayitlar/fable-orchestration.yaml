@@ -1,0 +1,39 @@
+id: fable-orchestration
+ad: "Çoklu Model Görev Dağıtımı"
+kisaAciklama: "Alt ajanlara hangi modelle iş verileceğini belirler."
+neIseYarar:
+  - "Pahalı ana modelin yalnızca planlama, karar ve son özet için kullanılmasını sağlar."
+  - "İşi zorluğuna göre Opus, Sonnet, Haiku ya da Codex modellerine dağıtır."
+  - "Her modele uygun uzunlukta görev notu yazdırır ve gelen sonucu doğrulamadan bitmiş saymaz."
+kategori: kod-test
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/fable-orchestration
+  dal: main
+  sha: 18e74b8741f851d3362fe00c8f632bec391e947b
+gorseller:
+  ikon: gorseller/fable-orchestration/ikon.svg
+  kapak: gorseller/fable-orchestration/kapak.svg
+ornekCumleler:
+  - "Bu büyük işi alt ajanlara bölerken her birine uygun modeli seç."
+  - "Binlerce satırlık veri temizliğini en ucuz uygun modele devret."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Yalnızca bir çalışma politikasıdır, betik yoktur; GPT tarafı için Codex aracı ve codex-fleet skill'i gerekir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [codex-fleet]
+en:
+  ad: "Multi-Model Delegation"
+  kisaAciklama: "Decides which model each sub-agent should use."
+  neIseYarar:
+    - "Keeps the expensive main model for planning, hard calls and the final summary."
+    - "Routes work by difficulty to Opus, Sonnet, Haiku or Codex models."
+    - "Has briefs written to suit each model and never counts a result as done before checking it."
+  ornekCumleler:
+    - "Split this big job across sub-agents and pick the right model for each."
+    - "Hand the thousand-row data cleanup to the cheapest model that can do it."

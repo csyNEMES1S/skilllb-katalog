@@ -1,0 +1,39 @@
+id: gptpro
+ad: "Kodu Zip Paketlerine Böl"
+kisaAciklama: "Projeyi harici yapay zekâ için zip paketlerine böler."
+neIseYarar:
+  - "Büyük bir projeyi parçalara ayırıp node_modules ve derleme çıktılarından arındırılmış zip paketleri yapar."
+  - "Paketlemeden önce şifre ve anahtar benzeri değerleri tarar; gerçek gibi görünen biri bulunursa işlemi durdurur."
+  - "Paketleri ChatGPT gibi dosya yükleyebileceğiniz bir sohbet arayüzüne yüklemeye hazır hâle getirir."
+kategori: kod-test
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/gptpro
+  dal: main
+  sha: 5d0ee6a3e8c3a5d10ee87af091a82cdd12dd12fc
+gorseller:
+  ikon: gorseller/gptpro/ikon.svg
+  kapak: gorseller/gptpro/kapak.svg
+ornekCumleler:
+  - "Bu projeyi inceletmek için ChatGPT'ye yükleyebileceğim zip paketlerine böl."
+  - "Yalnızca veritabanı şemasını ve belgeleri içeren bir paket hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Yalnızca yerel çalışır, ağa bağlanmaz. Bash, zip ve rsync gerekir; Windows'ta Git Bash ya da WSL ile kullanın. Çıktı klasöründeki eski zip dosyalarını siler."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [gptpro-handoff]
+en:
+  ad: "Code Export Bundles"
+  kisaAciklama: "Splits a repo into zip bundles for external AI."
+  neIseYarar:
+    - "Splits a large project into zip bundles free of node_modules and build output."
+    - "Scans for secret-looking values before zipping and stops if a live-looking credential is found."
+    - "Leaves bundles ready to upload to a chat UI such as ChatGPT."
+  ornekCumleler:
+    - "Split this project into zip bundles I can upload to ChatGPT for review."
+    - "Make a bundle with only the database schema and docs."

@@ -1,0 +1,37 @@
+id: bugcrowd-reporting
+ad: "Bugcrowd Rapor Taktikleri"
+kisaAciklama: "Bugcrowd raporunda kategori ve önem seçimine yardım eder."
+neIseYarar:
+  - "Yalnız izinli testlerde kullanın: Bugcrowd'da doğru zafiyet kategorisini (VRT) ve önem derecesini seçmenize yardım eder."
+  - "Önem derecesi itirazı ve kapsam dışı maddelere karşı gerekçe paragrafı şablonları sunar."
+  - "Zincirleme bulguları ayrı raporlarda birbirine bağlamayı ve hesap hijyenini anlatır."
+kategori: guvenlik
+kaynak:
+  repo: elementalsouls/Claude-BugHunter
+  yol: skills/bugcrowd-reporting
+  dal: main
+  sha: 9a1863c682d3dcb0808aa3efdb42251e731cddda
+gorseller:
+  ikon: gorseller/bugcrowd-reporting/ikon.svg
+  kapak: gorseller/bugcrowd-reporting/kapak.svg
+ornekCumleler:
+  - "Bu bulgu için Bugcrowd VRT kategorisini seçmeme yardım et."
+  - "Önem derecesi değerlendirmesi için gerekçeli bir itiraz paragrafı yaz."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Bugcrowd Reporting Tactics"
+  kisaAciklama: "Helps pick severity and category when filing on Bugcrowd."
+  neIseYarar:
+    - "Use only on authorized tests: helps choose the right VRT category and severity on Bugcrowd."
+    - "Offers templates for severity requests and rebuttals to out-of-scope clauses."
+    - "Explains how to link chained findings across separate reports and keep your account tidy."
+  ornekCumleler:
+    - "Help me pick the Bugcrowd VRT category for this finding."
+    - "Write a reasoned severity-request paragraph for this report."

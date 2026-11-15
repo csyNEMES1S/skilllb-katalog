@@ -1,0 +1,39 @@
+id: brag
+ad: "Proje Tanıtım Videosu"
+kisaAciklama: "Projenden 15-25 saniyelik tanıtım videosu üretir."
+neIseYarar:
+  - "Proje kodunu okuyup web sitenin ya da uygulamanın kısa, paylaşılabilir bir tanıtım videosunu hazırlar."
+  - "Önce hikâyeyi ve sahne planını yazar; ton (eğlenceli, ciddi, sinematik vb.), format ve müzik seçilebilir."
+  - "Videoyu Hyperframes ile oluşturup MP4 olarak çıkarır, kapak görselini seçer ve paylaşım metnini yazar."
+kategori: tasarim
+kaynak:
+  repo: latent-spaces/brag
+  yol: skills/brag
+  dal: main
+  sha: c36b8341e1a983a49cc2a797d759634497172848
+gorseller:
+  ikon: gorseller/brag/ikon.svg
+  kapak: gorseller/brag/kapak.svg
+ornekCumleler:
+  - "/brag bu projeyle ilgili bir tanıtım videosu yap."
+  - "/brag --tone cinematic --format vertical"
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Video için Hyperframes araçlarına (npx hyperframes) ihtiyaç duyar. Müzik ve ses efektleri skill ile birlikte gelir (yaklaşık 13 MB). Sesli anlatım isteğe bağlıdır."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [brag-slim]
+en:
+  ad: "Project Launch Video"
+  kisaAciklama: "Makes a 15-25 second launch video of your project."
+  neIseYarar:
+    - "Reads your project code and prepares a short, shareable launch video of your website or app."
+    - "Writes the story and scene plan first; tone (playful, serious, cinematic and more), format and music are selectable."
+    - "Builds the video with Hyperframes, renders an MP4, picks a poster frame and writes the share copy."
+  ornekCumleler:
+    - "/brag make a launch video for this project."
+    - "/brag --tone cinematic --format vertical"

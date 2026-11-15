@@ -6,7 +6,8 @@
     "test": "vitest run",
     "derle": "tsx scripts/derle-cli.ts",
     "guncelle": "tsx scripts/guncelle-cli.ts",
-    "gorsel": "tsx scripts/gorsel-uret.ts"
+    "gorsel": "tsx scripts/gorsel-uret.ts",
+    "kesif": "tsx scripts/kesif-cli.ts"
   },
   "keywords": [],
   "author": "",

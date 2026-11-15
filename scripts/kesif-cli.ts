@@ -1,0 +1,126 @@
+import { access, mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import { dirname, join, resolve } from "node:path";
+import { parseArgs } from "node:util";
+import { githubGetirici } from "./getirici.js";
+import { gunlukSatiri } from "./gunluk.js";
+import { kayitlariOku } from "./kayitOku.js";
+import { adaylariBul, kesifGovdesi, taslakYaml, VARSAYILAN_SORGULAR, yerelKaynaklar, type RepoArayici, type RepoSonucu } from "./kesif.js";
+
+/**
+ * Kullanım:
+ *   npm run kesif -- [--kayitlar kayitlar] [--cikti dist/kesif.json] [--govde dist/kesif.md]
+ *                    [--sinir 10] [--en-az-yildiz 50] [--yaz] [--yerel ~/.agents/.skill-lock.json]
+ *     GitHub'da kataloğa girmemiş, açık lisanslı skill'leri arar. Adayları JSON'a, PR gövdesini
+ *     Markdown'a yazar. --yaz verilirse her aday için kayitlar/<id>.yaml taslağı oluşturur
+ *     (var olan dosyaya dokunmaz). --yerel verilirse arama yerine yalnız o kilit dosyasındaki
+ *     (bilgisayarda kurulu) skill'lere bakar. GITHUB_TOKEN varsa istekler onunla yapılır.
+ * Çıkış kodu: 0 = başarılı, 1 = hata.
+ */
+
+const API = "https://api.github.com";
+
+function githubArayici(token?: string): RepoArayici {
+  return async (sorgu) => {
+    const url = `${API}/search/repositories?${new URLSearchParams({ q: `${sorgu} fork:false archived:false`, sort: "stars", order: "desc", per_page: "50" })}`;
+    const basliklar: Record<string, string> = { "User-Agent": "skilllb-katalog", Accept: "application/vnd.github+json" };
+    if (token) basliklar.Authorization = `Bearer ${token}`;
+    const yanit = await fetch(url, { headers: basliklar });
+    if (!yanit.ok) throw new Error(`GitHub araması başarısız (${yanit.status}): ${sorgu}`);
+    const veri = (await yanit.json()) as {
+      items: { full_name: string; default_branch: string; stargazers_count: number; license: { spdx_id: string | null } | null }[];
+    };
+    return veri.items.map((i): RepoSonucu => ({
+      repo: i.full_name, dal: i.default_branch, yildiz: i.stargazers_count, lisansSpdx: i.license?.spdx_id ?? null,
+    }));
+  };
+}
+
+async function varMi(yol: string): Promise<boolean> {
+  try {
+    await access(yol);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function atomikYaz(yol: string, metin: string) {
+  await mkdir(dirname(yol), { recursive: true });
+  await writeFile(`${yol}.tmp`, metin, "utf8");
+  await rename(`${yol}.tmp`, yol);
+}
+
+async function ana(): Promise<number> {
+  const { values, positionals } = parseArgs({
+    allowPositionals: true,
+    options: {
+      kayitlar: { type: "string", default: "kayitlar" },
+      cikti: { type: "string", default: "dist/kesif.json" },
+      govde: { type: "string", default: "dist/kesif.md" },
+      sinir: { type: "string", default: "10" },
+      "en-az-yildiz": { type: "string", default: "50" },
+      yaz: { type: "boolean", default: false },
+      yerel: { type: "string" },
+    },
+  });
+  if (positionals.length) throw new Error(`beklenmeyen argüman: ${positionals.join(" ")}`);
+  const sinir = Number(values.sinir);
+  const enAzYildiz = Number(values["en-az-yildiz"]);
+  if (!Number.isInteger(sinir) || sinir < 0 || !Number.isInteger(enAzYildiz) || enAzYildiz < 0) {
+    throw new Error("--sinir ve --en-az-yildiz negatif olmayan tam sayı olmalı");
+  }
+
+  const token = process.env.GITHUB_TOKEN || undefined;
+  const arayici = githubArayici(token);
+  const klasor = resolve(values.kayitlar);
+  const kayitlar = await kayitlariOku(klasor);
+  const uyar = (m: string) => console.error(gunlukSatiri("uyarı", m));
+
+  // kesif-haric.txt: her satırda "sahip/ad:klasör" (# ile başlayan satır ve satır sonu yorumları atlanır).
+  const haricDosyasi = resolve("kesif-haric.txt");
+  const haric = (await varMi(haricDosyasi) ? await readFile(haricDosyasi, "utf8") : "")
+    .split(/\r?\n/).map((s) => s.replace(/#.*$/, "").trim()).filter(Boolean);
+
+  let secenekler: Parameters<typeof adaylariBul>[3] = { sorgular: VARSAYILAN_SORGULAR, enAzYildiz, sinir, haric };
+  if (values.yerel) {
+    const kaynaklar = yerelKaynaklar(await readFile(values.yerel, "utf8"));
+    const yollar: Record<string, string[]> = {};
+    for (const k of kaynaklar) (yollar[k.repo] ??= []).push(k.yol);
+    const ekRepolar: RepoSonucu[] = [];
+    for (const repo of Object.keys(yollar)) {
+      try {
+        const bulunan = (await arayici(`repo:${repo}`))[0];
+        if (bulunan) ekRepolar.push(bulunan);
+      } catch (e) {
+        uyar(`${repo}: ${e instanceof Error ? e.message : String(e)}`);
+      }
+    }
+    secenekler = { sorgular: [], enAzYildiz: 0, sinir: Math.max(sinir, kaynaklar.length), ekRepolar, yollar, haric };
+  }
+
+  const adaylar = await adaylariBul(arayici, githubGetirici(token), kayitlar, secenekler, uyar);
+  await atomikYaz(resolve(values.cikti), `${JSON.stringify(adaylar, null, 2)}\n`);
+  await atomikYaz(resolve(values.govde), kesifGovdesi(adaylar));
+
+  let yazilan = 0;
+  if (values.yaz) {
+    for (const a of adaylar) {
+      const dosya = join(klasor, `${a.id}.yaml`);
+      if (await varMi(dosya)) continue;
+      await writeFile(dosya, taslakYaml(a), "utf8");
+      yazilan++;
+    }
+  }
+  console.log(`${adaylar.length} aday bulundu${values.yaz ? `, ${yazilan} taslak kayıt yazıldı` : ""}.`);
+  return 0;
+}
+
+ana().then(
+  (kod) => {
+    process.exitCode = kod;
+  },
+  (e: unknown) => {
+    console.error(gunlukSatiri("hata", e instanceof Error ? e.message : String(e)));
+    process.exitCode = 1;
+  },
+);

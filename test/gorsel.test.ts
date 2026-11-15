@@ -167,9 +167,14 @@ describe("gorsel-uret", () => {
 
   it("piktogram_esleme", async () => {
     for (const p of Object.values(ESLEME)) expect(PIKTOGRAMLAR[p]).toBeDefined();
-    // Katalogdaki her kayıt açık bir eşlemeye sahip.
-    const ids = (await readdir(join(import.meta.dirname, "..", "kayitlar"))).filter((f) => f.endsWith(".yaml")).map((f) => f.slice(0, -5));
-    for (const id of ids) expect(ESLEME[id], id).toBeDefined();
+    // Elle yazılan her kayıt açık bir eşlemeye sahip. Haftalık keşfin "# TASLAK" kayıtları muaf:
+    // onlar anahtar kelime/kategori varsayılanıyla piktogram alır (aşağıda).
+    const klasor = join(import.meta.dirname, "..", "kayitlar");
+    const dosyalar = (await readdir(klasor)).filter((f) => f.endsWith(".yaml"));
+    for (const f of dosyalar) {
+      if ((await readFile(join(klasor, f), "utf8")).startsWith("# TASLAK")) continue;
+      expect(ESLEME[f.slice(0, -5)], f).toBeDefined();
+    }
     // Eşlemesi olmayan: anahtar kelime, sonra kategori varsayılanı.
     expect(piktogramSec(kayit({ id: "yeni-test-araci", ad: "Yeni", kategori: "diger" }))).toBe("test-tupu");
     expect(piktogramSec(kayit({ id: "zzz", ad: "Zzz", kategori: "guvenlik" }))).toBe("kalkan");

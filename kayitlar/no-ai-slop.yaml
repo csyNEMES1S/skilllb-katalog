@@ -1,0 +1,39 @@
+id: no-ai-slop
+ad: "Yapay Zekâ Kokusunu Gider"
+kisaAciklama: "Yazıyı daha net ve insan gibi yapar, sesinizi korur."
+neIseYarar:
+  - "Taslağı sizin üslubunuzu bozmadan daha açık, doğrudan ve canlı hâle getirir; yalnızca gerekli yerleri düzeltir."
+  - "Boş girişleri, süslü kalıpları, abartılı sıfatları ve yapay zekâya özgü cümle yapılarını temizler."
+  - "İsterseniz yazmadan yalnızca yapay zekâ kalıplarını işaretler: alıntılar ve kısa düzeltme önerileriyle."
+kategori: yazi
+kaynak:
+  repo: petergyang/no-ai-slop
+  yol: skills/no-ai-slop
+  dal: main
+  sha: 000650b156983f5159695b441477f4e63b25dc85
+gorseller:
+  ikon: gorseller/no-ai-slop/ikon.svg
+  kapak: gorseller/no-ai-slop/kapak.svg
+ornekCumleler:
+  - "Bu blog yazısı taslağını daha net ve doğal yap ama benim üslubumu koru."
+  - "Bu metin yapay zekâ gibi mi okunuyor? Yeniden yazmadan kalıpları işaretle."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "İngilizce örneklere ve kelime listesine göre yazılmıştır; Türkçe metinlerde kalıp tespiti daha az isabetli olabilir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [unslop, copy-editing]
+en:
+  ad: "No AI Slop"
+  kisaAciklama: "Makes writing sharper and human, keeps your voice."
+  neIseYarar:
+    - "Edits a draft to be clearer, more direct and alive while keeping your personal voice."
+    - "Cuts empty openers, buzzwords, puffery and other AI-sounding patterns."
+    - "Can instead only flag AI patterns with quotes and short fixes, without rewriting."
+  ornekCumleler:
+    - "Make this blog draft sharper and more natural but keep my voice."
+    - "Does this read like AI? Flag the patterns without rewriting."

@@ -1,0 +1,39 @@
+id: tutor
+ad: "Quiz Öğretmeni"
+kisaAciklama: "Çalışma notlarından sınav yapıp eksiklerini bulur."
+neIseYarar:
+  - "Obsidian'daki ders notlarından (StudyVault) her seferinde 4 soruluk çoktan seçmeli sınav hazırlar."
+  - "Hangi kavramı bildiğini ve hangisini karıştırdığını takip eder; yanlışlarını kısaca açıklar."
+  - "Konu bazlı bir panelde başarı oranlarını gösterir ve zayıf konulara tekrar döner."
+kategori: diger
+kaynak:
+  repo: bevibing/tutor-skills
+  yol: skills/tutor
+  dal: main
+  sha: a2c17b527d4ef5daf8425826b66952c9b43eea09
+gorseller:
+  ikon: gorseller/tutor/ikon.svg
+  kapak: gorseller/tutor/kapak.svg
+ornekCumleler:
+  - "Beni test et, bildiklerimi ölçelim."
+  - "/tutor Zayıf kaldığım konulardan soru sor."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Notların bir StudyVault klasöründe durması gerekir; yoksa durup bunu söyler. Oturum türü seçimi için Claude'un soru sorma aracını kullanır."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [teach]
+en:
+  ad: "Quiz Tutor"
+  kisaAciklama: "Quizzes you on your study notes and finds blind spots."
+  neIseYarar:
+    - "Builds a 4-question multiple-choice quiz from your Obsidian study notes (StudyVault) each session."
+    - "Tracks which concepts you know and which you mix up, with short explanations for wrong answers."
+    - "Shows your success rate per topic on a dashboard and returns to weak areas."
+  ornekCumleler:
+    - "Quiz me so we can see what I know."
+    - "/tutor Ask me questions from the topics I'm weak in."

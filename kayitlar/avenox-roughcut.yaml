@@ -1,0 +1,38 @@
+id: avenox-roughcut
+ad: "Video Ön Kurgu"
+kisaAciklama: "Ham videodaki sessizlik ve hatalı çekimleri keser."
+neIseYarar:
+  - "Ham ekran ya da konuşma kaydını yazıya döker ve tekrarlanan, yarım kalan cümleleri bulup liste olarak sunar."
+  - "Siz onayladıktan sonra hatalı çekimleri keser, ardından boş sessizlikleri otomatik siler."
+  - "Duraklama uzunluğunu ayarlayarak ritmi seçmenizi sağlar ve ortaya bir taslak video çıkarır."
+kategori: diger
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/avenox-roughcut
+  dal: main
+  sha: d3a165dbfe144eed6ce58ed61f51467872df5a32
+gorseller:
+  ikon: gorseller/avenox-roughcut/ikon.svg
+  kapak: gorseller/avenox-roughcut/kapak.svg
+ornekCumleler:
+  - "Bu ham ekran kaydındaki sessizlikleri ve yanlış başlayıp tekrar ettiğim yerleri kes."
+  - "Videodaki hatalı çekimlerin listesini çıkar, onayladıktan sonra keselim."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "ffmpeg, auto-editor ve Python gerekir; yazıya dökme Apple Silicon Mac'e göre yazılmış (mlx-whisper), başka sistemde başka bir whisper kurmak gerekir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Video Rough Cut"
+  kisaAciklama: "Cuts silences and bad takes from raw footage."
+  neIseYarar:
+    - "Transcribes a raw screen or talking-head recording and lists repeated or half-finished sentences."
+    - "Cuts the bad takes only after you approve the list, then removes dead air automatically."
+    - "Lets you tune pause length for rhythm and produces a draft video to review."
+  ornekCumleler:
+    - "Cut the silences and my restarted sentences from this raw screen recording."
+    - "List the flubs in this video and we will cut them after I approve."

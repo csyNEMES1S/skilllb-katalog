@@ -1,0 +1,39 @@
+id: brag-slim
+ad: "Hafif Tanıtım Videosu"
+kisaAciklama: "Proje ya da site adresinden kısa tanıtım videosu yapar."
+neIseYarar:
+  - "Proje klasöründen ya da bir web sitesi adresinden 15-25 saniyelik paylaşılabilir bir tanıtım videosu hazırlar."
+  - "Hazır müzik dosyası içermez; hikâyeyi, görselleri, sesi ve çıktıyı bilgisayardaki araçlarla kendisi üretir."
+  - "MP4 videoyu, kapak görselini ve paylaşım metnini hazırlar; sır, anahtar ve kişisel verileri videoya sokmaz."
+kategori: tasarim
+kaynak:
+  repo: latent-spaces/brag
+  yol: skills/brag-slim
+  dal: main
+  sha: 78100ba246612a09ba275ae130845c72c4d7ed97
+gorseller:
+  ikon: gorseller/brag-slim/ikon.svg
+  kapak: gorseller/brag-slim/kapak.svg
+ornekCumleler:
+  - "/brag-slim bu projeyi tanıtan bir video yap."
+  - "/brag-slim example.com sitesini tanıtan dikey bir video hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Web sitesi verildiğinde siteyi internetten açar ve medya dosyalarını indirir. Videoyu üretmek için bilgisayarda uygun araçlar (tarayıcı, ffmpeg gibi) gerekir; eksikse kurmadan önce sorar."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [brag]
+en:
+  ad: "Launch Video Lite"
+  kisaAciklama: "Makes a short launch video from a project or site URL."
+  neIseYarar:
+    - "Builds a 15-25 second shareable launch video from your project folder or a website address."
+    - "Ships no bundled music files; it creates the story, visuals, sound and output itself with tools on your machine."
+    - "Delivers the MP4, a poster image and share copy, and keeps secrets, keys and personal data out of the video."
+  ornekCumleler:
+    - "/brag-slim make a video that shows off this project."
+    - "/brag-slim make a vertical launch video for example.com."

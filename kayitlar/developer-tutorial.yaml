@@ -1,0 +1,39 @@
+id: developer-tutorial
+ad: "Geliştirici Eğitim Yazarı"
+kisaAciklama: "Adım adım, sonunda beceri kazandıran eğitim yazar."
+neIseYarar:
+  - "Bir ürün için \"yaparak öğren\" eğitimi yazar; her adımda tek yeni kavram, beklenen çıktı ve kontrol noktası bulunur."
+  - "Önce hedefi ve okur seviyesini sorar, sonra adımları sıralar; rehberliği giderek azaltarak öğrenenin kendi yapmasını sağlar."
+  - "Kimsenin bitirmediği bir eğitimi inceleyip hangi adımda ve neden bırakıldığını tablo hâlinde çıkarır."
+kategori: yazi
+kaynak:
+  repo: samber/developer-relations-skills
+  yol: skills/developer-tutorial
+  dal: main
+  sha: 6f41e263fe197b3612b51ccd321e99cfe91f7bcf
+gorseller:
+  ikon: gorseller/developer-tutorial/ikon.svg
+  kapak: gorseller/developer-tutorial/kapak.svg
+ornekCumleler:
+  - "SDK'mızla yanıt akışını öğreten bir eğitim yaz."
+  - "Webhook eğitimimizi kimse bitirmiyor, nerede takıldıklarını bulup düzelt."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "İsteğe bağlı olarak proje klasörüne devrel-context.md adlı küçük bir not dosyası yazabilir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [doc-coauthoring, documentation-and-adrs]
+en:
+  ad: "Developer Tutorial Writer"
+  kisaAciklama: "Writes step-by-step tutorials that build a real skill."
+  neIseYarar:
+    - "Writes a learn-by-building tutorial for a product, with one new concept, expected output and a checkpoint per step."
+    - "Asks for the goal and audience level first, then orders the steps and fades guidance so learners do the work themselves."
+    - "Audits a tutorial nobody finishes and lists in a table where and why people drop off."
+  ornekCumleler:
+    - "Write a tutorial that teaches streaming responses with our SDK."
+    - "Nobody finishes our webhooks tutorial; find where they get stuck and fix it."

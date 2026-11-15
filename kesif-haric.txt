@@ -1,0 +1,13 @@
+# Haftalık keşfin bir daha önermeyeceği skill'ler (incelendi, reddedildi).
+# Biçim: sahip/ad:klasör   # neden
+avenoxai/avenoxskills:skills/avenox-video            # yarım: betikleri ve şablonları skill klasörünün dışında
+avenoxai/avenoxskills:skills/limit                   # ~/.claude/.credentials.json içindeki oturum token'ını okuyor
+mvanhorn/last30days-skill:skills/last30days          # tarayıcı çerezi ve API anahtarları okuyor
+pbakaus/impeccable:.agents/skills/impeccable         # denetlenemeyen derlenmiş dosya indiriyor, hook kuruyor
+remotion-dev/skills:skills/remotion-best-practices   # açık lisans yok
+obra/superpowers:skills/brainstorming                # yardımcı sunucu dış siteden logo yüklüyor (telemetri)
+obra/superpowers:skills/executing-plans              # başka skill klasörlerindeki betiklere bağlı
+mattpocock/skills:skills/productivity/grill-me       # tek satırlık yönlendirici; asıl içerik başka skill'de
+othmanadi/planning-with-files:planning-with-files    # çok sayıda hook ve oturum kaydı okuyan betik
+multica-ai/andrej-karpathy-skills:skills/karpathy-guidelines   # açık lisans yok
+anthropics/claude-plugins-official:plugins/frontend-design/skills/frontend-design   # anthropics/skills içindeki frontend-design ile aynı

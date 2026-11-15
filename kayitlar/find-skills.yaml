@@ -1,0 +1,39 @@
+id: find-skills
+ad: "Skill Bulucu"
+kisaAciklama: "İhtiyacına uygun skill'i arar ve kurmana yardım eder."
+neIseYarar:
+  - "\"Bunu nasıl yaparım?\" ya da \"bunun için bir skill var mı?\" dediğinde uygun skill'leri arar."
+  - "Önerdiği skill'in kaç kişi kurmuş, kimin yazdığı ve deposunun kaç yıldızı olduğu gibi güvenilirlik bilgilerine bakıp sana sunar."
+  - "İstersen seçtiğin skill'i senin için kurar; hiç skill çıkmazsa işi doğrudan kendisi yapmayı önerir."
+kategori: diger
+kaynak:
+  repo: vercel-labs/skills
+  yol: skills/find-skills
+  dal: main
+  sha: 773fb2c7bbf16781670a3520affc4abd0c6151ae
+gorseller:
+  ikon: gorseller/find-skills/ikon.svg
+  kapak: gorseller/find-skills/kapak.svg
+ornekCumleler:
+  - "React uygulamamı hızlandıracak bir skill var mı?"
+  - "PR incelemelerinde bana yardım eden bir skill bul."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Arama ve kurulum için internet ve npx (Node.js) gerekir; skill'ler skills.sh sitesinden aranır."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [skill-creator]
+en:
+  ad: "Skill Finder"
+  kisaAciklama: "Finds the right skill for your need and helps install it."
+  neIseYarar:
+    - "When you ask \"how do I do this?\" or \"is there a skill for this?\", it searches for matching skills."
+    - "It checks trust signals such as install counts, the author and repository stars before recommending anything."
+    - "If you want, it installs the chosen skill for you; if nothing fits, it offers to do the job itself."
+  ornekCumleler:
+    - "Is there a skill that makes my React app faster?"
+    - "Find me a skill that helps with pull request reviews."

@@ -1,0 +1,40 @@
+id: owasp-security
+ad: "OWASP Güvenlik Denetimi"
+kisaAciklama: "Kodu OWASP ölçütlerine göre güvenlik açısından inceler."
+neIseYarar:
+  - "Yalnız izinli testlerde ve kendi kodunuzda kullanın: kodu OWASP Top 10, ASVS ve yapay zekâ uygulamalarına özel listelere göre açıklar için tarar."
+  - "Bulunan her sorunu, saldırganın bu noktaya nasıl ulaşabileceğiyle birlikte önem derecesi, konumu ve önerilen çözümüyle raporlar."
+  - "Gerçek olmayan ya da zaten önlenmiş uyarıları eler; 20'den fazla dil için sık yapılan güvenlik hatalarını gösterir."
+kategori: guvenlik
+kaynak:
+  repo: agamm/claude-code-owasp
+  yol: .claude/skills/owasp-security
+  dal: main
+  sha: e6ba0f46e30664cd3f8eca410e673675548aa4d7
+gorseller:
+  ikon: gorseller/owasp-security/ikon.svg
+  kapak: gorseller/owasp-security/kapak.svg
+ornekCumleler:
+  - "Bu değişiklikte güvenlik açığı var mı, OWASP'a göre incele."
+  - "Giriş ve parola sıfırlama kodunu güvenlik açısından denetle."
+  - "Yapay zekâ ile çalışan bu uygulamanın prompt injection riskini değerlendir."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-review, security-audit, security-and-hardening]
+en:
+  ad: "OWASP Security Review"
+  kisaAciklama: "Reviews code for security issues using OWASP standards."
+  neIseYarar:
+    - "Use only on your own code or with permission: checks code against OWASP Top 10, ASVS and the lists for AI and agent applications."
+    - "Reports each issue with severity, location, the path an attacker would take and a suggested fix."
+    - "Filters out unreachable or already-mitigated warnings and shows common security pitfalls for 20+ languages."
+  ornekCumleler:
+    - "Is there a security hole in this change? Review it against OWASP."
+    - "Audit the login and password reset code for security."
+    - "Assess the prompt injection risk of this AI-powered app."

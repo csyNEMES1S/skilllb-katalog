@@ -1,0 +1,39 @@
+id: semgrep-rule-creator
+ad: "Semgrep Kural Yazıcı"
+kisaAciklama: "Koddaki hata ve açık kalıpları için Semgrep kuralı yazar."
+neIseYarar:
+  - "Yalnız kendi kodunuzda ya da izinli testlerde kullanın: belirli bir hata ya da güvenlik açığı kalıbını yakalayan özel Semgrep kuralı yazar."
+  - "Önce hem açıklı hem güvenli örnekleri içeren testleri yazar, sonra kuralı bu testlerin hepsi geçene kadar geliştirir."
+  - "Kullanıcı girdisinin tehlikeli bir noktaya ulaşmasını izleyen kurallar kurar ve çıktıyı kural dosyası ile test dosyası olarak verir."
+kategori: guvenlik
+kaynak:
+  repo: trailofbits/skills
+  yol: plugins/semgrep-rule-creator/skills/semgrep-rule-creator
+  dal: main
+  sha: 123037ec8aed26f0d86327cc39137ee5043e5deb
+gorseller:
+  ikon: gorseller/semgrep-rule-creator/ikon.svg
+  kapak: gorseller/semgrep-rule-creator/kapak.svg
+ornekCumleler:
+  - "Kullanıcıdan gelen veriyi eval'e veren kodu yakalayan bir Semgrep kuralı yaz."
+  - "Projemizde yasaklı bir fonksiyonun kullanımını tespit eden Semgrep kuralı oluştur."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Kural yazmadan önce Semgrep'in herkese açık belge sayfalarını internetten okur; Semgrep aracının kurulu olması gerekir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [semgrep, sharp-edges, security-review]
+en:
+  ad: "Semgrep Rule Writer"
+  kisaAciklama: "Writes Semgrep rules for bug and vulnerability patterns."
+  neIseYarar:
+    - "Use only on your own code or with permission: writes custom Semgrep rules that catch a specific bug or vulnerability pattern."
+    - "Writes tests with both vulnerable and safe examples first, then refines the rule until every test passes."
+    - "Builds rules that follow user input to a dangerous spot and delivers a rule file plus a test file."
+  ornekCumleler:
+    - "Write a Semgrep rule that catches user input passed to eval."
+    - "Create a Semgrep rule that detects use of a banned function in our project."

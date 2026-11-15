@@ -1,0 +1,39 @@
+id: gptpro-handoff
+ad: "Derin Model İnceleme Akışı"
+kisaAciklama: "Harici güçlü modele iş verir, dönen raporu doğrular."
+neIseYarar:
+  - "ChatGPT Pro gibi yavaş ama derin düşünen bir modele yapıştırılacak, tek problemi çok iyi anlatan bir istem yazar."
+  - "Modelden dönen raporun her bulgusunu projenin güncel koduna karşı kontrol eder."
+  - "Doğrulanan bulguları uygular, tutmayanları nedeniyle birlikte kayda geçirir."
+kategori: kod-test
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/gptpro-handoff
+  dal: main
+  sha: d3a165dbfe144eed6ce58ed61f51467872df5a32
+gorseller:
+  ikon: gorseller/gptpro-handoff/ikon.svg
+  kapak: gorseller/gptpro-handoff/kapak.svg
+ornekCumleler:
+  - "Şu performans sorununu derin bir modele sormak için istem hazırla."
+  - "ChatGPT Pro'dan gelen raporu kodumuza karşı doğrula ve işe yarayanları uygula."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Betik içermez, bir iş akışı anlatır. Zip paketleri için gptpro skill'iyle birlikte kullanılır; ChatGPT Pro gibi ücretli bir hesabı siz sağlamalısınız."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [gptpro]
+en:
+  ad: "Deep Model Handoff"
+  kisaAciklama: "Sends work to a deep model and verifies its report."
+  neIseYarar:
+    - "Writes a complete prompt framing one hard problem for a slow, deep model such as ChatGPT Pro."
+    - "Checks every finding in the returned report against the live codebase."
+    - "Implements what holds up and records what was rejected and why."
+  ornekCumleler:
+    - "Prepare a prompt to ask a deep model about this performance issue."
+    - "Verify the report from ChatGPT Pro against our code and implement what holds up."

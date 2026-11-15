@@ -1,0 +1,39 @@
+id: hackatomy-studyo
+ad: "Hackatomy Stüdyo Yazarı"
+kisaAciklama: "Hackatomy kurslarını az token harcayarak yazdırır."
+neIseYarar:
+  - "Hackatomy kursu ya da ders kitabı yazarken mekanik işleri (denetim, komut doğrulama, kaynak toplama, PDF) Hackatomy Stüdyo komut satırına yaptırır."
+  - "Kaynak sayfalarını indirip numaralandırır, derse yalnız ilgili parçaları getirir; Claude kursun tamamını okumaz."
+  - "Derslerdeki komutları gerçek sistemde çalıştırıp çıktıyı dosyaya yazar, yapay zekâ kokan ifadeleri ve kaynaksız sayıları bulur. Hackatomy Stüdyo aracının kurulu olmasını ister."
+kategori: yazi
+kaynak:
+  repo: csyNEMES1S/skills
+  yol: skills/hackatomy-studyo
+  dal: main
+  sha: 57d21f2c4177f56ae41f2b9657c8e46c0ad7fd13
+gorseller:
+  ikon: gorseller/hackatomy-studyo/ikon.svg
+  kapak: gorseller/hackatomy-studyo/kapak.svg
+ornekCumleler:
+  - "Linux temelleri kursunun 3. dersini yaz."
+  - "Şu dersi kitaba hazırla ve denetle."
+  - "Cilt 2'nin PDF'ini oluştur."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Hackatomy Stüdyo (studyo.js) bilgisayarda kurulu olmalı; skill'deki klasör yolu kendi yolunla değiştirilmeli."
+    sahibiDenedi: true
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Hackatomy Studio Writer"
+  kisaAciklama: "Writes Hackatomy courses with minimal tokens."
+  neIseYarar:
+    - "Offloads the mechanical parts of writing a Hackatomy course (linting, command verification, source collection, PDF) to the Hackatomy Studio CLI."
+    - "Downloads and numbers source pages and brings only the relevant snippets into a lesson, so Claude never reads the whole course."
+    - "Runs lesson commands on a real system, writes the real output back and flags AI-sounding phrasing. Requires the Hackatomy Studio tool."
+  ornekCumleler:
+    - "Write lesson 3 of the Linux basics course."
+    - "Prepare this lesson for the book and lint it."

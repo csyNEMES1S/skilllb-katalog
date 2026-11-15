@@ -1,0 +1,40 @@
+id: diagnosing-bugs
+ad: "Hata Avcısı"
+kisaAciklama: "Zor hataları ve yavaşlamaları adım adım tanılar."
+neIseYarar:
+  - "Bozuk, hata veren ya da yavaşlayan bir şey için önce hatayı her seferinde gösteren hızlı bir deneme düzeneği kurar."
+  - "Hatayı en küçük hâline indirir, birkaç olası nedeni sıralar ve her birini tek tek sınayarak gerçek nedeni bulur."
+  - "Düzeltmeden önce hatayı yakalayan bir test yazar, işi bitince geçici denemelerden ve ek kayıt satırlarından temizler."
+kategori: kod-test
+kaynak:
+  repo: mattpocock/skills
+  yol: skills/engineering/diagnosing-bugs
+  dal: main
+  sha: f3fc5632f401156837ee3872f14fe33ccf1024ea
+gorseller:
+  ikon: gorseller/diagnosing-bugs/ikon.svg
+  kapak: gorseller/diagnosing-bugs/kapak.svg
+ornekCumleler:
+  - "Kaydet düğmesine basınca uygulama çöküyor, nedenini bul."
+  - "Bu sayfa son sürümden beri çok yavaş açılıyor, neden olduğunu araştır."
+  - "Bu hata bazen oluyor bazen olmuyor; tutarlı şekilde yakalamamıza yardım et."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [systematic-debugging, find-bugs, test-driven-development]
+en:
+  ad: "Bug Hunter"
+  kisaAciklama: "Diagnoses hard bugs and slowdowns step by step."
+  neIseYarar:
+    - "For anything broken, failing or slow, first builds a fast check that reproduces the problem every time."
+    - "Shrinks the bug to its smallest form, ranks a few likely causes and tests them one by one to find the real one."
+    - "Writes a test that catches the bug before fixing it, then cleans up temporary experiments and debug logging."
+  ornekCumleler:
+    - "The app crashes when I press Save, find out why."
+    - "This page has been very slow since the last release, investigate."
+    - "This bug only happens sometimes; help me reproduce it reliably."

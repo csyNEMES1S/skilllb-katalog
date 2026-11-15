@@ -1,0 +1,39 @@
+id: avenox-graphics
+ad: "Video Hareketli Grafikleri"
+kisaAciklama: "Videoya marka renginde hareketli grafik ve başlık ekler."
+neIseYarar:
+  - "HyperFrames ile başlık kartı, diyagram, alt yazı bandı ve kapanış gibi hareketli grafikler hazırlar."
+  - "Grafikleri kesilmiş videonun üstüne ya da araya, istenen saniyede ffmpeg ile yerleştirir."
+  - "Marka renklerine bağlı kalır; yüz ya da önemli ekran bölümlerinin üstüne grafik koymamaya dikkat eder."
+kategori: tasarim
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/avenox-graphics
+  dal: main
+  sha: d3a165dbfe144eed6ce58ed61f51467872df5a32
+gorseller:
+  ikon: gorseller/avenox-graphics/ikon.svg
+  kapak: gorseller/avenox-graphics/kapak.svg
+ornekCumleler:
+  - "Videomun girişine marka renklerimde 5 saniyelik bir başlık kartı hazırla."
+  - "Şu dakikaya alt yazı bandı ve küçük bir diyagram animasyonu ekle."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Node, ffmpeg ve HyperFrames kurulu olmalı; tarifler Mac için yazılmış (donanım kodlayıcı), Windows'ta ffmpeg ayarı değiştirmek gerekir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [canvas-design, theme-factory]
+en:
+  ad: "Video Motion Graphics"
+  kisaAciklama: "Adds brand-matched motion graphics to your video."
+  neIseYarar:
+    - "Builds title cards, diagrams, lower-thirds and outros as motion graphics with HyperFrames."
+    - "Places them on top of or between cut footage at the exact timecode using ffmpeg."
+    - "Sticks to your brand colors and keeps graphics off faces and important screen areas."
+  ornekCumleler:
+    - "Make a 5-second title card in my brand colors for the start of my video."
+    - "Add a lower-third and a small diagram animation at this minute."

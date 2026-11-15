@@ -1,0 +1,39 @@
+id: supply-chain-risk-auditor
+ad: "Bağımlılık Risk Denetçisi"
+kisaAciklama: "Projenin kullandığı paketlerdeki güvenlik riskini ölçer."
+neIseYarar:
+  - "Yalnız kendi projenizde ya da izinli projelerde kullanın: npm, Python ve Go paketlerindeki bilinen güvenlik açıklarını ve terk edilmiş paketleri bulur."
+  - "Paketlerin bakım durumunu, bakımcı sayısını ve kurulum sırasında çalışan betikleri ölçüp tek bir rapora döker."
+  - "Raporda ölçülemeyen noktaları ayrıca belirtir; ne önce düzeltilmeli, hangi pakete geçilebilir gibi yorumları ölçümden ayrı yazar."
+kategori: guvenlik
+kaynak:
+  repo: trailofbits/skills
+  yol: plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor
+  dal: main
+  sha: 123037ec8aed26f0d86327cc39137ee5043e5deb
+gorseller:
+  ikon: gorseller/supply-chain-risk-auditor/ikon.svg
+  kapak: gorseller/supply-chain-risk-auditor/kapak.svg
+ornekCumleler:
+  - "Projemin bağımlılıklarını tedarik zinciri riski açısından denetle."
+  - "Hangi paketlerimiz terk edilmiş ya da açığı var, rapor çıkar."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Rapor için npm, PyPI, OSV, GitHub gibi herkese açık sitelere sorgu gönderir (kod göndermez); GitHub girişi (gh) ve uv aracı önerilir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [security-review, differential-review, semgrep]
+en:
+  ad: "Dependency Risk Auditor"
+  kisaAciklama: "Measures security risk in the packages a project uses."
+  neIseYarar:
+    - "Use only on your own or authorized projects: finds known vulnerabilities and abandoned packages among npm, Python and Go dependencies."
+    - "Measures maintenance status, number of maintainers and install-time scripts, and compiles them into one report."
+    - "Marks what could not be measured and keeps judgment calls, such as what to fix first, separate from measurements."
+  ornekCumleler:
+    - "Audit my project's dependencies for supply-chain risk."
+    - "Which of our packages are abandoned or vulnerable? Give me a report."

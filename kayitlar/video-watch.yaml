@@ -1,0 +1,38 @@
+id: video-watch
+ad: "Video İzleyici"
+kisaAciklama: "Bir videoyu izleyip içeriği hakkında soruları yanıtlar."
+neIseYarar:
+  - "Bağlantısını ya da dosyasını verdiğin videodan görüntü karelerini ve konuşma metnini çıkarır, sorularını videoya bakarak yanıtlar."
+  - "Videoda altyazı varsa onu kullanır; yoksa konuşmayı bilgisayarında ya da (anahtar verirsen) bulut servisiyle yazıya çevirir."
+  - "Ayrıntı düzeyini seçebilirsin: yalnız yazı, hızlı, dengeli ya da tüm kareler; belirli bir zaman aralığına odaklanabilir."
+kategori: diger
+kaynak:
+  repo: bradautomates/claude-video
+  yol: skills/watch
+  dal: main
+  sha: 03ceb42f7fa2c4439aca01752118044baabffb8f
+gorseller:
+  ikon: gorseller/video-watch/ikon.svg
+  kapak: gorseller/video-watch/kapak.svg
+ornekCumleler:
+  - "Bu YouTube videosunda ana fikirler neler? Bağlantı: https://www.youtube.com/watch?v=..."
+  - "Bilgisayarımdaki toplantı kaydını izle ve alınan kararları listele."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "İlk kullanımda yt-dlp, ffmpeg ve Python gerektirir; isteğe bağlı olarak Gemini, Groq ya da OpenAI anahtarı istenir (anahtarsız yerel mod da vardır, ilk kurulumda yaklaşık 1,5 GB indirebilir). Tarayıcı çerezi yalnız açıkça istenirse kullanılır. Gemini seçilirse video Google'a gönderilir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Video Watcher"
+  kisaAciklama: "Watches a video and answers questions about it."
+  neIseYarar:
+    - "Extracts frames and the spoken transcript from a video link or file and answers your questions by looking at the video."
+    - "Uses captions when available; otherwise transcribes speech on your computer or, if you provide a key, with a cloud service."
+    - "You pick the detail level: transcript only, quick, balanced or all frames, and can focus on a specific time range."
+  ornekCumleler:
+    - "What are the main points of this YouTube video? Link: https://www.youtube.com/watch?v=..."
+    - "Watch the meeting recording on my computer and list the decisions made."

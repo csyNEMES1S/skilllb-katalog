@@ -1,0 +1,38 @@
+id: chainscan
+ad: "Blokzincir Sorgulama"
+kisaAciklama: "Etherscan ile 60'tan fazla zincirde sözleşme sorgular."
+neIseYarar:
+  - "Akıllı sözleşmenin ABI'sini ve doğrulanmış kaynak kodunu Ethereum, BSC, Polygon, Base gibi zincirlerden getirir."
+  - "İşlem, makbuz, bakiye ve olay kayıtlarını sorgular; ücretli olan yerlerde Foundry cast aracına geçer."
+  - "Sözleşme doğrulama işlemini Etherscan API'si ya da forge ile yapar."
+kategori: veri-grafik
+kaynak:
+  repo: avenoxai/avenoxskills
+  yol: skills/chainscan
+  dal: main
+  sha: d3a165dbfe144eed6ce58ed61f51467872df5a32
+gorseller:
+  ikon: gorseller/chainscan/ikon.svg
+  kapak: gorseller/chainscan/kapak.svg
+ornekCumleler:
+  - "Base zincirindeki şu sözleşmenin ABI'sini ve kaynak kodunu getir."
+  - "Şu işlem hash'inin makbuzunu ve olay kayıtlarını göster."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Etherscan'a internetten sorgu gönderir ve ücretsiz bir Etherscan API anahtarı ister; anahtarı kendiniz sağlamalısınız. Bazı zincirlerde sorgular ücretlidir."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Chainscan"
+  kisaAciklama: "Query contracts on 60+ chains via Etherscan."
+  neIseYarar:
+    - "Fetches a smart contract's ABI and verified source from Ethereum, BSC, Polygon, Base and more."
+    - "Looks up transactions, receipts, balances and event logs, falling back to Foundry cast on paid-only chains."
+    - "Verifies contracts through the Etherscan API or forge."
+  ornekCumleler:
+    - "Get the ABI and source code of this contract on Base."
+    - "Show the receipt and event logs for this transaction hash."

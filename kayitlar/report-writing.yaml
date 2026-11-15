@@ -1,0 +1,37 @@
+id: report-writing
+ad: "Güvenlik Açığı Raporu Yazımı"
+kisaAciklama: "Güvenlik açığı bulgusunu net ve etkili raporlar."
+neIseYarar:
+  - "Yalnız izinli testlerde kullanın: bulduğunuz açığı, etkisini öne çıkaran açık bir rapora dönüştürür."
+  - "Başlık ve etki cümlesi için kalıplar, HackerOne, Bugcrowd, Intigriti ve Immunefi şablonları verir."
+  - "Önem derecesini (CVSS) seçmenize ve göndermeden önceki kontrol listesine yardım eder."
+kategori: guvenlik
+kaynak:
+  repo: elementalsouls/Claude-BugHunter
+  yol: skills/report-writing
+  dal: main
+  sha: 9a1863c682d3dcb0808aa3efdb42251e731cddda
+gorseller:
+  ikon: gorseller/report-writing/ikon.svg
+  kapak: gorseller/report-writing/kapak.svg
+ornekCumleler:
+  - "Bulduğum IDOR açığı için HackerOne formatında bir rapor taslağı yaz."
+  - "Bu raporun başlığını ve etki paragrafını daha net hâle getir."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: "Vulnerability Report Writing"
+  kisaAciklama: "Turns a finding into a clear, impact-first report."
+  neIseYarar:
+    - "Use only on authorized tests: turns a finding into a clear report that leads with impact."
+    - "Gives title and impact-statement formulas plus HackerOne, Bugcrowd, Intigriti and Immunefi templates."
+    - "Helps pick a severity (CVSS) and run a pre-submit checklist."
+  ornekCumleler:
+    - "Draft a HackerOne report for the IDOR I found."
+    - "Make this report's title and impact paragraph clearer."

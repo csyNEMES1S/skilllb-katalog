@@ -1,0 +1,38 @@
+id: caveman
+ad: "Kısa Konuşan Asistan"
+kisaAciklama: "Yanıtları kısa tutar, gereksiz lafı keser."
+neIseYarar:
+  - "Yapay zekânın yanıtlarını kısaltır: önce cevabı verir, selamlama, özet ve gereksiz söz kalıplarını atar."
+  - "Kod, komut, dosya yolu, sayı ve hata mesajlarını olduğu gibi korur; kısaltma anlamı bozacaksa düz ve açık yazar."
+  - "Açıkça kapatana kadar oturum boyunca açık kalır; böylece okuduğun yazı ve harcanan çıktı miktarı azalır."
+kategori: yazi
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: skills/caveman
+  dal: main
+  sha: 7d76b13b00c620599a840dcc131ad43f0eeb2e6b
+gorseller:
+  ikon: gorseller/caveman/ikon.svg
+  kapak: gorseller/caveman/kapak.svg
+ornekCumleler:
+  - "/caveman"
+  - "Kısa konuş, gereksiz açıklama yapma."
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [unslop, i-have-adhd]
+en:
+  ad: "Terse Mode"
+  kisaAciklama: "Keeps replies short and cuts the filler."
+  neIseYarar:
+    - "Shortens the AI's replies: gives the answer first and drops greetings, recaps and filler phrases."
+    - "Keeps code, commands, file paths, numbers and error messages exactly as they are; switches to plain full sentences when brevity could cause confusion."
+    - "Stays on for the whole session until you turn it off, so you read less and spend fewer output tokens."
+  ornekCumleler:
+    - "/caveman"
+    - "Keep it short, no unnecessary explanations."

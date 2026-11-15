@@ -191,6 +191,24 @@ Kullanıcıya her zaman kayıttaki sabit `kaynak.sha` sunulur. Skill yazarı rep
 
 Yani skill yazarıysan yapman gereken tek şey kendi reponda yeni sürümü yayınlamak.
 
+## Yeni skill'ler nasıl bulunur? (haftalık keşif)
+
+Her pazartesi çalışan **Haftalık keşif** iş akışı GitHub'da skill repolarını arar (`topic:claude-skills`, `topic:agent-skills` ve benzerleri):
+
+1. En az 50 yıldızlı, açık lisanslı, katalogda olmayan skill klasörlerini bulur. Yarım skill'leri, noktalı klasörlerdeki (`.agents/`, `.claude/`) proje içi skill'leri ve aynı skill'in kopyalarını eler. Bir repodan en çok 3, toplamda en çok 10 aday alır.
+2. Her aday için `kayitlar/` altına **taslak** bir kayıt (`# TASLAK` ile başlar) ve görsellerini yazar, hepsini tek bir PR'da toplar. PR gövdesinde yıldız, lisans, betik sayısı ve ağ erişimi uyarısı görünür. Açık bir keşif PR'ı varsa yenisi açılmaz.
+3. Bakımcı SKILL.md'leri okur, Türkçe metinleri düzeltir, uygun olmayanları siler ve birleştirir. Birleşince skill'ler SkillLB'de görünür. Hiçbir aday onaysız yayınlanmaz.
+
+Reddedilen skill'ler `kesif-haric.txt` dosyasına nedeniyle yazılır ve bir daha önerilmez.
+
+Elle çalıştırmak için:
+
+```sh
+GITHUB_TOKEN=$(gh auth token) npm run kesif                     # yalnız listeler (dist/kesif.md)
+GITHUB_TOKEN=$(gh auth token) npm run kesif -- --yaz            # taslak kayıtları da yazar
+GITHUB_TOKEN=$(gh auth token) npm run kesif -- --yerel ~/.agents/.skill-lock.json   # bilgisayarındaki skill'lerden katalogda olmayanlar
+```
+
 ## "doğrulandı" rozeti ne demek?
 
 SkillLB'de bazı skill'lerin kartında **doğrulandı** rozeti görünür. Bu, bakımcının o skill'i katalogda sabitlenmiş sürümüyle **kendisi denediği** ve içeriğini (betikler, ağ bağlantıları) gözden geçirdiği anlamına gelir.

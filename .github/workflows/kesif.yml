@@ -1,0 +1,50 @@
+name: Haftalık keşif
+
+# GitHub'da kataloğa girmemiş, açık lisanslı ve popüler skill'leri arar; bulduklarını taslak kayıt
+# olarak bir PR'a koyar. Hiçbir şey kendiliğinden yayınlanmaz: sahibi PR'ı inceleyip birleştirince
+# "Günlük derleme" kataloğu yayınlar ve skill'ler SkillLB'de görünür.
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"   # her pazartesi 05:00 UTC
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: kesif
+  cancel-in-progress: false
+
+jobs:
+  kesif:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Adayları bul ve taslak yaz
+        shell: bash
+        run: |
+          DUR="$(openssl rand -hex 16)"
+          echo "::stop-commands::$DUR"
+          npm run kesif -- --yaz --sinir 10 --en-az-yildiz 50 --cikti dist/kesif.json --govde dist/kesif.md
+          echo "::$DUR::"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Git kimliği
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Keşif PR'ını aç
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: bash .github/scripts/kesif-pr.sh dist/kesif.md

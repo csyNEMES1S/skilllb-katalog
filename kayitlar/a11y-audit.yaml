@@ -1,0 +1,41 @@
+id: a11y-audit
+ad: "Erişilebilirlik Denetimi"
+kisaAciklama: "Arayüzdeki erişilebilirlik sorunlarını bulup düzeltir."
+neIseYarar:
+  - "Projedeki kodu WCAG 2.2 A ve AA kurallarına göre tarar; eksik görsel açıklamaları, klavyeyle kullanılamayan düğmeleri ve forma ait eksikleri bulur."
+  - "Renk karşıtlığını ölçer, sorunları ciddiyetine göre sıralar ve React, Vue, Angular, Svelte ya da düz HTML için düzeltme kodu önerir."
+  - "Düzeltmeden sonra taramayı yeniden çalıştırıp doğrular; yönetici ve ekip için okunur bir rapor ile CI ayarı hazırlayabilir."
+kategori: tasarim
+kaynak:
+  repo: alirezarezvani/claude-skills
+  yol: engineering-team/a11y-audit/skills/a11y-audit
+  dal: main
+  sha: b078bb8996405fe980c384136f6ed9226cbf2489
+gorseller:
+  ikon: gorseller/a11y-audit/ikon.svg
+  kapak: gorseller/a11y-audit/kapak.svg
+ornekCumleler:
+  - "Web sitemin erişilebilirlik denetimini yap ve sorunları düzelt."
+  - "Bu iki rengin metin için yeterli karşıtlığı var mı, kontrol et."
+  - "Erişilebilirlik sorunlarını yönetime sunacağım bir rapor olarak hazırla."
+uyumluluk:
+  claude:
+    durum: calisir
+    neden: "Python 3 gerektirir; tarama araçları yerelde çalışır."
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+benzerler: [design-qa, frontend-design]
+en:
+  ad: "Accessibility Audit"
+  kisaAciklama: "Finds and fixes accessibility problems in web interfaces."
+  neIseYarar:
+    - "Scans project code against WCAG 2.2 A and AA rules, finding missing image descriptions, buttons unusable by keyboard and form gaps."
+    - "Measures color contrast, ranks issues by severity and suggests fix code for React, Vue, Angular, Svelte or plain HTML."
+    - "Re-runs the scan after fixes to verify them, and can prepare a readable report for stakeholders and a CI setup."
+  ornekCumleler:
+    - "Run an accessibility audit on my website and fix the issues."
+    - "Check whether these two colors have enough contrast for text."
+    - "Prepare the accessibility issues as a report for management."
