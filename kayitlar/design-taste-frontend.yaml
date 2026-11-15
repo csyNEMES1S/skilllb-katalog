@@ -1,0 +1,36 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+id: design-taste-frontend
+ad: Modern Web Sitesi Tasarımı
+kisaAciklama: Figma ve x.ai düzeyinde, şablon hissi vermeyen kurumsal…
+neIseYarar:
+  - Ana sayfa, ürün, mağaza, otel ve yazılım siteleri için özgün ve düzenli sayfalar hazırlar.
+  - Tasarımı tarayıcıda kontrol eder, sayfa giriş animasyonları ve mikro etkileşimler ekler.
+  - Mevcut bir sayfa şablon gibi duruyorsa onu daha özgün bir görünüme kavuşturmaya yardımcı olur.
+kategori: tasarim
+kaynak:
+  repo: Leonxlnx/taste-skill
+  yol: skills/taste-skill
+  dal: main
+  sha: b900a8075fd7a2449bd6f414a2ae79657e95363c
+gorseller:
+  ikon: gorseller/design-taste-frontend/ikon.svg
+  kapak: gorseller/design-taste-frontend/kapak.svg
+ornekCumleler:
+  - Kafe işletmem için sade ve profesyonel bir tanıtım sitesi tasarla.
+  - Yazılım ürünüm için yapay zekâ temalı bir açılış sayfası hazırla.
+  - Mevcut React sayfam çok şablon gibi duruyor, daha özgün hâle getirir misin?
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Design Taste Frontend
+  kisaAciklama: tasteskill 2.5.1, the anti-slop frontend skill.
+  neIseYarar:
+    - tasteskill 2.5.1, the anti-slop frontend skill.
+    - "Builds professional company websites at the level of figma.com and x.ai: plain copy in a voice of its own, one system, one section per screen, equal edges, real photographs and real product UI (licensed stand-in photographs when the client has none; a product render only when the brief asks for 3D), a hero entrance and one or two dealt moments on every page, shader effects and scenes only on tech, gaming and software pages, quiet micro-interactions, and a checker and finish gate that enforce it in a real browser."
+    - Use this whenever you build, design, redesign, restyle, polish or review a landing page, company, product, shop, cafe, hotel, studio, SaaS, AI, developer-tool or game site, as static HTML/CSS or inside an existing React, Next.js, Vue, Svelte, Astro or Tailwind project, or when the user says a page looks generic, templated or "AI-made".

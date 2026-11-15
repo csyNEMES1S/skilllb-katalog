@@ -1,0 +1,36 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+id: access-lifecycle
+ad: Erişim Yaşam Döngüsü
+kisaAciklama: Kullanıcı erişimlerini denetler, ayrılanların yetkilerini…
+neIseYarar:
+  - İK listesini hesap dökümleriyle karşılaştırarak ayrılan çalışanların erişimlerinin kapatıldığını doğrular.
+  - Sahipsiz veya yetimleşmiş servis hesaplarını bulup listeler.
+  - SOC 2, ISO 27001, PCI DSS, HIPAA ve NIST 800-53 denetçi taleplerine erişim kontrolü açısından yanıt hazırlamaya yardımcı olur.
+kategori: guvenlik
+kaynak:
+  repo: alirezarezvani/claude-skills
+  yol: ra-qm-team/access-lifecycle/skills/access-lifecycle
+  dal: main
+  sha: da67092889c22354a62938737608a5a7b1bcd2bc
+gorseller:
+  ikon: gorseller/access-lifecycle/ikon.svg
+  kapak: gorseller/access-lifecycle/kapak.svg
+ornekCumleler:
+  - Bu çeyrekteki kullanıcı erişim incelemesini hazırlamama yardım eder misin?
+  - Şirketten ayrılan çalışanların hesaplarının hâlâ açık olup olmadığını kontrol et.
+  - Denetçi için SOC 2 erişim kontrolü kanıtlarını derlemem gerekiyor.
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Access Lifecycle
+  kisaAciklama: Use when preparing or running a user access review…
+  neIseYarar:
+    - Use when preparing or running a user access review, checking that leavers lost their access, finding orphaned or ownerless service accounts, answering an auditor's access-control request for SOC 2, ISO 27001, PCI DSS, HIPAA or NIST 800-53, or checking whether a finished review campaign will hold up.
+    - Diffs the HR roster against account exports, tests the campaign for coverage, self-review, unremoved revokes and rubber-stamping, and maps every exception to the controls it breaks.
+    - "Betik içerir: scripts/access_diff.py, scripts/access_review_campaign.py, scripts/control_evidence_mapper.py."

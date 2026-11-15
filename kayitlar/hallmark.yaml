@@ -1,0 +1,36 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+id: hallmark
+ad: Hallmark Tasarım
+kisaAciklama: Yeni web sayfalarını ve siteleri tasarlanmış, özgün bir…
+neIseYarar:
+  - Sıfırdan yeni bir web sitesi veya sayfa tasarlamana yardımcı olur.
+  - Üretilmiş gibi görünmeyen, tasarım düşüncesiyle hazırlanmış sonuçlar üretir.
+  - Yalnızca yeni tasarımlar için kullanılır, mevcut bir tasarımı kendiliğinden değiştirmez.
+kategori: tasarim
+kaynak:
+  repo: Nutlope/hallmark
+  yol: skills/hallmark
+  dal: main
+  sha: ffed480cc06a3fabef4254b8879c7a35e20837fb
+gorseller:
+  ikon: gorseller/hallmark/ikon.svg
+  kapak: gorseller/hallmark/kapak.svg
+ornekCumleler:
+  - Yeni bir portfolyo sitesi için Hallmark ile tasarım yap.
+  - Bir etkinlik için tek sayfalık tanıtım sayfası tasarla.
+  - Hallmark kullanarak yeni bir ürün lansman sayfası oluştur.
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Hallmark
+  kisaAciklama: Design skill for websites and new pages that look…
+  neIseYarar:
+    - Design skill for websites and new pages that look designed, not generated.
+    - Use when the user asks to build or design something new, or names Hallmark.
+    - Never use it on an existing design unless the user names Hallmark, as in `/hallmark redesign <path>`.

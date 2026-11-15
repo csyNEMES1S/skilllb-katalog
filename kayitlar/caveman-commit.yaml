@@ -1,0 +1,36 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+id: caveman-commit
+ad: Kısa Commit Mesajı
+kisaAciklama: Değişikliğin amacını kısa ve düzenli bir commit mesajına…
+neIseYarar:
+  - Yapılan değişikliği, Conventional Commits biçimine uygun kısa bir mesajla özetler.
+  - Mesajı yalnızca amaca odaklayarak gereksiz ayrıntıları çıkarır.
+  - Commit yazma işini hızlandırır ve tutarlı bir geçmiş oluşturmana yardımcı olur.
+kategori: kod-test
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: skills/caveman-commit
+  dal: main
+  sha: 8909f6af8806897cbb8330c11028eee168ad7cc7
+gorseller:
+  ikon: gorseller/caveman-commit/ikon.svg
+  kapak: gorseller/caveman-commit/kapak.svg
+ornekCumleler:
+  - Bu değişiklikler için bir commit mesajı yaz.
+  - Giriş ekranındaki hatayı düzelten commit mesajını kısaca hazırla.
+  - /commit komutuyla değişiklikleri kaydetmek için mesaj öner.
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Caveman Commit
+  kisaAciklama: Write a Conventional Commits message compressed to intent…
+  neIseYarar:
+    - Write a Conventional Commits message compressed to intent only.
+    - Use for "write a commit", "commit message", /commit or /caveman-commit.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.

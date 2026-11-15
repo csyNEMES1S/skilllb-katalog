@@ -1,0 +1,36 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+id: access
+ad: Discord Erişimi
+kisaAciklama: Discord kanalındaki eşleşmeleri, izin listelerini ve mesaj…
+neIseYarar:
+  - Discord kanalına katılmak isteyen kişilerin eşleşme taleplerini onaylamanı sağlar.
+  - Kanala kimlerin izinli olduğunu listeleyip izin listesini düzenlemene olanak tanır.
+  - DM ve grup mesajlarına ilişkin erişim politikasını değiştirmene yardımcı olur.
+kategori: diger
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: external_plugins/discord/skills/access
+  dal: main
+  sha: 7994c270e575fa82bc86b3e99363bf8fe55292f7
+gorseller:
+  ikon: gorseller/access/ikon.svg
+  kapak: gorseller/access/kapak.svg
+ornekCumleler:
+  - Ahmet adlı kişinin eşleşme talebini onayla.
+  - Discord kanalına şu anda kimlerin erişebildiğini göster.
+  - Grup mesajlarına izin veren politikayı kapat.
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Access
+  kisaAciklama: Manage Discord channel access — approve pairings, edit…
+  neIseYarar:
+    - Manage Discord channel access — approve pairings, edit allowlists, set DM/group policy.
+    - Use when the user asks to pair, approve someone, check who's allowed, or change policy for the Discord channel.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.

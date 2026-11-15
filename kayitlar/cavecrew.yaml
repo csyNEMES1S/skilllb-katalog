@@ -1,0 +1,36 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+id: cavecrew
+ad: Cavecrew Ajanları
+kisaAciklama: Kod arama, küçük düzenleme ve inceleme işlerini özel…
+neIseYarar:
+  - Kod tabanında bir şeyi bulmak için arama ajanına, ana sohbeti yormadan görev vermeni sağlar.
+  - Bir ya da iki dosyalık küçük düzenlemeleri özel yapım ajana yaptırmana yardımcı olur.
+  - Değişiklik farklarını ayrı bir ajanla incelemeni kolaylaştırır ve çıktıyı kısa tutar.
+kategori: kod-test
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: plugins/caveman/skills/cavecrew
+  dal: main
+  sha: f692a3d0cb48962fd3315a981c9edde9f11d86be
+gorseller:
+  ikon: gorseller/cavecrew/ikon.svg
+  kapak: gorseller/cavecrew/kapak.svg
+ornekCumleler:
+  - Projede kimlik doğrulama kodunun nerede olduğunu bul.
+  - Bu küçük dosyadaki hatayı düzeltmek için ajana görev ver.
+  - Son yapılan değişikliklerin farkını incele.
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Cavecrew
+  kisaAciklama: When to delegate to `cavecrew-investigator` (locate code)…
+  neIseYarar:
+    - When to delegate to `cavecrew-investigator` (locate code), `cavecrew-builder` (1-2 file edit) or `cavecrew-reviewer` (diff review) instead of working inline or using `Explore`.
+    - Their output is compressed, so main context lasts longer.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.

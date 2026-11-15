@@ -1,0 +1,36 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+id: agent-development
+ad: Ajan Geliştirme
+kisaAciklama: Claude Code eklentileri için yapay zekâ ajanları…
+neIseYarar:
+  - Ajanın yapısını, sistem talimatını ve ne zaman devreye gireceğini açıklayan tanımı hazırlamaya yardımcı olur.
+  - Ajanın hangi araçları kullanacağını, rengini ve örnek kullanım senaryolarını belirlemene yardımcı olur.
+  - Otonom ajanlar için en iyi geliştirme uygulamalarını adım adım anlatır.
+kategori: kod-test
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: plugins/plugin-dev/skills/agent-development
+  dal: main
+  sha: ce721c1f1d5da2c281588818e072ae01a05d2e73
+gorseller:
+  ikon: gorseller/agent-development/ikon.svg
+  kapak: gorseller/agent-development/kapak.svg
+ornekCumleler:
+  - Kod incelemesi yapan bir alt ajan nasıl yazılır?
+  - Ajanın hangi durumlarda devreye girmesi gerektiğini açıklayan bir tanım yaz.
+  - Otonom çalışan bir ajan için sistem talimatını nasıl hazırlamalıyım?
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Agent Development
+  kisaAciklama: This skill should be used when the user asks to "create an…
+  neIseYarar:
+    - This skill should be used when the user asks to "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description", "agent examples", "agent tools", "agent colors", "autonomous agent", or needs guidance on agent structure, system prompts, triggering conditions, or agent development best practices for Claude Code plugins.
+    - "Kaynak: anthropics/claude-plugins-official (Apache-2.0 lisanslı, 47335 yıldız)."
+    - "Betik içerir: scripts/validate-agent.sh."
