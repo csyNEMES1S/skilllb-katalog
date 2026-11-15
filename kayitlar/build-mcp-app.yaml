@@ -1,12 +1,14 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+
 # TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
 id: build-mcp-app
-ad: Build Mcp App
-kisaAciklama: This skill should be used when the user wants to build an…
+ad: MCP Uygulaması Oluşturma
+kisaAciklama: MCP sunucularına etkileşimli arayüz ve sohbet içi…
 neIseYarar:
-  - This skill should be used when the user wants to build an "MCP app", add "interactive UI" or "widgets" to an MCP server, "render components in chat", build "MCP UI resources", make a tool that shows a "form", "picker", "dashboard" or "confirmation dialog" inline in the conversation, or mentions "apps SDK" in the context of MCP.
-  - Use AFTER the build-mcp-server skill has settled the deployment model, or when the user already knows they want UI widgets.
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
-kategori: veri-grafik
+  - MCP sunucusuna form, seçici veya kontrol paneli gibi etkileşimli arayüzler eklemeye yardımcı olur.
+  - Sohbet içinde gösterilecek bileşenleri ve MCP kullanıcı arayüzü kaynaklarını hazırlar.
+  - Apps SDK kullanarak MCP uygulamalarının nasıl kurulacağını adım adım anlatır.
+kategori: kod-test
 kaynak:
   repo: anthropics/claude-plugins-official
   yol: plugins/mcp-server-dev/skills/build-mcp-app
@@ -16,8 +18,9 @@ gorseller:
   ikon: gorseller/build-mcp-app/ikon.svg
   kapak: gorseller/build-mcp-app/kapak.svg
 ornekCumleler:
-  - Build Mcp App skill'ini kullanarak bu işi yap.
-  - /build-mcp-app
+  - MCP sunucuma sohbet içinde açılan bir onay penceresi eklemek istiyorum.
+  - Verileri gösteren bir kontrol paneli bileşeni nasıl oluşturulur?
+  - Apps SDK ile etkileşimli bir seçici nasıl yapılır?
 uyumluluk:
   claude:
     durum: calisir

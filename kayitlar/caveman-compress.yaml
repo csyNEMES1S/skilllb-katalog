@@ -1,11 +1,13 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+
 # TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
 id: caveman-compress
-ad: Caveman Compress
-kisaAciklama: Compress a memory file such as CLAUDE.md or a todo list…
+ad: Kısa Bellek Sıkıştırma
+kisaAciklama: CLAUDE.md gibi bellek dosyalarını token tasarrufu için…
 neIseYarar:
-  - Compress a memory file such as CLAUDE.md or a todo list into caveman format to save input tokens, keeping a readable backup.
-  - Sends the file's text to the configured model provider.
-  - "Trigger: /caveman-compress."
+  - CLAUDE.md veya yapılacaklar listesi gibi dosyaları daha kısa bir biçime dönüştürür.
+  - Orijinal dosyanın okunabilir bir yedeğini saklayarak içeriği kaybetmeden sıkıştırır.
+  - Girdi token'larını azaltarak her oturumda daha az kaynak harcanmasına yardımcı olur.
 kategori: diger
 kaynak:
   repo: JuliusBrussee/caveman
@@ -16,8 +18,9 @@ gorseller:
   ikon: gorseller/caveman-compress/ikon.svg
   kapak: gorseller/caveman-compress/kapak.svg
 ornekCumleler:
-  - Caveman Compress skill'ini kullanarak bu işi yap.
-  - /caveman-compress
+  - CLAUDE.md dosyamı token tasarrufu için sıkıştırır mısın?
+  - Yapılacaklar listemi kısa biçime çevir, yedeğini de sakla.
+  - Bellek dosyamdaki gereksiz metinleri azaltmama yardım et.
 uyumluluk:
   claude:
     durum: calisir

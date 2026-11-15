@@ -1,12 +1,14 @@
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
+
 # TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
 id: ab-test-setup
-ad: Ab Test Setup
-kisaAciklama: Use before planning or launching any A/B, split or…
+ad: A/B Test Kurulumu
+kisaAciklama: A/B ve çok değişkenli testleri, sonuç erken yorumlanmadan…
 neIseYarar:
-  - Use before planning or launching any A/B, split or multivariate test, or when asked if a result is significant.
-  - Sizes the test with sample_size_calculator.py and writes the hypothesis, metric and stop rule first, so it is not called early on noise.
-  - "Betik içerir: scripts/sample_size_calculator.py."
-kategori: kod-test
+  - Testin kaç kişiyle yapılması gerektiğini hesaplayarak doğru örneklem büyüklüğünü belirler.
+  - Test öncesinde hipotezi, ölçülecek metriği ve testin ne zaman durdurulacağını yazılı olarak netleştirir.
+  - Sonuç anlamlı mı diye sorulduğunda gürültüye kapılmadan güvenilir bir yorum yapılmasına yardımcı olur.
+kategori: veri-grafik
 kaynak:
   repo: alirezarezvani/claude-skills
   yol: marketing-skill/skills/ab-test-setup
@@ -16,8 +18,9 @@ gorseller:
   ikon: gorseller/ab-test-setup/ikon.svg
   kapak: gorseller/ab-test-setup/kapak.svg
 ornekCumleler:
-  - Ab Test Setup skill'ini kullanarak bu işi yap.
-  - /ab-test-setup
+  - Ana sayfadaki butonun rengini değiştiren bir A/B testi planlamak istiyorum.
+  - Bu test sonucu istatistiksel olarak anlamlı mı, yoksa tesadüf olabilir mi?
+  - Üç farklı başlık için çok değişkenli test nasıl kurulur?
 uyumluluk:
   claude:
     durum: calisir
