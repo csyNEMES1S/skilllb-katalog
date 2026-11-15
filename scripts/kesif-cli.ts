@@ -140,7 +140,7 @@ async function ana(): Promise<number> {
     for (const a of adaylar) {
       const dosya = join(klasor, `${a.id}.yaml`);
       if (await varMi(dosya)) continue;
-      const tr = sohbet ? await turkceTaslak(a, sohbet) : null;
+      const tr = sohbet ? await turkceTaslak(a, sohbet, uyar) : null;
       if (tr) cevrilen++;
       await writeFile(dosya, taslakYaml(a, tr), "utf8");
       yazilan++;

@@ -39,11 +39,12 @@ const metinListesi = (v: unknown, enAz: number, enFazla: number, enCok: number):
   return l.every((x): x is string => x !== null) ? l : null;
 };
 
-export async function turkceTaslak(a: Aday, sohbet: Sohbet): Promise<TurkceMetin | null> {
+export async function turkceTaslak(a: Aday, sohbet: Sohbet, uyar?: (m: string) => void): Promise<TurkceMetin | null> {
   let yanit: string;
   try {
     yanit = await sohbet(cevirIstemi(a));
-  } catch {
+  } catch (e) {
+    uyar?.(`${a.id}: çeviri isteği başarısız (${e instanceof Error ? e.message : String(e)})`);
     return null;
   }
   const json = yanit.slice(yanit.indexOf("{"), yanit.lastIndexOf("}") + 1);
@@ -71,7 +72,11 @@ export function githubModelsSohbet(token: string, model = "openai/gpt-4.1-mini")
       body: JSON.stringify({ model, messages: [{ role: "user", content: istem }], temperature: 0.2, max_tokens: 600 }),
       signal: AbortSignal.timeout(60_000),
     });
-    if (!yanit.ok) throw new Error(`GitHub Models ${yanit.status}`);
+    if (!yanit.ok) {
+      // Gövdenin başı tanı içindir (ör. "models permission required"); token içermez.
+      const govde = (await yanit.text().catch(() => "")).replace(/\s+/g, " ").slice(0, 200);
+      throw new Error(`GitHub Models ${yanit.status}: ${govde}`);
+    }
     const veri = (await yanit.json()) as { choices?: { message?: { content?: string } }[] };
     const icerik = veri.choices?.[0]?.message?.content;
     if (typeof icerik !== "string") throw new Error("GitHub Models: boş yanıt");

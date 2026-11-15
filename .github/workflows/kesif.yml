@@ -10,6 +10,11 @@ on:
   schedule:
     - cron: "0 6 * * *"   # her gün 06:00 UTC (09:00 Türkiye)
   workflow_dispatch:
+    inputs:
+      cevir_dene:
+        description: "Yalnız GitHub Models çevirisini dene (PR açmaz)"
+        type: boolean
+        default: false
 
 permissions: {}
 
@@ -32,7 +37,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Çeviri denemesi
+        if: inputs.cevir_dene
+        run: npx tsx scripts/cevir-dene.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Açık keşif PR'ı var mı?
+        if: ${{ !inputs.cevir_dene }}
         id: acik
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,7 +53,7 @@ jobs:
                  -q 'map(select((.isCrossRepository | not) and (.headRefName | startswith("kesif/")))) | length')"
           echo "sayi=$N" >> "$GITHUB_OUTPUT"
       - name: Adayları bul, çevir ve taslak yaz
-        if: steps.acik.outputs.sayi == '0'
+        if: ${{ !inputs.cevir_dene && steps.acik.outputs.sayi == '0' }}
         shell: bash
         run: |
           DUR="$(openssl rand -hex 16)"
@@ -52,12 +63,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Git kimliği
-        if: steps.acik.outputs.sayi == '0'
+        if: ${{ !inputs.cevir_dene && steps.acik.outputs.sayi == '0' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Keşif PR'ını aç
-        if: steps.acik.outputs.sayi == '0'
+        if: ${{ !inputs.cevir_dene && steps.acik.outputs.sayi == '0' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
