@@ -4,6 +4,7 @@ import { mdKod } from "./guncelleme.js";
 import type { Kayit, KategoriId } from "./sema.js";
 import { skillMdAyristir } from "./skillMd.js";
 import { guvenlikTara } from "./tarama.js";
+import type { TurkceMetin } from "./cevir.js";
 
 /**
  * Haftalık keşif: GitHub'da kataloğa henüz girmemiş, açık lisanslı skill klasörlerini bulur ve
@@ -34,6 +35,8 @@ export type KesifSecenekleri = {
   yollar?: Record<string, string[]>;
   /** "sahip/ad:klasör" biçiminde, bir daha önerilmeyecek (reddedilmiş) skill'ler. Büyük/küçük harf duyarsız. */
   haric?: string[];
+  /** `yollar` ile verilen her klasör incelendiğinde (aday olsun olmasın) çağrılır; kuyruktan düşmek için. */
+  incelendi?: (repo: string, yol: string) => void;
 };
 
 /** Kataloğun kabul ettiği açık lisanslar (README "Kabul kriterleri"). */
@@ -139,9 +142,12 @@ export async function adaylariBul(
       const agac = await g.agac(r.repo, r.dal);
       let buRepodan = 0;
       const izinli = yollar.get(r.repo.toLowerCase());
-      for (const yol of skillKlasorleri(agac)) {
-        if (adaylar.length >= sinir || (!izinli && buRepodan >= repoBasina)) break;
-        if (izinli && !izinli.includes(yol)) continue;
+      // Kuyruk/yerel modda verilen yollara doğrudan bakılır (noktalı klasör ve tekrar elemesi yok).
+      const klasorler = izinli ?? skillKlasorleri(agac);
+      for (const yol of klasorler) {
+        if (adaylar.length >= sinir || buRepodan >= repoBasina) break;
+        if (izinli) s.incelendi?.(r.repo, yol);
+        if (izinli && !agac.some((x) => x.tur === "blob" && x.yol === `${yol}/SKILL.md`)) continue;
         if (haric.has(`${r.repo}:${yol}`.toLowerCase())) continue;
         if (katalogdaki.has(`${r.repo.toLowerCase()}:${klasorAdi(yol)}`)) continue;
         let mdMetni: string;
@@ -194,7 +200,7 @@ const baslik = (ad: string) => ad.split(/[-_\s]+/).filter(Boolean).map((p) => p[
  * Sahibinin düzelteceği taslak kayıt. Türkçe alanlar şimdilik SKILL.md'deki özgün (çoğunlukla
  * İngilizce) açıklamadan doldurulur; PR'da Türkçeleştirilmesi beklenir.
  */
-export function taslakYaml(a: Aday): string {
+export function taslakYaml(a: Aday, tr?: TurkceMetin | null): string {
   const ad = baslik(a.ad ?? a.id);
   const parcalar = cumleler(a.aciklama);
   const maddeler = [...parcalar.slice(0, 3)];
@@ -203,12 +209,12 @@ export function taslakYaml(a: Aday): string {
   const kisa = kisalt(parcalar[0] ?? a.aciklama, 60);
   const kayit = {
     id: a.id,
-    ad,
-    kisaAciklama: kisa,
-    neIseYarar: maddeler,
-    kategori: kategoriTahmin(`${a.ad ?? ""} ${a.aciklama}`),
+    ad: tr?.ad ?? ad,
+    kisaAciklama: tr?.kisaAciklama ?? kisa,
+    neIseYarar: tr?.neIseYarar ?? maddeler,
+    kategori: tr?.kategori ?? kategoriTahmin(`${a.ad ?? ""} ${a.aciklama}`),
     kaynak: { repo: a.repo, yol: a.yol, dal: a.dal, sha: a.sha },
-    ornekCumleler: [`${ad} skill'ini kullanarak bu işi yap.`, `/${a.ad ?? a.id}`],
+    ornekCumleler: tr?.ornekCumleler ?? [`${ad} skill'ini kullanarak bu işi yap.`, `/${a.ad ?? a.id}`],
     uyumluluk: {
       claude: { durum: "calisir", sahibiDenedi: false },
       antigravity: { durum: "bilinmiyor", sahibiDenedi: false },
@@ -216,7 +222,8 @@ export function taslakYaml(a: Aday): string {
     dogrulandi: false,
     en: { ad, kisaAciklama: kisa, neIseYarar: maddeler },
   };
-  return `# TASLAK (haftalık keşif): Türkçe metinleri düzeltin, SKILL.md'yi okuyun, sonra birleştirin.\n${stringify(kayit, { lineWidth: 0, aliasDuplicateObjects: false })}`;
+  const not = tr ? "Türkçe metinler makine çevirisi, gözden geçirin" : "Türkçe metinleri düzeltin";
+  return `# TASLAK (keşif): ${not}; SKILL.md'yi okuyun, sonra birleştirin.\n${stringify(kayit, { lineWidth: 0, aliasDuplicateObjects: false })}`;
 }
 
 const tabloHucre = (m: string) => mdKod(kisalt(tekSatir(m), 120).replace(/\|/g, "/"));
@@ -224,9 +231,9 @@ const tabloHucre = (m: string) => mdKod(kisalt(tekSatir(m), 120).replace(/\|/g, 
 /** Keşif PR'ının gövdesi. Üçüncü taraf metinler satır içi kod olarak yazılır (Markdown/HTML sızmaz). */
 export function kesifGovdesi(adaylar: Aday[]): string {
   const satirlar = [
-    "## Haftalık keşif: yeni skill adayları",
+    "## Keşif: yeni skill adayları",
     "",
-    `${adaylar.length} yeni aday bulundu. Her biri açık lisanslı ve katalogda yok. Kayıtlar **taslak**: Türkçe metinler SKILL.md'deki özgün açıklamadan kopyalandı.`,
+    `${adaylar.length} yeni aday bulundu. Her biri açık lisanslı ve katalogda yok. Kayıtlar **taslak**: Türkçe metinler makine çevirisi (GitHub Models); çevrilemeyenlerde SKILL.md'deki özgün açıklama kullanıldı. Dosyanın ilk satırı hangisi olduğunu söyler.`,
     "",
     "Birleştirmeden önce her aday için:",
     "1. SKILL.md'yi ve varsa betikleri okuyun (kabul kriterleri: README).",

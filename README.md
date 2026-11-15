@@ -191,21 +191,23 @@ Kullanıcıya her zaman kayıttaki sabit `kaynak.sha` sunulur. Skill yazarı rep
 
 Yani skill yazarıysan yapman gereken tek şey kendi reponda yeni sürümü yayınlamak.
 
-## Yeni skill'ler nasıl bulunur? (haftalık keşif)
+## Yeni skill'ler nasıl bulunur? (günlük keşif)
 
-Her pazartesi çalışan **Haftalık keşif** iş akışı GitHub'da skill repolarını arar (`topic:claude-skills`, `topic:agent-skills` ve benzerleri):
+Her gün 09:00'da (Türkiye) çalışan **Günlük keşif** iş akışı en çok 10 yeni aday bulur:
 
-1. En az 50 yıldızlı, açık lisanslı, katalogda olmayan skill klasörlerini bulur. Yarım skill'leri, noktalı klasörlerdeki (`.agents/`, `.claude/`) proje içi skill'leri ve aynı skill'in kopyalarını eler. Bir repodan en çok 3, toplamda en çok 10 aday alır.
-2. Her aday için `kayitlar/` altına **taslak** bir kayıt (`# TASLAK` ile başlar) ve görsellerini yazar, hepsini tek bir PR'da toplar. PR gövdesinde yıldız, lisans, betik sayısı ve ağ erişimi uyarısı görünür. Açık bir keşif PR'ı varsa yenisi açılmaz.
-3. Bakımcı SKILL.md'leri okur, Türkçe metinleri düzeltir, uygun olmayanları siler ve birleştirir. Birleşince skill'ler SkillLB'de görünür. Hiçbir aday onaysız yayınlanmaz.
+1. Adaylar önce `kesif-kuyruk.txt` dosyasından gelir: bakımcının bilgisayarında kurulu, kataloğa henüz girmemiş skill'ler (her satır `sahip/ad:klasör`). Kuyruk bitince GitHub araması devreye girer (`topic:claude-skills`, `topic:agent-skills` ve benzerleri; en az 50 yıldız).
+2. Lisansı açık olmayan, yarım ya da katalogdaki bir skill'in kopyası olan adaylar elenir. Bir repodan günde en çok 3 aday alınır.
+3. Her aday için `kayitlar/` altına **taslak** bir kayıt (`# TASLAK` ile başlar) ve görselleri yazılır. Türkçe metinler GitHub Models ile çevrilir (iş akışının kendi token'ı, `models: read` izni); çeviri olmazsa özgün İngilizce açıklama kalır. Hepsi tek bir PR'da toplanır; incelenen kuyruk satırları aynı PR'da silinir.
+4. Bakımcı SKILL.md'leri okur, metinleri gözden geçirir, uygun olmayanları siler (gerekirse `kesif-haric.txt`'ye ekler) ve birleştirir. Birleşince skill'ler SkillLB'de görünür. Hiçbir aday onaysız yayınlanmaz. Açık bir keşif PR'ı varken yenisi açılmaz.
 
 Reddedilen skill'ler `kesif-haric.txt` dosyasına nedeniyle yazılır ve bir daha önerilmez.
 
 Elle çalıştırmak için:
 
 ```sh
-GITHUB_TOKEN=$(gh auth token) npm run kesif                     # yalnız listeler (dist/kesif.md)
-GITHUB_TOKEN=$(gh auth token) npm run kesif -- --yaz            # taslak kayıtları da yazar
+GITHUB_TOKEN=$(gh auth token) npm run kesif                                  # aramayla listeler (dist/kesif.md)
+GITHUB_TOKEN=$(gh auth token) npm run kesif -- --kuyruk kesif-kuyruk.txt     # kuyruktan sıradaki adaylar
+GITHUB_TOKEN=$(gh auth token) npm run kesif -- --yaz                         # taslak kayıtları da yazar
 GITHUB_TOKEN=$(gh auth token) npm run kesif -- --yerel ~/.agents/.skill-lock.json   # bilgisayarındaki skill'lerden katalogda olmayanlar
 ```
 

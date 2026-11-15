@@ -4,7 +4,8 @@ import { parseArgs } from "node:util";
 import { githubGetirici } from "./getirici.js";
 import { gunlukSatiri } from "./gunluk.js";
 import { kayitlariOku } from "./kayitOku.js";
-import { adaylariBul, kesifGovdesi, taslakYaml, VARSAYILAN_SORGULAR, yerelKaynaklar, type RepoArayici, type RepoSonucu } from "./kesif.js";
+import { githubModelsSohbet, turkceTaslak } from "./cevir.js";
+import { ACIK_LISANSLAR, adaylariBul, kesifGovdesi, taslakYaml, VARSAYILAN_SORGULAR, yerelKaynaklar, type RepoArayici, type RepoSonucu } from "./kesif.js";
 
 /**
  * Kullanım:
@@ -14,6 +15,9 @@ import { adaylariBul, kesifGovdesi, taslakYaml, VARSAYILAN_SORGULAR, yerelKaynak
  *     Markdown'a yazar. --yaz verilirse her aday için kayitlar/<id>.yaml taslağı oluşturur
  *     (var olan dosyaya dokunmaz). --yerel verilirse arama yerine yalnız o kilit dosyasındaki
  *     (bilgisayarda kurulu) skill'lere bakar. GITHUB_TOKEN varsa istekler onunla yapılır.
+ *     --kuyruk kesif-kuyruk.txt: önce bu dosyadaki "sahip/ad:klasör" satırlarını sırayla işler (aramaya
+ *     gitmez); --yaz ile incelenen satırlar dosyadan silinir. --cevir: taslak metinleri GitHub Models ile
+ *     Türkçeye çevirir (yalnız GitHub Actions'ta, iş akışı token'ıyla); çeviri olmazsa İngilizce kalır.
  * Çıkış kodu: 0 = başarılı, 1 = hata.
  */
 
@@ -61,6 +65,8 @@ async function ana(): Promise<number> {
       "en-az-yildiz": { type: "string", default: "50" },
       yaz: { type: "boolean", default: false },
       yerel: { type: "string" },
+      kuyruk: { type: "string" },
+      cevir: { type: "boolean", default: false },
     },
   });
   if (positionals.length) throw new Error(`beklenmeyen argüman: ${positionals.join(" ")}`);
@@ -82,20 +88,45 @@ async function ana(): Promise<number> {
     .split(/\r?\n/).map((s) => s.replace(/#.*$/, "").trim()).filter(Boolean);
 
   let secenekler: Parameters<typeof adaylariBul>[3] = { sorgular: VARSAYILAN_SORGULAR, enAzYildiz, sinir, haric };
-  if (values.yerel) {
-    const kaynaklar = yerelKaynaklar(await readFile(values.yerel, "utf8"));
+  /** Verilen repo:klasör listesi için repoları bulur; bulunamayan ya da lisansı açık olmayan repolar `elenen`e girer. */
+  async function yollaraGore(kaynaklar: { repo: string; yol: string }[], ustSinir: number) {
     const yollar: Record<string, string[]> = {};
     for (const k of kaynaklar) (yollar[k.repo] ??= []).push(k.yol);
     const ekRepolar: RepoSonucu[] = [];
+    const elenen = new Set<string>();
     for (const repo of Object.keys(yollar)) {
       try {
-        const bulunan = (await arayici(`repo:${repo}`))[0];
-        if (bulunan) ekRepolar.push(bulunan);
+        const bulunan = (await arayici(`repo:${repo}`)).find((r) => r.repo.toLowerCase() === repo.toLowerCase());
+        if (bulunan && bulunan.lisansSpdx && ACIK_LISANSLAR.has(bulunan.lisansSpdx)) ekRepolar.push(bulunan);
+        else elenen.add(repo.toLowerCase());
       } catch (e) {
         uyar(`${repo}: ${e instanceof Error ? e.message : String(e)}`);
       }
     }
-    secenekler = { sorgular: [], enAzYildiz: 0, sinir: Math.max(sinir, kaynaklar.length), ekRepolar, yollar, haric };
+    return { secenek: { sorgular: [], enAzYildiz: 0, sinir: ustSinir, ekRepolar, yollar, haric }, elenen };
+  }
+
+  // Kuyruk: kesif-kuyruk.txt'deki "sahip/ad:klasör" satırları sırayla işlenir; incelenenler kuyruktan düşer.
+  let kuyrukSatirlari: string[] = [];
+  const incelenen = new Set<string>();
+  let elenenRepolar = new Set<string>();
+  if (values.kuyruk && (await varMi(values.kuyruk))) {
+    kuyrukSatirlari = (await readFile(values.kuyruk, "utf8")).split(/\r?\n/);
+  }
+  const kuyrukGirdileri = kuyrukSatirlari
+    .map((s) => s.replace(/#.*$/, "").trim())
+    .filter((s) => /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+:.+$/.test(s))
+    .map((s) => ({ repo: s.slice(0, s.indexOf(":")), yol: s.slice(s.indexOf(":") + 1) }));
+
+  if (values.yerel) {
+    const kaynaklar = yerelKaynaklar(await readFile(values.yerel, "utf8"));
+    secenekler = { ...(await yollaraGore(kaynaklar, Math.max(sinir, kaynaklar.length))).secenek, repoBasinaSinir: Infinity };
+  } else if (kuyrukGirdileri.length) {
+    // Reddedilenler yer kaplamasın diye sınırın üç katı satır birden incelenir.
+    const parti = kuyrukGirdileri.slice(0, sinir * 3);
+    const { secenek, elenen } = await yollaraGore(parti, sinir);
+    elenenRepolar = elenen;
+    secenekler = { ...secenek, incelendi: (r, y) => incelenen.add(`${r}:${y}`.toLowerCase()) };
   }
 
   const adaylar = await adaylariBul(arayici, githubGetirici(token), kayitlar, secenekler, uyar);
@@ -103,15 +134,29 @@ async function ana(): Promise<number> {
   await atomikYaz(resolve(values.govde), kesifGovdesi(adaylar));
 
   let yazilan = 0;
+  let cevrilen = 0;
   if (values.yaz) {
+    const sohbet = values.cevir && token ? githubModelsSohbet(token) : null;
     for (const a of adaylar) {
       const dosya = join(klasor, `${a.id}.yaml`);
       if (await varMi(dosya)) continue;
-      await writeFile(dosya, taslakYaml(a), "utf8");
+      const tr = sohbet ? await turkceTaslak(a, sohbet) : null;
+      if (tr) cevrilen++;
+      await writeFile(dosya, taslakYaml(a, tr), "utf8");
       yazilan++;
     }
+    if (values.kuyruk && kuyrukSatirlari.length) {
+      const kalan = kuyrukSatirlari.filter((s) => {
+        const t = s.replace(/#.*$/, "").trim();
+        if (!t.includes(":")) return true; // yorum ve boş satırlar korunur
+        const repo = t.slice(0, t.indexOf(":")).toLowerCase();
+        return !incelenen.has(t.toLowerCase()) && !elenenRepolar.has(repo);
+      });
+      await atomikYaz(resolve(values.kuyruk), kalan.join("\n").replace(/\n*$/, "\n"));
+      console.log(`kuyruk: ${kuyrukGirdileri.length} -> ${kalan.filter((s) => /^[^#\s].*:/.test(s)).length} satır`);
+    }
   }
-  console.log(`${adaylar.length} aday bulundu${values.yaz ? `, ${yazilan} taslak kayıt yazıldı` : ""}.`);
+  console.log(`${adaylar.length} aday bulundu${values.yaz ? `, ${yazilan} taslak kayıt yazıldı (${cevrilen} tanesi Türkçeye çevrildi)` : ""}.`);
   return 0;
 }
 

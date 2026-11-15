@@ -170,3 +170,34 @@ describe("yerelKaynaklar", () => {
     expect(yerelKaynaklar(kilit)).toEqual([{ repo: "ali/iyi", yol: "skills/a" }]);
   });
 });
+
+describe("kuyruk", () => {
+  const veri = {
+    "ali/iyi": {
+      sonCommitler: { main: { sha: SHA2, tarih: "2026-11-01T00:00:00Z" } },
+      agaclar: {
+        main: [
+          { yol: ".agents/skills/gizli/SKILL.md", tur: "blob" as const, boyut: 10 },
+          { yol: "skills/yeni/SKILL.md", tur: "blob" as const, boyut: 10 },
+        ],
+      },
+      dosyalar: {
+        main: {
+          ".agents/skills/gizli/SKILL.md": skillMd("gizli", "Hidden but listed in the queue."),
+          "skills/yeni/SKILL.md": skillMd("yeni", "Writes tests."),
+        },
+      },
+    },
+  };
+  it("kuyruktaki yolları noktalı klasör olsa da işler ve incelenen her yolu bildirir", async () => {
+    const incelenen: string[] = [];
+    const adaylar = await adaylariBul(async () => [], sahteGetirici(veri), [], {
+      sorgular: [], enAzYildiz: 0, sinir: 5,
+      ekRepolar: [{ repo: "ali/iyi", dal: "main", yildiz: 1, lisansSpdx: "MIT" }],
+      yollar: { "ali/iyi": [".agents/skills/gizli", "skills/yok"] },
+      incelendi: (r, y) => incelenen.push(`${r}:${y}`),
+    });
+    expect(adaylar.map((a) => a.id)).toEqual(["gizli"]);
+    expect(incelenen.sort()).toEqual(["ali/iyi:.agents/skills/gizli", "ali/iyi:skills/yok"]);
+  });
+});
