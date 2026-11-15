@@ -27,8 +27,14 @@ describe("turkceTaslak", () => {
   it("bozuk, eksik ya da kurala uymayan yanıtta null döner (taslak İngilizce kalır)", async () => {
     expect(await turkceTaslak(aday, async () => "çeviremedim")).toBeNull();
     expect(await turkceTaslak(aday, async () => JSON.stringify({ ad: "X" }))).toBeNull();
-    const uzun = JSON.parse(iyiYanit); uzun.kisaAciklama = "x".repeat(61);
-    expect(await turkceTaslak(aday, async () => JSON.stringify(uzun))).toBeNull();
+    const cokUzun = JSON.parse(iyiYanit); cokUzun.kisaAciklama = "x".repeat(121);
+    expect(await turkceTaslak(aday, async () => JSON.stringify(cokUzun))).toBeNull();
+    // Biraz uzun açıklama sözcük sınırında kısaltılır (modeller 60 sınırını sık aşıyor).
+    const uzun = JSON.parse(iyiYanit);
+    uzun.kisaAciklama = "Test başlatmadan önce örnek boyutunu hesaplar ve hipotezi baştan belirler.";
+    const k = await turkceTaslak(aday, async () => JSON.stringify(uzun));
+    expect(k!.kisaAciklama.length).toBeLessThanOrEqual(60);
+    expect(k!.kisaAciklama).toBe("Test başlatmadan önce örnek boyutunu hesaplar ve hipotezi…");
     const kat = JSON.parse(iyiYanit); kat.kategori = "bilinmeyen";
     expect(await turkceTaslak(aday, async () => JSON.stringify(kat))).toBeNull();
     expect(await turkceTaslak(aday, async () => { throw new Error("ağ"); })).toBeNull();
