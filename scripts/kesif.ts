@@ -233,7 +233,7 @@ export function kesifGovdesi(adaylar: Aday[]): string {
   const satirlar = [
     "## Keşif: yeni skill adayları",
     "",
-    `${adaylar.length} yeni aday bulundu. Her biri açık lisanslı ve katalogda yok. Kayıtlar **taslak**: Türkçe metinler makine çevirisi (GitHub Models); çevrilemeyenlerde SKILL.md'deki özgün açıklama kullanıldı. Dosyanın ilk satırı hangisi olduğunu söyler.`,
+    `${adaylar.length} yeni aday bulundu. Her biri açık lisanslı ve katalogda yok. Kayıtlar **taslak**: Türkçe metinler SKILL.md'deki özgün açıklamadan kopyalandı; birleştirmeden önce Türkçeleştirin.`,
     "",
     "Birleştirmeden önce her aday için:",
     "1. SKILL.md'yi ve varsa betikleri okuyun (kabul kriterleri: README).",

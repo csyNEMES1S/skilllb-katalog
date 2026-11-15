@@ -4,7 +4,6 @@ import { parseArgs } from "node:util";
 import { githubGetirici } from "./getirici.js";
 import { gunlukSatiri } from "./gunluk.js";
 import { kayitlariOku } from "./kayitOku.js";
-import { githubModelsSohbet, turkceTaslak } from "./cevir.js";
 import { ACIK_LISANSLAR, adaylariBul, kesifGovdesi, taslakYaml, VARSAYILAN_SORGULAR, yerelKaynaklar, type RepoArayici, type RepoSonucu } from "./kesif.js";
 
 /**
@@ -16,8 +15,7 @@ import { ACIK_LISANSLAR, adaylariBul, kesifGovdesi, taslakYaml, VARSAYILAN_SORGU
  *     (var olan dosyaya dokunmaz). --yerel verilirse arama yerine yalnız o kilit dosyasındaki
  *     (bilgisayarda kurulu) skill'lere bakar. GITHUB_TOKEN varsa istekler onunla yapılır.
  *     --kuyruk kesif-kuyruk.txt: önce bu dosyadaki "sahip/ad:klasör" satırlarını sırayla işler (aramaya
- *     gitmez); --yaz ile incelenen satırlar dosyadan silinir. --cevir: taslak metinleri GitHub Models ile
- *     Türkçeye çevirir (yalnız GitHub Actions'ta, iş akışı token'ıyla); çeviri olmazsa İngilizce kalır.
+ *     gitmez); --yaz ile incelenen satırlar dosyadan silinir.
  * Çıkış kodu: 0 = başarılı, 1 = hata.
  */
 
@@ -66,7 +64,6 @@ async function ana(): Promise<number> {
       yaz: { type: "boolean", default: false },
       yerel: { type: "string" },
       kuyruk: { type: "string" },
-      cevir: { type: "boolean", default: false },
     },
   });
   if (positionals.length) throw new Error(`beklenmeyen argüman: ${positionals.join(" ")}`);
@@ -134,15 +131,11 @@ async function ana(): Promise<number> {
   await atomikYaz(resolve(values.govde), kesifGovdesi(adaylar));
 
   let yazilan = 0;
-  let cevrilen = 0;
   if (values.yaz) {
-    const sohbet = values.cevir && token ? githubModelsSohbet(token) : null;
     for (const a of adaylar) {
       const dosya = join(klasor, `${a.id}.yaml`);
       if (await varMi(dosya)) continue;
-      const tr = sohbet ? await turkceTaslak(a, sohbet, uyar) : null;
-      if (tr) cevrilen++;
-      await writeFile(dosya, taslakYaml(a, tr), "utf8");
+      await writeFile(dosya, taslakYaml(a), "utf8");
       yazilan++;
     }
     if (values.kuyruk && kuyrukSatirlari.length) {
@@ -156,7 +149,7 @@ async function ana(): Promise<number> {
       console.log(`kuyruk: ${kuyrukGirdileri.length} -> ${kalan.filter((s) => /^[^#\s].*:/.test(s)).length} satır`);
     }
   }
-  console.log(`${adaylar.length} aday bulundu${values.yaz ? `, ${yazilan} taslak kayıt yazıldı (${cevrilen} tanesi Türkçeye çevrildi)` : ""}.`);
+  console.log(`${adaylar.length} aday bulundu${values.yaz ? `, ${yazilan} taslak kayıt yazıldı` : ""}.`);
   return 0;
 }
 

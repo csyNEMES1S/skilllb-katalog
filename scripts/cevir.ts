@@ -2,9 +2,9 @@ import type { Aday } from "./kesif.js";
 import { KATEGORILER, type KategoriId } from "./sema.js";
 
 /**
- * Taslak kayıtların Türkçe metinleri. GitHub Actions içinde GitHub Models ile üretilir (iş akışının
- * kendi token'ı, `models: read` izni). Model çıktısı güvenilmez veridir: yalnız JSON alanları alınır,
- * uzunluk ve kategori denetlenir; bir kural tutmazsa `null` döner ve taslak İngilizce kalır.
+ * Taslak kayıtların Türkçe metinlerini bir dil modelinden alıp doğrular. Model çıktısı güvenilmez
+ * veridir: yalnız JSON alanları alınır, uzunluk ve kategori denetlenir; bir kural tutmazsa `null`
+ * döner ve taslak İngilizce kalır. (Not: GitHub Models 2026-07-30'da kapandı; çevirici dışarıdan verilir.)
  */
 export type TurkceMetin = {
   ad: string; kisaAciklama: string; neIseYarar: string[]; ornekCumleler: string[]; kategori: KategoriId;
@@ -61,25 +61,4 @@ export async function turkceTaslak(a: Aday, sohbet: Sohbet, uyar?: (m: string) =
   const kategori = typeof v.kategori === "string" && KATEGORI_IDLERI.includes(v.kategori) ? (v.kategori as KategoriId) : null;
   if (!ad || !kisaAciklama || !neIseYarar || !ornekCumleler || !kategori) return null;
   return { ad, kisaAciklama, neIseYarar, ornekCumleler, kategori };
-}
-
-/** GitHub Models sohbet uç noktası (yalnız GitHub Actions'ta, iş akışının token'ıyla kullanılır). */
-export function githubModelsSohbet(token: string, model = "openai/gpt-4.1-mini"): Sohbet {
-  return async (istem) => {
-    const yanit = await fetch("https://models.github.ai/inference/chat/completions", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ model, messages: [{ role: "user", content: istem }], temperature: 0.2, max_tokens: 600 }),
-      signal: AbortSignal.timeout(60_000),
-    });
-    if (!yanit.ok) {
-      // Gövdenin başı tanı içindir (ör. "models permission required"); token içermez.
-      const govde = (await yanit.text().catch(() => "")).replace(/\s+/g, " ").slice(0, 200);
-      throw new Error(`GitHub Models ${yanit.status}: ${govde}`);
-    }
-    const veri = (await yanit.json()) as { choices?: { message?: { content?: string } }[] };
-    const icerik = veri.choices?.[0]?.message?.content;
-    if (typeof icerik !== "string") throw new Error("GitHub Models: boş yanıt");
-    return icerik;
-  };
 }

@@ -2,19 +2,13 @@ name: Günlük keşif
 
 # Her gün en çok 10 yeni skill adayını taslak kayıt olarak bir PR'a koyar. Adaylar önce
 # kesif-kuyruk.txt'den (bakımcının bilgisayarındaki skill'ler), kuyruk bitince GitHub aramasından gelir.
-# Taslak metinler GitHub Models ile Türkçeye çevrilir (iş akışının kendi token'ı; çeviri olmazsa
-# İngilizce kalır). Hiçbir şey kendiliğinden yayınlanmaz: sahibi PR'ı inceleyip birleştirince
+# Taslak metinler SKILL.md'deki özgün (çoğunlukla İngilizce) açıklamadan gelir. Hiçbir şey kendiliğinden yayınlanmaz: sahibi PR'ı inceleyip birleştirince
 # "Günlük derleme" kataloğu yayınlar. Açık bir keşif PR'ı varsa o gün yenisi açılmaz.
 
 on:
   schedule:
     - cron: "0 6 * * *"   # her gün 06:00 UTC (09:00 Türkiye)
   workflow_dispatch:
-    inputs:
-      cevir_dene:
-        description: "Yalnız GitHub Models çevirisini dene (PR açmaz)"
-        type: boolean
-        default: false
 
 permissions: {}
 
@@ -29,7 +23,6 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      models: read
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
@@ -37,13 +30,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Çeviri denemesi
-        if: inputs.cevir_dene
-        run: npx tsx scripts/cevir-dene.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Açık keşif PR'ı var mı?
-        if: ${{ !inputs.cevir_dene }}
         id: acik
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -53,22 +40,22 @@ jobs:
                  -q 'map(select((.isCrossRepository | not) and (.headRefName | startswith("kesif/")))) | length')"
           echo "sayi=$N" >> "$GITHUB_OUTPUT"
       - name: Adayları bul, çevir ve taslak yaz
-        if: ${{ !inputs.cevir_dene && steps.acik.outputs.sayi == '0' }}
+        if: steps.acik.outputs.sayi == '0'
         shell: bash
         run: |
           DUR="$(openssl rand -hex 16)"
           echo "::stop-commands::$DUR"
-          npm run kesif -- --yaz --cevir --kuyruk kesif-kuyruk.txt --sinir 10 --en-az-yildiz 50 --cikti dist/kesif.json --govde dist/kesif.md
+          npm run kesif -- --yaz --kuyruk kesif-kuyruk.txt --sinir 10 --en-az-yildiz 50 --cikti dist/kesif.json --govde dist/kesif.md
           echo "::$DUR::"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Git kimliği
-        if: ${{ !inputs.cevir_dene && steps.acik.outputs.sayi == '0' }}
+        if: steps.acik.outputs.sayi == '0'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Keşif PR'ını aç
-        if: ${{ !inputs.cevir_dene && steps.acik.outputs.sayi == '0' }}
+        if: steps.acik.outputs.sayi == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}

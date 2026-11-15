@@ -197,7 +197,7 @@ Her gün 09:00'da (Türkiye) çalışan **Günlük keşif** iş akışı en çok
 
 1. Adaylar önce `kesif-kuyruk.txt` dosyasından gelir: bakımcının bilgisayarında kurulu, kataloğa henüz girmemiş skill'ler (her satır `sahip/ad:klasör`). Kuyruk bitince GitHub araması devreye girer (`topic:claude-skills`, `topic:agent-skills` ve benzerleri; en az 50 yıldız).
 2. Lisansı açık olmayan, yarım ya da katalogdaki bir skill'in kopyası olan adaylar elenir. Bir repodan günde en çok 3 aday alınır.
-3. Her aday için `kayitlar/` altına **taslak** bir kayıt (`# TASLAK` ile başlar) ve görselleri yazılır. Türkçe metinler GitHub Models ile çevrilir (iş akışının kendi token'ı, `models: read` izni); çeviri olmazsa özgün İngilizce açıklama kalır. Hepsi tek bir PR'da toplanır; incelenen kuyruk satırları aynı PR'da silinir.
+3. Her aday için `kayitlar/` altına **taslak** bir kayıt (`# TASLAK` ile başlar) ve görselleri yazılır. Türkçe metinler için SKILL.md'deki özgün (çoğunlukla İngilizce) açıklama kullanılır; bakımcı birleştirmeden önce Türkçeleştirir. Hepsi tek bir PR'da toplanır; incelenen kuyruk satırları aynı PR'da silinir.
 4. Bakımcı SKILL.md'leri okur, metinleri gözden geçirir, uygun olmayanları siler (gerekirse `kesif-haric.txt`'ye ekler) ve birleştirir. Birleşince skill'ler SkillLB'de görünür. Hiçbir aday onaysız yayınlanmaz. Açık bir keşif PR'ı varken yenisi açılmaz.
 
 Reddedilen skill'ler `kesif-haric.txt` dosyasına nedeniyle yazılır ve bir daha önerilmez.
