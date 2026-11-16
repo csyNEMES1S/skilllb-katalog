@@ -10,7 +10,7 @@ kaynak:
   repo: latent-spaces/brag
   yol: skills/brag-slim
   dal: main
-  sha: 78100ba246612a09ba275ae130845c72c4d7ed97
+  sha: 7c98a0830fd2810c93b1f9da7d9edef98ed6ef8a
 gorseller:
   ikon: gorseller/brag-slim/ikon.svg
   kapak: gorseller/brag-slim/kapak.svg
