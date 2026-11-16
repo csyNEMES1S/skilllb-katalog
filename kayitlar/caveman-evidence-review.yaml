@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: caveman-evidence-review
+ad: Caveman Evidence Review
+kisaAciklama: "Read-only review of Caveman Cloud evidence: cost, Cave…"
+neIseYarar:
+  - "Read-only review of Caveman Cloud evidence: cost, Cave Score, workflows, traces, latency, errors, routing, savings."
+  - Use when asked what Caveman found or where LLM spend goes.
+  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+kategori: kod-test
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: skills/caveman-evidence-review
+  dal: main
+  sha: 8909f6af8806897cbb8330c11028eee168ad7cc7
+gorseller:
+  ikon: gorseller/caveman-evidence-review/ikon.svg
+  kapak: gorseller/caveman-evidence-review/kapak.svg
+ornekCumleler:
+  - Caveman Evidence Review skill'ini kullanarak bu işi yap.
+  - /caveman-evidence-review
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Caveman Evidence Review
+  kisaAciklama: "Read-only review of Caveman Cloud evidence: cost, Cave…"
+  neIseYarar:
+    - "Read-only review of Caveman Cloud evidence: cost, Cave Score, workflows, traces, latency, errors, routing, savings."
+    - Use when asked what Caveman found or where LLM spend goes.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.

@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: filee
+ad: Filee
+kisaAciklama: Convert files offline with the Filee command-line tool…
+neIseYarar:
+  - Convert files offline with the Filee command-line tool (images, documents, PDF, audio, video, ebooks).
+  - Use when the user asks to convert a file to another format, check whether Filee can convert a format, or read Filee's JSON result.
+  - Not for editing file contents.
+kategori: belge-ofis
+kaynak:
+  repo: KnifeLemon/Filee
+  yol: skills/filee
+  dal: main
+  sha: 57fb9c617602d76587f9de20427ec0208609b2eb
+gorseller:
+  ikon: gorseller/filee/ikon.svg
+  kapak: gorseller/filee/kapak.svg
+ornekCumleler:
+  - Filee skill'ini kullanarak bu işi yap.
+  - /filee
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Filee
+  kisaAciklama: Convert files offline with the Filee command-line tool…
+  neIseYarar:
+    - Convert files offline with the Filee command-line tool (images, documents, PDF, audio, video, ebooks).
+    - Use when the user asks to convert a file to another format, check whether Filee can convert a format, or read Filee's JSON result.
+    - Not for editing file contents.

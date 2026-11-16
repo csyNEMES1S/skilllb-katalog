@@ -1,21 +1,11 @@
 # Keşif kuyruğu: bilgisayardaki skill indeksinden (2026-11-15). Her gün baştan 10 aday işlenir, incelenen satırlar silinir.
 # Biçim: sahip/ad:klasör
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/ai-behavior-trees-utility-ai
-knifelemon/filee:skills/filee
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/audio-design
-alirezarezvani/claude-skills:marketing-skill/skills/ad-creative
 gamedev-skills/awesome-gamedev-agent-skills:skills/other-engines/bevy-ecs
-alirezarezvani/claude-skills:engineering-team/skills/adversarial-reviewer
-anthropics/claude-plugins-official:plugins/mcp-server-dev/skills/build-mcp-server
-JuliusBrussee/caveman:skills/caveman-discover
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/camera-systems
-alirezarezvani/claude-skills:marketing-skill/skills/aeo
-anthropics/claude-plugins-official:plugins/mcp-server-dev/skills/build-mcpb
-JuliusBrussee/caveman:skills/caveman-evidence-review
 gamedev-skills/awesome-gamedev-agent-skills:skills/genres/card-game
 alirezarezvani/claude-skills:ra-qm-team/skills/agent-decision-receipts
-anthropics/claude-plugins-official:plugins/cwc-makers/skills/cardputer-buddy
-JuliusBrussee/caveman:skills/caveman-explore
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/create-game-assets
 alirezarezvani/claude-skills:engineering/skills/agent-designer
 anthropics/claude-plugins-official:plugins/claude-code-setup/skills/claude-automation-recommender

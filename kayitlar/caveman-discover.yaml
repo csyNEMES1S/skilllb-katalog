@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: caveman-discover
+ad: Caveman Discover
+kisaAciklama: Find and label every LLM workflow in the repository so…
+neIseYarar:
+  - Find and label every LLM workflow in the repository so Caveman Cloud groups spend by workflow instead of one bucket.
+  - Use for "discover workflows" or breaking LLM spend down by workflow.
+  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+kategori: diger
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: skills/caveman-discover
+  dal: main
+  sha: 8909f6af8806897cbb8330c11028eee168ad7cc7
+gorseller:
+  ikon: gorseller/caveman-discover/ikon.svg
+  kapak: gorseller/caveman-discover/kapak.svg
+ornekCumleler:
+  - Caveman Discover skill'ini kullanarak bu işi yap.
+  - /caveman-discover
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Caveman Discover
+  kisaAciklama: Find and label every LLM workflow in the repository so…
+  neIseYarar:
+    - Find and label every LLM workflow in the repository so Caveman Cloud groups spend by workflow instead of one bucket.
+    - Use for "discover workflows" or breaking LLM spend down by workflow.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
