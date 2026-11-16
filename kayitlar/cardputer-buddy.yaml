@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: cardputer-buddy
+ad: Cardputer Buddy
+kisaAciklama: Iterate on the Cardputer-Adv MicroPython app bundle…
+neIseYarar:
+  - Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy, Snake, Hello) after the device is already provisioned via m5-onboard.
+  - Use when the user wants to add a new app, push a single changed .py without re-flashing, watch device serial logs, or run a one-shot REPL command.
+  - Trigger on "add an app", "push to the cardputer", "tail the device", "run on the device", or follow-up work after /maker-setup.
+kategori: diger
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: plugins/cwc-makers/skills/cardputer-buddy
+  dal: main
+  sha: 574a879067b3046fa73a25cf7ab3c11e482ec0d1
+gorseller:
+  ikon: gorseller/cardputer-buddy/ikon.svg
+  kapak: gorseller/cardputer-buddy/kapak.svg
+ornekCumleler:
+  - Cardputer Buddy skill'ini kullanarak bu işi yap.
+  - /cardputer-buddy
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Cardputer Buddy
+  kisaAciklama: Iterate on the Cardputer-Adv MicroPython app bundle…
+  neIseYarar:
+    - Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy, Snake, Hello) after the device is already provisioned via m5-onboard.
+    - Use when the user wants to add a new app, push a single changed .py without re-flashing, watch device serial logs, or run a one-shot REPL command.
+    - Trigger on "add an app", "push to the cardputer", "tail the device", "run on the device", or follow-up work after /maker-setup.

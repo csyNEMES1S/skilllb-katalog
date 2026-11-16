@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: build-mcpb
+ad: Build Mcpb
+kisaAciklama: This skill should be used when the user wants to "package…
+neIseYarar:
+  - This skill should be used when the user wants to "package an MCP server", "bundle an MCP", "make an MCPB", "ship a local MCP server", "distribute a local MCP", discusses ".mcpb files", mentions bundling a Node or Python runtime with their MCP server, or needs an MCP server that interacts with the local filesystem, desktop apps, or OS and must be installable without the user having Node/Python set up.
+  - "Kaynak: anthropics/claude-plugins-official (Apache-2.0 lisanslı, 47435 yıldız)."
+  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+kategori: kod-test
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: plugins/mcp-server-dev/skills/build-mcpb
+  dal: main
+  sha: b00abee24ea2dd020f56fcb65e9fa3230522a3ec
+gorseller:
+  ikon: gorseller/build-mcpb/ikon.svg
+  kapak: gorseller/build-mcpb/kapak.svg
+ornekCumleler:
+  - Build Mcpb skill'ini kullanarak bu işi yap.
+  - /build-mcpb
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Build Mcpb
+  kisaAciklama: This skill should be used when the user wants to "package…
+  neIseYarar:
+    - This skill should be used when the user wants to "package an MCP server", "bundle an MCP", "make an MCPB", "ship a local MCP server", "distribute a local MCP", discusses ".mcpb files", mentions bundling a Node or Python runtime with their MCP server, or needs an MCP server that interacts with the local filesystem, desktop apps, or OS and must be installable without the user having Node/Python set up.
+    - "Kaynak: anthropics/claude-plugins-official (Apache-2.0 lisanslı, 47435 yıldız)."
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
