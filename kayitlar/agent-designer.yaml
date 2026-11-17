@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: agent-designer
+ad: Agent Designer
+kisaAciklama: Design multi-agent systems (supervisor, swarm, pipeline)…
+neIseYarar:
+  - Design multi-agent systems (supervisor, swarm, pipeline) and tool schemas; find bottlenecks in run logs.
+  - Use whenever agents split work or a run is slow or costly.
+  - Not for Claude Code workflow files (workflow-builder).
+kategori: tasarim
+kaynak:
+  repo: alirezarezvani/claude-skills
+  yol: engineering/skills/agent-designer
+  dal: main
+  sha: 6278f7302d5e2e27943ed34fb4e9f7058dda9b1b
+gorseller:
+  ikon: gorseller/agent-designer/ikon.svg
+  kapak: gorseller/agent-designer/kapak.svg
+ornekCumleler:
+  - Agent Designer skill'ini kullanarak bu işi yap.
+  - /agent-designer
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Agent Designer
+  kisaAciklama: Design multi-agent systems (supervisor, swarm, pipeline)…
+  neIseYarar:
+    - Design multi-agent systems (supervisor, swarm, pipeline) and tool schemas; find bottlenecks in run logs.
+    - Use whenever agents split work or a run is slow or costly.
+    - Not for Claude Code workflow files (workflow-builder).

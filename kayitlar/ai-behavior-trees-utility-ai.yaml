@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: ai-behavior-trees-utility-ai
+ad: Ai Behavior Trees Utility Ai
+kisaAciklama: Engine-neutral behavior tree and utility AI code for NPCs…
+neIseYarar:
+  - "Engine-neutral behavior tree and utility AI code for NPCs in any language: Blackboard, reactive composites, decorators and response-curve scoring."
+  - Use when an enemy keeps chasing after losing sight, restarts its action every frame or flip-flops between choices.
+  - Not for FSMs, steering or pathfinding (`game-ai`) or Unreal BT, EQS and StateTree (`unreal-behavior-trees`).
+kategori: kod-test
+kaynak:
+  repo: gamedev-skills/awesome-gamedev-agent-skills
+  yol: skills/disciplines/ai-behavior-trees-utility-ai
+  dal: main
+  sha: 00a9045a78714be481c09622727284e8960ee69f
+gorseller:
+  ikon: gorseller/ai-behavior-trees-utility-ai/ikon.svg
+  kapak: gorseller/ai-behavior-trees-utility-ai/kapak.svg
+ornekCumleler:
+  - Ai Behavior Trees Utility Ai skill'ini kullanarak bu işi yap.
+  - /ai-behavior-trees-utility-ai
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Ai Behavior Trees Utility Ai
+  kisaAciklama: Engine-neutral behavior tree and utility AI code for NPCs…
+  neIseYarar:
+    - "Engine-neutral behavior tree and utility AI code for NPCs in any language: Blackboard, reactive composites, decorators and response-curve scoring."
+    - Use when an enemy keeps chasing after losing sight, restarts its action every frame or flip-flops between choices.
+    - Not for FSMs, steering or pathfinding (`game-ai`) or Unreal BT, EQS and StateTree (`unreal-behavior-trees`).

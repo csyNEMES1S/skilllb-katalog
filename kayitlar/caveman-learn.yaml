@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: caveman-learn
+ad: Caveman Learn
+kisaAciklama: Act on a Caveman learn report - review the ranked token…
+neIseYarar:
+  - Act on a Caveman learn report - review the ranked token sinks, apply cost-lowering fixes with per-edit consent, and report what those fixes returned.
+  - Use when asked to lower an agent's token cost, what caveman has saved, to trim a heavy CLAUDE.md, or to offload re-pasted context into cavemem.
+  - "Betik içerir: tests/index.js, tests/skill-file.test.mjs."
+kategori: kod-test
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: skills/caveman-learn
+  dal: main
+  sha: f5837c46f8a38915ebc8dd1e6250598fb7482863
+gorseller:
+  ikon: gorseller/caveman-learn/ikon.svg
+  kapak: gorseller/caveman-learn/kapak.svg
+ornekCumleler:
+  - Caveman Learn skill'ini kullanarak bu işi yap.
+  - /caveman-learn
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Caveman Learn
+  kisaAciklama: Act on a Caveman learn report - review the ranked token…
+  neIseYarar:
+    - Act on a Caveman learn report - review the ranked token sinks, apply cost-lowering fixes with per-edit consent, and report what those fixes returned.
+    - Use when asked to lower an agent's token cost, what caveman has saved, to trim a heavy CLAUDE.md, or to offload re-pasted context into cavemem.
+    - "Betik içerir: tests/index.js, tests/skill-file.test.mjs."

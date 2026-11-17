@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: claude-security
+ad: Claude Security
+kisaAciklama: "Claude Security: scan the codebase (the whole repository…"
+neIseYarar:
+  - "Claude Security: scan the codebase (the whole repository or a scoped part of it), scan changes (this branch's or a pull request's diff, or one commit), or suggest patches (findings turned into targeted patch files, each verified by a panel of agents, that you apply when you choose)."
+  - Use when the user asks to scan, audit or check code with Claude Security, to scan their changes with Claude Security, or to fix or patch Claude Security findings.
+  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+kategori: guvenlik
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: plugins/claude-security/skills/claude-security
+  dal: main
+  sha: ca08d5e47d6402db586d37780c559a0c4c7ded9a
+gorseller:
+  ikon: gorseller/claude-security/ikon.svg
+  kapak: gorseller/claude-security/kapak.svg
+ornekCumleler:
+  - Claude Security skill'ini kullanarak bu işi yap.
+  - /claude-security
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Claude Security
+  kisaAciklama: "Claude Security: scan the codebase (the whole repository…"
+  neIseYarar:
+    - "Claude Security: scan the codebase (the whole repository or a scoped part of it), scan changes (this branch's or a pull request's diff, or one commit), or suggest patches (findings turned into targeted patch files, each verified by a panel of agents, that you apply when you choose)."
+    - Use when the user asks to scan, audit or check code with Claude Security, to scan their changes with Claude Security, or to fix or patch Claude Security findings.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
