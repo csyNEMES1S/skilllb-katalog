@@ -10,7 +10,7 @@ kaynak:
   repo: anthropics/skills
   yol: skills/xlsx
   dal: main
-  sha: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+  sha: e4bb5d960d87126ff3b3a8af1a104b7db67560ba
 gorseller:
   ikon: gorseller/xlsx/ikon.svg
   kapak: gorseller/xlsx/kapak.svg
