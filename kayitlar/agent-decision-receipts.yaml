@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: agent-decision-receipts
+ad: Agent Decision Receipts
+kisaAciklama: Use when an autonomous agent takes a side-effecting action…
+neIseYarar:
+  - Use when an autonomous agent takes a side-effecting action (deploy, delete, pay, grant access) that may need proving later, or for EU AI Act Art.
+  - 12 record-keeping.
+  - Builds a tamper-evident signed receipt with build_action_manifest.py and verifies it.
+kategori: diger
+kaynak:
+  repo: alirezarezvani/claude-skills
+  yol: ra-qm-team/skills/agent-decision-receipts
+  dal: main
+  sha: f11fccbb2bfada760b26b3c8d581dc7dc9984a9d
+gorseller:
+  ikon: gorseller/agent-decision-receipts/ikon.svg
+  kapak: gorseller/agent-decision-receipts/kapak.svg
+ornekCumleler:
+  - Agent Decision Receipts skill'ini kullanarak bu işi yap.
+  - /agent-decision-receipts
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Agent Decision Receipts
+  kisaAciklama: Use when an autonomous agent takes a side-effecting action…
+  neIseYarar:
+    - Use when an autonomous agent takes a side-effecting action (deploy, delete, pay, grant access) that may need proving later, or for EU AI Act Art.
+    - 12 record-keeping.
+    - Builds a tamper-evident signed receipt with build_action_manifest.py and verifies it.

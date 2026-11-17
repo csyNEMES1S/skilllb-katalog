@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: agent-harness
+ad: Agent Harness
+kisaAciklama: Use when an agent should drive a goal in one of this…
+neIseYarar:
+  - Use when an agent should drive a goal in one of this repo's domains to a verified close, before starting the work.
+  - Compiles the goal into a task plan with goal_compiler.py and runs it through loop_controller.py, which verifies each task, caps retries and escalates.
+  - "Betik içerir: scripts/goal_compiler.py, scripts/harness_manifest_builder.py, scripts/loop_controller.py."
+kategori: diger
+kaynak:
+  repo: alirezarezvani/claude-skills
+  yol: engineering/agent-harness/skills/agent-harness
+  dal: main
+  sha: 3aa22f1c9f547e37c585f3e13cb33f231a960fef
+gorseller:
+  ikon: gorseller/agent-harness/ikon.svg
+  kapak: gorseller/agent-harness/kapak.svg
+ornekCumleler:
+  - Agent Harness skill'ini kullanarak bu işi yap.
+  - /agent-harness
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Agent Harness
+  kisaAciklama: Use when an agent should drive a goal in one of this…
+  neIseYarar:
+    - Use when an agent should drive a goal in one of this repo's domains to a verified close, before starting the work.
+    - Compiles the goal into a task plan with goal_compiler.py and runs it through loop_controller.py, which verifies each task, caps retries and escalates.
+    - "Betik içerir: scripts/goal_compiler.py, scripts/harness_manifest_builder.py, scripts/loop_controller.py."

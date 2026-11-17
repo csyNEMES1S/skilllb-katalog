@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: caveman-manage
+ad: Caveman Manage
+kisaAciklama: Inspect Caveman Cloud's experiment lifecycle and block…
+neIseYarar:
+  - Inspect Caveman Cloud's experiment lifecycle and block unsafe execution.
+  - Use when asked to start, approve, cancel, promote or roll back a Caveman experiment.
+  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+kategori: diger
+kaynak:
+  repo: JuliusBrussee/caveman
+  yol: skills/caveman-manage
+  dal: main
+  sha: 8909f6af8806897cbb8330c11028eee168ad7cc7
+gorseller:
+  ikon: gorseller/caveman-manage/ikon.svg
+  kapak: gorseller/caveman-manage/kapak.svg
+ornekCumleler:
+  - Caveman Manage skill'ini kullanarak bu işi yap.
+  - /caveman-manage
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Caveman Manage
+  kisaAciklama: Inspect Caveman Cloud's experiment lifecycle and block…
+  neIseYarar:
+    - Inspect Caveman Cloud's experiment lifecycle and block unsafe execution.
+    - Use when asked to start, approve, cancel, promote or roll back a Caveman experiment.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.

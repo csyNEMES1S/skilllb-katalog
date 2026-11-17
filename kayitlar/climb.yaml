@@ -1,0 +1,35 @@
+# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+id: climb
+ad: Climb
+kisaAciklama: Work out where a teammate, the champion, or a team is on…
+neIseYarar:
+  - Work out where a teammate, the champion, or a team is on the steps of AI adoption, and what to try next.
+  - Use when a champion wants to help someone move up a step.
+  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+kategori: diger
+kaynak:
+  repo: anthropics/claude-plugins-official
+  yol: plugins/champion-kit/skills/climb
+  dal: main
+  sha: 1aa4a4b10e6c5e8694d0f72a03dbac4e93bcafd8
+gorseller:
+  ikon: gorseller/climb/ikon.svg
+  kapak: gorseller/climb/kapak.svg
+ornekCumleler:
+  - Climb skill'ini kullanarak bu işi yap.
+  - /climb
+uyumluluk:
+  claude:
+    durum: calisir
+    sahibiDenedi: false
+  antigravity:
+    durum: bilinmiyor
+    sahibiDenedi: false
+dogrulandi: false
+en:
+  ad: Climb
+  kisaAciklama: Work out where a teammate, the champion, or a team is on…
+  neIseYarar:
+    - Work out where a teammate, the champion, or a team is on the steps of AI adoption, and what to try next.
+    - Use when a champion wants to help someone move up a step.
+    - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.

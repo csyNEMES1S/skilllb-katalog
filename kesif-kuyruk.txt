@@ -1,23 +1,13 @@
 # Keşif kuyruğu: bilgisayardaki skill indeksinden (2026-11-15). Her gün baştan 10 aday işlenir, incelenen satırlar silinir.
 # Biçim: sahip/ad:klasör
-gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/ai-behavior-trees-utility-ai
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/audio-design
 gamedev-skills/awesome-gamedev-agent-skills:skills/other-engines/bevy-ecs
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/camera-systems
 gamedev-skills/awesome-gamedev-agent-skills:skills/genres/card-game
-alirezarezvani/claude-skills:ra-qm-team/skills/agent-decision-receipts
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/create-game-assets
-alirezarezvani/claude-skills:engineering/skills/agent-designer
-anthropics/claude-plugins-official:plugins/claude-code-setup/skills/claude-automation-recommender
-JuliusBrussee/caveman:skills/caveman-help
 gamedev-skills/awesome-gamedev-agent-skills:skills/other-engines/defold-core
-alirezarezvani/claude-skills:engineering/agent-harness/skills/agent-harness
-anthropics/claude-plugins-official:plugins/claude-security/skills/claude-security
-JuliusBrussee/caveman:skills/caveman-learn
 gamedev-skills/awesome-gamedev-agent-skills:skills/disciplines/dialogue-systems
 alirezarezvani/claude-skills:agent-launcher/skills/agent-launcher-orchestrator
-anthropics/claude-plugins-official:plugins/champion-kit/skills/climb
-JuliusBrussee/caveman:skills/caveman-manage
 gamedev-skills/awesome-gamedev-agent-skills:skills/ebitengine/ebitengine-game
 alirezarezvani/claude-skills:engineering/agent-memory/skills/agent-memory
 anthropics/claude-plugins-official:plugins/plugin-dev/skills/command-development
