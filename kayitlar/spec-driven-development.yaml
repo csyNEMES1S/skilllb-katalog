@@ -10,7 +10,7 @@ kaynak:
   repo: addyosmani/agent-skills
   yol: skills/spec-driven-development
   dal: main
-  sha: 480bed13919a6c03193725b4313b7c1a61a83c51
+  sha: b8bea427a250508295fdf5884e3375ecc24870a5
 gorseller:
   ikon: gorseller/spec-driven-development/ikon.svg
   kapak: gorseller/spec-driven-development/kapak.svg
