@@ -1,12 +1,12 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: agent-designer
-ad: Agent Designer
-kisaAciklama: Design multi-agent systems (supervisor, swarm, pipeline)…
+ad: Ajan Sistemi Tasarımcısı
+kisaAciklama: Çoklu ajan sistemlerini ve araç şemalarını tasarlar.
 neIseYarar:
-  - Design multi-agent systems (supervisor, swarm, pipeline) and tool schemas; find bottlenecks in run logs.
-  - Use whenever agents split work or a run is slow or costly.
-  - Not for Claude Code workflow files (workflow-builder).
-kategori: tasarim
+  - Denetleyici, sürü veya hat gibi yapılarla işin ajanlar arasında nasıl bölüneceğini planlar.
+  - Çalışma kayıtlarında yavaşlığa veya yüksek maliyete yol açan darboğazları bulur.
+  - Ajanların kullanacağı araçların girdi ve çıktı şemalarını hazırlar.
+kategori: diger
 kaynak:
   repo: alirezarezvani/claude-skills
   yol: engineering/skills/agent-designer
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/agent-designer/ikon.svg
   kapak: gorseller/agent-designer/kapak.svg
 ornekCumleler:
-  - Agent Designer skill'ini kullanarak bu işi yap.
-  - /agent-designer
+  - Üç ajanlı bir araştırma sistemi kurmak istiyorum, işi nasıl bölmeliyim?
+  - Çalışma loglarımda ajanlarımın neden bu kadar yavaş olduğunu bul.
 uyumluluk:
   claude:
     durum: calisir

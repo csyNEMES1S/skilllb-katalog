@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: build-mcpb
-ad: Build Mcpb
-kisaAciklama: This skill should be used when the user wants to "package…
+ad: MCPB Paketi Hazırlama
+kisaAciklama: Yerel MCP sunucusunu kolay kurulan pakete dönüştürür.
 neIseYarar:
-  - This skill should be used when the user wants to "package an MCP server", "bundle an MCP", "make an MCPB", "ship a local MCP server", "distribute a local MCP", discusses ".mcpb files", mentions bundling a Node or Python runtime with their MCP server, or needs an MCP server that interacts with the local filesystem, desktop apps, or OS and must be installable without the user having Node/Python set up.
-  - "Kaynak: anthropics/claude-plugins-official (Apache-2.0 lisanslı, 47435 yıldız)."
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+  - Node veya Python kurulu olmayan kullanıcılar için gerekli çalışma ortamını paketin içine ekler.
+  - Dosya sistemi, masaüstü uygulamaları veya işletim sistemiyle etkileşen sunucuları dağıtılabilir hale getirir.
+  - Sunucuyu .mcpb dosyası olarak hazırlayarak diğer kişilere dağıtımını sağlar.
 kategori: kod-test
 kaynak:
   repo: anthropics/claude-plugins-official
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/build-mcpb/ikon.svg
   kapak: gorseller/build-mcpb/kapak.svg
 ornekCumleler:
-  - Build Mcpb skill'ini kullanarak bu işi yap.
-  - /build-mcpb
+  - Dosyalarımı yöneten yerel MCP sunucumu tek tıkla kurulabilen bir pakete çevir.
+  - Bilgisayarımdaki uygulamalarla konuşan sunucuyu .mcpb olarak paketle.
 uyumluluk:
   claude:
     durum: calisir

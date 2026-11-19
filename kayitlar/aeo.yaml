@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: aeo
-ad: Aeo
-kisaAciklama: Use when content should be cited by ChatGPT, Perplexity…
+ad: Yapay Zekâ Alıntı Optimizasyonu
+kisaAciklama: İçeriğin yapay zekâ yanıtlarında alıntılanmasını destekler.
 neIseYarar:
-  - Use when content should be cited by ChatGPT, Perplexity, Claude or Gemini (answer engine optimization), before rewriting it.
-  - Scores E-E-A-T and structure with aeo_audit.py, rewrites with aeo_optimizer.py and logs citations with citation_tracker.py.
-  - "Betik içerir: scripts/aeo_audit.py, scripts/aeo_optimizer.py, scripts/citation_tracker.py."
+  - E-E-A-T ve yapı açısından içeriğin puanını çıkarır.
+  - Metni yapay zekâ motorlarının daha kolay okuyup kullanabileceği biçimde yeniden yazar.
+  - Alıntı takibi yaparak hangi içeriklerin yanıtlarda geçtiğini kaydeder.
 kategori: yazi
 kaynak:
   repo: alirezarezvani/claude-skills
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/aeo/ikon.svg
   kapak: gorseller/aeo/kapak.svg
 ornekCumleler:
-  - Aeo skill'ini kullanarak bu işi yap.
-  - /aeo
+  - Bu blog yazısını ChatGPT ve Perplexity'de alıntılanacak şekilde düzenle.
+  - Ürün sayfamın yapısını ve güvenilirlik sinyallerini değerlendir.
 uyumluluk:
   claude:
     durum: calisir

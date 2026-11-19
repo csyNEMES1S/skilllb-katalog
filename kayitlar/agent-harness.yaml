@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: agent-harness
-ad: Agent Harness
-kisaAciklama: Use when an agent should drive a goal in one of this…
+ad: Ajan Görev Çerçevesi
+kisaAciklama: Ajanı hedefi doğrulanmış biçimde tamamlamaya yönlendirir.
 neIseYarar:
-  - Use when an agent should drive a goal in one of this repo's domains to a verified close, before starting the work.
-  - Compiles the goal into a task plan with goal_compiler.py and runs it through loop_controller.py, which verifies each task, caps retries and escalates.
-  - "Betik içerir: scripts/goal_compiler.py, scripts/harness_manifest_builder.py, scripts/loop_controller.py."
+  - Verilen hedefi adım adım bir görev planına dönüştürür.
+  - Her görevi kontrol eder, yeniden denemeleri sınırlar ve gerektiğinde işi üst kademeye devreder.
+  - Bu depodaki alanlara ait hedefler için kullanılır.
 kategori: diger
 kaynak:
   repo: alirezarezvani/claude-skills
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/agent-harness/ikon.svg
   kapak: gorseller/agent-harness/kapak.svg
 ornekCumleler:
-  - Agent Harness skill'ini kullanarak bu işi yap.
-  - /agent-harness
+  - Bu alandaki hedefi görev planına dök ve doğrulayarak tamamla.
+  - Ajanın yeniden denemeleri aşmadan işi bitirmesini sağla.
 uyumluluk:
   claude:
     durum: calisir

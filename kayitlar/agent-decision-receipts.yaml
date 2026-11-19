@@ -1,12 +1,12 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: agent-decision-receipts
-ad: Agent Decision Receipts
-kisaAciklama: Use when an autonomous agent takes a side-effecting action…
+ad: Ajan Karar Makbuzları
+kisaAciklama: Ajanın yaptığı önemli işlemleri imzalı makbuzla kaydeder.
 neIseYarar:
-  - Use when an autonomous agent takes a side-effecting action (deploy, delete, pay, grant access) that may need proving later, or for EU AI Act Art.
-  - 12 record-keeping.
-  - Builds a tamper-evident signed receipt with build_action_manifest.py and verifies it.
-kategori: diger
+  - Deploy, silme, ödeme veya yetki verme gibi geri dönüşü olabilecek işlemleri kayda geçirir.
+  - Kayıtları kurcalanmaya karşı korunan imzalı makbuzlar olarak hazırlar ve doğrular.
+  - AB Yapay Zekâ Yasası'nın 12. maddesi kapsamındaki kayıt tutma gereksinimlerinde yardımcı olur.
+kategori: guvenlik
 kaynak:
   repo: alirezarezvani/claude-skills
   yol: ra-qm-team/skills/agent-decision-receipts
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/agent-decision-receipts/ikon.svg
   kapak: gorseller/agent-decision-receipts/kapak.svg
 ornekCumleler:
-  - Agent Decision Receipts skill'ini kullanarak bu işi yap.
-  - /agent-decision-receipts
+  - Ajanın production ortamına deploy ettiği işlemi imzalı makbuz olarak kaydet.
+  - Bu ajanın yaptığı silme işlemlerinin kaydını doğrulanabilir hale getir.
 uyumluluk:
   claude:
     durum: calisir

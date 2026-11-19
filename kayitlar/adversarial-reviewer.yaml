@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: adversarial-reviewer
-ad: Adversarial Reviewer
-kisaAciklama: Tough, critical review of a diff or PR before merge…
+ad: Acımasız Kod İnceleyici
+kisaAciklama: Değişiklikleri birleştirmeden önce sert eleştirir.
 neIseYarar:
-  - Tough, critical review of a diff or PR before merge, through hostile reviewer personas that catch shared blind spots.
-  - Use whenever the user wants a change torn apart, a harsh second opinion, or a self-review felt too agreeable.
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+  - Farklı eleştirmen kişilikleriyle kodu ve çekme isteğini ayrıntılı biçimde inceler.
+  - Ortak körlük noktalarını yakalayarak kendi değerlendirmenizin fazla yumuşak kalmasını önler.
+  - Birleştirme öncesinde ikinci ve daha sert bir görüş almak isteyenler için uygundur.
 kategori: kod-test
 kaynak:
   repo: alirezarezvani/claude-skills
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/adversarial-reviewer/ikon.svg
   kapak: gorseller/adversarial-reviewer/kapak.svg
 ornekCumleler:
-  - Adversarial Reviewer skill'ini kullanarak bu işi yap.
-  - /adversarial-reviewer
+  - Bu değişikliği acımasızca incele, gözden kaçan bir şey var mı?
+  - Yaptığım çekme isteğini birleştirmeden önce sert bir ikinci görüş ver.
 uyumluluk:
   claude:
     durum: calisir

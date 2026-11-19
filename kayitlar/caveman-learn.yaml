@@ -1,12 +1,12 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: caveman-learn
-ad: Caveman Learn
-kisaAciklama: Act on a Caveman learn report - review the ranked token…
+ad: Caveman Maliyet Düşürme
+kisaAciklama: Yapay zekâ maliyetini düşüren önerileri onayınızla uygular.
 neIseYarar:
-  - Act on a Caveman learn report - review the ranked token sinks, apply cost-lowering fixes with per-edit consent, and report what those fixes returned.
-  - Use when asked to lower an agent's token cost, what caveman has saved, to trim a heavy CLAUDE.md, or to offload re-pasted context into cavemem.
-  - "Betik içerir: tests/index.js, tests/skill-file.test.mjs."
-kategori: kod-test
+  - En çok token harcayan noktaları önem sırasına göre listeler.
+  - Her değişiklik için sizden onay alarak maliyeti düşüren düzeltmeleri uygular.
+  - Uygulanan düzeltmelerin ne kadar tasarruf sağladığını raporlar.
+kategori: veri-grafik
 kaynak:
   repo: JuliusBrussee/caveman
   yol: skills/caveman-learn
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/caveman-learn/ikon.svg
   kapak: gorseller/caveman-learn/kapak.svg
 ornekCumleler:
-  - Caveman Learn skill'ini kullanarak bu işi yap.
-  - /caveman-learn
+  - Ajanımın token maliyetini düşürmenin yollarını göster.
+  - CLAUDE.md dosyamı sadeleştir, gereksiz kısımları çıkar.
 uyumluluk:
   claude:
     durum: calisir

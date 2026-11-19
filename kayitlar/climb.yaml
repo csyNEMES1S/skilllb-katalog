@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: climb
-ad: Climb
-kisaAciklama: Work out where a teammate, the champion, or a team is on…
+ad: Yapay Zekâ Benimseme Rehberi
+kisaAciklama: Kişinin veya ekibin bir sonraki adımını belirler.
 neIseYarar:
-  - Work out where a teammate, the champion, or a team is on the steps of AI adoption, and what to try next.
-  - Use when a champion wants to help someone move up a step.
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+  - Bir ekip arkadaşının ya da tüm ekibin yapay zekâ benimseme basamaklarındaki yerini belirler.
+  - Bir üst basamağa çıkmak için denenebilecek somut adımları önerir.
+  - Bu süreçte bir şampiyonun ekip üyelerine yol göstermesine yardımcı olur.
 kategori: diger
 kaynak:
   repo: anthropics/claude-plugins-official
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/climb/ikon.svg
   kapak: gorseller/climb/kapak.svg
 ornekCumleler:
-  - Climb skill'ini kullanarak bu işi yap.
-  - /climb
+  - Ekip arkadaşım Mehmet'in yapay zekâ kullanımı hangi basamakta, bunu değerlendir.
+  - Ekibim bir sonraki adıma geçmek için ne deneyebilir?
 uyumluluk:
   claude:
     durum: calisir

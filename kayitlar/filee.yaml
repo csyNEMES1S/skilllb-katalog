@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: filee
-ad: Filee
-kisaAciklama: Convert files offline with the Filee command-line tool…
+ad: Filee ile Dosya Dönüştürme
+kisaAciklama: Dosyaları çevrimdışı olarak başka formata dönüştürür.
 neIseYarar:
-  - Convert files offline with the Filee command-line tool (images, documents, PDF, audio, video, ebooks).
-  - Use when the user asks to convert a file to another format, check whether Filee can convert a format, or read Filee's JSON result.
-  - Not for editing file contents.
+  - Görüntü, belge, PDF, ses, video ve e-kitap dosyalarını başka bir formata çevirir.
+  - Bir formatın dönüştürülüp dönüştürülemeyeceğini kontrol eder.
+  - Dönüştürme sonucunu JSON biçiminde okuyup açıklar.
 kategori: belge-ofis
 kaynak:
   repo: KnifeLemon/Filee
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/filee/ikon.svg
   kapak: gorseller/filee/kapak.svg
 ornekCumleler:
-  - Filee skill'ini kullanarak bu işi yap.
-  - /filee
+  - Bu PNG görselini JPG formatına çevir.
+  - Bu ses dosyasını MP3'e dönüştür.
 uyumluluk:
   claude:
     durum: calisir

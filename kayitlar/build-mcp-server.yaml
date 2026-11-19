@@ -1,12 +1,12 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: build-mcp-server
-ad: Build Mcp Server
-kisaAciklama: This skill should be used when the user asks to "build an…
+ad: MCP Sunucusu Kurma
+kisaAciklama: Yapay zekâya araç sunan MCP sunucusu geliştirir.
 neIseYarar:
-  - This skill should be used when the user asks to "build an MCP server", "create an MCP", "make an MCP integration", "wrap an API for Claude", "expose tools to Claude", "make an MCP app", or discusses building something with the Model Context Protocol.
-  - It is the entry point for MCP server development — it interrogates the user about their use case, determines the right deployment model (remote HTTP, MCPB, local stdio), picks a tool-design pattern, and hands off to specialized skills.
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
-kategori: tasarim
+  - Kullanım amacınızı netleştirerek hangi dağıtım modelinin uygun olduğunu belirler.
+  - Sunucu araçlarınızın nasıl tasarlanacağına karar verir.
+  - Gerektiğinde işi daha uzmanlaşmış becerilere devreder.
+kategori: kod-test
 kaynak:
   repo: anthropics/claude-plugins-official
   yol: plugins/mcp-server-dev/skills/build-mcp-server
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/build-mcp-server/ikon.svg
   kapak: gorseller/build-mcp-server/kapak.svg
 ornekCumleler:
-  - Build Mcp Server skill'ini kullanarak bu işi yap.
-  - /build-mcp-server
+  - Şirket API'mi Claude'a araç olarak açan bir MCP sunucusu kurmak istiyorum.
+  - Bir API'yi Claude için sarmalayan bir MCP oluştur.
 uyumluluk:
   claude:
     durum: calisir

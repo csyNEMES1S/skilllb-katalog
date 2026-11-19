@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: caveman-manage
-ad: Caveman Manage
-kisaAciklama: Inspect Caveman Cloud's experiment lifecycle and block…
+ad: Caveman Deney Yönetimi
+kisaAciklama: Caveman deneylerini başlatır, onaylar ve geri alır.
 neIseYarar:
-  - Inspect Caveman Cloud's experiment lifecycle and block unsafe execution.
-  - Use when asked to start, approve, cancel, promote or roll back a Caveman experiment.
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+  - Deneylerin hangi aşamada olduğunu gösterir.
+  - Güvensiz çalıştırmaları engelleyerek riskli adımların önüne geçer.
+  - Deneyleri iptal etme, yükseltme ve geri alma işlemlerinde yardımcı olur.
 kategori: diger
 kaynak:
   repo: JuliusBrussee/caveman
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/caveman-manage/ikon.svg
   kapak: gorseller/caveman-manage/kapak.svg
 ornekCumleler:
-  - Caveman Manage skill'ini kullanarak bu işi yap.
-  - /caveman-manage
+  - Yeni başlattığım deneyi onayla ve güvenli olup olmadığını kontrol et.
+  - Son deneyi iptal et ve önceki sürüme geri dön.
 uyumluluk:
   claude:
     durum: calisir

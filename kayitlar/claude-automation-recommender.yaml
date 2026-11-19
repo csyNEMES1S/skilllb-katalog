@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: claude-automation-recommender
-ad: Claude Automation Recommender
-kisaAciklama: Analyze a codebase and recommend Claude Code automations…
+ad: Claude Otomasyon Önerici
+kisaAciklama: Projeniz için uygun Claude Code otomasyonlarını önerir.
 neIseYarar:
-  - Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills, plugins, MCP servers).
-  - Use when user asks for automation recommendations, wants to optimize their Claude Code setup, mentions improving Claude Code workflows, asks how to first set up Claude Code for a project, or wants to know what Claude Code features they should use.
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+  - Kod tabanınızı inceleyerek kanca, alt ajan, beceri, eklenti ve MCP sunucusu önerileri sunar.
+  - Claude Code kurulumunuzu daha verimli hale getirmenin yollarını gösterir.
+  - Projeye ilk kez Claude Code kurmak isteyenlere başlangıç yönü verir.
 kategori: kod-test
 kaynak:
   repo: anthropics/claude-plugins-official
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/claude-automation-recommender/ikon.svg
   kapak: gorseller/claude-automation-recommender/kapak.svg
 ornekCumleler:
-  - Claude Automation Recommender skill'ini kullanarak bu işi yap.
-  - /claude-automation-recommender
+  - Bu proje için Claude Code'da hangi otomasyonları kurmalıyım?
+  - Claude Code iş akışımı nasıl iyileştirebilirim, önerir misin?
 uyumluluk:
   claude:
     durum: calisir

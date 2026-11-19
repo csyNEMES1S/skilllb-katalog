@@ -1,12 +1,12 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: caveman-evidence-review
-ad: Caveman Evidence Review
-kisaAciklama: "Read-only review of Caveman Cloud evidence: cost, Cave…"
+ad: Caveman Kanıt İncelemesi
+kisaAciklama: "Maliyet ve performans kanıtlarını salt okunur inceler."
 neIseYarar:
-  - "Read-only review of Caveman Cloud evidence: cost, Cave Score, workflows, traces, latency, errors, routing, savings."
-  - Use when asked what Caveman found or where LLM spend goes.
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
-kategori: kod-test
+  - Maliyet, gecikme, hata ve tasarruf verilerini okuyarak özet çıkarır.
+  - Yapay zekâ harcamalarının nereye gittiğini açıklar.
+  - Hiçbir şeyi değiştirmeden yalnızca inceleme yapar.
+kategori: veri-grafik
 kaynak:
   repo: JuliusBrussee/caveman
   yol: skills/caveman-evidence-review
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/caveman-evidence-review/ikon.svg
   kapak: gorseller/caveman-evidence-review/kapak.svg
 ornekCumleler:
-  - Caveman Evidence Review skill'ini kullanarak bu işi yap.
-  - /caveman-evidence-review
+  - Caveman neyi bulmuş, özetle.
+  - Yapay zekâ harcamalarım nereye gidiyor, kanıtlara bakarak söyle.
 uyumluluk:
   claude:
     durum: calisir

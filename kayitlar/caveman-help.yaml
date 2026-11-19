@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: caveman-help
-ad: Caveman Help
-kisaAciklama: Quick-reference card for the three caveman skills and…
+ad: Caveman Yardım Kartı
+kisaAciklama: Üç caveman becerisinin komutlarını hızlıca özetler.
 neIseYarar:
-  - Quick-reference card for the three caveman skills and their commands.
-  - 'Trigger: /caveman-help or "caveman help".'
-  - Yalnız talimat dosyalarından oluşur, betik çalıştırmaz.
+  - Üç caveman becerisinin ne işe yaradığını tek bakışta gösterir.
+  - Hangi komutun hangi beceriye ait olduğunu hatırlatır.
+  - Kullanımı unutulan komutlar için hızlı bir başvuru kaynağı sağlar.
 kategori: diger
 kaynak:
   repo: JuliusBrussee/caveman
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/caveman-help/ikon.svg
   kapak: gorseller/caveman-help/kapak.svg
 ornekCumleler:
-  - Caveman Help skill'ini kullanarak bu işi yap.
-  - /caveman-help
+  - Caveman komutları neler, kısaca listele.
+  - caveman help
 uyumluluk:
   claude:
     durum: calisir

@@ -1,12 +1,12 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: caveman-explore
-ad: Caveman Explore
-kisaAciklama: Read-only repository explorer for cold-start orientation…
+ad: Caveman Depo Keşfi
+kisaAciklama: Depoyu salt okunur tarayarak ilgili dosyaları gösterir.
 neIseYarar:
-  - Read-only repository explorer for cold-start orientation, broad cross-file localization, or when a direct search failed.
-  - Skip it when the exact file or symbol is already named.
-  - Returns path:line citations only; its reads stay out of main context.
-kategori: diger
+  - Yeni bir projeye ilk kez bakarken depo yapısını hızla anlamanı sağlar.
+  - Birden çok dosyaya yayılmış kodu bulmak için geniş kapsamlı arama yapar.
+  - Sonuçları dosya yolu ve satır numarasıyla verir.
+kategori: kod-test
 kaynak:
   repo: JuliusBrussee/caveman
   yol: skills/caveman-explore
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/caveman-explore/ikon.svg
   kapak: gorseller/caveman-explore/kapak.svg
 ornekCumleler:
-  - Caveman Explore skill'ini kullanarak bu işi yap.
-  - /caveman-explore
+  - Bu depoya yeni başlıyorum, yapıyı bana kısaca anlat.
+  - Kimlik doğrulama mantığı hangi dosyalarda, bul.
 uyumluluk:
   claude:
     durum: calisir

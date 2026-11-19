@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: ad-creative
-ad: Ad Creative
-kisaAciklama: Use for any ad copy request (RSA headlines, Meta, LinkedIn…
+ad: Reklam Metni Yazıcı
+kisaAciklama: Reklam metinlerini platform kurallarına uygun hazırlar.
 neIseYarar:
-  - Use for any ad copy request (RSA headlines, Meta, LinkedIn or TikTok ads, bulk variations), before writing.
-  - Checks every line against platform character limits and policy with ad_copy_validator.py.
-  - "Campaign strategy and budgets: paid-ads."
+  - Arama ve sosyal medya reklamları için başlık ve metin önerileri hazırlar.
+  - Her satırın karakter sınırını ve reklam politikasına uygunluğunu kontrol eder.
+  - Toplu varyasyonlar üreterek farklı metinleri hızlıca karşılaştırmanızı sağlar.
 kategori: yazi
 kaynak:
   repo: alirezarezvani/claude-skills
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/ad-creative/ikon.svg
   kapak: gorseller/ad-creative/kapak.svg
 ornekCumleler:
-  - Ad Creative skill'ini kullanarak bu işi yap.
-  - /ad-creative
+  - Google arama reklamım için 15 başlık yaz.
+  - LinkedIn reklamım için üç farklı metin hazırla.
 uyumluluk:
   claude:
     durum: calisir

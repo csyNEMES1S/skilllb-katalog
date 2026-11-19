@@ -1,11 +1,11 @@
-# TASLAK (keşif): Türkçe metinleri düzeltin; SKILL.md'yi okuyun, sonra birleştirin.
+# TASLAK (keşif): Türkçe metinler Claude çevirisi, gözden geçirin; SKILL.md'yi okuyun, sonra birleştirin.
 id: ai-behavior-trees-utility-ai
-ad: Ai Behavior Trees Utility Ai
-kisaAciklama: Engine-neutral behavior tree and utility AI code for NPCs…
+ad: Oyun Yapay Zekâ Davranış Ağaçları
+kisaAciklama: Oyun karakterleri için davranış ağacı kodu yazar.
 neIseYarar:
-  - "Engine-neutral behavior tree and utility AI code for NPCs in any language: Blackboard, reactive composites, decorators and response-curve scoring."
-  - Use when an enemy keeps chasing after losing sight, restarts its action every frame or flip-flops between choices.
-  - Not for FSMs, steering or pathfinding (`game-ai`) or Unreal BT, EQS and StateTree (`unreal-behavior-trees`).
+  - Herhangi bir dilde ve oyun motorunda kullanılabilen, motordan bağımsız kod üretir.
+  - Düşmanın oyuncuyu gözden kaybettikten sonra kovalamaya devam etmesi gibi sorunları çözmeye yardımcı olur.
+  - Karar seçeneklerini yanıt eğrileriyle puanlayarak davranışların ileri geri değişmesini önler.
 kategori: kod-test
 kaynak:
   repo: gamedev-skills/awesome-gamedev-agent-skills
@@ -16,8 +16,8 @@ gorseller:
   ikon: gorseller/ai-behavior-trees-utility-ai/ikon.svg
   kapak: gorseller/ai-behavior-trees-utility-ai/kapak.svg
 ornekCumleler:
-  - Ai Behavior Trees Utility Ai skill'ini kullanarak bu işi yap.
-  - /ai-behavior-trees-utility-ai
+  - Düşman oyuncuyu görmeyi bıraktıktan sonra da kovalamaya devam ediyor, bunu düzeltebilir misin?
+  - Bu NPC için bir davranış ağacı yapısı kur.
 uyumluluk:
   claude:
     durum: calisir
