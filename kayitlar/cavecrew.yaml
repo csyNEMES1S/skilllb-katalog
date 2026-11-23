@@ -11,7 +11,7 @@ kaynak:
   repo: JuliusBrussee/caveman
   yol: plugins/caveman/skills/cavecrew
   dal: main
-  sha: f692a3d0cb48962fd3315a981c9edde9f11d86be
+  sha: 8217f0efc261071ddf6553332834957dc91f1b1c
 gorseller:
   ikon: gorseller/cavecrew/ikon.svg
   kapak: gorseller/cavecrew/kapak.svg
