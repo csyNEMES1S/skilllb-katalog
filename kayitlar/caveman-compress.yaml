@@ -11,7 +11,7 @@ kaynak:
   repo: JuliusBrussee/caveman
   yol: plugins/caveman/skills/caveman-compress
   dal: main
-  sha: f5523a8e7bd09c30a2e218ca1afe7a1dab5c09ce
+  sha: b89752f6bca5a26bfde8b019813554241800ca99
 gorseller:
   ikon: gorseller/caveman-compress/ikon.svg
   kapak: gorseller/caveman-compress/kapak.svg
