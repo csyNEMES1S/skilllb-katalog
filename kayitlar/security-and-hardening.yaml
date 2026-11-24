@@ -10,7 +10,7 @@ kaynak:
   repo: addyosmani/agent-skills
   yol: skills/security-and-hardening
   dal: main
-  sha: 7acb450cdd9620bb9ee12fac17ecebf1422cbe53
+  sha: 65021295f7e97abf8311bb9e8d3425b290240c29
 gorseller:
   ikon: gorseller/security-and-hardening/ikon.svg
   kapak: gorseller/security-and-hardening/kapak.svg
