@@ -10,7 +10,7 @@ kaynak:
   repo: addyosmani/agent-skills
   yol: skills/performance-optimization
   dal: main
-  sha: ee3e8504246bd2ee1be3f3670555e48c9c62212a
+  sha: 783c41e39c4fccd50be163af0f234339bcaf762d
 gorseller:
   ikon: gorseller/performance-optimization/ikon.svg
   kapak: gorseller/performance-optimization/kapak.svg
