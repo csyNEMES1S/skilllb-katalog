@@ -10,7 +10,7 @@ kaynak:
   repo: obsidianmd/obsidian-skills
   yol: plugins/obsidian/skills/defuddle
   dal: main
-  sha: 330aed55c313c81d0c2234f9d80efdce27eb6f47
+  sha: 4b530bc4c7c6ef3f73b57c1ba667696ab1cdf531
 gorseller:
   ikon: gorseller/defuddle/ikon.svg
   kapak: gorseller/defuddle/kapak.svg
