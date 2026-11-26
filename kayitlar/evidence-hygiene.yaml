@@ -10,7 +10,7 @@ kaynak:
   repo: elementalsouls/Claude-BugHunter
   yol: skills/evidence-hygiene
   dal: main
-  sha: 9a1863c682d3dcb0808aa3efdb42251e731cddda
+  sha: 4c9966e4cafea11e24309d9e71d1c89602319c57
 gorseller:
   ikon: gorseller/evidence-hygiene/ikon.svg
   kapak: gorseller/evidence-hygiene/kapak.svg
